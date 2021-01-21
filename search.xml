@@ -14,7 +14,7 @@
 <tbody><tr>
 <td>常规预处理命令</td>
 <td>&lt;stdio.h&gt;</td>
-<td><iostream>  后加using namespace std，声明存储位置；</td>
+<td><iostream>  后加using namespace std，声明存储位置；</iostream></td>
 </tr>
 <tr>
 <td>输入</td>
@@ -32,8 +32,7 @@
 <td>endl（\n依旧沿用）</td>
 </tr>
 </tbody></table>
-<h3 id="C-的数据类型"><a href="#C-的数据类型" class="headerlink" title="C++的数据类型"></a>C++的数据类型</h3><p><img src="/images/pic-1.jpg"></p>
-<p><u>*布尔常量：布尔常量其数据类型为bool ，其取值只有两个：false（假）和true（真）。</u></p>
+<h3 id="C-的数据类型"><a href="#C-的数据类型" class="headerlink" title="C++的数据类型"></a>C++的数据类型</h3><h3 id><a href="#" class="headerlink" title></a><img src="/2021/01/18/1.11-1/JuairuSAMA\hexo\source_posts\1.11-1.17周报汇总\pic-1.jpg"></h3><p><u>*布尔常量：布尔常量其数据类型为bool ，其取值只有两个：false（假）和true（真）。</u></p>
 <p>*C++的基本数据类型与C基本相同：</p>
 <p>基本数据类型（以32位编译系统为例）</p>
 <table>
