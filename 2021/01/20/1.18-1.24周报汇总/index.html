@@ -143,7 +143,93 @@
 <li>引用作为重载条件（int &amp;a——应用变量，const int &amp;a——应用常量）</li>
 <li>函数重载遇到函数的默认参数（在默认参数影响下，输入的函数参数个数可以变化，并有可能与重载的其他函数重复，从而产生错误）</li>
 </ul>
-
+<h2 id="·类和对象"><a href="#·类和对象" class="headerlink" title="·类和对象"></a>·类和对象</h2><p><strong>1.c++面向对象的三大特性：封装、继承、多态</strong></p>
+<p><strong>2.c++认为万物皆可对象，对象上有其属性和行为</strong></p>
+<p><strong>3.具有相同性质的对象，我们可以抽象称为类</strong></p>
+<h3 id="4-封装"><a href="#4-封装" class="headerlink" title="4.封装"></a>4.封装</h3><h4 id="（1）意义："><a href="#（1）意义：" class="headerlink" title="（1）意义："></a>（1）意义：</h4><ul>
+<li><p>将属性和行为作为一个整体，表现生活中的事物</p>
+<p>在设计类的时候，属性和行为写在一起</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class 类名&#123; 访问权限: 属性 &#x2F; 行为 &#125;;</span><br><span class="line">&#x2F;&#x2F;属性使用变量表示</span><br><span class="line">&#x2F;&#x2F;行为一般用函数表示</span><br></pre></td></tr></table></figure>
+<p>在类的概念下，具体的一个物体（整体），称作对象。【类似结构体】</p>
+</li>
+<li><p>将属性和行为加以权限控制</p>
+<p>访问权限有三种：</p>
+<p>1.public（公共权限）：类内可以访问，类外可以访问</p>
+<p>2.protected（保护权限)：类内可以访问，类外不可以访问，子类可以访问</p>
+<p>3.private（私有权限）：类内可以访问，类外不可以访问，子类不可以访问</p>
+</li>
+</ul>
+<h4 id="（2）struct和class区别（默认访问权限不同）"><a href="#（2）struct和class区别（默认访问权限不同）" class="headerlink" title="（2）struct和class区别（默认访问权限不同）"></a>（2）struct和class区别（默认访问权限不同）</h4><ul>
+<li>struct默认权限为公共，可以定义成员函数</li>
+<li>class默认权限为私有</li>
+</ul>
+<h4 id="（3）成员属性设置为私有"><a href="#（3）成员属性设置为私有" class="headerlink" title="（3）成员属性设置为私有"></a>（3）成员属性设置为私有</h4><p>优点1：将所有成员属性设置为私有，可以自己控制读写权限【通过设置公有权限下函数控制读写权限】</p>
+<p>优点2：对于写权限，我们可以检测数据的有效性</p>
+<h4 id="（4）对象的初始化和清理"><a href="#（4）对象的初始化和清理" class="headerlink" title="（4）对象的初始化和清理"></a>（4）对象的初始化和清理</h4><p>C++中的面向对象来源于生活，每个对象也都会有初始设置以及对象销毁前的清理数据的设置。</p>
+<p>对象的初始化和清理也是两个非常重要的安全问题，一个对象或者变量没有初始状态，对其使用后果是未知。同样的使用完一个对象或变量,没有及时清理，也会造成一定的安全问题。</p>
+<p>C++利用了构造函数和析构函数解决上述问题，这两个函数将会被编译器自动调用，完成对象初始化和清理工作。对象的初始化和清理工作是编译器强制要我们做的事情，因此如果我们不提供构造和析构,编译器会提供。</p>
+<p>编译器提供的构造函数和析构函数是空实现。</p>
+<h5 id="1-构造函数"><a href="#1-构造函数" class="headerlink" title="1.构造函数:"></a>1.构造函数:</h5><p>主要作用在于创建对象时为对象的成员属性赋值，构造函数由编译器自动调用，无须手动调用。</p>
+<p>默认情况下，c++一般给一个类添加三个函数：默认构造函数，默认析构函数，默认拷贝构造函数</p>
+<p><strong>语法:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">类名()&#123;函数体&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>构造函数，没有返回值也不写void</li>
+<li>函数名称与类名相同</li>
+<li>构造函数可以有参数，因此可以发生重载</li>
+<li>程序在调用对象时候会自动调用构造，无须手动调用，,而且只会调用一次</li>
+</ul>
+<p><strong>构造函数的分类及调用：</strong></p>
+<p>1.两种分类方式：</p>
+<ul>
+<li><p>按参数分：有参构造和无参构造（又称默认构造参数）</p>
+</li>
+<li><p>按类型分：</p>
+<p>普通构造</p>
+<p>拷贝构造（将其他对象的属性作为默认值拷贝过来）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">类名（const 类名 &amp;对象名）&#123;函数体&#125;</span><br></pre></td></tr></table></figure>
+<p>c++中拷贝构造函数调用时机通常有三种情况：</p>
+<ol>
+<li>使用一个已经创建完毕的对象来初始化新对象</li>
+<li>值传递的方式给函数参数传值</li>
+<li>以值方式返回局部对象</li>
+</ol>
+</li>
+</ul>
+<p>2.三种调用方式：</p>
+<ul>
+<li><p><strong>括号法</strong>：通过有无括号和参数个数调用对应的构造函数，无括号调用默认构造函数</p>
+</li>
+<li><p><strong>显示法：</strong>通过“=”号调用对应构造函数，左侧是“类名 对象名”，右侧带入具体内容，无左侧内容和“=”号的，为匿名对象，特点是当前行执行结束后，系统会立刻回收掉匿名对象</p>
+<p>*<strong>不要利用拷贝构造函数，初始化匿名对象！</strong>编译器会认为是重定义</p>
+</li>
+<li><p><strong>隐式转换法：</strong>隐藏掉显示法”=“右侧的类名和括号，是显示法的简化写法</p>
+</li>
+</ul>
+<p>3.调用规则</p>
+<ul>
+<li>用户定义有参构造函数，c++ 不提供无参构造，但会提供默认拷贝构造</li>
+<li>用户定义拷贝构造函数，c++不提供其他构造函数</li>
+</ul>
+<p>4.深浅拷贝</p>
+<ul>
+<li><p>深拷贝：在堆区重新申请空间，进行拷贝操作</p>
+<p>【使用new在堆区开辟新空间（一般变量在栈上），并返回一段空间的首地址，一般用指针接收，需要手动在析构函数中用“delete”释放这一段空间，并且将指针变为空指针（指向NULL），如果用浅拷贝就会直接拷贝地址，从而发生重复释放，这时需要用深拷贝模仿操作开辟一个新空间】</p>
+<p><img src="/2021/01/20/1.18-1.24%E5%91%A8%E6%8A%A5%E6%B1%87%E6%80%BB/pic-2.png" alt="pic-2"></p>
+</li>
+<li><p>浅拷贝：简单的赋值拷贝操作</p>
+</li>
+</ul>
+<h5 id="2-析构函数"><a href="#2-析构函数" class="headerlink" title="2.析构函数:"></a>2.析构函数:</h5><p>主要作用在于对象销毁前系统自动调用，执行一些清理工作。</p>
+<p>语法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~类名()&#123;函数体&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>没有返回值也不写void</li>
+<li>函数名称与类名相同,在名称前加上符号~</li>
+<li>析构函数不可以有参数,因此不可以发生重载</li>
+<li>程序在对象销毁前会自动调用析构，无须手动调用，而且只会调用一次</li>
+</ul>
+<h4 id><a href="#" class="headerlink" title></a></h4>
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
                 <source type="audio/mpeg" src="">
