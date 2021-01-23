@@ -1,0 +1,667 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>1.11-1.17周报汇总 - Zweiwings</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="
+
+
+
+C
+C++
+
+
+
+常规预处理命令
+&amp;lt;stdio.h&amp;gt;
+  后加using namespace std，声明存储位置；
+
+
+输入
+scanf（“%d,%d”，&amp;amp;m,&amp;amp,"> 
+    <meta name="author" content="Wings"> 
+    <link rel="alternative" href="atom.xml" title="Zweiwings" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon1.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Zweiwings</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">1.11-1.17周报汇总</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">1.11-1.17周报汇总</h1>
+        <div class="stuff">
+            <span>一月 18, 2021</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E5%91%A8%E6%8A%A5/" rel="tag">学习周报</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <table>
+<thead>
+<tr>
+<th></th>
+<th>C</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>常规预处理命令</td>
+<td>&lt;stdio.h&gt;</td>
+<td><iostream>  后加using namespace std，声明存储位置；</iostream></td>
+</tr>
+<tr>
+<td>输入</td>
+<td>scanf（“%d,%d”，&amp;m,&amp;n）；</td>
+<td>cin&gt;&gt;m&gt;&gt;n;</td>
+</tr>
+<tr>
+<td>输出</td>
+<td>printf（“%d”，m）；</td>
+<td>cout&lt;&lt;m；</td>
+</tr>
+<tr>
+<td>换行符</td>
+<td>\n</td>
+<td>endl（\n依旧沿用）</td>
+</tr>
+</tbody></table>
+<h3 id="C-的数据类型"><a href="#C-的数据类型" class="headerlink" title="C++的数据类型"></a>C++的数据类型</h3><p><img src="/2021/01/18/1.11-1.17%E5%91%A8%E6%8A%A5%E6%B1%87%E6%80%BB/pic-1.jpg" alt="pic-1"></p>
+<p><u>*布尔常量：布尔常量其数据类型为bool ，其取值只有两个：false（假）和true（真）。</u></p>
+<p>*C++的基本数据类型与C基本相同：</p>
+<p>基本数据类型（以32位编译系统为例）</p>
+<table>
+<thead>
+<tr>
+<th>类型名</th>
+<th>字宽</th>
+<th>取值范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>char</td>
+<td>1</td>
+<td>-128~127</td>
+</tr>
+<tr>
+<td>signed char</td>
+<td>1</td>
+<td>-128~127</td>
+</tr>
+<tr>
+<td>unsigned char</td>
+<td>1</td>
+<td>0~255</td>
+</tr>
+<tr>
+<td>short [int]</td>
+<td>2</td>
+<td>-32768~32767</td>
+</tr>
+<tr>
+<td>signed short [int]</td>
+<td>2</td>
+<td>-32768~32767</td>
+</tr>
+<tr>
+<td>unsigned short [int]</td>
+<td>2</td>
+<td>0-65535</td>
+</tr>
+<tr>
+<td>int</td>
+<td>4</td>
+<td>-2147483648~2147483647</td>
+</tr>
+<tr>
+<td>signed [int]</td>
+<td>4</td>
+<td>-2147483648~2147483647</td>
+</tr>
+<tr>
+<td>unsigned [int]</td>
+<td>4</td>
+<td>0-4294967295</td>
+</tr>
+<tr>
+<td>long [int]</td>
+<td>4</td>
+<td>-2147483648~2147483647</td>
+</tr>
+<tr>
+<td>signed long [int]</td>
+<td>4</td>
+<td>-2147483648~2147483647</td>
+</tr>
+<tr>
+<td>unsigned long [int]</td>
+<td>4</td>
+<td>0-4294967295</td>
+</tr>
+<tr>
+<td>float</td>
+<td>4</td>
+<td>约6位有效数字</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8</td>
+<td>约12位有效数字</td>
+</tr>
+<tr>
+<td>long double</td>
+<td>16</td>
+<td>约15位有效数字</td>
+</tr>
+</tbody></table>
+<h3 id="定义C-语言的标识符应该遵循如下规则："><a href="#定义C-语言的标识符应该遵循如下规则：" class="headerlink" title="定义C++语言的标识符应该遵循如下规则："></a>定义C++语言的标识符应该遵循如下规则：</h3><p>(1)标识符只能由字母、数字和下划线三类字符组成。</p>
+<p>(2)第一个字符必须为字母（第一个字符也可以是下划线，但通常被视为系统自定义的标识符）。</p>
+<p>(3)大写字母和小写字母被认为是两个不同的字符。</p>
+<p>(4)标识符长度不限，其有效长度通常依赖于机器类型，为便于阅读，一般用有意义的单词序列的命名方法。</p>
+<p>(5)标识符不能是C++的关键字。</p>
+<p>C++系统关键字是系统已经预定义的一些标识符，它们的意义和作用由系统规定。</p>
+<table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>含义描述</th>
+<th>关键字</th>
+<th>含义描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>break</td>
+<td>跳出循环体，结束循环</td>
+<td>public</td>
+<td>公有成员；公有继承</td>
+</tr>
+<tr>
+<td>case</td>
+<td>分支语句中的分支</td>
+<td>return</td>
+<td>从函数中返回</td>
+</tr>
+<tr>
+<td>char</td>
+<td>字符型数据</td>
+<td>short</td>
+<td>短整型数据</td>
+</tr>
+<tr>
+<td>class</td>
+<td>定义类的关键字</td>
+<td>signed</td>
+<td>有符号型数据</td>
+</tr>
+<tr>
+<td>const</td>
+<td>常量符号</td>
+<td>sizeof</td>
+<td>取数据类型长度运算符</td>
+</tr>
+<tr>
+<td>continue</td>
+<td>跳出本次循环，进行下一次</td>
+<td>static</td>
+<td>静态数据</td>
+</tr>
+<tr>
+<td>default</td>
+<td>分支语句中的默认分支</td>
+<td>struct</td>
+<td>定义结构体类型数据</td>
+</tr>
+<tr>
+<td>delete</td>
+<td>释放指针指向的内存块</td>
+<td>switch</td>
+<td>分支语句</td>
+</tr>
+<tr>
+<td>do</td>
+<td>do型循环</td>
+<td>template</td>
+<td>声明模板</td>
+</tr>
+<tr>
+<td>double</td>
+<td>双精度浮点型数据</td>
+<td>this</td>
+<td>本类指针</td>
+</tr>
+<tr>
+<td>else</td>
+<td>判断语句中的否定分支</td>
+<td>typedef</td>
+<td>重定义数据类型</td>
+</tr>
+<tr>
+<td>enum</td>
+<td>定义枚举型数据</td>
+<td>union</td>
+<td>定义联合体型数据</td>
+</tr>
+<tr>
+<td>extern</td>
+<td>声明外部变量</td>
+<td>virtual</td>
+<td>虚继承；虚函数</td>
+</tr>
+<tr>
+<td>float</td>
+<td>单精度浮点型数据</td>
+<td>void</td>
+<td>定义函数不返回数值</td>
+</tr>
+<tr>
+<td>for</td>
+<td>for型循环</td>
+<td>while</td>
+<td>while型循环</td>
+</tr>
+<tr>
+<td>friend</td>
+<td>友元类</td>
+<td>int</td>
+<td>整型数据</td>
+</tr>
+<tr>
+<td>goto</td>
+<td>跳转语句</td>
+<td>long</td>
+<td>长整型数据</td>
+</tr>
+<tr>
+<td>if</td>
+<td>条件判断语句</td>
+<td>new</td>
+<td>申请内存块</td>
+</tr>
+<tr>
+<td>inline</td>
+<td>声明为内联函数</td>
+<td>operator</td>
+<td>定义运算符重载</td>
+</tr>
+<tr>
+<td>protected</td>
+<td>保护成员；保护继承</td>
+<td>private</td>
+<td>私有成员；私有继承</td>
+</tr>
+</tbody></table>
+<h3 id="C-中各类符号表示："><a href="#C-中各类符号表示：" class="headerlink" title="C++中各类符号表示："></a>C++中各类符号表示：</h3><table>
+<thead>
+<tr>
+<th>转义字符</th>
+<th>名称</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>‘\a’</td>
+<td>响铃符</td>
+<td>用于输出</td>
+</tr>
+<tr>
+<td>‘\b’</td>
+<td>退格符</td>
+<td>用于回退一个字符</td>
+</tr>
+<tr>
+<td>‘\f’</td>
+<td>换页符</td>
+<td>用于输出</td>
+</tr>
+<tr>
+<td>‘\r’</td>
+<td>回车符</td>
+<td>用于输出</td>
+</tr>
+<tr>
+<td>‘\t’</td>
+<td>水平制表符</td>
+<td>用于制表</td>
+</tr>
+<tr>
+<td>‘\’</td>
+<td>反斜杠符</td>
+<td>用于输出或文件的路径名中</td>
+</tr>
+<tr>
+<td>‘\’’</td>
+<td>单引号</td>
+<td>用于输出单引号</td>
+</tr>
+<tr>
+<td>‘\”’</td>
+<td>双引号</td>
+<td>用于输出双引号</td>
+</tr>
+<tr>
+<td>‘\0’</td>
+<td>空字符</td>
+<td>用于结束标志</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>符号表示</th>
+<th>含义描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+</td>
+<td>加法运算符，或正值运算符</td>
+</tr>
+<tr>
+<td>-</td>
+<td>减法运算符，或负值运算符</td>
+</tr>
+<tr>
+<td>*</td>
+<td>乘法运算符</td>
+</tr>
+<tr>
+<td>/</td>
+<td>除法运算符</td>
+</tr>
+<tr>
+<td>%</td>
+<td>求余运算符</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>符号表示</th>
+<th>含义描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&gt;</td>
+<td>大于</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>小于</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>大于等于</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>小于等于</td>
+</tr>
+<tr>
+<td>==</td>
+<td>相等</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>不相等</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>符号表示</th>
+<th>含义描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>~</td>
+<td>按位求反</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>按位与</td>
+</tr>
+<tr>
+<td>|</td>
+<td>按位或</td>
+</tr>
+<tr>
+<td>^</td>
+<td>按位异或</td>
+</tr>
+<tr>
+<td>&lt;&lt;</td>
+<td>左移</td>
+</tr>
+<tr>
+<td>&gt;&gt;</td>
+<td>右移</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>符号表示</th>
+<th>含义描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>!</td>
+<td>单目运算符，逻辑非</td>
+</tr>
+<tr>
+<td>&amp;&amp;</td>
+<td>双目运算符，逻辑与</td>
+</tr>
+<tr>
+<td>||</td>
+<td>双目运算符，逻辑或</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>符号表示</th>
+<th>含义描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+=</td>
+<td>加赋值</td>
+</tr>
+<tr>
+<td>*=</td>
+<td>乘赋值</td>
+</tr>
+<tr>
+<td>%=</td>
+<td>求余赋值</td>
+</tr>
+<tr>
+<td>&gt;&gt;=</td>
+<td>右移位赋值</td>
+</tr>
+<tr>
+<td>|=</td>
+<td>按位或赋值</td>
+</tr>
+<tr>
+<td>-=</td>
+<td>减赋值</td>
+</tr>
+<tr>
+<td>/=</td>
+<td>除赋值</td>
+</tr>
+<tr>
+<td>&lt;&lt;=</td>
+<td>左移位赋值</td>
+</tr>
+<tr>
+<td>&amp;=</td>
+<td>按位与赋值</td>
+</tr>
+<tr>
+<td>^=</td>
+<td>按位异或赋值</td>
+</tr>
+</tbody></table>
+<p>按位求反“~”是将各个二进制位由1变成0，由0变成1，它是一个单目运算符。</p>
+<p>按位与“&amp;”是将两个二进制位的操作数从低位到高位依次对齐后，每位求与运算。只有两个都是1时，结果为1，否则为0。</p>
+<p>按位或“|”是将两个二进制位的操作数从低位到高位依次对齐后，每位求或运算。只有两个都是0时，结果为0，否则为1。</p>
+<p>按位异或“^”是将两个二进制位的操作数从低位到高位依次对齐后，每位求异或运算。只要两个位不同时，结果为1，否则为0。</p>
+<p>左移“&lt;&lt;”是将一个二进制数的数按指定移动的位数向左移动，移掉的被丢弃，右边移出的空位补0。</p>
+<p>右移“&gt;&gt;”是将一个二进制数的数按指定移动的位数向右移动，移掉的被丢弃，左边移出的空位或者一律补0或者补符号位，这要由机器决定。</p>
+<h3 id="选择结构："><a href="#选择结构：" class="headerlink" title="选择结构："></a>选择结构：</h3><p>\1. if语句——单行if语句，多行if语句，多条件if语句，嵌套if（使用方式和c语言基本相同）</p>
+<p>\2. 表达式？x：y——三目运算符（使用方法和c语言基本相同）</p>
+<p>\3. Swtch语句——switch（整型和字符）{case 常量：break；}（使用方法和c语言基本相同）</p>
+<p>\4. While与do whlie语句——while（条件）{循环体}/do{循环体}while（条件）（使用方法与c语言基本相同）</p>
+<p>rand（）生成一个【0，1）的随机数</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='//mus/1.wma'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='//mus/2.wma'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
