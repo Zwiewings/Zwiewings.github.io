@@ -1067,7 +1067,7 @@ int (*p)(int i, int j);//指向函数的指针p</code></pre>
 <li>建立终端 </li>
 <li>用户登录系统</li>
 </ul>
-<h3 id="init程序的类型："><a href="#init程序的类型：" class="headerlink" title="init程序的类型："></a>init程序的类型：</h3><ul>
+<h2 id="init程序的类型："><a href="#init程序的类型：" class="headerlink" title="init程序的类型："></a>init程序的类型：</h2><ul>
 <li>SysV: init, CentOS 5之前, 配置文件： /etc/inittab</li>
 <li>Upstart: init,CentOS 6, 配置文件： /etc/inittab, /etc/init/*.conf</li>
 <li>Systemd： systemd, CentOS 7,配置文件： /usr/lib/systemd/system、 /etc/systemd/system</li>
