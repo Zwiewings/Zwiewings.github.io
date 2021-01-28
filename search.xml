@@ -1020,7 +1020,7 @@ int (*p)(int i, int j);//指向函数的指针p</code></pre>
   <entry>
     <title>1.25-1.31周报汇总</title>
     <url>/2021/01/26/1.25-1.31%E5%91%A8%E6%8A%A5%E6%B1%87%E6%80%BB/</url>
-    <content><![CDATA[<h1 id="Linux简介"><a href="#Linux简介" class="headerlink" title="Linux简介"></a>Linux简介</h1><p>Linux 是一套免费使用和自由传播的类 Unix 操作系统，是一个基于 POSIX 和 UNIX 的多用户、多任务、支持多线程和多 CPU 的操作系统。</p>
+    <content><![CDATA[<p>Linux 是一套免费使用和自由传播的类 Unix 操作系统，是一个基于 POSIX 和 UNIX 的多用户、多任务、支持多线程和多 CPU 的操作系统。</p>
 <p>Linux 能运行主要的 UNIX 工具软件、应用程序和网络协议。它支持 32 位和 64 位硬件。Linux 继承了 Unix 以网络为核心的设计思想，是一个性能稳定的多用户网络操作系统。</p>
 <h1 id="Linux-应用领域"><a href="#Linux-应用领域" class="headerlink" title="Linux 应用领域"></a>Linux 应用领域</h1><p>今天各种场合都有使用各种 Linux 发行版，从嵌入式设备到超级计算机，并且在服务器领域确定了地位，通常服务器使用 LAMP（Linux + Apache + MySQL + PHP）或 LNMP（Linux + Nginx+ MySQL + PHP）组合。</p>
 <h1 id="Linux-和-Windows的区别"><a href="#Linux-和-Windows的区别" class="headerlink" title="Linux 和 Windows的区别"></a>Linux 和 Windows的区别</h1><p>目前国内 Linux 更多的是应用于服务器上，而桌面操作系统更多使用的是 Windows。主要区别如下</p>
