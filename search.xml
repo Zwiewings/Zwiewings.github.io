@@ -1121,11 +1121,12 @@ int (*p)(int i, int j);//指向函数的指针p</code></pre>
 <p>然后 login 会对用户名进行分析：如果用户名不是 root，且存在 /etc/nologin 文件，login 将输出 nologin 文件的内容，然后退出。</p>
 <p>这通常用来系统维护时防止非root用户登录。只有/etc/securetty中登记了的终端才允许 root 用户登录，如果不存在这个文件，则 root 用户可以在任何终端上登录。</p>
 <p>/etc/usertty文件用于对用户作出附加访问限制，如果不存在这个文件，则没有其他限制。</p>
-<h1 id="图形模式与文字模式的切换方式"><a href="#图形模式与文字模式的切换方式" class="headerlink" title="图形模式与文字模式的切换方式"></a>图形模式与文字模式的切换方式</h1><p>Linux预设提供了六个命令窗口终端机让我们来登录。</p>
+<h2 id="图形模式与文字模式的切换方式"><a href="#图形模式与文字模式的切换方式" class="headerlink" title="图形模式与文字模式的切换方式"></a>图形模式与文字模式的切换方式</h2><p>Linux预设提供了六个命令窗口终端机让我们来登录。</p>
 <p>默认我们登录的就是第一个窗口，也就是tty1，这个六个窗口分别为tty1,tty2 … tty6，你可以按下Ctrl + Alt + F1 ~ F6 来切换它们。</p>
 <p>如果你安装了图形界面，默认情况下是进入图形界面的，此时你就可以按Ctrl + Alt + F1 ~ F6来进入其中一个命令窗口界面。</p>
 <p>当你进入命令窗口界面后再返回图形界面只要按下Ctrl + Alt + F7 就回来了。</p>
-<p>如果你用的vmware 虚拟机，命令窗口切换的快捷键为 Alt + Space + F1<del>F6. 如果你在图形界面下请按Alt + Shift + Ctrl + F1</del>F6 切换至命令窗口。</p>
+<p>如果你用的vmware 虚拟机，命令窗口切换的快捷键为 Alt + Space +（ F1-F6）. </p>
+<p>如果你在图形界面下请按Alt + Shift + Ctrl + （F1-F6） 切换至命令窗口。</p>
 <h1 id="Linux-关机"><a href="#Linux-关机" class="headerlink" title="Linux 关机"></a>Linux 关机</h1><p>在linux领域内<strong>大多用在服务器上，很少遇到关机的操作</strong>。毕竟服务器上跑一个服务是永无止境的，除非特殊情况下，不得已才会关机。</p>
 <p>正确的关机流程为：sync &gt; shutdown &gt; reboot &gt; halt</p>
 <p>关机指令为：shutdown ，你可以man shutdown 来看一下帮助文档。</p>
@@ -1150,7 +1151,7 @@ reboot 就是重启，等同于 shutdown –r now
 halt 关闭系统，等同于shutdown –h now 和 poweroff</code></pre>
 <p>最后总结一下，不管是重启系统还是关闭系统，首先要运行 <strong>sync</strong> 命令，把内存中的数据写到磁盘中。</p>
 <p>关机的命令有 <strong>shutdown –h now halt poweroff</strong> 和 <strong>init 0</strong> , 重启系统的命令有 <strong>shutdown –r now reboot init 6</strong>。</p>
-<h2 id="注："><a href="#注：" class="headerlink" title="注："></a>注：</h2><p><strong>[Tab] 有『命令补全』与『文件补齐』的功能</strong></p>
+<h2 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h2><p><strong>[Tab] 有『命令补全』与『文件补齐』的功能</strong></p>
 <pre><code>[Tab]      ## 接在一串指令的第一个字的后面，则为『命令补全』
 [Tab]      ## 接在一串指令的第二个字以后时，则为『文件补齐』</code></pre>
 <p>若安装 bash-completion 软件，则在某些指令后面使用 [tab] 按键时，可以进行『选项/参数的补齐』功能！</p>
