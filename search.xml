@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>1.11-1.17周报汇总</title>
+    <title>c++学习-1</title>
     <url>/2021/01/18/c++%E5%AD%A6%E4%B9%A0-1/</url>
     <content><![CDATA[<table>
 <thead>
@@ -580,9 +580,9 @@ int (*p)(int i, int j);//指向函数的指针p</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>初来乍到，请多指教</title>
-    <url>/2021/01/17/%E5%88%9D%E6%9D%A5%E4%B9%8D%E5%88%B0%EF%BC%8C%E8%AF%B7%E5%A4%9A%E6%8C%87%E6%95%99/</url>
-    <content><![CDATA[<h1 id="试验条幅，请勿注目"><a href="#试验条幅，请勿注目" class="headerlink" title="试验条幅，请勿注目"></a>试验条幅，请勿注目</h1><h3 id="哎，初来乍到，本座封艾羽，中二病晚期death，这里只是个简简单单的介绍。"><a href="#哎，初来乍到，本座封艾羽，中二病晚期death，这里只是个简简单单的介绍。" class="headerlink" title="哎，初来乍到，本座封艾羽，中二病晚期death，这里只是个简简单单的介绍。"></a>哎，初来乍到，本座封艾羽，中二病晚期death，这里只是个简简单单的介绍。</h3><h4 id="顺带记录下hexo的各种命令行："><a href="#顺带记录下hexo的各种命令行：" class="headerlink" title="顺带记录下hexo的各种命令行："></a>顺带记录下hexo的各种命令行：</h4><h3 id="hexo-s"><a href="#hexo-s" class="headerlink" title="hexo s"></a>hexo s</h3><pre><code class="undefined">hexo s</code></pre>
+    <title>hexo基础命令行</title>
+    <url>/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/</url>
+    <content><![CDATA[<h1 id="hexo的基础命令行："><a href="#hexo的基础命令行：" class="headerlink" title="hexo的基础命令行："></a>hexo的基础命令行：</h1><h2 id="hexo-s"><a href="#hexo-s" class="headerlink" title="hexo s"></a>hexo s</h2><pre><code class="undefined">hexo s</code></pre>
 <ul>
 <li>启动本地服务器，用于预览主题。默认地址： <a href="http://localhost:4000/">http://localhost:4000/</a></li>
 <li><code>hexo s</code> 是 <code>hexo server</code> 的缩写，命令效果一致。</li>
@@ -590,7 +590,7 @@ int (*p)(int i, int j);//指向函数的指针p</code></pre>
 <li>对 Hexo 根目录 <code>_config.yml</code> 的修改，需要重启本地服务器后才能预览效果。</li>
 <li>预览草稿文章 <code>hexo s --drafts</code></li>
 </ul>
-<h3 id="hexo-new"><a href="#hexo-new" class="headerlink" title="hexo new"></a>hexo new</h3><pre><code class="cpp">hexo new &quot;title&quot;
+<h2 id="hexo-new"><a href="#hexo-new" class="headerlink" title="hexo new"></a>hexo new</h2><pre><code class="cpp">hexo new &quot;title&quot;
 hexo new  draft &quot;草稿文章&quot;
 hexo new page</code></pre>
 <ul>
@@ -598,17 +598,17 @@ hexo new page</code></pre>
 <li>draft 为草稿文档，不会展现在博客上，可用<code>hexo publish &quot;草稿文章&quot;</code> 发布成正式文章</li>
 <li><code>hexo new page</code> 创建一个文件夹</li>
 </ul>
-<h3 id="hexo-d"><a href="#hexo-d" class="headerlink" title="hexo d"></a>hexo d</h3><pre><code class="undefined">hexo d</code></pre>
+<h2 id="hexo-d"><a href="#hexo-d" class="headerlink" title="hexo d"></a>hexo d</h2><pre><code class="undefined">hexo d</code></pre>
 <ul>
 <li>自动生成网站静态文件，并部署到设定的仓库。</li>
 <li><code>hexo d</code> 是 <code>hexo deploy</code> 的缩写，命令效果一致。</li>
 </ul>
-<h3 id="hexo-clean"><a href="#hexo-clean" class="headerlink" title="hexo clean"></a>hexo clean</h3><pre><code class="undefined">hexo clean</code></pre>
+<h2 id="hexo-clean"><a href="#hexo-clean" class="headerlink" title="hexo clean"></a>hexo clean</h2><pre><code class="undefined">hexo clean</code></pre>
 <ul>
 <li>清除缓存文件 db.json 和已生成的静态文件 public 。</li>
 <li>网站显示异常时可以执行这条命令试试</li>
 </ul>
-<h3 id="hexo-g"><a href="#hexo-g" class="headerlink" title="hexo g"></a>hexo g</h3><pre><code class="undefined">hexo g</code></pre>
+<h2 id="hexo-g"><a href="#hexo-g" class="headerlink" title="hexo g"></a>hexo g</h2><pre><code class="undefined">hexo g</code></pre>
 <p>生成网站静态文件到默认设置的 public 文件夹。</p>
 <ul>
 <li>便于查看网站生成的静态文件或者手动部署网站；</li>
@@ -617,14 +617,12 @@ hexo new page</code></pre>
 </ul>
 <pre><code class="undefined">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code></pre>
 <p>部署发布，命令可用&amp;&amp;连接</p>
-<p>那么，就这样。</p>
-<p>今后还请多指教！</p>
 ]]></content>
       <categories>
-        <category>闲谈</category>
+        <category>日常使用</category>
       </categories>
       <tags>
-        <tag>其他</tag>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -1730,7 +1728,7 @@ CentOS release 6.4 (Final)</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>1.18-1.24周报汇总</title>
+    <title>c++学习-2</title>
     <url>/2021/01/20/c++%E5%AD%A6%E4%B9%A0-2/</url>
     <content><![CDATA[<h2 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h2><p><strong>1.c++面向对象的三大特性：封装、继承、多态</strong></p>
 <p><strong>2.c++认为万物皆可对象，对象上有其属性和行为</strong></p>
