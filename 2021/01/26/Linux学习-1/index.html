@@ -60,7 +60,7 @@ Linux 能运行主要的 UNIX 工具软,">
         <div class="stuff">
             <span>一月 26, 2021</span>
             
-  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/c-%E5%AD%A6%E4%B9%A0%E5%91%A8%E6%8A%A5/" rel="tag">c++学习周报</a></li></ul>
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Linux%E5%AD%A6%E4%B9%A0/" rel="tag">Linux学习</a></li></ul>
 
 
         </div>
@@ -231,7 +231,7 @@ halt 关闭系统，等同于shutdown –h now 和 poweroff</code></pre>
 <h1 id="Linux-系统目录结构"><a href="#Linux-系统目录结构" class="headerlink" title="Linux 系统目录结构"></a>Linux 系统目录结构</h1><p>登录系统后，在当前命令窗口下输入命令：</p>
 <pre><code> ls / </code></pre>
 <p>可显示当前层的目录。</p>
-<p><img src="/2021/01/26/1.25-1.31%E5%91%A8%E6%8A%A5%E6%B1%87%E6%80%BB/pic-1.png" alt="树状目录结构图"></p>
+<p><img src="/2021/01/26/Linux%E5%AD%A6%E4%B9%A0-1/pic-1.png" alt="树状目录结构图"></p>
 <p>在 Linux 或 Unix 操作系统中，所有的文件和目录都被组织成以一个根节点开始的倒置的树状结构。</p>
 <p>文件系统的最顶层是由根目录开始的，系统使用 <strong>/</strong> 来表示根目录。在根目录之下的既可以是目录，也可以是文件，而每一个目录中又可以包含子目录文件。如此反复就可以构成一个庞大的文件系统。</p>
 <p>在Linux文件系统中有两个特殊的目录，一个用户所在的工作目录，也叫当前目录，可以使用一个点 <strong>.</strong> 来表示；另一个是当前目录的上一级目录，也叫父目录，可以使用两个点 <strong>..</strong> 来表示。</p>
@@ -318,7 +318,7 @@ dr-xr-xr-x   4 root root 4096 Apr 19  2012 boot
 <li>若是 <strong>c</strong> 则表示为装置文件里面的串行端口设备，例如键盘、鼠标(一次性读取装置)。</li>
 </ul>
 <p>接下来的字符中，以三个为一组，且均为 <strong>rwx</strong> 的三个参数的组合。其中， <strong>r</strong> 代表可读(read)、 <strong>w</strong> 代表可写(write)、 <strong>x</strong> 代表可执行(execute)。 要注意的是，这三个权限的位置不会改变，如果没有权限，就会出现减号 <strong>-</strong> 而已。</p>
-<p><img src="/2021/01/26/1.25-1.31%E5%91%A8%E6%8A%A5%E6%B1%87%E6%80%BB/pic-2.png" alt="pic-2"></p>
+<p><img src="/2021/01/26/Linux%E5%AD%A6%E4%B9%A0-1/pic-2.png" alt="pic-2"></p>
 <p>从左至右用 <strong>0-9</strong> 这些数字来表示。</p>
 <p>第 <strong>0</strong> 位确定文件类型，第 <strong>1-3</strong> 位确定属主（该文件的所有者）拥有该文件的权限。</p>
 <p>第4-6位确定属组（所有者的同组用户）拥有该文件的权限，第7-9位确定其他用户拥有该文件的权限。</p>

@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>1.11-1.17周报汇总</title>
-    <url>/2021/01/18/1.11-1.17%E5%91%A8%E6%8A%A5%E6%B1%87%E6%80%BB/</url>
+    <url>/2021/01/18/c++%E5%AD%A6%E4%B9%A0-1/</url>
     <content><![CDATA[<table>
 <thead>
 <tr>
@@ -32,7 +32,7 @@
 <td>endl（\n依旧沿用）</td>
 </tr>
 </tbody></table>
-<h3 id="C-的数据类型"><a href="#C-的数据类型" class="headerlink" title="C++的数据类型"></a>C++的数据类型</h3><p><img src="/2021/01/18/1.11-1.17%E5%91%A8%E6%8A%A5%E6%B1%87%E6%80%BB/pic-1.jpg" alt="pic-1"></p>
+<h3 id="C-的数据类型"><a href="#C-的数据类型" class="headerlink" title="C++的数据类型"></a>C++的数据类型</h3><p><img src="/2021/01/18/c++%E5%AD%A6%E4%B9%A0-1/pic-1.jpg" alt="pic-1"></p>
 <p><u>*布尔常量：布尔常量其数据类型为bool ，其取值只有两个：false（假）和true（真）。</u></p>
 <p>*C++的基本数据类型与C基本相同：</p>
 <p>基本数据类型（以32位编译系统为例）</p>
@@ -481,11 +481,11 @@
 <p>\3. Swtch语句——switch（整型和字符）{case 常量：break；}（使用方法和c语言基本相同）</p>
 <p>\4. While与do whlie语句——while（条件）{循环体}/do{循环体}while（条件）（使用方法与c语言基本相同）</p>
 <p>rand（）生成一个【0，1）的随机数</p>
-<h2 id="·函数："><a href="#·函数：" class="headerlink" title="·函数："></a>·函数：</h2><h3 id="函数的分文件编写："><a href="#函数的分文件编写：" class="headerlink" title="函数的分文件编写："></a>函数的分文件编写：</h3><p>1.创建后缀名.h的头文件</p>
+<h2 id="函数："><a href="#函数：" class="headerlink" title="函数："></a>函数：</h2><h3 id="函数的分文件编写："><a href="#函数的分文件编写：" class="headerlink" title="函数的分文件编写："></a>函数的分文件编写：</h3><p>1.创建后缀名.h的头文件</p>
 <p>2.创建后缀名.cpp的源文件</p>
 <p>3.在头文件中写函数的声明</p>
 <p>4.在源文件中写函数的定义：包含<iostream>的同时还需要包含创建的“自定义头文件”</iostream></p>
-<h5 id="如上，再次使用的时候直接引用自定义头文件就能够使用已定义在另一文件的函数里。"><a href="#如上，再次使用的时候直接引用自定义头文件就能够使用已定义在另一文件的函数里。" class="headerlink" title="如上，再次使用的时候直接引用自定义头文件就能够使用已定义在另一文件的函数里。"></a>如上，再次使用的时候直接引用自定义头文件就能够使用已定义在另一文件的函数里。</h5><h2 id="·指针："><a href="#·指针：" class="headerlink" title="·指针："></a>·指针：</h2><h3 id="空指针和野指针："><a href="#空指针和野指针：" class="headerlink" title="空指针和野指针："></a>空指针和野指针：</h3><p><strong>空指针：</strong>指针变量指向内存中编号为0的空间，用于初始化指针变量。</p>
+<h5 id="如上，再次使用的时候直接引用自定义头文件就能够使用已定义在另一文件的函数里。"><a href="#如上，再次使用的时候直接引用自定义头文件就能够使用已定义在另一文件的函数里。" class="headerlink" title="如上，再次使用的时候直接引用自定义头文件就能够使用已定义在另一文件的函数里。"></a>如上，再次使用的时候直接引用自定义头文件就能够使用已定义在另一文件的函数里。</h5><h2 id="指针："><a href="#指针：" class="headerlink" title="指针："></a>指针：</h2><h3 id="空指针和野指针："><a href="#空指针和野指针：" class="headerlink" title="空指针和野指针："></a>空指针和野指针：</h3><p><strong>空指针：</strong>指针变量指向内存中编号为0的空间，用于初始化指针变量。</p>
 <p><strong>（注：指向的内存不可以访问，0~255之间的内存编号为系统占用。）</strong></p>
 <p>野指针：指针变量指向非法的内存空间【例如int*p=（int *）0x1100】</p>
 <p><strong>由于指针的指向内容不一定在所申请的内存空间范围内，在程序中尽可能避免出现访问非法（未申请空间）的野指针。</strong></p>
@@ -507,7 +507,7 @@
 <h4 id="注意："><a href="#注意：" class="headerlink" title="注意："></a><strong>注意：</strong></h4><pre><code>int *f(int i, int j);//返回值是指针的函数f
 
 int (*p)(int i, int j);//指向函数的指针p</code></pre>
-<h2 id="·结构体："><a href="#·结构体：" class="headerlink" title="·结构体："></a>·结构体：</h2><h3 id="1-基本概念："><a href="#1-基本概念：" class="headerlink" title="1.基本概念："></a>1.基本概念：</h3><p>结构体属于用户自定义的数据类型，允许用户存储不同的数据类型</p>
+<h2 id="结构体："><a href="#结构体：" class="headerlink" title="结构体："></a>结构体：</h2><h3 id="1-基本概念："><a href="#1-基本概念：" class="headerlink" title="1.基本概念："></a>1.基本概念：</h3><p>结构体属于用户自定义的数据类型，允许用户存储不同的数据类型</p>
 <h3 id="2-结构体定义和使用："><a href="#2-结构体定义和使用：" class="headerlink" title="2.结构体定义和使用："></a>2.结构体定义和使用：</h3><pre><code>struct 结构体名称 &#123; 结构体成员列表 &#125;；</code></pre>
 <p>通过结构体创建变量的方式如下三种：**(创建变量时，struct 关键字可以省略)**</p>
 <ul>
@@ -540,7 +540,7 @@ int (*p)(int i, int j);//指向函数的指针p</code></pre>
 <h3 id="6-结构体做函数参数"><a href="#6-结构体做函数参数" class="headerlink" title="6.结构体做函数参数"></a>6.结构体做函数参数</h3><p>作用：将结构体作为参数向函数中传递</p>
 <p><strong>两种传递方式：值传递、地址传递</strong>（同基本数据类型相同）</p>
 <h3 id="7-结构体中const使用场景"><a href="#7-结构体中const使用场景" class="headerlink" title="7.结构体中const使用场景"></a>7.结构体中const使用场景</h3><p>作用：用const来防止误操作，一旦有修改的操作就会报错</p>
-<h2 id="·引用："><a href="#·引用：" class="headerlink" title="·引用："></a>·引用：</h2><h3 id="1-用处："><a href="#1-用处：" class="headerlink" title="1.用处："></a><strong>1.用处：</strong></h3><p>给一个变量起别名，通过多个变量名修改变量值</p>
+<h2 id="引用："><a href="#引用：" class="headerlink" title="引用："></a>引用：</h2><h3 id="1-用处："><a href="#1-用处：" class="headerlink" title="1.用处："></a><strong>1.用处：</strong></h3><p>给一个变量起别名，通过多个变量名修改变量值</p>
 <h3 id="2-形如："><a href="#2-形如：" class="headerlink" title="2.形如："></a><strong>2.形如：</strong></h3><pre><code>数据类型 &amp;别名 = 原名</code></pre>
 <h3 id="3-注意事项：引用必须初始化，且在初始化后不可以改变"><a href="#3-注意事项：引用必须初始化，且在初始化后不可以改变" class="headerlink" title="3.注意事项：引用必须初始化，且在初始化后不可以改变"></a>3.注意事项：引用必须初始化，且在初始化后不可以改变</h3><h3 id="4-引用做函数参数"><a href="#4-引用做函数参数" class="headerlink" title="4.引用做函数参数"></a>4.引用做函数参数</h3><p><strong>作用：</strong>函数传参时，可以利用引用的技术让形参修饰实参</p>
 <p><strong>优点：</strong>可以简化指针修改实参</p>
@@ -549,7 +549,7 @@ int (*p)(int i, int j);//指向函数的指针p</code></pre>
 <p><strong>注意：不要返回局部变量引用——可给局部变量加static前缀，变成静态变量</strong></p>
 <p><em>（第一次结果因为编译器做了保留，所以正确，但第二次局部变量已经被释放，结果会乱码错误。）</em></p>
 <h3 id="6-引用的本质：引用在c-内部的实现，实际上是一个指针常量"><a href="#6-引用的本质：引用在c-内部的实现，实际上是一个指针常量" class="headerlink" title="6.引用的本质：引用在c++内部的实现，实际上是一个指针常量"></a>6.引用的本质：引用在c++内部的实现，实际上是一个指针常量</h3><h3 id="7-常量引用"><a href="#7-常量引用" class="headerlink" title="7.常量引用"></a>7.常量引用</h3><p><strong>作用：常量引用主要用来修饰形参，防止误操作，在函数形参列表中加const修饰形参，防止形参改变实参</strong></p>
-<h2 id="·函数提高："><a href="#·函数提高：" class="headerlink" title="·函数提高："></a>·函数提高：</h2><h3 id="1-函数默认参数"><a href="#1-函数默认参数" class="headerlink" title="1.函数默认参数"></a>1.函数默认参数</h3><p><strong>语法：</strong></p>
+<h2 id="函数提高："><a href="#函数提高：" class="headerlink" title="函数提高："></a>函数提高：</h2><h3 id="1-函数默认参数"><a href="#1-函数默认参数" class="headerlink" title="1.函数默认参数"></a>1.函数默认参数</h3><p><strong>语法：</strong></p>
 <pre><code>返回值类型 函数名 （参数=默认值）&#123;函数体&#125;</code></pre>
 <p>注意事项：</p>
 <p>1.如果某个位置已经有了默认参数，那么之后都必须有默认值</p>
@@ -576,13 +576,86 @@ int (*p)(int i, int j);//指向函数的指针p</code></pre>
         <category>学习</category>
       </categories>
       <tags>
-        <tag>Linux学习周报</tag>
+        <tag>c++学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网页设计学习-1</title>
+    <url>/2021/03/19/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0-1/</url>
+    <content><![CDATA[<h1 id="基础标签："><a href="#基础标签：" class="headerlink" title="基础标签："></a>基础标签：</h1><h2 id="主框架标签："><a href="#主框架标签：" class="headerlink" title="主框架标签："></a>主框架标签：</h2><pre><code>&lt;html&gt;&lt;/html&gt;     //表示文件为html文件
+&lt;head&gt;&lt;/head&gt;     //包含文件的标题，使用的脚本，样式定义等
+&lt;meta charset=&quot;utf-8&quot;&gt; //网页代码编译方式为utf-8
+&lt;title&gt;&lt;/title&gt;   //包含文件标题，标题出现在浏览器页签上，置于&lt;head&gt;内部
+&lt;body&gt;&lt;/body&gt;     //表明主体部分，内容均写入该部分</code></pre>
+<h2 id="格式标签："><a href="#格式标签：" class="headerlink" title="格式标签："></a>格式标签：</h2><pre><code>&lt;p&gt;&lt;/p&gt;       //段落标签，前后自动转行
+&lt;br/&gt;         //手动转行标签
+&lt;b&gt;&lt;/b&gt;       //粗体字标签
+&lt;i&gt;&lt;/i&gt;       //斜体字标签
+&lt;hr/&gt;         //水平划线标签
+&lt;ins&gt;&lt;/ins&gt;   //文字下划线标签
+&lt;del&gt;&lt;/del&gt;   //文字删除线标签
+&lt;sup&gt;&lt;/sup&gt;   //将文字化为右上标
+&lt;sub&gt;&lt;/sub&gt;   //将文字化为右下标
+&lt;hn&gt;&lt;/hn&gt;     //将文字转化为n级标题
+&lt;font&gt;&lt;/font&gt; //更改字体样式</code></pre>
+<h2 id="制表标签："><a href="#制表标签：" class="headerlink" title="制表标签："></a>制表标签：</h2><pre><code>&lt;table&gt;&lt;/table&gt;   //定义表格
+&lt;tr&gt;&lt;/tr&gt;         //定义表格的行，用在&lt;table&gt;中
+&lt;td&gt;&lt;/td&gt;         //定义表格的单元格，用在&lt;tr&gt;中</code></pre>
+<h1 id="属性："><a href="#属性：" class="headerlink" title="属性："></a>属性：</h1><h2 id="常用属性："><a href="#常用属性：" class="headerlink" title="常用属性："></a>常用属性：</h2><pre><code>align=      
+//left：左对齐；right：右对齐；center：居中；width：对象宽度；height：对象高度
+color=#色彩对照表序号        //前景色
+bgcolor=#色彩对照表序号     //背景色
+border=                  //制表边框宽度
+face=                    //文字字体
+style=font-size：大小（pt）//用样式表方式控制字体大小</code></pre>
+<p>##色彩对照表查询：<a href="https://www.sojson.com/rgb.html">https://www.sojson.com/rgb.html</a></p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>网页设计学习</tag>
       </tags>
   </entry>
   <entry>
     <title>初来乍到，请多指教</title>
     <url>/2021/01/17/%E5%88%9D%E6%9D%A5%E4%B9%8D%E5%88%B0%EF%BC%8C%E8%AF%B7%E5%A4%9A%E6%8C%87%E6%95%99/</url>
-    <content><![CDATA[<h1 id="试验条幅，请勿注目"><a href="#试验条幅，请勿注目" class="headerlink" title="试验条幅，请勿注目"></a>试验条幅，请勿注目</h1><h3 id="哎，初来乍到，本座封艾羽，中二病晚期death，这里只是个简简单单的介绍。"><a href="#哎，初来乍到，本座封艾羽，中二病晚期death，这里只是个简简单单的介绍。" class="headerlink" title="哎，初来乍到，本座封艾羽，中二病晚期death，这里只是个简简单单的介绍。"></a>哎，初来乍到，本座封艾羽，中二病晚期death，这里只是个简简单单的介绍。</h3><h4 id="虽说我也不知道这玩意存在的意义到底是啥嘞，反正总之，存在即合理了嘛"><a href="#虽说我也不知道这玩意存在的意义到底是啥嘞，反正总之，存在即合理了嘛" class="headerlink" title="虽说我也不知道这玩意存在的意义到底是啥嘞，反正总之，存在即合理了嘛~"></a>虽说我也不知道这玩意存在的意义到底是啥嘞，反正总之，存在即合理了嘛~</h4><p>那么，就这样。</p>
+    <content><![CDATA[<h1 id="试验条幅，请勿注目"><a href="#试验条幅，请勿注目" class="headerlink" title="试验条幅，请勿注目"></a>试验条幅，请勿注目</h1><h3 id="哎，初来乍到，本座封艾羽，中二病晚期death，这里只是个简简单单的介绍。"><a href="#哎，初来乍到，本座封艾羽，中二病晚期death，这里只是个简简单单的介绍。" class="headerlink" title="哎，初来乍到，本座封艾羽，中二病晚期death，这里只是个简简单单的介绍。"></a>哎，初来乍到，本座封艾羽，中二病晚期death，这里只是个简简单单的介绍。</h3><h4 id="顺带记录下hexo的各种命令行："><a href="#顺带记录下hexo的各种命令行：" class="headerlink" title="顺带记录下hexo的各种命令行："></a>顺带记录下hexo的各种命令行：</h4><h3 id="hexo-s"><a href="#hexo-s" class="headerlink" title="hexo s"></a>hexo s</h3><pre><code class="undefined">hexo s</code></pre>
+<ul>
+<li>启动本地服务器，用于预览主题。默认地址： <a href="http://localhost:4000/">http://localhost:4000/</a></li>
+<li><code>hexo s</code> 是 <code>hexo server</code> 的缩写，命令效果一致。</li>
+<li>预览的同时可以修改文章内容或主题代码，保存后刷新页面即可。</li>
+<li>对 Hexo 根目录 <code>_config.yml</code> 的修改，需要重启本地服务器后才能预览效果。</li>
+<li>预览草稿文章 <code>hexo s --drafts</code></li>
+</ul>
+<h3 id="hexo-new"><a href="#hexo-new" class="headerlink" title="hexo new"></a>hexo new</h3><pre><code class="cpp">hexo new &quot;title&quot;
+hexo new  draft &quot;草稿文章&quot;
+hexo new page</code></pre>
+<ul>
+<li>新建一个title.md博客文章</li>
+<li>draft 为草稿文档，不会展现在博客上，可用<code>hexo publish &quot;草稿文章&quot;</code> 发布成正式文章</li>
+<li><code>hexo new page</code> 创建一个文件夹</li>
+</ul>
+<h3 id="hexo-d"><a href="#hexo-d" class="headerlink" title="hexo d"></a>hexo d</h3><pre><code class="undefined">hexo d</code></pre>
+<ul>
+<li>自动生成网站静态文件，并部署到设定的仓库。</li>
+<li><code>hexo d</code> 是 <code>hexo deploy</code> 的缩写，命令效果一致。</li>
+</ul>
+<h3 id="hexo-clean"><a href="#hexo-clean" class="headerlink" title="hexo clean"></a>hexo clean</h3><pre><code class="undefined">hexo clean</code></pre>
+<ul>
+<li>清除缓存文件 db.json 和已生成的静态文件 public 。</li>
+<li>网站显示异常时可以执行这条命令试试</li>
+</ul>
+<h3 id="hexo-g"><a href="#hexo-g" class="headerlink" title="hexo g"></a>hexo g</h3><pre><code class="undefined">hexo g</code></pre>
+<p>生成网站静态文件到默认设置的 public 文件夹。</p>
+<ul>
+<li>便于查看网站生成的静态文件或者手动部署网站；</li>
+<li>如果使用自动部署，不需要先执行该命令；</li>
+<li><code>hexo g</code> 是 <code>hexo generate</code> 的缩写，命令效果一致。</li>
+</ul>
+<pre><code class="undefined">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code></pre>
+<p>部署发布，命令可用&amp;&amp;连接</p>
+<p>那么，就这样。</p>
 <h1 id="今后还请多指教！"><a href="#今后还请多指教！" class="headerlink" title="今后还请多指教！"></a>今后还请多指教！</h1>]]></content>
       <categories>
         <category>闲谈</category>
@@ -593,8 +666,8 @@ int (*p)(int i, int j);//指向函数的指针p</code></pre>
   </entry>
   <entry>
     <title>1.18-1.24周报汇总</title>
-    <url>/2021/01/20/1.18-1.24%E5%91%A8%E6%8A%A5%E6%B1%87%E6%80%BB/</url>
-    <content><![CDATA[<h2 id="·类和对象"><a href="#·类和对象" class="headerlink" title="·类和对象"></a>·类和对象</h2><p><strong>1.c++面向对象的三大特性：封装、继承、多态</strong></p>
+    <url>/2021/01/20/c++%E5%AD%A6%E4%B9%A0-2/</url>
+    <content><![CDATA[<h2 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h2><p><strong>1.c++面向对象的三大特性：封装、继承、多态</strong></p>
 <p><strong>2.c++认为万物皆可对象，对象上有其属性和行为</strong></p>
 <p><strong>3.具有相同性质的对象，我们可以抽象称为类</strong></p>
 <h3 id="4-封装"><a href="#4-封装" class="headerlink" title="4.封装"></a>4.封装</h3><h4 id="（1）意义："><a href="#（1）意义：" class="headerlink" title="（1）意义："></a>（1）意义：</h4><ul>
@@ -668,7 +741,7 @@ int (*p)(int i, int j);//指向函数的指针p</code></pre>
 <ul>
 <li><p>深拷贝：在堆区重新申请空间，进行拷贝操作</p>
 <p>【使用new在堆区开辟新空间（一般变量在栈上），并返回一段空间的首地址，一般用指针接收，需要手动在析构函数中用“delete”释放这一段空间，并且将指针变为空指针（指向NULL），如果用浅拷贝就会直接拷贝地址，从而发生重复释放，这时需要用深拷贝模仿操作开辟一个新空间】</p>
-<p><img src="/2021/01/20/1.18-1.24%E5%91%A8%E6%8A%A5%E6%B1%87%E6%80%BB/pic-2.png" alt="pic-2"></p>
+<p><img src="/2021/01/20/c++%E5%AD%A6%E4%B9%A0-2/pic-2.png" alt="pic-2"></p>
 </li>
 <li><p>浅拷贝：简单的赋值拷贝操作</p>
 </li>
@@ -788,7 +861,7 @@ int (*p)(int i, int j);//指向函数的指针p</code></pre>
 <h3 id="（5）继承"><a href="#（5）继承" class="headerlink" title="（5）继承"></a>（5）继承</h3><p>面向对象程序设计中最重要的一个概念是继承。继承允许我们依据另一个类来定义一个类，这使得创建和维护一个应用程序变得更容易。这样做，也达到了重用代码功能和提高执行效率的效果。</p>
 <p>当创建一个类时，您不需要重新编写新的数据成员和成员函数，只需指定新建的类继承了一个已有的类的成员即可。这个已有的类称为<strong>基类</strong>，新建的类称为<strong>派生类</strong>。</p>
 <p>继承代表了 <strong>is a</strong> 关系。例如，哺乳动物是动物，狗是哺乳动物，因此，狗是动物，等等。</p>
-<p><img src="/2021/01/20/1.18-1.24%E5%91%A8%E6%8A%A5%E6%B1%87%E6%80%BB/pic-3.png" alt="pic-3"></p>
+<p><img src="/2021/01/20/c++%E5%AD%A6%E4%B9%A0-2/pic-3.png" alt="pic-3"></p>
 <h4 id="基类-amp-派生类："><a href="#基类-amp-派生类：" class="headerlink" title="基类 &amp; 派生类："></a><strong>基类 &amp; 派生类：</strong></h4><p>一个类可以派生自多个类，这意味着，它可以从多个基类继承数据和函数。定义一个派生类，我们使用一个类派生列表来指定基类。类派生列表以一个或多个基类命名，形式如下：</p>
 <pre><code>class derived-class: access-specifier base-class</code></pre>
 <p>其中，访问修饰符 access-specifier 是 <strong>public、protected</strong> 或 <strong>private</strong> 其中的一个，base-class 是之前定义过的某个类的名称。如果未使用访问修饰符 access-specifier，则默认为 private。</p>
@@ -854,7 +927,7 @@ int (*p)(int i, int j);//指向函数的指针p</code></pre>
 <h4 id="虚函数"><a href="#虚函数" class="headerlink" title="虚函数"></a>虚函数</h4><p><strong>虚函数</strong> 是在基类中使用关键字 <strong>virtual</strong> 声明的函数。在派生类中重新定义基类中定义的虚函数时，会告诉编译器不要静态链接到该函数。</p>
 <p>我们想要的是在程序中任意点可以根据所调用的对象类型来选择调用的函数，这种操作被称为<strong>动态链接</strong>，或<strong>后期绑定</strong>。</p>
 <h4 id="纯虚函数"><a href="#纯虚函数" class="headerlink" title="纯虚函数"></a>纯虚函数</h4><p>您可能想要在基类中定义虚函数，以便在派生类中重新定义该函数更好地适用于对象，但是您在基类中又不能对虚函数给出有意义的实现，这个时候就会用到纯虚函数。</p>
-<h2 id="·c-文件操作"><a href="#·c-文件操作" class="headerlink" title="·c++文件操作"></a>·c++文件操作</h2><p>在C++中，有一个stream这个类，所有的I/O都以这个”流”类为基础的，包括我们要认识的文件I/O，stream这个类有两个重要的运算符：</p>
+<h2 id="c-文件操作"><a href="#c-文件操作" class="headerlink" title="c++文件操作"></a>c++文件操作</h2><p>在C++中，有一个stream这个类，所有的I/O都以这个”流”类为基础的，包括我们要认识的文件I/O，stream这个类有两个重要的运算符：</p>
 <h3 id="1、插入器-lt-lt"><a href="#1、插入器-lt-lt" class="headerlink" title="1、插入器(&lt;&lt;)"></a><strong>1、插入器(&lt;&lt;)</strong></h3><p>　　向流输出数据。比如说系统有一个默认的标准输出流(cout)，一般情况下就是指的显示器，所以，cout&lt;&lt;”Write Stdout”&lt;&lt;’/n’;就表示把字符串”Write Stdout”和换行字符(‘/n’)输出到标准输出流。</p>
 <h3 id="2、析取器-gt-gt"><a href="#2、析取器-gt-gt" class="headerlink" title="2、析取器(&gt;&gt;)"></a><strong>2、析取器(&gt;&gt;)</strong></h3><p>　　从流中输入数据。比如说系统有一个默认的标准输入流(cin)，一般情况下就是指的键盘，所以，cin&gt;&gt;x;就表示从标准输入流中读取一个指定类型(即变量x的类型)的数据。</p>
 <p>在C++中，对文件的操作是通过stream的子类fstream(file stream)来实现的，所以，要用这种方式操作文件，就必须加入头文件fstream。下面就把此类的文件操作过程一一道来。</p>
@@ -1014,12 +1087,12 @@ int (*p)(int i, int j);//指向函数的指针p</code></pre>
         <category>学习</category>
       </categories>
       <tags>
-        <tag>c++学习周报</tag>
+        <tag>c++学习</tag>
       </tags>
   </entry>
   <entry>
     <title>1.25-1.31周报汇总</title>
-    <url>/2021/01/26/1.25-1.31%E5%91%A8%E6%8A%A5%E6%B1%87%E6%80%BB/</url>
+    <url>/2021/01/26/Linux%E5%AD%A6%E4%B9%A0-1/</url>
     <content><![CDATA[<p>Linux 是一套免费使用和自由传播的类 Unix 操作系统，是一个基于 POSIX 和 UNIX 的多用户、多任务、支持多线程和多 CPU 的操作系统。</p>
 <p>Linux 能运行主要的 UNIX 工具软件、应用程序和网络协议。它支持 32 位和 64 位硬件。Linux 继承了 Unix 以网络为核心的设计思想，是一个性能稳定的多用户网络操作系统。</p>
 <h1 id="Linux-应用领域"><a href="#Linux-应用领域" class="headerlink" title="Linux 应用领域"></a>Linux 应用领域</h1><p>今天各种场合都有使用各种 Linux 发行版，从嵌入式设备到超级计算机，并且在服务器领域确定了地位，通常服务器使用 LAMP（Linux + Apache + MySQL + PHP）或 LNMP（Linux + Nginx+ MySQL + PHP）组合。</p>
@@ -1186,7 +1259,7 @@ halt 关闭系统，等同于shutdown –h now 和 poweroff</code></pre>
 <h1 id="Linux-系统目录结构"><a href="#Linux-系统目录结构" class="headerlink" title="Linux 系统目录结构"></a>Linux 系统目录结构</h1><p>登录系统后，在当前命令窗口下输入命令：</p>
 <pre><code> ls / </code></pre>
 <p>可显示当前层的目录。</p>
-<p><img src="/2021/01/26/1.25-1.31%E5%91%A8%E6%8A%A5%E6%B1%87%E6%80%BB/pic-1.png" alt="树状目录结构图"></p>
+<p><img src="/2021/01/26/Linux%E5%AD%A6%E4%B9%A0-1/pic-1.png" alt="树状目录结构图"></p>
 <p>在 Linux 或 Unix 操作系统中，所有的文件和目录都被组织成以一个根节点开始的倒置的树状结构。</p>
 <p>文件系统的最顶层是由根目录开始的，系统使用 <strong>/</strong> 来表示根目录。在根目录之下的既可以是目录，也可以是文件，而每一个目录中又可以包含子目录文件。如此反复就可以构成一个庞大的文件系统。</p>
 <p>在Linux文件系统中有两个特殊的目录，一个用户所在的工作目录，也叫当前目录，可以使用一个点 <strong>.</strong> 来表示；另一个是当前目录的上一级目录，也叫父目录，可以使用两个点 <strong>..</strong> 来表示。</p>
@@ -1273,7 +1346,7 @@ dr-xr-xr-x   4 root root 4096 Apr 19  2012 boot
 <li>若是 <strong>c</strong> 则表示为装置文件里面的串行端口设备，例如键盘、鼠标(一次性读取装置)。</li>
 </ul>
 <p>接下来的字符中，以三个为一组，且均为 <strong>rwx</strong> 的三个参数的组合。其中， <strong>r</strong> 代表可读(read)、 <strong>w</strong> 代表可写(write)、 <strong>x</strong> 代表可执行(execute)。 要注意的是，这三个权限的位置不会改变，如果没有权限，就会出现减号 <strong>-</strong> 而已。</p>
-<p><img src="/2021/01/26/1.25-1.31%E5%91%A8%E6%8A%A5%E6%B1%87%E6%80%BB/pic-2.png" alt="pic-2"></p>
+<p><img src="/2021/01/26/Linux%E5%AD%A6%E4%B9%A0-1/pic-2.png" alt="pic-2"></p>
 <p>从左至右用 <strong>0-9</strong> 这些数字来表示。</p>
 <p>第 <strong>0</strong> 位确定文件类型，第 <strong>1-3</strong> 位确定属主（该文件的所有者）拥有该文件的权限。</p>
 <p>第4-6位确定属组（所有者的同组用户）拥有该文件的权限，第7-9位确定其他用户拥有该文件的权限。</p>
@@ -2056,7 +2129,7 @@ CentOS release 6.4 (Final)</code></pre>
         <category>学习</category>
       </categories>
       <tags>
-        <tag>c++学习周报</tag>
+        <tag>Linux学习</tag>
       </tags>
   </entry>
 </search>
