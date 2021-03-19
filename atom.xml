@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-03-19T11:58:16.069Z</updated>
+  <updated>2021-03-19T12:51:48.210Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>c++学习-3：&lt;algorithm&gt;头文件</title>
+    <link href="http://example.com/2021/03/19/c++%E5%AD%A6%E4%B9%A0-3/"/>
+    <id>http://example.com/2021/03/19/c++%E5%AD%A6%E4%B9%A0-3/</id>
+    <published>2021-03-19T12:41:02.000Z</published>
+    <updated>2021-03-19T12:51:48.210Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="头文件：algorithm"><a href="#头文件：algorithm" class="headerlink" title="头文件：algorithm"></a>头文件：algorithm</h1><p>algorithm意为”算法”,是C++的标准模版库（STL）中最重要的头文件之一，提供了大量基于迭代器的非成员模版函数。</p><p>以下是该头文件中的常用函数：</p><h2 id="非修改性序列操作（12个）"><a href="#非修改性序列操作（12个）" class="headerlink" title="非修改性序列操作（12个）"></a>非修改性序列操作（12个）</h2><h3 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h3><ul><li>对序列中的每个元素执行某操作 for_each()</li></ul><h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><ul><li>在序列中找出某个值的第一次出现的位置 find()   利用底层元素的等于操作符，对范围内的元素与输入的值进行比较。当匹配时，结束搜索，返回该元素的一个 InputIterator 。</li><li>在序列中找出符合某谓词的第一个元素 find_if()</li><li>在序列中找出一子序列的最后一次出现的位置 find_end()</li><li>在序列中找出第一次出现指定值集中之值的位置 find_first_of()</li><li>在序列中找出相邻的一对值 adjacent_find()</li></ul><h3 id="计数"><a href="#计数" class="headerlink" title="计数"></a>计数</h3><ul><li>在序列中统计某个值出现的次数 count()</li><li>在序列中统计与某谓词匹配的次数 count_if()</li></ul><h3 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h3><ul><li>找出两个序列相异的第一个元素 mismatch()</li><li>两个序列中的对应元素都相同时为真 equal()</li></ul><h3 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h3><ul><li>在序列中找出一子序列的第一次出现的位置 search()</li><li>在序列中找出一值的连续n次出现的位置 search_n()</li></ul><h2 id="修改性序列操作（27个）"><a href="#修改性序列操作（27个）" class="headerlink" title="修改性序列操作（27个）"></a>修改性序列操作（27个）</h2><h2 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h2><ul><li>从序列的第一个元素起进行复制 copy()</li><li>从序列的最后一个元素起进行复制 copy_backward()</li></ul><h2 id="交换"><a href="#交换" class="headerlink" title="交换"></a>交换</h2><ul><li>交换两个元素 swap()</li><li>交换指定范围的元素 swap_ranges()</li><li>交换由迭代器所指的两个元素 iter_swap()</li></ul><h2 id="变换"><a href="#变换" class="headerlink" title="变换"></a>变换</h2><ul><li>将某操作应用于指定范围的每个元素 transform()</li></ul><h2 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h2><ul><li>用一个给定值替换一些值 replace()</li><li>替换满足谓词的一些元素 replace_if()</li><li>复制序列时用一给定值替换元素 replace_copy()</li><li>复制序列时替换满足谓词的元素 replace_copy_if()</li></ul><h2 id="填充"><a href="#填充" class="headerlink" title="填充"></a>填充</h2><ul><li>用一给定值取代所有元素 fill()</li><li>用一给定值取代前n个元素 fill_n()</li></ul><h2 id="生成"><a href="#生成" class="headerlink" title="生成"></a>生成</h2><ul><li>用一操作的结果取代所有元素 generate()</li><li>用一操作的结果取代前n个元素 generate_n()</li></ul><h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><ul><li>删除具有给定值的元素 remove()</li><li>删除满足谓词的元素 remove_if()</li><li>复制序列时删除具有给定值的元素 remove_copy()</li><li>复制序列时删除满足谓词的元素 remove_copy_if()</li></ul><h2 id="唯一"><a href="#唯一" class="headerlink" title="唯一"></a>唯一</h2><ul><li>删除相邻的重复元素 unique()</li><li>复制序列时删除相邻的重复元素 unique_copy()</li></ul><h2 id="反转"><a href="#反转" class="headerlink" title="反转"></a>反转</h2><ul><li>反转元素的次序 reverse()</li><li>复制序列时反转元素的次序 reverse_copy()</li></ul><h2 id="环移"><a href="#环移" class="headerlink" title="环移"></a>环移</h2><ul><li>循环移动元素 rotate()</li><li>复制序列时循环移动元素 rotate_copy()</li></ul><h2 id="随机"><a href="#随机" class="headerlink" title="随机"></a>随机</h2><ul><li>采用均匀分布来随机移动元素 random_shuffle()</li></ul><h2 id="划分"><a href="#划分" class="headerlink" title="划分"></a>划分</h2><ul><li>将满足某谓词的元素都放到前面 partition()</li><li>将满足某谓词的元素都放到前面并维持原顺序 stable_partition()</li></ul><h1 id="序列排序及相关操作（27个）"><a href="#序列排序及相关操作（27个）" class="headerlink" title="序列排序及相关操作（27个）"></a>序列排序及相关操作（27个）</h1><h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><ul><li>以很好的平均效率排序 sort()</li><li>并维持相同元素的原有顺序 stable_sort()</li><li>将序列的前一部分排好序 partial_sort()</li><li>复制的同时将序列的前一部分排好序 partial_sort_copy()</li><li>将第n各元素放到它的正确位置 nth_element()</li></ul><h2 id="二分检索"><a href="#二分检索" class="headerlink" title="二分检索"></a>二分检索</h2><ul><li>找到大于等于某值的第一次出现 lower_bound()</li><li>找到大于某值的第一次出现 upper_bound()</li><li>找到（在不破坏顺序的前提下）可插入给定值的最大范围 equal_range()</li><li>在有序序列中确定给定元素是否存在 binary_search()</li></ul><h2 id="归并"><a href="#归并" class="headerlink" title="归并"></a>归并</h2><ul><li>归并两个有序序列 merge()</li><li>归并两个接续的有序序列 inplace_merge()</li></ul><h2 id="有序结构上的集合操作"><a href="#有序结构上的集合操作" class="headerlink" title="有序结构上的集合操作"></a>有序结构上的集合操作</h2><ul><li>一序列为另一序列的子序列时为真 includes()</li><li>构造两个集合的有序并集 set_union()</li><li>构造两个集合的有序交集 set_intersection()</li><li>构造两个集合的有序差集 set_difference()</li><li>构造两个集合的有序对称差集（并-交） set_symmetric_difference()</li></ul><h2 id="堆操作"><a href="#堆操作" class="headerlink" title="堆操作"></a>堆操作</h2><ul><li>向堆中加入元素 push_heap()</li><li>从堆中弹出元素 pop_heap()</li><li>从序列构造堆 make_heap()</li><li>给堆排序 sort_heap()</li></ul><h2 id="最大和最小"><a href="#最大和最小" class="headerlink" title="最大和最小"></a>最大和最小</h2><ul><li>两个值中较小的 min()</li><li>两个值中较大的 max()</li><li>序列中的最小元素 min_element()</li><li>序列中的最大元素 max_element()</li></ul><h2 id="词典比较"><a href="#词典比较" class="headerlink" title="词典比较"></a>词典比较</h2><ul><li>两个序列按字典序的第一个在前 lexicographical_compare()</li></ul><h2 id="排列生成器"><a href="#排列生成器" class="headerlink" title="排列生成器"></a>排列生成器</h2><ul><li>按字典序的下一个排列 next_permutation()</li><li>按字典序的前一个排列 prev_permutation() </li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;头文件：algorithm&quot;&gt;&lt;a href=&quot;#头文件：algorithm&quot; class=&quot;headerlink&quot; title=&quot;头文件：algorithm&quot;&gt;&lt;/a&gt;头文件：algorithm&lt;/h1&gt;&lt;p&gt;algorithm意为”算法”,是C++的标准模版库</summary>
+      
+    
+    
+    
+    <category term="学习" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="c++学习" scheme="http://example.com/tags/c-%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>网页设计学习-1</title>
