@@ -485,7 +485,8 @@
 <p>2.创建后缀名.cpp的源文件</p>
 <p>3.在头文件中写函数的声明</p>
 <p>4.在源文件中写函数的定义：包含<iostream>的同时还需要包含创建的“自定义头文件”</iostream></p>
-<h5 id="如上，再次使用的时候直接引用自定义头文件就能够使用已定义在另一文件的函数里。"><a href="#如上，再次使用的时候直接引用自定义头文件就能够使用已定义在另一文件的函数里。" class="headerlink" title="如上，再次使用的时候直接引用自定义头文件就能够使用已定义在另一文件的函数里。"></a>如上，再次使用的时候直接引用自定义头文件就能够使用已定义在另一文件的函数里。</h5><h1 id="指针："><a href="#指针：" class="headerlink" title="指针："></a>指针：</h1><h2 id="空指针和野指针："><a href="#空指针和野指针：" class="headerlink" title="空指针和野指针："></a>空指针和野指针：</h2><p><strong>空指针：</strong>指针变量指向内存中编号为0的空间，用于初始化指针变量。</p>
+<p><strong>如上，再次使用的时候直接引用自定义头文件就能够使用已定义在另一文件的函数里。</strong></p>
+<h1 id="指针："><a href="#指针：" class="headerlink" title="指针："></a>指针：</h1><h2 id="空指针和野指针："><a href="#空指针和野指针：" class="headerlink" title="空指针和野指针："></a>空指针和野指针：</h2><p><strong>空指针：</strong>指针变量指向内存中编号为0的空间，用于初始化指针变量。</p>
 <p><strong>（注：指向的内存不可以访问，0~255之间的内存编号为系统占用。）</strong></p>
 <p>野指针：指针变量指向非法的内存空间【例如int*p=（int *）0x1100】</p>
 <p><strong>由于指针的指向内容不一定在所申请的内存空间范围内，在程序中尽可能避免出现访问非法（未申请空间）的野指针。</strong></p>
@@ -525,7 +526,8 @@ int (*p)(int i, int j);//指向函数的指针p</code></pre>
     cout&lt;&lt;结构体名 数组名[i].成员&lt;&lt;endl;//即输出所有结构体的某一成员
 &#125;</code></pre>
 <h2 id="4-结构体指针："><a href="#4-结构体指针：" class="headerlink" title="4.结构体指针："></a>4.结构体指针：</h2><p>作用：通过指针访问结构体中成员</p>
-<h5 id="使用操作符-gt-可以通过结构体指针访问结构体属性"><a href="#使用操作符-gt-可以通过结构体指针访问结构体属性" class="headerlink" title="使用操作符-&gt;可以通过结构体指针访问结构体属性"></a>使用操作符-&gt;可以通过结构体指针访问结构体属性</h5><pre><code>在学习C++的过程中我们经常会用到.和::和:和-&gt;，在此整理一下这些常用符号的区别。 
+<p><strong>使用操作符-&gt;可以通过结构体指针访问结构体属性</strong></p>
+<pre><code>在学习C++的过程中我们经常会用到.和::和:和-&gt;，在此整理一下这些常用符号的区别。 
 
   1、A.B则A为对象或者结构体(s1.age=18;)；
 
@@ -620,10 +622,10 @@ hexo new page</code></pre>
 <p>部署发布，命令可用&amp;&amp;连接</p>
 ]]></content>
       <categories>
-        <category>日常使用</category>
+        <category>学习</category>
       </categories>
       <tags>
-        <tag>hexo</tag>
+        <tag>hexo使用</tag>
       </tags>
   </entry>
   <entry>
@@ -984,432 +986,6 @@ halt 关闭系统，等同于shutdown –h now 和 poweroff</code></pre>
       </categories>
       <tags>
         <tag>Linux学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>c++学习-2</title>
-    <url>/2021/01/20/c++%E5%AD%A6%E4%B9%A0-2/</url>
-    <content><![CDATA[<h2 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h2><p><strong>1.c++面向对象的三大特性：封装、继承、多态</strong></p>
-<p><strong>2.c++认为万物皆可对象，对象上有其属性和行为</strong></p>
-<p><strong>3.具有相同性质的对象，我们可以抽象称为类</strong></p>
-<h3 id="4-封装"><a href="#4-封装" class="headerlink" title="4.封装"></a>4.封装</h3><h4 id="（1）意义："><a href="#（1）意义：" class="headerlink" title="（1）意义："></a>（1）意义：</h4><ul>
-<li><p>将属性和行为作为一个整体，表现生活中的事物</p>
-<p>在设计类的时候，属性和行为写在一起</p>
-<pre><code>class 类名&#123; 访问权限: 属性 / 行为 &#125;;
-//属性使用变量表示
-//行为一般用函数表示</code></pre>
-<p>在类的概念下，具体的一个物体（整体），称作对象。【类似结构体】</p>
-</li>
-<li><p>将属性和行为加以权限控制</p>
-<p>访问权限有三种：</p>
-<p>1.public（公共权限）：类内可以访问，类外可以访问</p>
-<p>2.protected（保护权限)：类内可以访问，类外不可以访问，子类可以访问</p>
-<p>3.private（私有权限）：类内可以访问，类外不可以访问，子类不可以访问</p>
-</li>
-</ul>
-<h4 id="（2）struct和class区别（默认访问权限不同）"><a href="#（2）struct和class区别（默认访问权限不同）" class="headerlink" title="（2）struct和class区别（默认访问权限不同）"></a>（2）struct和class区别（默认访问权限不同）</h4><ul>
-<li>struct默认权限为公共，可以定义成员函数</li>
-<li>class默认权限为私有</li>
-</ul>
-<h4 id="（3）成员属性设置为私有"><a href="#（3）成员属性设置为私有" class="headerlink" title="（3）成员属性设置为私有"></a>（3）成员属性设置为私有</h4><p>优点1：将所有成员属性设置为私有，可以自己控制读写权限【通过设置公有权限下函数控制读写权限】</p>
-<p>优点2：对于写权限，我们可以检测数据的有效性</p>
-<h4 id="（4）对象的初始化和清理"><a href="#（4）对象的初始化和清理" class="headerlink" title="（4）对象的初始化和清理"></a>（4）对象的初始化和清理</h4><p>C++中的面向对象来源于生活，每个对象也都会有初始设置以及对象销毁前的清理数据的设置。</p>
-<p>对象的初始化和清理也是两个非常重要的安全问题，一个对象或者变量没有初始状态，对其使用后果是未知。同样的使用完一个对象或变量,没有及时清理，也会造成一定的安全问题。</p>
-<p>C++利用了构造函数和析构函数解决上述问题，这两个函数将会被编译器自动调用，完成对象初始化和清理工作。对象的初始化和清理工作是编译器强制要我们做的事情，因此如果我们不提供构造和析构,编译器会提供。</p>
-<p>编译器提供的构造函数和析构函数是空实现。</p>
-<h5 id="1-构造函数"><a href="#1-构造函数" class="headerlink" title="1.构造函数:"></a>1.构造函数:</h5><p>主要作用在于创建对象时为对象的成员属性赋值，构造函数由编译器自动调用，无须手动调用。</p>
-<p>默认情况下，c++一般给一个类添加三个函数：默认构造函数，默认析构函数，默认拷贝构造函数</p>
-<p><strong>语法:</strong></p>
-<pre><code>类名()&#123;函数体&#125;</code></pre>
-<ul>
-<li>构造函数，没有返回值也不写void</li>
-<li>函数名称与类名相同</li>
-<li>构造函数可以有参数，因此可以发生重载</li>
-<li>程序在调用对象时候会自动调用构造，无须手动调用，,而且只会调用一次</li>
-</ul>
-<p><strong>构造函数的分类及调用：</strong></p>
-<p>1.两种分类方式：</p>
-<ul>
-<li><p>按参数分：有参构造和无参构造（又称默认构造参数）</p>
-</li>
-<li><p>按类型分：</p>
-<p>普通构造</p>
-<p>拷贝构造（将其他对象的属性作为默认值拷贝过来）</p>
-<pre><code>类名（const 类名 &amp;对象名）&#123;函数体&#125;</code></pre>
-<p>c++中拷贝构造函数调用时机通常有三种情况：</p>
-<ol>
-<li>使用一个已经创建完毕的对象来初始化新对象</li>
-<li>值传递的方式给函数参数传值</li>
-<li>以值方式返回局部对象</li>
-</ol>
-</li>
-</ul>
-<p>2.三种调用方式：</p>
-<ul>
-<li><p><strong>括号法</strong>：通过有无括号和参数个数调用对应的构造函数，无括号调用默认构造函数</p>
-</li>
-<li><p><strong>显示法：</strong>通过“=”号调用对应构造函数，左侧是“类名 对象名”，右侧带入具体内容，无左侧内容和“=”号的，为匿名对象，特点是当前行执行结束后，系统会立刻回收掉匿名对象</p>
-<p>*<strong>不要利用拷贝构造函数，初始化匿名对象！</strong>编译器会认为是重定义</p>
-</li>
-<li><p><strong>隐式转换法：</strong>隐藏掉显示法”=“右侧的类名和括号，是显示法的简化写法</p>
-</li>
-</ul>
-<p>3.调用规则</p>
-<ul>
-<li>用户定义有参构造函数，c++ 不提供无参构造，但会提供默认拷贝构造</li>
-<li>用户定义拷贝构造函数，c++不提供其他构造函数</li>
-</ul>
-<p>4.深浅拷贝</p>
-<ul>
-<li><p>深拷贝：在堆区重新申请空间，进行拷贝操作</p>
-<p>【使用new在堆区开辟新空间（一般变量在栈上），并返回一段空间的首地址，一般用指针接收，需要手动在析构函数中用“delete”释放这一段空间，并且将指针变为空指针（指向NULL），如果用浅拷贝就会直接拷贝地址，从而发生重复释放，这时需要用深拷贝模仿操作开辟一个新空间】</p>
-<p><img src="/2021/01/20/c++%E5%AD%A6%E4%B9%A0-2/pic-2.png" alt="pic-2"></p>
-</li>
-<li><p>浅拷贝：简单的赋值拷贝操作</p>
-</li>
-</ul>
-<h5 id="2-析构函数"><a href="#2-析构函数" class="headerlink" title="2.析构函数:"></a>2.析构函数:</h5><p>主要作用在于对象销毁前系统自动调用，执行一些清理工作。</p>
-<p>语法:</p>
-<pre><code>~类名()&#123;函数体&#125;</code></pre>
-<ul>
-<li>没有返回值也不写void</li>
-<li>函数名称与类名相同,在名称前加上符号~</li>
-<li>析构函数不可以有参数,因此不可以发生重载</li>
-<li>程序在对象销毁前会自动调用析构，无须手动调用，而且只会调用一次</li>
-</ul>
-<p><strong>3.初始化列表</strong>——初始化属性</p>
-<p>语法：</p>
-<pre><code>构造函数（）:属性1（值1），属性2（值2）……&#123;构造函数的函数体&#125;</code></pre>
-<h4 id="（5）类对象作为类成员"><a href="#（5）类对象作为类成员" class="headerlink" title="（5）类对象作为类成员"></a>（5）类对象作为类成员</h4><p>c++类的成员可以是另一个类的对象，我们称该成员为对象成员</p>
-<p>B类中有对象A作为成员，A为对象成员，构造时，先构造类的对象，再构造自身，析构时先析构自身，再析构类的对象</p>
-<h4 id="（6）静态成员"><a href="#（6）静态成员" class="headerlink" title="（6）静态成员"></a>（6）静态成员</h4><p>在成员变量和成员函数前加上关键字static，称为静态成员，分为：静态成员变量和静态成员函数</p>
-<ul>
-<li><p>静态成员变量</p>
-<p>1.所有对象共享同一份数据</p>
-<p>2.在编译阶段分配内存</p>
-<p>3.类内声明（static 变量类型 静态成员变量名；），类外初始化（变量类型 类名::静态成员变量名 = 初值；）</p>
-</li>
-<li><p>静态成员函数</p>
-<p>1.所有对象共享同一个函数</p>
-<p>2.静态成员函数只能访问静态成员变量</p>
-</li>
-</ul>
-<p>静态成员函数的访问：</p>
-<ol>
-<li>通过对象访问</li>
-<li>通过类名访问</li>
-</ol>
-<p>*静态成员函数同样具有访问权限</p>
-<h4 id="（7）c-对象模型和this指针"><a href="#（7）c-对象模型和this指针" class="headerlink" title="（7）c++对象模型和this指针"></a>（7）c++对象模型和this指针</h4><p>成员变量和成员函数分开存储：在c++中，类内的成员变量和成员函数分开储存，只有非静态成员变量才属于类的对象</p>
-<p>空对象占用内存空间为：1，为了区分每个空对象所占内存的位置</p>
-<p>非空对象占用内存空间决定于其包含成员所占字节数。</p>
-<p>每一个非静态成员函数只会诞生-份函数实例，也就是说多个同类型的对象会共用一块代码那么问题是:这一块代码是如何区 分那个对象调用自己的呢?</p>
-<p>C+ +通过提供特殊的对象指针，this指针， 解决上述问题。this指针指向被调用的成员函数所属的对象</p>
-<p>this指针是隐含每一个非静态成员函数内的一种指针this指针不需要定义，直接使用即可</p>
-<p><strong>this指针的用途:</strong></p>
-<p>●当形参和成员变量同名时，可用this指针来区分</p>
-<p>●在类的非静态成员函数中返回对象本身，可使用return *this</p>
-<p>c++中，空指针也是可以调用成员函数的，但是需要注意有没有用到this指针，如果用到的话，需要加以判断保证代码的健壮性。</p>
-<p><strong>常函数:</strong></p>
-<p>●成员函数后加const后我们称为这个函数为常函数</p>
-<p>●常函数内不可以修改成员属性</p>
-<p>●成员属性声明时加关键字mutable后, 在常函数中依然可以修改</p>
-<p>常对象:</p>
-<p>●声明对象前加const称该对象为常对象</p>
-<p>●常对象只能调用常函数</p>
-<h4 id="（8）友元"><a href="#（8）友元" class="headerlink" title="（8）友元"></a>（8）友元</h4><p>在程序里，有些私有属性也想让类外特殊的一些函数或者类进行访问，就需要用到友元的技术</p>
-<p>友元的目的就是让一个函数或者类访问另一个类中私有成员，关键字为friend</p>
-<p>友元的三种实现：</p>
-<p>●全局函数做友元</p>
-<p>●类做友元</p>
-<p>●成员函数做友元.</p>
-<h4 id="（9）运算符重载"><a href="#（9）运算符重载" class="headerlink" title="（9）运算符重载"></a>（9）运算符重载</h4><p>重载声明是指一个与之前已经在该作用域内声明过的函数或方法具有相同名称的声明，但是它们的参数列表和定义（实现）不相同。</p>
-<p>当调用一个重载函数或重载运算符时，编译器通过把所使用的参数类型与定义中的参数类型进行比较，决定选用最合适的定义。选择最合适的重载函数或重载运算符的过程，称为重载决策。</p>
-<p>可以重定义或重载大部分 C++ 内置的运算符。这样就能使用自定义类型的运算符。</p>
-<p>重载的运算符是带有特殊名称的函数，函数名是由关键字 operator 和其后要重载的运算符符号构成的。与其他函数一样，重载运算符有一个返回类型和一个参数列表。</p>
-<pre><code>Box operator+(const Box&amp;);</code></pre>
-<p>声明加法运算符用于把两个 Box 对象相加，返回最终的 Box 对象。大多数的重载运算符可被定义为普通的非成员函数或者被定义为类成员函数。如果我们定义上面的函数为类的非成员函数，那么我们需要为每次操作传递两个参数，如下所示：</p>
-<pre><code>Box operator+(const Box&amp;, const Box&amp;);</code></pre>
-<p>可重载运算符：</p>
-<table>
-<thead>
-<tr>
-<th>双目算术运算符</th>
-<th>+ (加)，-(减)，*(乘)，/(除)，% (取模)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>关系运算符</td>
-<td>==(等于)，!= (不等于)，&lt; (小于)，&gt; (大于)，&lt;=(小于等于)，&gt;=(大于等于)</td>
-</tr>
-<tr>
-<td>逻辑运算符</td>
-<td>||(逻辑或)，&amp;&amp;(逻辑与)，!(逻辑非)</td>
-</tr>
-<tr>
-<td>单目运算符</td>
-<td>+ (正)，-(负)，*(指针)，&amp;(取地址)</td>
-</tr>
-<tr>
-<td>自增自减运算符</td>
-<td>++(自增)，–(自减)</td>
-</tr>
-<tr>
-<td>位运算符</td>
-<td>| (按位或)，&amp; (按位与)，~(按位取反)，^(按位异或),，&lt;&lt; (左移)，&gt;&gt;(右移)</td>
-</tr>
-<tr>
-<td>赋值运算符</td>
-<td>=, +=, -=, *=, /= , % = , &amp;=, |=, ^=, &lt;&lt;=, &gt;&gt;=</td>
-</tr>
-<tr>
-<td>空间申请与释放</td>
-<td>new, delete, new[ ] , delete[]</td>
-</tr>
-<tr>
-<td>其他运算符</td>
-<td><strong>()</strong>(函数调用)，**-&gt;<strong>(成员访问)，</strong>,<strong>(逗号)，</strong>[]**(下标)</td>
-</tr>
-</tbody></table>
-<p>不可重载运算符：</p>
-<ul>
-<li>**.**：成员访问运算符</li>
-<li><strong>.*</strong>, <strong>-&gt;*</strong>：成员指针访问运算符</li>
-<li>**::**：域运算符</li>
-<li><strong>sizeof</strong>：长度运算符</li>
-<li>**?:**：条件运算符</li>
-<li>**#**： 预处理符号</li>
-</ul>
-<h3 id="（5）继承"><a href="#（5）继承" class="headerlink" title="（5）继承"></a>（5）继承</h3><p>面向对象程序设计中最重要的一个概念是继承。继承允许我们依据另一个类来定义一个类，这使得创建和维护一个应用程序变得更容易。这样做，也达到了重用代码功能和提高执行效率的效果。</p>
-<p>当创建一个类时，您不需要重新编写新的数据成员和成员函数，只需指定新建的类继承了一个已有的类的成员即可。这个已有的类称为<strong>基类</strong>，新建的类称为<strong>派生类</strong>。</p>
-<p>继承代表了 <strong>is a</strong> 关系。例如，哺乳动物是动物，狗是哺乳动物，因此，狗是动物，等等。</p>
-<p><img src="/2021/01/20/c++%E5%AD%A6%E4%B9%A0-2/pic-3.png" alt="pic-3"></p>
-<h4 id="基类-amp-派生类："><a href="#基类-amp-派生类：" class="headerlink" title="基类 &amp; 派生类："></a><strong>基类 &amp; 派生类：</strong></h4><p>一个类可以派生自多个类，这意味着，它可以从多个基类继承数据和函数。定义一个派生类，我们使用一个类派生列表来指定基类。类派生列表以一个或多个基类命名，形式如下：</p>
-<pre><code>class derived-class: access-specifier base-class</code></pre>
-<p>其中，访问修饰符 access-specifier 是 <strong>public、protected</strong> 或 <strong>private</strong> 其中的一个，base-class 是之前定义过的某个类的名称。如果未使用访问修饰符 access-specifier，则默认为 private。</p>
-<h4 id="访问控制和继承："><a href="#访问控制和继承：" class="headerlink" title="访问控制和继承："></a><strong>访问控制和继承</strong>：</h4><p>派生类可以访问基类中所有的非私有成员。因此基类成员如果不想被派生类的成员函数访问，则应在基类中声明为 private。</p>
-<p>我们可以根据访问权限总结出不同的访问类型，如下所示：</p>
-<table>
-<thead>
-<tr>
-<th align="left">访问</th>
-<th align="left">public</th>
-<th align="left">protected</th>
-<th align="left">private</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">同一个类</td>
-<td align="left">yes</td>
-<td align="left">yes</td>
-<td align="left">yes</td>
-</tr>
-<tr>
-<td align="left">派生类</td>
-<td align="left">yes</td>
-<td align="left">yes</td>
-<td align="left">no</td>
-</tr>
-<tr>
-<td align="left">外部的类</td>
-<td align="left">yes</td>
-<td align="left">no</td>
-<td align="left">no</td>
-</tr>
-</tbody></table>
-<p>一个派生类继承了所有的基类方法，但下列情况除外：</p>
-<ul>
-<li>基类的构造函数、析构函数和拷贝构造函数。</li>
-<li>基类的重载运算符。</li>
-<li>基类的友元函数。</li>
-</ul>
-<h4 id="继承类型："><a href="#继承类型：" class="headerlink" title="继承类型："></a>继承类型：</h4><p>当一个类派生自基类，该基类可以被继承为 <strong>public、protected</strong> 或 <strong>private</strong> 几种类型。继承类型是通过上面讲解的访问修饰符 access-specifier 来指定的。</p>
-<p>我们几乎不使用 <strong>protected</strong> 或 <strong>private</strong> 继承，通常使用 <strong>public</strong> 继承。当使用不同类型的继承时，遵循以下几个规则：</p>
-<ul>
-<li><strong>公有继承（public）：</strong>当一个类派生自<strong>公有</strong>基类时，基类的<strong>公有</strong>成员也是派生类的<strong>公有</strong>成员，基类的<strong>保护</strong>成员也是派生类的<strong>保护</strong>成员，基类的<strong>私有</strong>成员不能直接被派生类访问，但是可以通过调用基类的<strong>公有</strong>和<strong>保护</strong>成员来访问。</li>
-<li><strong>保护继承（protected）：</strong> 当一个类派生自<strong>保护</strong>基类时，基类的<strong>公有</strong>和<strong>保护</strong>成员将成为派生类的<strong>保护</strong>成员。</li>
-<li><strong>私有继承（private）：</strong>当一个类派生自<strong>私有</strong>基类时，基类的<strong>公有</strong>和<strong>保护</strong>成员将成为派生类的<strong>私有</strong>成员。</li>
-</ul>
-<h4 id="多继承"><a href="#多继承" class="headerlink" title="多继承:"></a>多继承:</h4><p>多继承即一个子类可以有多个父类，它继承了多个父类的特性。</p>
-<p>C++ 类可以从多个类继承成员，语法如下：</p>
-<pre><code>class &lt;派生类名&gt;:&lt;继承方式1&gt;&lt;基类名1&gt;,&lt;继承方式2&gt;&lt;基类名2&gt;,…
-&#123;
-&lt;派生类类体&gt;
-&#125;;</code></pre>
-<p>其中，访问修饰符继承方式是 <strong>public、protected</strong> 或 <strong>private</strong> 其中的一个，用来修饰每个基类，各个基类之间用逗号分隔，如上所示。现在让我们一起看看下面的实例：</p>
-<h3 id="（6）多态"><a href="#（6）多态" class="headerlink" title="（6）多态"></a>（6）多态</h3><p><strong>多态</strong>按字面的意思就是多种形态。当类之间存在层次结构，并且类之间是通过继承关联时，就会用到多态。</p>
-<p>多态分为两类：</p>
-<p>●静态多态:函数重载和运算符重载属于静态多态，复用函数名</p>
-<p>●动态多态:派生类和虚函数实现运行时多态</p>
-<p>静态多态和动态多态区别:</p>
-<p>●静态多态的函数地址早绑定- 编译阶段确定函数地址</p>
-<p>●动态多态的函数地址晚绑定- 运行阶段确定函数地址</p>
-<p>C++ 多态意味着调用成员函数时，会根据调用函数的对象的类型来执行不同的函数。</p>
-<p>每个子类都能有一个函数 area() 的独立实现。这就是<strong>多态</strong>的一般使用方式。有了多态，您可以有多个不同的类，都带有同一个名称但具有不同实现的函数，函数的参数甚至可以是相同的。</p>
-<h4 id="虚函数"><a href="#虚函数" class="headerlink" title="虚函数"></a>虚函数</h4><p><strong>虚函数</strong> 是在基类中使用关键字 <strong>virtual</strong> 声明的函数。在派生类中重新定义基类中定义的虚函数时，会告诉编译器不要静态链接到该函数。</p>
-<p>我们想要的是在程序中任意点可以根据所调用的对象类型来选择调用的函数，这种操作被称为<strong>动态链接</strong>，或<strong>后期绑定</strong>。</p>
-<h4 id="纯虚函数"><a href="#纯虚函数" class="headerlink" title="纯虚函数"></a>纯虚函数</h4><p>您可能想要在基类中定义虚函数，以便在派生类中重新定义该函数更好地适用于对象，但是您在基类中又不能对虚函数给出有意义的实现，这个时候就会用到纯虚函数。</p>
-<h2 id="c-文件操作"><a href="#c-文件操作" class="headerlink" title="c++文件操作"></a>c++文件操作</h2><p>在C++中，有一个stream这个类，所有的I/O都以这个”流”类为基础的，包括我们要认识的文件I/O，stream这个类有两个重要的运算符：</p>
-<h3 id="1、插入器-lt-lt"><a href="#1、插入器-lt-lt" class="headerlink" title="1、插入器(&lt;&lt;)"></a><strong>1、插入器(&lt;&lt;)</strong></h3><p>　　向流输出数据。比如说系统有一个默认的标准输出流(cout)，一般情况下就是指的显示器，所以，cout&lt;&lt;”Write Stdout”&lt;&lt;’/n’;就表示把字符串”Write Stdout”和换行字符(‘/n’)输出到标准输出流。</p>
-<h3 id="2、析取器-gt-gt"><a href="#2、析取器-gt-gt" class="headerlink" title="2、析取器(&gt;&gt;)"></a><strong>2、析取器(&gt;&gt;)</strong></h3><p>　　从流中输入数据。比如说系统有一个默认的标准输入流(cin)，一般情况下就是指的键盘，所以，cin&gt;&gt;x;就表示从标准输入流中读取一个指定类型(即变量x的类型)的数据。</p>
-<p>在C++中，对文件的操作是通过stream的子类fstream(file stream)来实现的，所以，要用这种方式操作文件，就必须加入头文件fstream。下面就把此类的文件操作过程一一道来。</p>
-<h3 id="3、打开文件"><a href="#3、打开文件" class="headerlink" title="3、打开文件"></a><strong>3、打开文件</strong></h3><p>　　在fstream类中，有一个成员函数open()，就是用来打开文件的，其原型是：</p>
-<p>　　void open(const char* filename,int mode,int access);</p>
-<p>　　参数：</p>
-<p>　　filename：　　要打开的文件名<br>　　mode：　　　　要打开文件的方式<br>　　access：　　　打开文件的属性<br>　　打开文件的方式在类ios(是所有流式I/O类的基类)中定义，常用的值如下：</p>
-<p>　　ios::app：　　　以追加的方式打开文件<br>　　ios::ate：　　　文件打开后定位到文件尾，ios:app就包含有此属性<br>　　ios::binary： 　以二进制方式打开文件，缺省的方式是文本方式。两种方式的区别见前文<br>　　ios::in：　　　 文件以输入方式打开<br>　　ios::out：　　　文件以输出方式打开<br>　　ios::nocreate： 不建立文件，所以文件不存在时打开失败　<br>　　ios::noreplace：不覆盖文件，所以打开文件时如果文件存在失败<br>　　ios::trunc：　　如果文件存在，把文件长度设为0<br>　　可以用”或”把以上属性连接起来，如ios::out|ios::binary</p>
-<p>　　打开文件的属性取值是：</p>
-<p>　　0：普通文件，打开访问<br>　　1：只读文件<br>　　2：隐含文件<br>　　4：系统文件<br>　　可以用”或”或者”+”把以上属性连接起来 ，如3或1|2就是以只读和隐含属性打开文件。</p>
-<p>　　例如：以二进制输入方式打开文件c:/config.sys</p>
-<p>　　fstream file1;<br>　　file1.open(“c://config.sys”,ios::binary|ios::in,0);</p>
-<p>　　如果open函数只有文件名一个参数，则是以读/写普通文件打开，即：</p>
-<p>　　file1.open(“c://config.sys”);&lt;=&gt;file1.open(“c://config.sys”,ios::in|ios::out,0);</p>
-<p>　　另外，fstream还有和open()一样的构造函数，对于上例，在定义的时侯就可以打开文件了：</p>
-<p>　　fstream file1(“c://config.sys”);</p>
-<p>　　特别提出的是，fstream有两个子类：ifstream(input file stream)和ofstream(outpu file stream)，ifstream默认以输入方式打开文件，而ofstream默认以输出方式打开文件。</p>
-<p>　　ifstream file2(“c://pdos.def”);//以输入方式打开文件<br>　　ofstream file3(“c://x.123”);//以输出方式打开文件</p>
-<p>　　所以，在实际应用中，根据需要的不同，选择不同的类来定义：如果想以输入方式打开，就用ifstream来定义；如果想以输出方式打开，就用ofstream来定义；如果想以输入/输出方式来打开，就用fstream来定义。</p>
-<h3 id="4、关闭文件"><a href="#4、关闭文件" class="headerlink" title="4、关闭文件"></a>4、关闭文件</h3><p>　　打开的文件使用完成后一定要关闭，fstream提供了成员函数close()来完成此操作，如：file1.close();就把file1相连的文件关闭。</p>
-<h3 id="5、读写文件"><a href="#5、读写文件" class="headerlink" title="5、读写文件"></a>5、读写文件</h3><p>　　读写文件分为文本文件和二进制文件的读取，对于文本文件的读取比较简单，用插入器和析取器就可以了；而对于二进制的读取就要复杂些，下要就详细的介绍这两种方式</p>
-<h4 id="1、文本文件的读写"><a href="#1、文本文件的读写" class="headerlink" title="1、文本文件的读写"></a>1、文本文件的读写</h4><p>　　文本文件的读写很简单：用插入器(&lt;&lt;)向文件输出；用析取器(&gt;&gt;)从文件输入。假设file1是以输入方式打开，file2以输出打开。示例如下：</p>
-<p>　　file2&lt;&lt;”I Love You”;//向文件写入字符串”I Love You”<br>　　int i;<br>　　file1&gt;&gt;i;//从文件输入一个整数值。</p>
-<p>　　这种方式还有一种简单的格式化能力，比如可以指定输出为16进制等等，具体的格式有以下一些</p>
-<p>　　操纵符 功能 输入/输出<br>　　dec 格式化为十进制数值数据 输入和输出<br>　　endl 输出一个换行符并刷新此流 输出<br>　　ends 输出一个空字符 输出<br>　　hex 格式化为十六进制数值数据 输入和输出<br>　　oct 格式化为八进制数值数据 输入和输出<br>　　setpxecision(int p) 设置浮点数的精度位数 输出</p>
-<p>　　比如要把123当作十六进制输出：file1&lt;</p>
-<h4 id="2、二进制文件的读写"><a href="#2、二进制文件的读写" class="headerlink" title="2、二进制文件的读写"></a>2、二进制文件的读写</h4><h5 id="①put"><a href="#①put" class="headerlink" title="①put()"></a>①put()</h5><p>　　put()函数向流写入一个字符，其原型是ofstream &amp;put(char ch)，使用也比较简单，如file1.put(‘c’);就是向流写一个字符’c’。</p>
-<h5 id="②get"><a href="#②get" class="headerlink" title="②get()"></a>②get()</h5><p>　　get()函数比较灵活，有3种常用的重载形式：</p>
-<p>　　一种就是和put()对应的形式：ifstream &amp;get(char &amp;ch);功能是从流中读取一个字符，结果保存在引用ch中，如果到文件尾，返回空字符。如file2.get(x);表示从文件中读取一个字符，并把读取的字符保存在x中。</p>
-<p>　　另一种重载形式的原型是： int get();这种形式是从流中返回一个字符，如果到达文件尾，返回EOF，如x=file2.get();和上例功能是一样的。</p>
-<p>　　还有一种形式的原型是：ifstream &amp;get(char *buf,int num,char delim=’/n’)；这种形式把字符读入由 buf 指向的数组，直到读入了 num 个字符或遇到了由 delim 指定的字符，如果没使用 delim 这个参数，将使用缺省值换行符’/n’。例如：</p>
-<p>　　file2.get(str1,127,’A’);//从文件中读取字符到字符串str1，当遇到字符’A’或读取了127个字符时终止。</p>
-<h5 id="③读写数据块"><a href="#③读写数据块" class="headerlink" title="③读写数据块"></a>③读写数据块</h5><p>　　要读写二进制数据块，使用成员函数read()和write()成员函数，它们原型如下：</p>
-<p>　　read(unsigned char *buf,int num);<br>　　write(const unsigned char *buf,int num);</p>
-<p>　　read()从文件中读取 num 个字符到 buf 指向的缓存中，如果在还未读入 num 个字符时就到了文件尾，可以用成员函数 int gcount();来取得实际读取的字符数；而 write() 从buf 指向的缓存写 num 个字符到文件中，值得注意的是缓存的类型是 unsigned char *，有时可能需要类型转换。</p>
-<p>　　例：</p>
-<p>　　unsigned char str1[]=”I Love You”;<br>　　int n[5];<br>　　ifstream in(“xxx.xxx”);<br>　　ofstream out(“yyy.yyy”);<br>　　out.write(str1,strlen(str1));//把字符串str1全部写到yyy.yyy中<br>　　in.read((unsigned char*)n,sizeof(n));//从xxx.xxx中读取指定个整数，注意类型转换<br>　　in.close();out.close();</p>
-<h3 id="6、检测EOF"><a href="#6、检测EOF" class="headerlink" title="6、检测EOF"></a>6、检测EOF</h3><p>　　成员函数eof()用来检测是否到达文件尾，如果到达文件尾返回非0值，否则返回0。原型是int eof();</p>
-<p>　　例：　　if(in.eof())ShowMessage(“已经到达文件尾！”);</p>
-<h3 id="7、文件定位"><a href="#7、文件定位" class="headerlink" title="7、文件定位"></a>7、文件定位</h3><p>　　和C的文件操作方式不同的是，C++ I/O系统管理两个与一个文件相联系的指针。一个是读指针，它说明输入操作在文件中的位置；另一个是写指针，它下次写操作的位置。每次执行输入或输出时，相应的指针自动变化。所以，C++的文件定位分为读位置和写位置的定位，对应的成员函数是 seekg()和 seekp()，seekg()是设置读位置，seekp是设置写位置。它们最通用的形式如下：</p>
-<p>　　istream &amp;seekg(streamoff offset,seek_dir origin);<br>　　ostream &amp;seekp(streamoff offset,seek_dir origin);</p>
-<p>　　streamoff定义于 iostream.h 中，定义有偏移量 offset 所能取得的最大值，seek_dir 表示移动的基准位置，是一个有以下值的枚举：</p>
-<p>　　ios::beg：　　文件开头<br>　　ios::cur：　　文件当前位置<br>　　ios::end：　　文件结尾<br>　　这两个函数一般用于二进制文件，因为文本文件会因为系统对字符的解释而可能与预想的值不同。</p>
-<p>　　例：</p>
-<p>　　file1.seekg(1234,ios::cur);//把文件的读指针从当前位置向后移1234个字节<br>　　file2.seekp(1234,ios::beg);//把文件的写指针从文件开头向后移1234个字节</p>
-<h3 id="8-BCB提供的文件操作函数"><a href="#8-BCB提供的文件操作函数" class="headerlink" title="8.BCB提供的文件操作函数"></a>8.BCB提供的文件操作函数</h3><p>总共分为三类：</p>
-<p>1、文件名函数</p>
-<p>2、文件管理函数</p>
-<p>3、文件I/O函数</p>
-<h4 id="1、文件名函数"><a href="#1、文件名函数" class="headerlink" title="1、文件名函数"></a>1、文件名函数</h4><p>　　文件名函数可以对文件的名称、所在子目录、驱动器和扩展名等进行操作。下表列出这些函数及其功能。</p>
-<p>　　函数 说明<br>　　ExpandFileName() 返回文件的全路径(含驱动器、路径)<br>　　ExtractFileExt() 从文件名中抽取扩展名<br>　　ExtractFileName() 从文件名中抽取不含路径的文件名<br>　　ExtractFilePath() 从文件名中抽取路径名<br>　　ExtractFileDir() 从文件名中抽取目录名<br>　　ExtractFileDrive() 从文件名中抽取驱动器名<br>　　ChangeFileExt() 改变文件的扩展名<br>　　ExpandUNCFileName() 返回含有网络驱动器的文件全路径<br>　　ExtractRelativePath() 从文件名中抽取相对路径信息<br>　　ExtractShortPathName() 把文件名转化为DOS的8·3格式<br>　　MatchesMask() 检查文件是否与指定的文件名格式匹配</p>
-<p>　　下面就把这些函数作一一介绍：</p>
-<h5 id="⑴ExpandFileName"><a href="#⑴ExpandFileName" class="headerlink" title="⑴ExpandFileName()"></a><strong>⑴ExpandFileName()</strong></h5><p>　　功能：返回文件的全路径(含驱动器、路径)</p>
-<p>　　参数：FileName:要处理的文件名</p>
-<p>　　例：ShowMessage(ExpandFileName(Application-&gt;ExeName));//显示你的程序文件名，如C:/MyBCB/Sample1.EXE</p>
-<h5 id="⑵ExtractFileExt"><a href="#⑵ExtractFileExt" class="headerlink" title="⑵ExtractFileExt()"></a><strong>⑵ExtractFileExt()</strong></h5><p>　　功能：从文件名中抽取扩展名</p>
-<p>　　参数：FileName:要处理的文件名（全路径）</p>
-<p>　　例：ShowMessage(ExtractFileExt(Application-&gt;ExeName));//显示”.exe”</p>
-<h5 id="⑶ExtractFileName"><a href="#⑶ExtractFileName" class="headerlink" title="⑶ExtractFileName()"></a><strong>⑶ExtractFileName()</strong></h5><p>　　功能：从文件名中抽取不含路径的文件名</p>
-<p>　　参数：FileName:要处理的文件名</p>
-<p>　　例：ShowMessage(ExtractFileExt(“c://Winnt//SOL.EXE”));//显示”SOL.EXE”</p>
-<h5 id="⑷ExtractFilePath"><a href="#⑷ExtractFilePath" class="headerlink" title="⑷ExtractFilePath()"></a><strong>⑷ExtractFilePath()</strong></h5><p>　　功能：从文件名中抽取路径名</p>
-<p>　　参数：FileName:要处理的文件名</p>
-<p>　　例：ShowMessage(ExtractFilePath(“Winnt//SOL.EXE”));//显示”Winnt/“</p>
-<h5 id="⑸ExtractFileDir"><a href="#⑸ExtractFileDir" class="headerlink" title="⑸ExtractFileDir()"></a><strong>⑸ExtractFileDir()</strong></h5><p>　　功能：从文件名中抽取目录名(和上个函数不同，不包括最后的”/“)</p>
-<p>　　参数：FileName:要处理的文件名</p>
-<p>　　例：ShowMessage(ExtractFileDir(“Winnt//SOL.EXE”));//显示”Winnt”,注意和上个函数的区别</p>
-<h5 id="⑹ExtractFileDrive"><a href="#⑹ExtractFileDrive" class="headerlink" title="⑹ExtractFileDrive()"></a><strong>⑹ExtractFileDrive()</strong></h5><p>　　功能：从文件名中抽取驱动器名</p>
-<p>　　参数：FileName:要处理的文件名</p>
-<p>　　例：ShowMessage(ExtractFileDrive(“c://Winnt//SOL.EXE”));//显示”c:”</p>
-<h5 id="⑺ChangeFileExt"><a href="#⑺ChangeFileExt" class="headerlink" title="⑺ChangeFileExt()"></a><strong>⑺ChangeFileExt()</strong></h5><p>　　功能：更改文件名的扩展名，不是对真正的文件进行改名，只是对文件名这个字符串进行处理</p>
-<p>　　参数：FileName:要改名的文件名，Extension：新的扩展名</p>
-<p>　　例：ShowMessage(ChangeFileExt(“c://Winnt//SOL.EXE”,”.OOO”));//显示”c:/winnt/SOL.OOO”</p>
-<h5 id="⑻ExpandUNCFileName"><a href="#⑻ExpandUNCFileName" class="headerlink" title="⑻ExpandUNCFileName()"></a><strong>⑻ExpandUNCFileName()</strong></h5><p>　　功能：返回含有网络驱动器的文件全路径，格式为：//机器名/共享名/文件名</p>
-<p>　　参数：FileName:要处理的文件名</p>
-<p>　　例：ShowMessage(ExpandUNCFileName(“F://Winnt//SOL.EXE”));/<em>如果F:是映射的网络驱动器//NT40/WINNT，则显示”//NT40/WINNT/SOL.EXE”</em>/</p>
-<h5 id="⑼ExtractRelativePath"><a href="#⑼ExtractRelativePath" class="headerlink" title="⑼ExtractRelativePath()"></a><strong>⑼ExtractRelativePath()</strong></h5><p>　　功能：从文件名中抽取相对路径信息，如”../sss/ss.asd”这种形式</p>
-<p>　　参数：BaseName：基准文件名；DestName：目标文件名</p>
-<p>　　例：ShowMessage(ExtractRelativePath(“D://Source//c//1.123”,”D://Source//Asm//dz.asm”));/<em>显示”../asm/dz.asm”</em>/</p>
-<h5 id="10-ExtractShortPathName"><a href="#10-ExtractShortPathName" class="headerlink" title="(10) ExtractShortPathName()"></a><strong>(10) ExtractShortPathName()</strong></h5><p>　　功能：把文件名转换为DOS的8、3格式</p>
-<p>　　参数：FileName:要处理的文件名</p>
-<p>　　例：ShowMessage(ExtractShortPathName(“E://Program Files//Dual Wheel Mouse//4dmain.exe”));/<em>显示”E:/Progra<del>1/dualwh</del>1/4dmain.exe”</em>/</p>
-<h5 id="⑾MatchesMask"><a href="#⑾MatchesMask" class="headerlink" title="⑾MatchesMask()"></a><strong>⑾MatchesMask()</strong></h5><p>　　功能：检查文件是否与指定的文件名格式匹配</p>
-<p>　　参数：FileName:要处理的文件名；Mask:文件名格式，支持通配符</p>
-<p>　　例：ShowMessage(MatchesMask(“Lxf.exe”,”*.?x?));//显示”true”</p>
-<h4 id="2、文件管理函数"><a href="#2、文件管理函数" class="headerlink" title="2、文件管理函数"></a>2、文件管理函数</h4><p>　　这类函数包括设置和读取驱动器、子目录和文件的有关的各种操作，下表列出这类操作常用的函数及其功能。</p>
-<p>　　函数 功能<br>　　CreateDir() 创建新的子目录<br>　　DeleteFile() 删除文件<br>　　DirectoryExists() 判断目录是否存在<br>　　DiskFree() 获取磁盘剩余空间<br>　　DiskSize() 获取磁盘容量<br>　　FileExists() 判断文件是否存在<br>　　FileGetAttr() 获取文件属性<br>　　FileGetDate() 获取文件日期<br>　　GetCurrentDir() 获取当前目录<br>　　RemoveDir() 删除目录<br>　　SetCurrentDir() 设置当前目录</p>
-<p>　　下面就把这些函数作一一介绍：</p>
-<h5 id="⑴CreateDir"><a href="#⑴CreateDir" class="headerlink" title="⑴CreateDir()"></a><strong>⑴CreateDir()</strong></h5><p>　　功能：建立子目录，如果成功返回true，否则返回false</p>
-<p>　　参数：Dir:要建立的子目录的名字</p>
-<p>　　例：Create(“ASM”);//在当前目录下建立一个名为ASM的子目录</p>
-<h5 id="⑵DeleteFile"><a href="#⑵DeleteFile" class="headerlink" title="⑵DeleteFile()"></a><strong>⑵DeleteFile()</strong></h5><p>　　功能：删除文件，如果成功返回true，否则返回false</p>
-<p>　　参数：FileName:要删除的文件名</p>
-<p>　　例：if(OpenDialog1-&gt;Execute())DeleteFile(OpenDialog1-&gt;FileName);</p>
-<h5 id="⑶DirectoryExists"><a href="#⑶DirectoryExists" class="headerlink" title="⑶DirectoryExists()"></a><strong>⑶DirectoryExists()</strong></h5><p>　　功能：检测目录是否存在，如果存在返回true，否则返回false</p>
-<p>　　参数：Name:要检测的目录名</p>
-<p>　　例：if(!DirectoryExists(“ASM”))CreateDir(“ASM”);//如果ASM这个目录不存在则创建之</p>
-<h5 id="⑷DiskFree"><a href="#⑷DiskFree" class="headerlink" title="⑷DiskFree()"></a><strong>⑷DiskFree()</strong></h5><p>　　功能：检测磁盘剩余空间，返回值以字节为单位，如果指定的磁盘无效，返回-1</p>
-<p>　　参数：Drive：磁盘的代号，0表示当前盘, 1=A,2=B,3=C 以此类推</p>
-<p>　　例：ShowMessage(DiskFree(0));//显示当前盘的剩余空间</p>
-<h5 id="⑸DiskSize"><a href="#⑸DiskSize" class="headerlink" title="⑸DiskSize()"></a><strong>⑸DiskSize()</strong></h5><p>　　功能：检测磁盘容量，返回值以字节为单位，如果指定的磁盘无效，返回-1</p>
-<p>　　参数：Drive：磁盘的代号，0表示当前盘, 1=A,2=B,3=C 以此类推</p>
-<p>　　例：ShowMessage(DiskFree(0));//显示当前盘的容量</p>
-<p>　　<strong>⑹FileExists()</strong> </p>
-<p>　　功能：检测文件是否存在，如果存在返回true，否则返回false</p>
-<p>　　参数：FileName:要检测的文件名</p>
-<p>　　例：if(FileExists(“AAA.ASM”))DeleteFile(“AAA.ASM”);</p>
-<h5 id="⑺FileGetAttr"><a href="#⑺FileGetAttr" class="headerlink" title="⑺FileGetAttr()"></a><strong>⑺FileGetAttr()</strong></h5><p>　　功能：取得文件属性，如果出错返回-1</p>
-<p>　　返回值如下表，如果返回$00000006表示是一个具有隐含和系统属性的文件(4+2)</p>
-<p>　　常量 值 含义<br>　　faReadOnly $00000001 只读文件<br>　　faHidden $00000002 隐含文件<br>　　faSysFile $00000004 系统文件<br>　　faVolumeID $00000008 卷标<br>　　faDirectory $00000010 目录<br>　　faArchive $00000020 归档文件</p>
-<p>　　例：if(FileGetAttr(“LLL.TXT”)&amp;0x2)ShowMessage(“这是一个有隐含属性的文件”);</p>
-<p>　　与此对应的有FileSetAttr() ，请自已查阅帮助系统</p>
-<h5 id="⑻FileGetDate"><a href="#⑻FileGetDate" class="headerlink" title="⑻FileGetDate()"></a><strong>⑻FileGetDate()</strong></h5><p>　　功能：返回文件的建立时间到1970-1-1日0时的秒数</p>
-<p>　　参数：Handle:用FileOpen()打开的文件句柄。</p>
-<p>　　例：</p>
-<p>　　int i=FileOpen(“C://autoexec.bat”,fmOpenRead);<br>　　ShowMessage(FileGetDate(i));<br>　　FileClose(i);</p>
-<p>　　与此对应的有FileSetDate()</p>
-<p>　　<strong>⑼GetCurrentDir()</strong> </p>
-<p>　　功能：取得当前的目录名</p>
-<p>　　例：ShowMessage(GetCurrentDir());</p>
-<h5 id="⑽RemoveDir"><a href="#⑽RemoveDir" class="headerlink" title="⑽RemoveDir()"></a><strong>⑽RemoveDir()</strong></h5><p>　　功能：删除目录，如果成功返回true，否则返回false</p>
-<p>　　参数：Dir:要删除的目录名</p>
-<p>　　例：if(DiectoryExists(“ASM”))RemoveDir(“ASM”);</p>
-<h5 id="⑾SetCurrentDir"><a href="#⑾SetCurrentDir" class="headerlink" title="⑾SetCurrentDir()"></a><strong>⑾SetCurrentDir()</strong></h5><p>　　功能：设置当前目录，如果成功返回true，否则返回false</p>
-<p>　　参数：Dir:要切换到的目录名</p>
-<p>　　例：SetCurrentDir(“C://WINDOWS”);</p>
-<h4 id="3、文件I-O函数"><a href="#3、文件I-O函数" class="headerlink" title="3、文件I/O函数"></a>3、文件I/O函数</h4><p>　　这类函数完成对文件的读写相关的操作，这种类型的操作和C的基于I/O文件操作类似，下表列出这类操作常用的函数及其功能。</p>
-<p>　　FileOpen() 打开文件<br>　　FileClose() 关闭文件<br>　　FileRead() 读文件<br>　　FileSeek() 文件定位<br>　　FileWrite() 写文件<br>　　FileCreate() 创建文件</p>
-<p>　　下面就对这些函数作详细介绍。</p>
-<p>　　<strong>⑴FileOpen()</strong> </p>
-<p>　　功能：打开文件，如果成功返回其句柄，否则返回-1</p>
-<p>　　参数：FileName:要打开的文件名；Mode：打开的方式，取值如下表，可用”或”(“|”)运算符连接。</p>
-<p>　　常量 值 说明 </p>
-<p>　　fmOpenRead 0 以只读属性打开<br>　　fmOpenWrite 1 以只写属性打开<br>　　fmOpenReadWrite 2 以读/写属性打开<br>　　fmShareCompat 0 兼容FCB方式(汇编中有相应的DOS功能调用)<br>　　fmShareExclusive 16 共享方式：以独占方式打开，在关闭以前，别人不能访问<br>　　fmShareDenyWrite 32 共享方式：拒绝写访问<br>　　fmShareDenyRead 48 共享方式：拒绝读访问<br>　　fmShareDenyNone 64 共享方式：无限制，允许读写<br>　　例：int i=FileOpen(“C://WINDOWS//Win.ini”,fmOpenReadWrite|fmShareExclusive);</p>
-<p>　　<strong>⑵FileClose()</strong> </p>
-<p>　　功能：关闭打开的句柄。</p>
-<p>　　参数：Handle:要关闭的句柄</p>
-<p>　　例：FileClose(i);</p>
-<p>　　<strong>⑶FileRead()</strong> </p>
-<p>　　功能：读文件，返回实际读取的字节数，句柄必须首先由FileOpen或FileCreate创建。</p>
-<p>　　参数：Handle:要读取的句柄；Buffer:存放读取的数据的缓冲区；Count:想读取的字节数</p>
-<p>　　例：char str[400];FileRead(hnd1,str,400);</p>
-<p>　　<strong>⑷FileSeek()</strong> </p>
-<p>　　功能：移动文件读取指针，成功返回文件指针的位置，失败返回-1</p>
-<p>　　参数：Handle:相关联的句柄；Offset:移动的量；Orgin:移动的基准，0=文件头，1=当前位置，2=文件尾。</p>
-<p>　　例：ShowMessage(FileSeek(hnd1,0,2));//取得文件的长度</p>
-<p>　　<strong>⑸FileWrite()</strong> </p>
-<p>　　功能：写文件，返回实际写入的字节数，句柄必须首先由FileOpen或FileCreate创建。</p>
-<p>　　参数：Handle:要写入的句柄；Buffer:存放写入数据的缓冲区；Count:想写入的字节数</p>
-<p>　　例：char str[]=”I Love You”;FileWrite(hnd1,str,strlen(str));</p>
-<p>　　<strong>⑹FileCreate()</strong> </p>
-<p>　　功能：创建文件。成功返回其句柄，否则返回-1</p>
-<p>　　参数：FileName:要创建的文件名</p>
-<p>　　例：if(!FileExists(“KC.C”))hnd1=FileCreate(“KC.C”);</p>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>c++学习</tag>
       </tags>
   </entry>
   <entry>
@@ -2152,6 +1728,432 @@ CentOS release 6.4 (Final)</code></pre>
       </categories>
       <tags>
         <tag>Linux学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>c++学习-2</title>
+    <url>/2021/01/20/c++%E5%AD%A6%E4%B9%A0-2/</url>
+    <content><![CDATA[<h2 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h2><p><strong>1.c++面向对象的三大特性：封装、继承、多态</strong></p>
+<p><strong>2.c++认为万物皆可对象，对象上有其属性和行为</strong></p>
+<p><strong>3.具有相同性质的对象，我们可以抽象称为类</strong></p>
+<h3 id="4-封装"><a href="#4-封装" class="headerlink" title="4.封装"></a>4.封装</h3><h4 id="（1）意义："><a href="#（1）意义：" class="headerlink" title="（1）意义："></a>（1）意义：</h4><ul>
+<li><p>将属性和行为作为一个整体，表现生活中的事物</p>
+<p>在设计类的时候，属性和行为写在一起</p>
+<pre><code>class 类名&#123; 访问权限: 属性 / 行为 &#125;;
+//属性使用变量表示
+//行为一般用函数表示</code></pre>
+<p>在类的概念下，具体的一个物体（整体），称作对象。【类似结构体】</p>
+</li>
+<li><p>将属性和行为加以权限控制</p>
+<p>访问权限有三种：</p>
+<p>1.public（公共权限）：类内可以访问，类外可以访问</p>
+<p>2.protected（保护权限)：类内可以访问，类外不可以访问，子类可以访问</p>
+<p>3.private（私有权限）：类内可以访问，类外不可以访问，子类不可以访问</p>
+</li>
+</ul>
+<h4 id="（2）struct和class区别（默认访问权限不同）"><a href="#（2）struct和class区别（默认访问权限不同）" class="headerlink" title="（2）struct和class区别（默认访问权限不同）"></a>（2）struct和class区别（默认访问权限不同）</h4><ul>
+<li>struct默认权限为公共，可以定义成员函数</li>
+<li>class默认权限为私有</li>
+</ul>
+<h4 id="（3）成员属性设置为私有"><a href="#（3）成员属性设置为私有" class="headerlink" title="（3）成员属性设置为私有"></a>（3）成员属性设置为私有</h4><p>优点1：将所有成员属性设置为私有，可以自己控制读写权限【通过设置公有权限下函数控制读写权限】</p>
+<p>优点2：对于写权限，我们可以检测数据的有效性</p>
+<h4 id="（4）对象的初始化和清理"><a href="#（4）对象的初始化和清理" class="headerlink" title="（4）对象的初始化和清理"></a>（4）对象的初始化和清理</h4><p>C++中的面向对象来源于生活，每个对象也都会有初始设置以及对象销毁前的清理数据的设置。</p>
+<p>对象的初始化和清理也是两个非常重要的安全问题，一个对象或者变量没有初始状态，对其使用后果是未知。同样的使用完一个对象或变量,没有及时清理，也会造成一定的安全问题。</p>
+<p>C++利用了构造函数和析构函数解决上述问题，这两个函数将会被编译器自动调用，完成对象初始化和清理工作。对象的初始化和清理工作是编译器强制要我们做的事情，因此如果我们不提供构造和析构,编译器会提供。</p>
+<p>编译器提供的构造函数和析构函数是空实现。</p>
+<h5 id="1-构造函数"><a href="#1-构造函数" class="headerlink" title="1.构造函数:"></a>1.构造函数:</h5><p>主要作用在于创建对象时为对象的成员属性赋值，构造函数由编译器自动调用，无须手动调用。</p>
+<p>默认情况下，c++一般给一个类添加三个函数：默认构造函数，默认析构函数，默认拷贝构造函数</p>
+<p><strong>语法:</strong></p>
+<pre><code>类名()&#123;函数体&#125;</code></pre>
+<ul>
+<li>构造函数，没有返回值也不写void</li>
+<li>函数名称与类名相同</li>
+<li>构造函数可以有参数，因此可以发生重载</li>
+<li>程序在调用对象时候会自动调用构造，无须手动调用，,而且只会调用一次</li>
+</ul>
+<p><strong>构造函数的分类及调用：</strong></p>
+<p>1.两种分类方式：</p>
+<ul>
+<li><p>按参数分：有参构造和无参构造（又称默认构造参数）</p>
+</li>
+<li><p>按类型分：</p>
+<p>普通构造</p>
+<p>拷贝构造（将其他对象的属性作为默认值拷贝过来）</p>
+<pre><code>类名（const 类名 &amp;对象名）&#123;函数体&#125;</code></pre>
+<p>c++中拷贝构造函数调用时机通常有三种情况：</p>
+<ol>
+<li>使用一个已经创建完毕的对象来初始化新对象</li>
+<li>值传递的方式给函数参数传值</li>
+<li>以值方式返回局部对象</li>
+</ol>
+</li>
+</ul>
+<p>2.三种调用方式：</p>
+<ul>
+<li><p><strong>括号法</strong>：通过有无括号和参数个数调用对应的构造函数，无括号调用默认构造函数</p>
+</li>
+<li><p><strong>显示法：</strong>通过“=”号调用对应构造函数，左侧是“类名 对象名”，右侧带入具体内容，无左侧内容和“=”号的，为匿名对象，特点是当前行执行结束后，系统会立刻回收掉匿名对象</p>
+<p>*<strong>不要利用拷贝构造函数，初始化匿名对象！</strong>编译器会认为是重定义</p>
+</li>
+<li><p><strong>隐式转换法：</strong>隐藏掉显示法”=“右侧的类名和括号，是显示法的简化写法</p>
+</li>
+</ul>
+<p>3.调用规则</p>
+<ul>
+<li>用户定义有参构造函数，c++ 不提供无参构造，但会提供默认拷贝构造</li>
+<li>用户定义拷贝构造函数，c++不提供其他构造函数</li>
+</ul>
+<p>4.深浅拷贝</p>
+<ul>
+<li><p>深拷贝：在堆区重新申请空间，进行拷贝操作</p>
+<p>【使用new在堆区开辟新空间（一般变量在栈上），并返回一段空间的首地址，一般用指针接收，需要手动在析构函数中用“delete”释放这一段空间，并且将指针变为空指针（指向NULL），如果用浅拷贝就会直接拷贝地址，从而发生重复释放，这时需要用深拷贝模仿操作开辟一个新空间】</p>
+<p><img src="/2021/01/20/c++%E5%AD%A6%E4%B9%A0-2/pic-2.png" alt="pic-2"></p>
+</li>
+<li><p>浅拷贝：简单的赋值拷贝操作</p>
+</li>
+</ul>
+<h5 id="2-析构函数"><a href="#2-析构函数" class="headerlink" title="2.析构函数:"></a>2.析构函数:</h5><p>主要作用在于对象销毁前系统自动调用，执行一些清理工作。</p>
+<p>语法:</p>
+<pre><code>~类名()&#123;函数体&#125;</code></pre>
+<ul>
+<li>没有返回值也不写void</li>
+<li>函数名称与类名相同,在名称前加上符号~</li>
+<li>析构函数不可以有参数,因此不可以发生重载</li>
+<li>程序在对象销毁前会自动调用析构，无须手动调用，而且只会调用一次</li>
+</ul>
+<p><strong>3.初始化列表</strong>——初始化属性</p>
+<p>语法：</p>
+<pre><code>构造函数（）:属性1（值1），属性2（值2）……&#123;构造函数的函数体&#125;</code></pre>
+<h4 id="（5）类对象作为类成员"><a href="#（5）类对象作为类成员" class="headerlink" title="（5）类对象作为类成员"></a>（5）类对象作为类成员</h4><p>c++类的成员可以是另一个类的对象，我们称该成员为对象成员</p>
+<p>B类中有对象A作为成员，A为对象成员，构造时，先构造类的对象，再构造自身，析构时先析构自身，再析构类的对象</p>
+<h4 id="（6）静态成员"><a href="#（6）静态成员" class="headerlink" title="（6）静态成员"></a>（6）静态成员</h4><p>在成员变量和成员函数前加上关键字static，称为静态成员，分为：静态成员变量和静态成员函数</p>
+<ul>
+<li><p>静态成员变量</p>
+<p>1.所有对象共享同一份数据</p>
+<p>2.在编译阶段分配内存</p>
+<p>3.类内声明（static 变量类型 静态成员变量名；），类外初始化（变量类型 类名::静态成员变量名 = 初值；）</p>
+</li>
+<li><p>静态成员函数</p>
+<p>1.所有对象共享同一个函数</p>
+<p>2.静态成员函数只能访问静态成员变量</p>
+</li>
+</ul>
+<p>静态成员函数的访问：</p>
+<ol>
+<li>通过对象访问</li>
+<li>通过类名访问</li>
+</ol>
+<p>*静态成员函数同样具有访问权限</p>
+<h4 id="（7）c-对象模型和this指针"><a href="#（7）c-对象模型和this指针" class="headerlink" title="（7）c++对象模型和this指针"></a>（7）c++对象模型和this指针</h4><p>成员变量和成员函数分开存储：在c++中，类内的成员变量和成员函数分开储存，只有非静态成员变量才属于类的对象</p>
+<p>空对象占用内存空间为：1，为了区分每个空对象所占内存的位置</p>
+<p>非空对象占用内存空间决定于其包含成员所占字节数。</p>
+<p>每一个非静态成员函数只会诞生-份函数实例，也就是说多个同类型的对象会共用一块代码那么问题是:这一块代码是如何区 分那个对象调用自己的呢?</p>
+<p>C+ +通过提供特殊的对象指针，this指针， 解决上述问题。this指针指向被调用的成员函数所属的对象</p>
+<p>this指针是隐含每一个非静态成员函数内的一种指针this指针不需要定义，直接使用即可</p>
+<p><strong>this指针的用途:</strong></p>
+<p>●当形参和成员变量同名时，可用this指针来区分</p>
+<p>●在类的非静态成员函数中返回对象本身，可使用return *this</p>
+<p>c++中，空指针也是可以调用成员函数的，但是需要注意有没有用到this指针，如果用到的话，需要加以判断保证代码的健壮性。</p>
+<p><strong>常函数:</strong></p>
+<p>●成员函数后加const后我们称为这个函数为常函数</p>
+<p>●常函数内不可以修改成员属性</p>
+<p>●成员属性声明时加关键字mutable后, 在常函数中依然可以修改</p>
+<p>常对象:</p>
+<p>●声明对象前加const称该对象为常对象</p>
+<p>●常对象只能调用常函数</p>
+<h4 id="（8）友元"><a href="#（8）友元" class="headerlink" title="（8）友元"></a>（8）友元</h4><p>在程序里，有些私有属性也想让类外特殊的一些函数或者类进行访问，就需要用到友元的技术</p>
+<p>友元的目的就是让一个函数或者类访问另一个类中私有成员，关键字为friend</p>
+<p>友元的三种实现：</p>
+<p>●全局函数做友元</p>
+<p>●类做友元</p>
+<p>●成员函数做友元.</p>
+<h4 id="（9）运算符重载"><a href="#（9）运算符重载" class="headerlink" title="（9）运算符重载"></a>（9）运算符重载</h4><p>重载声明是指一个与之前已经在该作用域内声明过的函数或方法具有相同名称的声明，但是它们的参数列表和定义（实现）不相同。</p>
+<p>当调用一个重载函数或重载运算符时，编译器通过把所使用的参数类型与定义中的参数类型进行比较，决定选用最合适的定义。选择最合适的重载函数或重载运算符的过程，称为重载决策。</p>
+<p>可以重定义或重载大部分 C++ 内置的运算符。这样就能使用自定义类型的运算符。</p>
+<p>重载的运算符是带有特殊名称的函数，函数名是由关键字 operator 和其后要重载的运算符符号构成的。与其他函数一样，重载运算符有一个返回类型和一个参数列表。</p>
+<pre><code>Box operator+(const Box&amp;);</code></pre>
+<p>声明加法运算符用于把两个 Box 对象相加，返回最终的 Box 对象。大多数的重载运算符可被定义为普通的非成员函数或者被定义为类成员函数。如果我们定义上面的函数为类的非成员函数，那么我们需要为每次操作传递两个参数，如下所示：</p>
+<pre><code>Box operator+(const Box&amp;, const Box&amp;);</code></pre>
+<p>可重载运算符：</p>
+<table>
+<thead>
+<tr>
+<th>双目算术运算符</th>
+<th>+ (加)，-(减)，*(乘)，/(除)，% (取模)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>关系运算符</td>
+<td>==(等于)，!= (不等于)，&lt; (小于)，&gt; (大于)，&lt;=(小于等于)，&gt;=(大于等于)</td>
+</tr>
+<tr>
+<td>逻辑运算符</td>
+<td>||(逻辑或)，&amp;&amp;(逻辑与)，!(逻辑非)</td>
+</tr>
+<tr>
+<td>单目运算符</td>
+<td>+ (正)，-(负)，*(指针)，&amp;(取地址)</td>
+</tr>
+<tr>
+<td>自增自减运算符</td>
+<td>++(自增)，–(自减)</td>
+</tr>
+<tr>
+<td>位运算符</td>
+<td>| (按位或)，&amp; (按位与)，~(按位取反)，^(按位异或),，&lt;&lt; (左移)，&gt;&gt;(右移)</td>
+</tr>
+<tr>
+<td>赋值运算符</td>
+<td>=, +=, -=, *=, /= , % = , &amp;=, |=, ^=, &lt;&lt;=, &gt;&gt;=</td>
+</tr>
+<tr>
+<td>空间申请与释放</td>
+<td>new, delete, new[ ] , delete[]</td>
+</tr>
+<tr>
+<td>其他运算符</td>
+<td><strong>()</strong>(函数调用)，**-&gt;<strong>(成员访问)，</strong>,<strong>(逗号)，</strong>[]**(下标)</td>
+</tr>
+</tbody></table>
+<p>不可重载运算符：</p>
+<ul>
+<li>**.**：成员访问运算符</li>
+<li><strong>.*</strong>, <strong>-&gt;*</strong>：成员指针访问运算符</li>
+<li>**::**：域运算符</li>
+<li><strong>sizeof</strong>：长度运算符</li>
+<li>**?:**：条件运算符</li>
+<li>**#**： 预处理符号</li>
+</ul>
+<h3 id="（5）继承"><a href="#（5）继承" class="headerlink" title="（5）继承"></a>（5）继承</h3><p>面向对象程序设计中最重要的一个概念是继承。继承允许我们依据另一个类来定义一个类，这使得创建和维护一个应用程序变得更容易。这样做，也达到了重用代码功能和提高执行效率的效果。</p>
+<p>当创建一个类时，您不需要重新编写新的数据成员和成员函数，只需指定新建的类继承了一个已有的类的成员即可。这个已有的类称为<strong>基类</strong>，新建的类称为<strong>派生类</strong>。</p>
+<p>继承代表了 <strong>is a</strong> 关系。例如，哺乳动物是动物，狗是哺乳动物，因此，狗是动物，等等。</p>
+<p><img src="/2021/01/20/c++%E5%AD%A6%E4%B9%A0-2/pic-3.png" alt="pic-3"></p>
+<h4 id="基类-amp-派生类："><a href="#基类-amp-派生类：" class="headerlink" title="基类 &amp; 派生类："></a><strong>基类 &amp; 派生类：</strong></h4><p>一个类可以派生自多个类，这意味着，它可以从多个基类继承数据和函数。定义一个派生类，我们使用一个类派生列表来指定基类。类派生列表以一个或多个基类命名，形式如下：</p>
+<pre><code>class derived-class: access-specifier base-class</code></pre>
+<p>其中，访问修饰符 access-specifier 是 <strong>public、protected</strong> 或 <strong>private</strong> 其中的一个，base-class 是之前定义过的某个类的名称。如果未使用访问修饰符 access-specifier，则默认为 private。</p>
+<h4 id="访问控制和继承："><a href="#访问控制和继承：" class="headerlink" title="访问控制和继承："></a><strong>访问控制和继承</strong>：</h4><p>派生类可以访问基类中所有的非私有成员。因此基类成员如果不想被派生类的成员函数访问，则应在基类中声明为 private。</p>
+<p>我们可以根据访问权限总结出不同的访问类型，如下所示：</p>
+<table>
+<thead>
+<tr>
+<th align="left">访问</th>
+<th align="left">public</th>
+<th align="left">protected</th>
+<th align="left">private</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">同一个类</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+</tr>
+<tr>
+<td align="left">派生类</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+<td align="left">no</td>
+</tr>
+<tr>
+<td align="left">外部的类</td>
+<td align="left">yes</td>
+<td align="left">no</td>
+<td align="left">no</td>
+</tr>
+</tbody></table>
+<p>一个派生类继承了所有的基类方法，但下列情况除外：</p>
+<ul>
+<li>基类的构造函数、析构函数和拷贝构造函数。</li>
+<li>基类的重载运算符。</li>
+<li>基类的友元函数。</li>
+</ul>
+<h4 id="继承类型："><a href="#继承类型：" class="headerlink" title="继承类型："></a>继承类型：</h4><p>当一个类派生自基类，该基类可以被继承为 <strong>public、protected</strong> 或 <strong>private</strong> 几种类型。继承类型是通过上面讲解的访问修饰符 access-specifier 来指定的。</p>
+<p>我们几乎不使用 <strong>protected</strong> 或 <strong>private</strong> 继承，通常使用 <strong>public</strong> 继承。当使用不同类型的继承时，遵循以下几个规则：</p>
+<ul>
+<li><strong>公有继承（public）：</strong>当一个类派生自<strong>公有</strong>基类时，基类的<strong>公有</strong>成员也是派生类的<strong>公有</strong>成员，基类的<strong>保护</strong>成员也是派生类的<strong>保护</strong>成员，基类的<strong>私有</strong>成员不能直接被派生类访问，但是可以通过调用基类的<strong>公有</strong>和<strong>保护</strong>成员来访问。</li>
+<li><strong>保护继承（protected）：</strong> 当一个类派生自<strong>保护</strong>基类时，基类的<strong>公有</strong>和<strong>保护</strong>成员将成为派生类的<strong>保护</strong>成员。</li>
+<li><strong>私有继承（private）：</strong>当一个类派生自<strong>私有</strong>基类时，基类的<strong>公有</strong>和<strong>保护</strong>成员将成为派生类的<strong>私有</strong>成员。</li>
+</ul>
+<h4 id="多继承"><a href="#多继承" class="headerlink" title="多继承:"></a>多继承:</h4><p>多继承即一个子类可以有多个父类，它继承了多个父类的特性。</p>
+<p>C++ 类可以从多个类继承成员，语法如下：</p>
+<pre><code>class &lt;派生类名&gt;:&lt;继承方式1&gt;&lt;基类名1&gt;,&lt;继承方式2&gt;&lt;基类名2&gt;,…
+&#123;
+&lt;派生类类体&gt;
+&#125;;</code></pre>
+<p>其中，访问修饰符继承方式是 <strong>public、protected</strong> 或 <strong>private</strong> 其中的一个，用来修饰每个基类，各个基类之间用逗号分隔，如上所示。现在让我们一起看看下面的实例：</p>
+<h3 id="（6）多态"><a href="#（6）多态" class="headerlink" title="（6）多态"></a>（6）多态</h3><p><strong>多态</strong>按字面的意思就是多种形态。当类之间存在层次结构，并且类之间是通过继承关联时，就会用到多态。</p>
+<p>多态分为两类：</p>
+<p>●静态多态:函数重载和运算符重载属于静态多态，复用函数名</p>
+<p>●动态多态:派生类和虚函数实现运行时多态</p>
+<p>静态多态和动态多态区别:</p>
+<p>●静态多态的函数地址早绑定- 编译阶段确定函数地址</p>
+<p>●动态多态的函数地址晚绑定- 运行阶段确定函数地址</p>
+<p>C++ 多态意味着调用成员函数时，会根据调用函数的对象的类型来执行不同的函数。</p>
+<p>每个子类都能有一个函数 area() 的独立实现。这就是<strong>多态</strong>的一般使用方式。有了多态，您可以有多个不同的类，都带有同一个名称但具有不同实现的函数，函数的参数甚至可以是相同的。</p>
+<h4 id="虚函数"><a href="#虚函数" class="headerlink" title="虚函数"></a>虚函数</h4><p><strong>虚函数</strong> 是在基类中使用关键字 <strong>virtual</strong> 声明的函数。在派生类中重新定义基类中定义的虚函数时，会告诉编译器不要静态链接到该函数。</p>
+<p>我们想要的是在程序中任意点可以根据所调用的对象类型来选择调用的函数，这种操作被称为<strong>动态链接</strong>，或<strong>后期绑定</strong>。</p>
+<h4 id="纯虚函数"><a href="#纯虚函数" class="headerlink" title="纯虚函数"></a>纯虚函数</h4><p>您可能想要在基类中定义虚函数，以便在派生类中重新定义该函数更好地适用于对象，但是您在基类中又不能对虚函数给出有意义的实现，这个时候就会用到纯虚函数。</p>
+<h2 id="c-文件操作"><a href="#c-文件操作" class="headerlink" title="c++文件操作"></a>c++文件操作</h2><p>在C++中，有一个stream这个类，所有的I/O都以这个”流”类为基础的，包括我们要认识的文件I/O，stream这个类有两个重要的运算符：</p>
+<h3 id="1、插入器-lt-lt"><a href="#1、插入器-lt-lt" class="headerlink" title="1、插入器(&lt;&lt;)"></a><strong>1、插入器(&lt;&lt;)</strong></h3><p>　　向流输出数据。比如说系统有一个默认的标准输出流(cout)，一般情况下就是指的显示器，所以，cout&lt;&lt;”Write Stdout”&lt;&lt;’/n’;就表示把字符串”Write Stdout”和换行字符(‘/n’)输出到标准输出流。</p>
+<h3 id="2、析取器-gt-gt"><a href="#2、析取器-gt-gt" class="headerlink" title="2、析取器(&gt;&gt;)"></a><strong>2、析取器(&gt;&gt;)</strong></h3><p>　　从流中输入数据。比如说系统有一个默认的标准输入流(cin)，一般情况下就是指的键盘，所以，cin&gt;&gt;x;就表示从标准输入流中读取一个指定类型(即变量x的类型)的数据。</p>
+<p>在C++中，对文件的操作是通过stream的子类fstream(file stream)来实现的，所以，要用这种方式操作文件，就必须加入头文件fstream。下面就把此类的文件操作过程一一道来。</p>
+<h3 id="3、打开文件"><a href="#3、打开文件" class="headerlink" title="3、打开文件"></a><strong>3、打开文件</strong></h3><p>　　在fstream类中，有一个成员函数open()，就是用来打开文件的，其原型是：</p>
+<p>　　void open(const char* filename,int mode,int access);</p>
+<p>　　参数：</p>
+<p>　　filename：　　要打开的文件名<br>　　mode：　　　　要打开文件的方式<br>　　access：　　　打开文件的属性<br>　　打开文件的方式在类ios(是所有流式I/O类的基类)中定义，常用的值如下：</p>
+<p>　　ios::app：　　　以追加的方式打开文件<br>　　ios::ate：　　　文件打开后定位到文件尾，ios:app就包含有此属性<br>　　ios::binary： 　以二进制方式打开文件，缺省的方式是文本方式。两种方式的区别见前文<br>　　ios::in：　　　 文件以输入方式打开<br>　　ios::out：　　　文件以输出方式打开<br>　　ios::nocreate： 不建立文件，所以文件不存在时打开失败　<br>　　ios::noreplace：不覆盖文件，所以打开文件时如果文件存在失败<br>　　ios::trunc：　　如果文件存在，把文件长度设为0<br>　　可以用”或”把以上属性连接起来，如ios::out|ios::binary</p>
+<p>　　打开文件的属性取值是：</p>
+<p>　　0：普通文件，打开访问<br>　　1：只读文件<br>　　2：隐含文件<br>　　4：系统文件<br>　　可以用”或”或者”+”把以上属性连接起来 ，如3或1|2就是以只读和隐含属性打开文件。</p>
+<p>　　例如：以二进制输入方式打开文件c:/config.sys</p>
+<p>　　fstream file1;<br>　　file1.open(“c://config.sys”,ios::binary|ios::in,0);</p>
+<p>　　如果open函数只有文件名一个参数，则是以读/写普通文件打开，即：</p>
+<p>　　file1.open(“c://config.sys”);&lt;=&gt;file1.open(“c://config.sys”,ios::in|ios::out,0);</p>
+<p>　　另外，fstream还有和open()一样的构造函数，对于上例，在定义的时侯就可以打开文件了：</p>
+<p>　　fstream file1(“c://config.sys”);</p>
+<p>　　特别提出的是，fstream有两个子类：ifstream(input file stream)和ofstream(outpu file stream)，ifstream默认以输入方式打开文件，而ofstream默认以输出方式打开文件。</p>
+<p>　　ifstream file2(“c://pdos.def”);//以输入方式打开文件<br>　　ofstream file3(“c://x.123”);//以输出方式打开文件</p>
+<p>　　所以，在实际应用中，根据需要的不同，选择不同的类来定义：如果想以输入方式打开，就用ifstream来定义；如果想以输出方式打开，就用ofstream来定义；如果想以输入/输出方式来打开，就用fstream来定义。</p>
+<h3 id="4、关闭文件"><a href="#4、关闭文件" class="headerlink" title="4、关闭文件"></a>4、关闭文件</h3><p>　　打开的文件使用完成后一定要关闭，fstream提供了成员函数close()来完成此操作，如：file1.close();就把file1相连的文件关闭。</p>
+<h3 id="5、读写文件"><a href="#5、读写文件" class="headerlink" title="5、读写文件"></a>5、读写文件</h3><p>　　读写文件分为文本文件和二进制文件的读取，对于文本文件的读取比较简单，用插入器和析取器就可以了；而对于二进制的读取就要复杂些，下要就详细的介绍这两种方式</p>
+<h4 id="1、文本文件的读写"><a href="#1、文本文件的读写" class="headerlink" title="1、文本文件的读写"></a>1、文本文件的读写</h4><p>　　文本文件的读写很简单：用插入器(&lt;&lt;)向文件输出；用析取器(&gt;&gt;)从文件输入。假设file1是以输入方式打开，file2以输出打开。示例如下：</p>
+<p>　　file2&lt;&lt;”I Love You”;//向文件写入字符串”I Love You”<br>　　int i;<br>　　file1&gt;&gt;i;//从文件输入一个整数值。</p>
+<p>　　这种方式还有一种简单的格式化能力，比如可以指定输出为16进制等等，具体的格式有以下一些</p>
+<p>　　操纵符 功能 输入/输出<br>　　dec 格式化为十进制数值数据 输入和输出<br>　　endl 输出一个换行符并刷新此流 输出<br>　　ends 输出一个空字符 输出<br>　　hex 格式化为十六进制数值数据 输入和输出<br>　　oct 格式化为八进制数值数据 输入和输出<br>　　setpxecision(int p) 设置浮点数的精度位数 输出</p>
+<p>　　比如要把123当作十六进制输出：file1&lt;</p>
+<h4 id="2、二进制文件的读写"><a href="#2、二进制文件的读写" class="headerlink" title="2、二进制文件的读写"></a>2、二进制文件的读写</h4><h5 id="①put"><a href="#①put" class="headerlink" title="①put()"></a>①put()</h5><p>　　put()函数向流写入一个字符，其原型是ofstream &amp;put(char ch)，使用也比较简单，如file1.put(‘c’);就是向流写一个字符’c’。</p>
+<h5 id="②get"><a href="#②get" class="headerlink" title="②get()"></a>②get()</h5><p>　　get()函数比较灵活，有3种常用的重载形式：</p>
+<p>　　一种就是和put()对应的形式：ifstream &amp;get(char &amp;ch);功能是从流中读取一个字符，结果保存在引用ch中，如果到文件尾，返回空字符。如file2.get(x);表示从文件中读取一个字符，并把读取的字符保存在x中。</p>
+<p>　　另一种重载形式的原型是： int get();这种形式是从流中返回一个字符，如果到达文件尾，返回EOF，如x=file2.get();和上例功能是一样的。</p>
+<p>　　还有一种形式的原型是：ifstream &amp;get(char *buf,int num,char delim=’/n’)；这种形式把字符读入由 buf 指向的数组，直到读入了 num 个字符或遇到了由 delim 指定的字符，如果没使用 delim 这个参数，将使用缺省值换行符’/n’。例如：</p>
+<p>　　file2.get(str1,127,’A’);//从文件中读取字符到字符串str1，当遇到字符’A’或读取了127个字符时终止。</p>
+<h5 id="③读写数据块"><a href="#③读写数据块" class="headerlink" title="③读写数据块"></a>③读写数据块</h5><p>　　要读写二进制数据块，使用成员函数read()和write()成员函数，它们原型如下：</p>
+<p>　　read(unsigned char *buf,int num);<br>　　write(const unsigned char *buf,int num);</p>
+<p>　　read()从文件中读取 num 个字符到 buf 指向的缓存中，如果在还未读入 num 个字符时就到了文件尾，可以用成员函数 int gcount();来取得实际读取的字符数；而 write() 从buf 指向的缓存写 num 个字符到文件中，值得注意的是缓存的类型是 unsigned char *，有时可能需要类型转换。</p>
+<p>　　例：</p>
+<p>　　unsigned char str1[]=”I Love You”;<br>　　int n[5];<br>　　ifstream in(“xxx.xxx”);<br>　　ofstream out(“yyy.yyy”);<br>　　out.write(str1,strlen(str1));//把字符串str1全部写到yyy.yyy中<br>　　in.read((unsigned char*)n,sizeof(n));//从xxx.xxx中读取指定个整数，注意类型转换<br>　　in.close();out.close();</p>
+<h3 id="6、检测EOF"><a href="#6、检测EOF" class="headerlink" title="6、检测EOF"></a>6、检测EOF</h3><p>　　成员函数eof()用来检测是否到达文件尾，如果到达文件尾返回非0值，否则返回0。原型是int eof();</p>
+<p>　　例：　　if(in.eof())ShowMessage(“已经到达文件尾！”);</p>
+<h3 id="7、文件定位"><a href="#7、文件定位" class="headerlink" title="7、文件定位"></a>7、文件定位</h3><p>　　和C的文件操作方式不同的是，C++ I/O系统管理两个与一个文件相联系的指针。一个是读指针，它说明输入操作在文件中的位置；另一个是写指针，它下次写操作的位置。每次执行输入或输出时，相应的指针自动变化。所以，C++的文件定位分为读位置和写位置的定位，对应的成员函数是 seekg()和 seekp()，seekg()是设置读位置，seekp是设置写位置。它们最通用的形式如下：</p>
+<p>　　istream &amp;seekg(streamoff offset,seek_dir origin);<br>　　ostream &amp;seekp(streamoff offset,seek_dir origin);</p>
+<p>　　streamoff定义于 iostream.h 中，定义有偏移量 offset 所能取得的最大值，seek_dir 表示移动的基准位置，是一个有以下值的枚举：</p>
+<p>　　ios::beg：　　文件开头<br>　　ios::cur：　　文件当前位置<br>　　ios::end：　　文件结尾<br>　　这两个函数一般用于二进制文件，因为文本文件会因为系统对字符的解释而可能与预想的值不同。</p>
+<p>　　例：</p>
+<p>　　file1.seekg(1234,ios::cur);//把文件的读指针从当前位置向后移1234个字节<br>　　file2.seekp(1234,ios::beg);//把文件的写指针从文件开头向后移1234个字节</p>
+<h3 id="8-BCB提供的文件操作函数"><a href="#8-BCB提供的文件操作函数" class="headerlink" title="8.BCB提供的文件操作函数"></a>8.BCB提供的文件操作函数</h3><p>总共分为三类：</p>
+<p>1、文件名函数</p>
+<p>2、文件管理函数</p>
+<p>3、文件I/O函数</p>
+<h4 id="1、文件名函数"><a href="#1、文件名函数" class="headerlink" title="1、文件名函数"></a>1、文件名函数</h4><p>　　文件名函数可以对文件的名称、所在子目录、驱动器和扩展名等进行操作。下表列出这些函数及其功能。</p>
+<p>　　函数 说明<br>　　ExpandFileName() 返回文件的全路径(含驱动器、路径)<br>　　ExtractFileExt() 从文件名中抽取扩展名<br>　　ExtractFileName() 从文件名中抽取不含路径的文件名<br>　　ExtractFilePath() 从文件名中抽取路径名<br>　　ExtractFileDir() 从文件名中抽取目录名<br>　　ExtractFileDrive() 从文件名中抽取驱动器名<br>　　ChangeFileExt() 改变文件的扩展名<br>　　ExpandUNCFileName() 返回含有网络驱动器的文件全路径<br>　　ExtractRelativePath() 从文件名中抽取相对路径信息<br>　　ExtractShortPathName() 把文件名转化为DOS的8·3格式<br>　　MatchesMask() 检查文件是否与指定的文件名格式匹配</p>
+<p>　　下面就把这些函数作一一介绍：</p>
+<h5 id="⑴ExpandFileName"><a href="#⑴ExpandFileName" class="headerlink" title="⑴ExpandFileName()"></a><strong>⑴ExpandFileName()</strong></h5><p>　　功能：返回文件的全路径(含驱动器、路径)</p>
+<p>　　参数：FileName:要处理的文件名</p>
+<p>　　例：ShowMessage(ExpandFileName(Application-&gt;ExeName));//显示你的程序文件名，如C:/MyBCB/Sample1.EXE</p>
+<h5 id="⑵ExtractFileExt"><a href="#⑵ExtractFileExt" class="headerlink" title="⑵ExtractFileExt()"></a><strong>⑵ExtractFileExt()</strong></h5><p>　　功能：从文件名中抽取扩展名</p>
+<p>　　参数：FileName:要处理的文件名（全路径）</p>
+<p>　　例：ShowMessage(ExtractFileExt(Application-&gt;ExeName));//显示”.exe”</p>
+<h5 id="⑶ExtractFileName"><a href="#⑶ExtractFileName" class="headerlink" title="⑶ExtractFileName()"></a><strong>⑶ExtractFileName()</strong></h5><p>　　功能：从文件名中抽取不含路径的文件名</p>
+<p>　　参数：FileName:要处理的文件名</p>
+<p>　　例：ShowMessage(ExtractFileExt(“c://Winnt//SOL.EXE”));//显示”SOL.EXE”</p>
+<h5 id="⑷ExtractFilePath"><a href="#⑷ExtractFilePath" class="headerlink" title="⑷ExtractFilePath()"></a><strong>⑷ExtractFilePath()</strong></h5><p>　　功能：从文件名中抽取路径名</p>
+<p>　　参数：FileName:要处理的文件名</p>
+<p>　　例：ShowMessage(ExtractFilePath(“Winnt//SOL.EXE”));//显示”Winnt/“</p>
+<h5 id="⑸ExtractFileDir"><a href="#⑸ExtractFileDir" class="headerlink" title="⑸ExtractFileDir()"></a><strong>⑸ExtractFileDir()</strong></h5><p>　　功能：从文件名中抽取目录名(和上个函数不同，不包括最后的”/“)</p>
+<p>　　参数：FileName:要处理的文件名</p>
+<p>　　例：ShowMessage(ExtractFileDir(“Winnt//SOL.EXE”));//显示”Winnt”,注意和上个函数的区别</p>
+<h5 id="⑹ExtractFileDrive"><a href="#⑹ExtractFileDrive" class="headerlink" title="⑹ExtractFileDrive()"></a><strong>⑹ExtractFileDrive()</strong></h5><p>　　功能：从文件名中抽取驱动器名</p>
+<p>　　参数：FileName:要处理的文件名</p>
+<p>　　例：ShowMessage(ExtractFileDrive(“c://Winnt//SOL.EXE”));//显示”c:”</p>
+<h5 id="⑺ChangeFileExt"><a href="#⑺ChangeFileExt" class="headerlink" title="⑺ChangeFileExt()"></a><strong>⑺ChangeFileExt()</strong></h5><p>　　功能：更改文件名的扩展名，不是对真正的文件进行改名，只是对文件名这个字符串进行处理</p>
+<p>　　参数：FileName:要改名的文件名，Extension：新的扩展名</p>
+<p>　　例：ShowMessage(ChangeFileExt(“c://Winnt//SOL.EXE”,”.OOO”));//显示”c:/winnt/SOL.OOO”</p>
+<h5 id="⑻ExpandUNCFileName"><a href="#⑻ExpandUNCFileName" class="headerlink" title="⑻ExpandUNCFileName()"></a><strong>⑻ExpandUNCFileName()</strong></h5><p>　　功能：返回含有网络驱动器的文件全路径，格式为：//机器名/共享名/文件名</p>
+<p>　　参数：FileName:要处理的文件名</p>
+<p>　　例：ShowMessage(ExpandUNCFileName(“F://Winnt//SOL.EXE”));/<em>如果F:是映射的网络驱动器//NT40/WINNT，则显示”//NT40/WINNT/SOL.EXE”</em>/</p>
+<h5 id="⑼ExtractRelativePath"><a href="#⑼ExtractRelativePath" class="headerlink" title="⑼ExtractRelativePath()"></a><strong>⑼ExtractRelativePath()</strong></h5><p>　　功能：从文件名中抽取相对路径信息，如”../sss/ss.asd”这种形式</p>
+<p>　　参数：BaseName：基准文件名；DestName：目标文件名</p>
+<p>　　例：ShowMessage(ExtractRelativePath(“D://Source//c//1.123”,”D://Source//Asm//dz.asm”));/<em>显示”../asm/dz.asm”</em>/</p>
+<h5 id="10-ExtractShortPathName"><a href="#10-ExtractShortPathName" class="headerlink" title="(10) ExtractShortPathName()"></a><strong>(10) ExtractShortPathName()</strong></h5><p>　　功能：把文件名转换为DOS的8、3格式</p>
+<p>　　参数：FileName:要处理的文件名</p>
+<p>　　例：ShowMessage(ExtractShortPathName(“E://Program Files//Dual Wheel Mouse//4dmain.exe”));/<em>显示”E:/Progra<del>1/dualwh</del>1/4dmain.exe”</em>/</p>
+<h5 id="⑾MatchesMask"><a href="#⑾MatchesMask" class="headerlink" title="⑾MatchesMask()"></a><strong>⑾MatchesMask()</strong></h5><p>　　功能：检查文件是否与指定的文件名格式匹配</p>
+<p>　　参数：FileName:要处理的文件名；Mask:文件名格式，支持通配符</p>
+<p>　　例：ShowMessage(MatchesMask(“Lxf.exe”,”*.?x?));//显示”true”</p>
+<h4 id="2、文件管理函数"><a href="#2、文件管理函数" class="headerlink" title="2、文件管理函数"></a>2、文件管理函数</h4><p>　　这类函数包括设置和读取驱动器、子目录和文件的有关的各种操作，下表列出这类操作常用的函数及其功能。</p>
+<p>　　函数 功能<br>　　CreateDir() 创建新的子目录<br>　　DeleteFile() 删除文件<br>　　DirectoryExists() 判断目录是否存在<br>　　DiskFree() 获取磁盘剩余空间<br>　　DiskSize() 获取磁盘容量<br>　　FileExists() 判断文件是否存在<br>　　FileGetAttr() 获取文件属性<br>　　FileGetDate() 获取文件日期<br>　　GetCurrentDir() 获取当前目录<br>　　RemoveDir() 删除目录<br>　　SetCurrentDir() 设置当前目录</p>
+<p>　　下面就把这些函数作一一介绍：</p>
+<h5 id="⑴CreateDir"><a href="#⑴CreateDir" class="headerlink" title="⑴CreateDir()"></a><strong>⑴CreateDir()</strong></h5><p>　　功能：建立子目录，如果成功返回true，否则返回false</p>
+<p>　　参数：Dir:要建立的子目录的名字</p>
+<p>　　例：Create(“ASM”);//在当前目录下建立一个名为ASM的子目录</p>
+<h5 id="⑵DeleteFile"><a href="#⑵DeleteFile" class="headerlink" title="⑵DeleteFile()"></a><strong>⑵DeleteFile()</strong></h5><p>　　功能：删除文件，如果成功返回true，否则返回false</p>
+<p>　　参数：FileName:要删除的文件名</p>
+<p>　　例：if(OpenDialog1-&gt;Execute())DeleteFile(OpenDialog1-&gt;FileName);</p>
+<h5 id="⑶DirectoryExists"><a href="#⑶DirectoryExists" class="headerlink" title="⑶DirectoryExists()"></a><strong>⑶DirectoryExists()</strong></h5><p>　　功能：检测目录是否存在，如果存在返回true，否则返回false</p>
+<p>　　参数：Name:要检测的目录名</p>
+<p>　　例：if(!DirectoryExists(“ASM”))CreateDir(“ASM”);//如果ASM这个目录不存在则创建之</p>
+<h5 id="⑷DiskFree"><a href="#⑷DiskFree" class="headerlink" title="⑷DiskFree()"></a><strong>⑷DiskFree()</strong></h5><p>　　功能：检测磁盘剩余空间，返回值以字节为单位，如果指定的磁盘无效，返回-1</p>
+<p>　　参数：Drive：磁盘的代号，0表示当前盘, 1=A,2=B,3=C 以此类推</p>
+<p>　　例：ShowMessage(DiskFree(0));//显示当前盘的剩余空间</p>
+<h5 id="⑸DiskSize"><a href="#⑸DiskSize" class="headerlink" title="⑸DiskSize()"></a><strong>⑸DiskSize()</strong></h5><p>　　功能：检测磁盘容量，返回值以字节为单位，如果指定的磁盘无效，返回-1</p>
+<p>　　参数：Drive：磁盘的代号，0表示当前盘, 1=A,2=B,3=C 以此类推</p>
+<p>　　例：ShowMessage(DiskFree(0));//显示当前盘的容量</p>
+<p>　　<strong>⑹FileExists()</strong> </p>
+<p>　　功能：检测文件是否存在，如果存在返回true，否则返回false</p>
+<p>　　参数：FileName:要检测的文件名</p>
+<p>　　例：if(FileExists(“AAA.ASM”))DeleteFile(“AAA.ASM”);</p>
+<h5 id="⑺FileGetAttr"><a href="#⑺FileGetAttr" class="headerlink" title="⑺FileGetAttr()"></a><strong>⑺FileGetAttr()</strong></h5><p>　　功能：取得文件属性，如果出错返回-1</p>
+<p>　　返回值如下表，如果返回$00000006表示是一个具有隐含和系统属性的文件(4+2)</p>
+<p>　　常量 值 含义<br>　　faReadOnly $00000001 只读文件<br>　　faHidden $00000002 隐含文件<br>　　faSysFile $00000004 系统文件<br>　　faVolumeID $00000008 卷标<br>　　faDirectory $00000010 目录<br>　　faArchive $00000020 归档文件</p>
+<p>　　例：if(FileGetAttr(“LLL.TXT”)&amp;0x2)ShowMessage(“这是一个有隐含属性的文件”);</p>
+<p>　　与此对应的有FileSetAttr() ，请自已查阅帮助系统</p>
+<h5 id="⑻FileGetDate"><a href="#⑻FileGetDate" class="headerlink" title="⑻FileGetDate()"></a><strong>⑻FileGetDate()</strong></h5><p>　　功能：返回文件的建立时间到1970-1-1日0时的秒数</p>
+<p>　　参数：Handle:用FileOpen()打开的文件句柄。</p>
+<p>　　例：</p>
+<p>　　int i=FileOpen(“C://autoexec.bat”,fmOpenRead);<br>　　ShowMessage(FileGetDate(i));<br>　　FileClose(i);</p>
+<p>　　与此对应的有FileSetDate()</p>
+<p>　　<strong>⑼GetCurrentDir()</strong> </p>
+<p>　　功能：取得当前的目录名</p>
+<p>　　例：ShowMessage(GetCurrentDir());</p>
+<h5 id="⑽RemoveDir"><a href="#⑽RemoveDir" class="headerlink" title="⑽RemoveDir()"></a><strong>⑽RemoveDir()</strong></h5><p>　　功能：删除目录，如果成功返回true，否则返回false</p>
+<p>　　参数：Dir:要删除的目录名</p>
+<p>　　例：if(DiectoryExists(“ASM”))RemoveDir(“ASM”);</p>
+<h5 id="⑾SetCurrentDir"><a href="#⑾SetCurrentDir" class="headerlink" title="⑾SetCurrentDir()"></a><strong>⑾SetCurrentDir()</strong></h5><p>　　功能：设置当前目录，如果成功返回true，否则返回false</p>
+<p>　　参数：Dir:要切换到的目录名</p>
+<p>　　例：SetCurrentDir(“C://WINDOWS”);</p>
+<h4 id="3、文件I-O函数"><a href="#3、文件I-O函数" class="headerlink" title="3、文件I/O函数"></a>3、文件I/O函数</h4><p>　　这类函数完成对文件的读写相关的操作，这种类型的操作和C的基于I/O文件操作类似，下表列出这类操作常用的函数及其功能。</p>
+<p>　　FileOpen() 打开文件<br>　　FileClose() 关闭文件<br>　　FileRead() 读文件<br>　　FileSeek() 文件定位<br>　　FileWrite() 写文件<br>　　FileCreate() 创建文件</p>
+<p>　　下面就对这些函数作详细介绍。</p>
+<p>　　<strong>⑴FileOpen()</strong> </p>
+<p>　　功能：打开文件，如果成功返回其句柄，否则返回-1</p>
+<p>　　参数：FileName:要打开的文件名；Mode：打开的方式，取值如下表，可用”或”(“|”)运算符连接。</p>
+<p>　　常量 值 说明 </p>
+<p>　　fmOpenRead 0 以只读属性打开<br>　　fmOpenWrite 1 以只写属性打开<br>　　fmOpenReadWrite 2 以读/写属性打开<br>　　fmShareCompat 0 兼容FCB方式(汇编中有相应的DOS功能调用)<br>　　fmShareExclusive 16 共享方式：以独占方式打开，在关闭以前，别人不能访问<br>　　fmShareDenyWrite 32 共享方式：拒绝写访问<br>　　fmShareDenyRead 48 共享方式：拒绝读访问<br>　　fmShareDenyNone 64 共享方式：无限制，允许读写<br>　　例：int i=FileOpen(“C://WINDOWS//Win.ini”,fmOpenReadWrite|fmShareExclusive);</p>
+<p>　　<strong>⑵FileClose()</strong> </p>
+<p>　　功能：关闭打开的句柄。</p>
+<p>　　参数：Handle:要关闭的句柄</p>
+<p>　　例：FileClose(i);</p>
+<p>　　<strong>⑶FileRead()</strong> </p>
+<p>　　功能：读文件，返回实际读取的字节数，句柄必须首先由FileOpen或FileCreate创建。</p>
+<p>　　参数：Handle:要读取的句柄；Buffer:存放读取的数据的缓冲区；Count:想读取的字节数</p>
+<p>　　例：char str[400];FileRead(hnd1,str,400);</p>
+<p>　　<strong>⑷FileSeek()</strong> </p>
+<p>　　功能：移动文件读取指针，成功返回文件指针的位置，失败返回-1</p>
+<p>　　参数：Handle:相关联的句柄；Offset:移动的量；Orgin:移动的基准，0=文件头，1=当前位置，2=文件尾。</p>
+<p>　　例：ShowMessage(FileSeek(hnd1,0,2));//取得文件的长度</p>
+<p>　　<strong>⑸FileWrite()</strong> </p>
+<p>　　功能：写文件，返回实际写入的字节数，句柄必须首先由FileOpen或FileCreate创建。</p>
+<p>　　参数：Handle:要写入的句柄；Buffer:存放写入数据的缓冲区；Count:想写入的字节数</p>
+<p>　　例：char str[]=”I Love You”;FileWrite(hnd1,str,strlen(str));</p>
+<p>　　<strong>⑹FileCreate()</strong> </p>
+<p>　　功能：创建文件。成功返回其句柄，否则返回-1</p>
+<p>　　参数：FileName:要创建的文件名</p>
+<p>　　例：if(!FileExists(“KC.C”))hnd1=FileCreate(“KC.C”);</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>c++学习</tag>
       </tags>
   </entry>
 </search>
