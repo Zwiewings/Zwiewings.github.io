@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>c++学习-4：string头文件 - Zweiwings</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="头文件：string用于简化操作的常用函数
+string变量读取单个字符用s[i]可以读出
+
+输入带空格的字符串，用getline(cin,a)；(a为字符串类型变量)
+
+str.=“”——清空
+
+,"> 
+    <meta name="author" content="Wings"> 
+    <link rel="alternative" href="atom.xml" title="Zweiwings" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon1.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Zweiwings</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">c++学习-4：string头文件</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">c++学习-4：string头文件</h1>
+        <div class="stuff">
+            <span>三月 23, 2021</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/c-%E5%AD%A6%E4%B9%A0/" rel="tag">c++学习</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="头文件：string"><a href="#头文件：string" class="headerlink" title="头文件：string"></a>头文件：string</h1><h2 id="用于简化操作的常用函数"><a href="#用于简化操作的常用函数" class="headerlink" title="用于简化操作的常用函数"></a>用于简化操作的常用函数</h2><ul>
+<li><p>string变量读取单个字符用s[i]可以读出</p>
+</li>
+<li><p>输入带空格的字符串，用getline(cin,a)；(a为字符串类型变量)</p>
+</li>
+<li><p>str.=“”——清空</p>
+</li>
+<li><p>str.empty()——是否为空</p>
+</li>
+<li><p>str.size()——str长度</p>
+</li>
+<li><p>swap(s1，s2)——交换s1，s2</p>
+</li>
+<li><p>str. insert(x,“aaa”)——在下标x处插入aaa</p>
+</li>
+<li><p>str.substr(x,y)——读出下标为x开始长度为y的字符串</p>
+</li>
+<li><p>str.erase(x,y)——移除下标x长度为y的字符</p>
+</li>
+<li><p>str.find(“字符或字符串”)——找str中第一次出现的下标，找不到就是-1</p>
+</li>
+<li><p>while((i=str.find(“a”,i))!=-1)</p>
+<pre><code>  &#123;
+  i++;
+  cout&lt;&lt;i&lt;&lt;endl;
+  &#125;                                      ——读出所有a字符出现的下标(基本思路是找到一个就从那个下标+1继续找)</code></pre>
+</li>
+<li><p>str.replace(x，y，“aa”)——用aa替换(x，y)(删掉下标x开始长度为y个，在下标为x处插入aa)</p>
+</li>
+</ul>
+<h2 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h2><p>string s——生成一个空字符串s</p>
+<p>string s(str) ——拷贝构造函数 生成str的复制品</p>
+<p>string s(str,stridx)——将字符串str内“始于位置stridx”的部分当作字符串的初值</p>
+<p>string s(str,stridx,strlen) ——将字符串str内“始于stridx且长度顶多strlen”的部分作为字符串的初值</p>
+<p>string s(cstr) ——将C字符串作为s的初值</p>
+<p>string s(chars,chars_len) ——将C字符串前chars_len个字符作为字符串s的初值。</p>
+<p> string s(num,c) ——生成一个字符串，包含num个c字符</p>
+<p> string s(beg,end) ——以区间beg;end(不包含end)内的字符作为字符串s的初值</p>
+<p>s.~string() ——销毁所有字符，释放内存</p>
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><ul>
+<li><p> =，assign()——赋以新值</p>
+</li>
+<li><p>swap()——交换两个字符串的内容</p>
+</li>
+<li><p>+=，append()，push_back()——在尾部添加字符</p>
+</li>
+<li><p>insert()——插入字符</p>
+</li>
+<li><p>erase()——删除字符</p>
+</li>
+<li><p>clear()——删除全部字符</p>
+</li>
+<li><p>replace()——替换字符</p>
+</li>
+<li><p>+——串联字符串</p>
+</li>
+<li><p>==，!=，&lt;，&lt;=，&gt;，&gt;=，compare()——比较字符串</p>
+</li>
+<li><p>size(),length()——返回字符数量</p>
+</li>
+<li><p>max_size()——返回字符的可能最大个数</p>
+</li>
+<li><p>empty()——判断字符串是否为空</p>
+</li>
+<li><p>capacity()——返回重新分配之前的字符容量</p>
+</li>
+<li><p>reserve()——保留一定量内存以容纳一定数量的字符</p>
+</li>
+<li><p> [ ], at()——存取单一字符</p>
+</li>
+<li><p>“&gt;&gt;”,getline()——从stream读取某值</p>
+</li>
+<li><p>” &lt;&lt;“ ——将谋值写入stream</p>
+</li>
+<li><p>copy()——将某值赋值为一个C_string</p>
+</li>
+<li><p>c_str()——将内容以C_string返回</p>
+</li>
+<li><p> data()——将内容以字符数组形式返回</p>
+</li>
+<li><p>substr()——返回某个子字符串</p>
+</li>
+<li><p>begin() end()——提供类似STL的迭代器支持</p>
+</li>
+<li><p> rbegin() rend()——逆向迭代器</p>
+</li>
+<li><p>get_allocator()——返回配置器</p>
+</li>
+</ul>
+<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>find()<br>rfind()<br>find_first_of()<br>find_last_of()<br>find_first_not_of()<br>find_last_not_of()</p>
+<p>这些函数返回符合搜索条件的字符区间内的第一个字符的索引，没找到目标就返回npos。所有的函数的参数说明如下：<br>第一个参数是被搜寻的对象。第二个参数（可有可无）指出string内的搜寻起点索引，第三个参数（可有可无）指出搜寻的字符个数。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='//mus/1.wma'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='//mus/2.wma'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci='7ab654b08de6e920553a'
+        data-cs='e674cd1fcfc534caa60f1ff36274a58b594989e9'
+        data-r='Zweiwings.github.io'
+        data-o='Zwiewings'
+        data-a='Zwiewings'
+        data-d='true'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%B4%E6%96%87%E4%BB%B6%EF%BC%9Astring"><span class="toc-number">1.</span> <span class="toc-text">头文件：string</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E4%BA%8E%E7%AE%80%E5%8C%96%E6%93%8D%E4%BD%9C%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0"><span class="toc-number">1.1.</span> <span class="toc-text">用于简化操作的常用函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0"><span class="toc-number">1.2.</span> <span class="toc-text">构造函数和析构函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">1.3.</span> <span class="toc-text">基本操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE"><span class="toc-number">1.4.</span> <span class="toc-text">查找</span></a></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
