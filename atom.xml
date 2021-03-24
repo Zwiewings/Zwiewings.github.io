@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-03-23T00:08:33.082Z</updated>
+  <updated>2021-03-24T11:55:49.144Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,13 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>数据结构-1</title>
+    <link href="http://example.com/2021/03/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-1/"/>
+    <id>http://example.com/2021/03/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-1/</id>
+    <published>2021-03-24T11:02:30.000Z</published>
+    <updated>2021-03-24T11:55:49.144Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="线性表-顺序表"><a href="#线性表-顺序表" class="headerlink" title="线性表-顺序表"></a>线性表-顺序表</h1><p>【Elemtype为数据类型，Status 为函数返回值类型】</p><h2 id="创建（初始化）"><a href="#创建（初始化）" class="headerlink" title="创建（初始化）"></a>创建（初始化）</h2><p>以数组的形式创建顺序表</p><pre><code>typedef struct      //理解为将定义的结构体改称为&#123;&#125;后的名字，如SQlist&#123;    Elemtype *elem； //定义顺序表具有首元素地址    int length;     //定义顺序表具有表长这一属性&#125;SQlist;</code></pre><p>初始化设置顺序表的最大存储空间，以及初始化其表长为0</p><pre><code>bool initList(SQlist &amp;sq)     //将需要初始化的表传址&#123;    sq.elem=new maxsize;        //为顺序表分配maxsize的空间作为最大上限    if(!sq.elem) return false;      //如果空间分配失败，直接返回提示错误    sq.length=0;                    //如果分配空间成功，则继续初始化表长为0    return true;                    //返回参数提示顺序表初始化成功&#125;</code></pre><h2 id="取值"><a href="#取值" class="headerlink" title="取值"></a>取值</h2><p>顺序表能够随机存取，故而方便存取指定位置的值</p><pre><code>bool getelem(SQlist &amp;sq,int i，elemtype &amp;a)  //将需要初始化的表传址，并且传值需要获取的是第i个值，返回的值传给a&#123;    if(i&lt;1||i&gt;sq.length) return false;    //如果i为非法位置，返回提示错误    a=sq.elem[i];                 //否则返回第i个元素给a    return true;                  //返回提示执行正常&#125;</code></pre><h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><h2 id><a href="#" class="headerlink" title></a></h2><h2 id="-1"><a href="#-1" class="headerlink" title></a></h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;线性表-顺序表&quot;&gt;&lt;a href=&quot;#线性表-顺序表&quot; class=&quot;headerlink&quot; title=&quot;线性表-顺序表&quot;&gt;&lt;/a&gt;线性表-顺序表&lt;/h1&gt;&lt;p&gt;【Elemtype为数据类型，Status 为函数返回值类型】&lt;/p&gt;
+&lt;h2 id=&quot;创建（初始化</summary>
+      
+    
+    
+    
+    <category term="学习" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="数据结构学习" scheme="http://example.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>c++学习-4：string头文件</title>
     <link href="http://example.com/2021/03/23/c++%E5%AD%A6%E4%B9%A0-4/"/>
     <id>http://example.com/2021/03/23/c++%E5%AD%A6%E4%B9%A0-4/</id>
     <published>2021-03-22T23:41:02.000Z</published>
-    <updated>2021-03-23T00:08:33.082Z</updated>
+    <updated>2021-03-23T00:14:09.169Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="头文件：string"><a href="#头文件：string" class="headerlink" title="头文件：string"></a>头文件：string</h1><h2 id="用于简化操作的常用函数"><a href="#用于简化操作的常用函数" class="headerlink" title="用于简化操作的常用函数"></a>用于简化操作的常用函数</h2><ul><li><p>string变量读取单个字符用s[i]可以读出</p></li><li><p>输入带空格的字符串，用getline(cin,a)；(a为字符串类型变量)</p></li><li><p>str.=“”——清空</p></li><li><p>str.empty()——是否为空</p></li><li><p>str.size()——str长度</p></li><li><p>swap(s1，s2)——交换s1，s2</p></li><li><p>str. insert(x,“aaa”)——在下标x处插入aaa</p></li><li><p>str.substr(x,y)——读出下标为x开始长度为y的字符串</p></li><li><p>str.erase(x,y)——移除下标x长度为y的字符</p></li><li><p>str.find(“字符或字符串”)——找str中第一次出现的下标，找不到就是-1</p></li><li><p>while((i=str.find(“a”,i))!=-1)</p><pre><code>  &#123;  i++;  cout&lt;&lt;i&lt;&lt;endl;  &#125;                                      ——读出所有a字符出现的下标(基本思路是找到一个就从那个下标+1继续找)</code></pre></li><li><p>str.replace(x，y，“aa”)——用aa替换(x，y)(删掉下标x开始长度为y个，在下标为x处插入aa)</p></li></ul><h2 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h2><p>string s——生成一个空字符串s</p><p>string s(str) ——拷贝构造函数 生成str的复制品</p><p>string s(str,stridx)——将字符串str内“始于位置stridx”的部分当作字符串的初值</p><p>string s(str,stridx,strlen) ——将字符串str内“始于stridx且长度顶多strlen”的部分作为字符串的初值</p><p>string s(cstr) ——将C字符串作为s的初值</p><p>string s(chars,chars_len) ——将C字符串前chars_len个字符作为字符串s的初值。</p><p> string s(num,c) ——生成一个字符串，包含num个c字符</p><p> string s(beg,end) ——以区间beg;end(不包含end)内的字符作为字符串s的初值</p><p>s.~string() ——销毁所有字符，释放内存</p><h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><ul><li><p> =，assign()——赋以新值</p></li><li><p>swap()——交换两个字符串的内容</p></li><li><p>+=，append()，push_back()——在尾部添加字符</p></li><li><p>insert()——插入字符</p></li><li><p>erase()——删除字符</p></li><li><p>clear()——删除全部字符</p></li><li><p>replace()——替换字符</p></li><li><p>+——串联字符串</p></li><li><p>==，!=，&lt;，&lt;=，&gt;，&gt;=，compare()——比较字符串</p></li><li><p>size(),length()——返回字符数量</p></li><li><p>max_size()——返回字符的可能最大个数</p></li><li><p>empty()——判断字符串是否为空</p></li><li><p>capacity()——返回重新分配之前的字符容量</p></li><li><p>reserve()——保留一定量内存以容纳一定数量的字符</p></li><li><p> [ ], at()——存取单一字符</p></li><li><p>“&gt;&gt;”,getline()——从stream读取某值</p></li><li><p>” &lt;&lt;“ ——将谋值写入stream</p></li><li><p>copy()——将某值赋值为一个C_string</p></li><li><p>c_str()——将内容以C_string返回</p></li><li><p> data()——将内容以字符数组形式返回</p></li><li><p>substr()——返回某个子字符串</p></li><li><p>begin() end()——提供类似STL的迭代器支持</p></li><li><p> rbegin() rend()——逆向迭代器</p></li><li><p>get_allocator()——返回配置器</p></li></ul><h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>find()<br>rfind()<br>find_first_of()<br>find_last_of()<br>find_first_not_of()<br>find_last_not_of()</p><p>这些函数返回符合搜索条件的字符区间内的第一个字符的索引，没找到目标就返回npos。所有的函数的参数说明如下：<br>第一个参数是被搜寻的对象。第二个参数（可有可无）指出string内的搜寻起点索引，第三个参数（可有可无）指出搜寻的字符个数。</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="头文件：string"><a href="#头文件：string" class="headerlink" title="头文件：string"></a>头文件：string</h1><h2 id="用于简化操作的常用函数"><a href="#用于简化操作的常用函数" class="headerlink" title="用于简化操作的常用函数"></a>用于简化操作的常用函数</h2><ul><li><p>string变量读取单个字符用s[i]可以读出</p></li><li><p>输入带空格的字符串，用getline(cin,a)；(a为字符串类型变量)</p></li><li><p>str.=“”——清空</p></li><li><p>str.empty()——是否为空</p></li><li><p>str.size()——str长度</p></li><li><p>swap(s1，s2)——交换s1，s2</p></li><li><p>str. insert(x,“aaa”)——在下标x处插入aaa</p></li><li><p>str.substr(x,y)——读出下标为x开始长度为y的字符串</p></li><li><p>str.erase(x,y)——移除下标x长度为y的字符</p></li><li><p>str.find(“字符或字符串”)——找str中第一次出现的下标，找不到就是-1</p></li><li><p>while((i=str.find(“a”,i))!=-1) { i++; cout&lt;&lt;i&lt;&lt;endl; }  ——读出所有a字符出现的下标</p><p>  (基本思路是找到一个就从那个下标+1继续找)</p></li><li><p>str.replace(x，y，“aa”)——用aa替换(x，y)(删掉下标x开始长度为y个，在下标为x处插入aa)</p></li></ul><h2 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h2><p>string s——生成一个空字符串s</p><p>string s(str) ——拷贝构造函数 生成str的复制品</p><p>string s(str,stridx)——将字符串str内“始于位置stridx”的部分当作字符串的初值</p><p>string s(str,stridx,strlen) ——将字符串str内“始于stridx且长度顶多strlen”的部分作为字符串的初值</p><p>string s(cstr) ——将C字符串作为s的初值</p><p>string s(chars,chars_len) ——将C字符串前chars_len个字符作为字符串s的初值。</p><p> string s(num,c) ——生成一个字符串，包含num个c字符</p><p> string s(beg,end) ——以区间beg;end(不包含end)内的字符作为字符串s的初值</p><p>s.~string() ——销毁所有字符，释放内存</p><h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><ul><li><p> =，assign()——赋以新值</p></li><li><p>swap()——交换两个字符串的内容</p></li><li><p>+=，append()，push_back()——在尾部添加字符</p></li><li><p>insert()——插入字符</p></li><li><p>erase()——删除字符</p></li><li><p>clear()——删除全部字符</p></li><li><p>replace()——替换字符</p></li><li><p>+——串联字符串</p></li><li><p>==，!=，&lt;，&lt;=，&gt;，&gt;=，compare()——比较字符串</p></li><li><p>size(),length()——返回字符数量</p></li><li><p>max_size()——返回字符的可能最大个数</p></li><li><p>empty()——判断字符串是否为空</p></li><li><p>capacity()——返回重新分配之前的字符容量</p></li><li><p>reserve()——保留一定量内存以容纳一定数量的字符</p></li><li><p> [ ], at()——存取单一字符</p></li><li><p>“&gt;&gt;”,getline()——从stream读取某值</p></li><li><p>” &lt;&lt;“ ——将谋值写入stream</p></li><li><p>copy()——将某值赋值为一个C_string</p></li><li><p>c_str()——将内容以C_string返回</p></li><li><p> data()——将内容以字符数组形式返回</p></li><li><p>substr()——返回某个子字符串</p></li><li><p>begin() end()——提供类似STL的迭代器支持</p></li><li><p> rbegin() rend()——逆向迭代器</p></li><li><p>get_allocator()——返回配置器</p></li></ul><h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>find()<br>rfind()<br>find_first_of()<br>find_last_of()<br>find_first_not_of()<br>find_last_not_of()</p><p>这些函数返回符合搜索条件的字符区间内的第一个字符的索引，没找到目标就返回npos。所有的函数的参数说明如下：<br>第一个参数是被搜寻的对象。第二个参数（可有可无）指出string内的搜寻起点索引，第三个参数（可有可无）指出搜寻的字符个数。</p>]]></content>
     
     
       
