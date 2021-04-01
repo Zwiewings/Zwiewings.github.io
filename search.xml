@@ -583,52 +583,6 @@ int (*p)(int i, int j);//指向函数的指针p</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>hexo基础命令行</title>
-    <url>/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/</url>
-    <content><![CDATA[<h1 id="hexo的基础命令行："><a href="#hexo的基础命令行：" class="headerlink" title="hexo的基础命令行："></a>hexo的基础命令行：</h1><h2 id="hexo-s"><a href="#hexo-s" class="headerlink" title="hexo s"></a>hexo s</h2><pre><code class="undefined">hexo s</code></pre>
-<ul>
-<li>启动本地服务器，用于预览主题。默认地址： <a href="http://localhost:4000/">http://localhost:4000/</a></li>
-<li><code>hexo s</code> 是 <code>hexo server</code> 的缩写，命令效果一致。</li>
-<li>预览的同时可以修改文章内容或主题代码，保存后刷新页面即可。</li>
-<li>对 Hexo 根目录 <code>_config.yml</code> 的修改，需要重启本地服务器后才能预览效果。</li>
-<li>预览草稿文章 <code>hexo s --drafts</code></li>
-</ul>
-<h2 id="hexo-new"><a href="#hexo-new" class="headerlink" title="hexo new"></a>hexo new</h2><pre><code class="cpp">hexo new &quot;title&quot;
-hexo new  draft &quot;草稿文章&quot;
-hexo new page</code></pre>
-<ul>
-<li>新建一个title.md博客文章</li>
-<li>draft 为草稿文档，不会展现在博客上，可用<code>hexo publish &quot;草稿文章&quot;</code> 发布成正式文章</li>
-<li><code>hexo new page</code> 创建一个文件夹</li>
-</ul>
-<h2 id="hexo-d"><a href="#hexo-d" class="headerlink" title="hexo d"></a>hexo d</h2><pre><code class="undefined">hexo d</code></pre>
-<ul>
-<li>自动生成网站静态文件，并部署到设定的仓库。</li>
-<li><code>hexo d</code> 是 <code>hexo deploy</code> 的缩写，命令效果一致。</li>
-</ul>
-<h2 id="hexo-clean"><a href="#hexo-clean" class="headerlink" title="hexo clean"></a>hexo clean</h2><pre><code class="undefined">hexo clean</code></pre>
-<ul>
-<li>清除缓存文件 db.json 和已生成的静态文件 public 。</li>
-<li>网站显示异常时可以执行这条命令试试</li>
-</ul>
-<h2 id="hexo-g"><a href="#hexo-g" class="headerlink" title="hexo g"></a>hexo g</h2><pre><code class="undefined">hexo g</code></pre>
-<p>生成网站静态文件到默认设置的 public 文件夹。</p>
-<ul>
-<li>便于查看网站生成的静态文件或者手动部署网站；</li>
-<li>如果使用自动部署，不需要先执行该命令；</li>
-<li><code>hexo g</code> 是 <code>hexo generate</code> 的缩写，命令效果一致。</li>
-</ul>
-<pre><code class="undefined">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code></pre>
-<p>部署发布，命令可用&amp;&amp;连接</p>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>hexo使用</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>c++学习-3：algorithm头文件</title>
     <url>/2021/03/19/c++%E5%AD%A6%E4%B9%A0-3/</url>
     <content><![CDATA[<h1 id="头文件：algorithm"><a href="#头文件：algorithm" class="headerlink" title="头文件：algorithm"></a>头文件：algorithm</h1><p>algorithm意为”算法”,是C++的标准模版库（STL）中最重要的头文件之一，提供了大量基于迭代器的非成员模版函数。</p>
@@ -773,56 +727,49 @@ hexo new page</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>数据结构-2</title>
-    <url>/2021/03/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-2/</url>
-    <content><![CDATA[<h1 id="线性表-单链表"><a href="#线性表-单链表" class="headerlink" title="线性表-单链表"></a>线性表-单链表</h1><p>【Elemtype为数据类型】</p>
-<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><pre><code>typedef struct LNode        //创建结点类型
-&#123;
-    elemtype data;         //结点中包含数据域
-    struct LNode *next;    //结点中包含指向下一个结点的指针
-&#125;Linklist                 //将该类型定义为一个链表（使用指针方式也依旧等价）</code></pre>
-<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><pre><code>bool init(Linklist &amp;L)       //传址创建的链表
-&#123;
-    L=new LNode;            //新生成一个结点，让头指针指向头结点
-    L-&gt;next=null;          //为统一操作，头结点仅作为首元结点的前驱，数据域不放入数据，且指针域指向空
-    return true;           //返回值提示完成初始化
-&#125;</code></pre>
-<h2 id="取值"><a href="#取值" class="headerlink" title="取值"></a>取值</h2><p>单链表的取值需要顺序遍历，耗时较长，故而不适合频繁获取特定位置的值</p>
-<pre><code>bool getelem(Linklist &amp;L,int i,elemtype &amp;e)
-//传址数据所在的表，并且传值需要取值的元素序号i，将得到的值传给e
-&#123;
-    int j;
-    LNode *p=L-&gt;next;               //令p指向首元结点
-    for(j=1;j&lt;i&amp;&amp;p!=null;j++)       //j作为计数器，确定遍历到的位置，当p指针指向空或j==i时结束循环
-    &#123;
-        p=p-&gt;next;                  //让p指向p的下一个结点，实现p后移
-    &#125;                               //结束循环时，j==i，p指向的结点为第i-1个结点
-     if(p==null) return false;       //如果p指针指向空，则返回取值失败
-    e=p-&gt;next-&gt;data;                //否则，将p指向结点的下一个结点的数据域赋给e
-    return true;                   //返回取值完成
-&#125;</code></pre>
-<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>单链表的查找同顺序表一样，需要遍历整个表，比较每个数据域和待查找值，若相同则返回其序号，若始终不相同则返回查找失败</p>
-<pre><code>bool find(Linklist &amp;L,LNode *&amp;q,elemtype a)
-//传址需要查找的表，和返回序号的i，同时传值需要查找的数据a
-&#123;
-    int j;
-    LNode *p=L-&gt;next;
-    for(j=1;p-&gt;next!=null;j++)      //j作为计数器，确定遍历到的位置，当p指针指向为空时结束循环
-    &#123;
-        if(p-&gt;data==a) break;       //查找到与数据a相同的数据域，提前退出循环
-        p=p-&gt;next;                  //p指针继续后移，继续遍历整个链表
-    &#125;
-    if(p-&gt;next==null&amp;&amp;p-&gt;data!=a)   return false;  
-    //如果p指针已经指向尾结点，且尾结点数据域域不等于a，则查找失败
-    q=p;                         //否则令q等于p，得到指向该元素的指针
-    return true;                   //返回查找成功
-&#125;</code></pre>
-<h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><h2 id><a href="#" class="headerlink" title></a></h2>]]></content>
+    <title>hexo基础命令行</title>
+    <url>/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/</url>
+    <content><![CDATA[<h1 id="hexo的基础命令行："><a href="#hexo的基础命令行：" class="headerlink" title="hexo的基础命令行："></a>hexo的基础命令行：</h1><h2 id="hexo-s"><a href="#hexo-s" class="headerlink" title="hexo s"></a>hexo s</h2><pre><code class="undefined">hexo s</code></pre>
+<ul>
+<li>启动本地服务器，用于预览主题。默认地址： <a href="http://localhost:4000/">http://localhost:4000/</a></li>
+<li><code>hexo s</code> 是 <code>hexo server</code> 的缩写，命令效果一致。</li>
+<li>预览的同时可以修改文章内容或主题代码，保存后刷新页面即可。</li>
+<li>对 Hexo 根目录 <code>_config.yml</code> 的修改，需要重启本地服务器后才能预览效果。</li>
+<li>预览草稿文章 <code>hexo s --drafts</code></li>
+</ul>
+<h2 id="hexo-new"><a href="#hexo-new" class="headerlink" title="hexo new"></a>hexo new</h2><pre><code class="cpp">hexo new &quot;title&quot;
+hexo new  draft &quot;草稿文章&quot;
+hexo new page</code></pre>
+<ul>
+<li>新建一个title.md博客文章</li>
+<li>draft 为草稿文档，不会展现在博客上，可用<code>hexo publish &quot;草稿文章&quot;</code> 发布成正式文章</li>
+<li><code>hexo new page</code> 创建一个文件夹</li>
+</ul>
+<h2 id="hexo-d"><a href="#hexo-d" class="headerlink" title="hexo d"></a>hexo d</h2><pre><code class="undefined">hexo d</code></pre>
+<ul>
+<li>自动生成网站静态文件，并部署到设定的仓库。</li>
+<li><code>hexo d</code> 是 <code>hexo deploy</code> 的缩写，命令效果一致。</li>
+</ul>
+<h2 id="hexo-clean"><a href="#hexo-clean" class="headerlink" title="hexo clean"></a>hexo clean</h2><pre><code class="undefined">hexo clean</code></pre>
+<ul>
+<li>清除缓存文件 db.json 和已生成的静态文件 public 。</li>
+<li>网站显示异常时可以执行这条命令试试</li>
+</ul>
+<h2 id="hexo-g"><a href="#hexo-g" class="headerlink" title="hexo g"></a>hexo g</h2><pre><code class="undefined">hexo g</code></pre>
+<p>生成网站静态文件到默认设置的 public 文件夹。</p>
+<ul>
+<li>便于查看网站生成的静态文件或者手动部署网站；</li>
+<li>如果使用自动部署，不需要先执行该命令；</li>
+<li><code>hexo g</code> 是 <code>hexo generate</code> 的缩写，命令效果一致。</li>
+</ul>
+<pre><code class="undefined">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code></pre>
+<p>部署发布，命令可用&amp;&amp;连接</p>
+]]></content>
       <categories>
         <category>学习</category>
       </categories>
       <tags>
-        <tag>数据结构学习</tag>
+        <tag>hexo使用</tag>
       </tags>
   </entry>
   <entry>
@@ -925,6 +872,59 @@ hexo new page</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>数据结构-2</title>
+    <url>/2021/03/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-2/</url>
+    <content><![CDATA[<h1 id="线性表-单链表"><a href="#线性表-单链表" class="headerlink" title="线性表-单链表"></a>线性表-单链表</h1><p>【Elemtype为数据类型】</p>
+<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><pre><code>typedef struct LNode        //创建结点类型
+&#123;
+    elemtype data;         //结点中包含数据域
+    struct LNode *next;    //结点中包含指向下一个结点的指针
+&#125;Linklist                 //将该类型定义为一个链表（使用指针方式也依旧等价）</code></pre>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><pre><code>bool init(Linklist &amp;L)       //传址创建的链表
+&#123;
+    L=new LNode;            //新生成一个结点，让头指针指向头结点
+    L-&gt;next=null;          //为统一操作，头结点仅作为首元结点的前驱，数据域不放入数据，且指针域指向空
+    return true;           //返回值提示完成初始化
+&#125;</code></pre>
+<h2 id="取值"><a href="#取值" class="headerlink" title="取值"></a>取值</h2><p>单链表的取值需要顺序遍历，耗时较长，故而不适合频繁获取特定位置的值</p>
+<pre><code>bool getelem(Linklist &amp;L,int i,elemtype &amp;e)
+//传址数据所在的表，并且传值需要取值的元素序号i，将得到的值传给e
+&#123;
+    int j;
+    LNode *p=L-&gt;next;               //令p指向首元结点
+    for(j=1;j&lt;i&amp;&amp;p!=null;j++)       //j作为计数器，确定遍历到的位置，当p指针指向空或j==i时结束循环
+    &#123;
+        p=p-&gt;next;                  //让p指向p的下一个结点，实现p后移
+    &#125;                               //结束循环时，j==i，p指向的结点为第i-1个结点
+     if(p==null) return false;       //如果p指针指向空，则返回取值失败
+    e=p-&gt;next-&gt;data;                //否则，将p指向结点的下一个结点的数据域赋给e
+    return true;                   //返回取值完成
+&#125;</code></pre>
+<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>单链表的查找同顺序表一样，需要遍历整个表，比较每个数据域和待查找值，若相同则返回其序号，若始终不相同则返回查找失败</p>
+<pre><code>bool find(Linklist &amp;L,LNode *&amp;q,elemtype a)
+//传址需要查找的表，和返回序号的i，同时传值需要查找的数据a
+&#123;
+    int j;
+    LNode *p=L-&gt;next;
+    for(j=1;p-&gt;next!=null;j++)      //j作为计数器，确定遍历到的位置，当p指针指向为空时结束循环
+    &#123;
+        if(p-&gt;data==a) break;       //查找到与数据a相同的数据域，提前退出循环
+        p=p-&gt;next;                  //p指针继续后移，继续遍历整个链表
+    &#125;
+    if(p-&gt;next==null&amp;&amp;p-&gt;data!=a)   return false;  
+    //如果p指针已经指向尾结点，且尾结点数据域域不等于a，则查找失败
+    q=p;                         //否则令q等于p，得到指向该元素的指针
+    return true;                   //返回查找成功
+&#125;</code></pre>
+<h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><h2 id><a href="#" class="headerlink" title></a></h2>]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>数据结构学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>网页设计学习-1</title>
     <url>/2021/03/19/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0-1/</url>
     <content><![CDATA[<h1 id="基础标签："><a href="#基础标签：" class="headerlink" title="基础标签："></a>基础标签：</h1><h2 id="主框架标签："><a href="#主框架标签：" class="headerlink" title="主框架标签："></a>主框架标签：</h2><pre><code>&lt;html&gt;&lt;/html&gt;     //表示文件为html文件
@@ -960,82 +960,6 @@ style=font-size：大小（pt）//用样式表方式控制字体大小</code></p
       </categories>
       <tags>
         <tag>网页设计学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数据结构-1</title>
-    <url>/2021/03/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-1/</url>
-    <content><![CDATA[<h1 id="线性表-顺序表"><a href="#线性表-顺序表" class="headerlink" title="线性表-顺序表"></a>线性表-顺序表</h1><p>【Elemtype为数据类型】</p>
-<h2 id="创建（初始化）"><a href="#创建（初始化）" class="headerlink" title="创建（初始化）"></a>创建（初始化）</h2><p>以数组的形式创建顺序表</p>
-<pre><code>typedef struct      //理解为将定义的结构体改称为&#123;&#125;后的名字，如SQlist
-&#123;
-    Elemtype *elem； //定义顺序表具有首元素地址
-    int length;     //定义顺序表具有表长这一属性
-&#125;SQlist;</code></pre>
-<p>初始化设置顺序表的最大存储空间，以及初始化其表长为0</p>
-<pre><code>bool initList(SQlist &amp;sq)     //将需要初始化的表传址
-&#123;
-    sq.elem=new maxsize;        //为顺序表分配maxsize的空间作为最大上限
-    if(!sq.elem) return false;      //如果空间分配失败，直接返回提示错误
-    sq.length=0;                    //如果分配空间成功，则继续初始化表长为0
-    return true;                    //返回参数提示顺序表初始化成功
-&#125;</code></pre>
-<h2 id="取值"><a href="#取值" class="headerlink" title="取值"></a>取值</h2><p>顺序表能够随机存取，故而方便存取指定位置的值，即可以随机存取</p>
-<pre><code>bool getelem(SQlist &amp;sq,int i，elemtype &amp;a)  
-//将需要初始化的表传址，并且传值需要获取的是第i个值，返回的值传给a
-&#123;
-    if(i&lt;1||i&gt;sq.length) return false;    //如果i为非法位置，返回提示错误
-    a=sq.elem[i];                 //否则返回第i个元素给a
-    return true;                  //返回提示执行正常
-&#125;</code></pre>
-<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>顺序表的查找就是顺序比较表内元素和待查找元素，相同查找成功，始终不同查找失败</p>
-<pre><code>int find(SQlist &amp;sq,elemtype a)
-//传址需要查找的表，并传值需要查找的数值a,返回查找到的序号为int类型
-&#123;
-    int i;
-    for(i=0;i&lt;sq.length;i++)
-    &#123;
-    if(sq.elem[i]==a) return i;
-    //如果查找到了，返回该值在表中的序号，此处为数组下标，若返回第几个元素序号，则需要i+1
-    &#125;
-    return -1;            //查找失败，返回负数
-&#125;</code></pre>
-<h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><p>顺序表为紧邻的线性表，故而插入时需要向后移动较多元素，并且需要从最后一个元素开始向后移动，以免数据被覆盖</p>
-<pre><code>bool insert(SQlist &amp;sq,elemtype a,int i)
-//将元素a的值插入表中第i个位置，传址需要做插入的表，以及传值a，i
-&#123;
-    int j;
-    if(i&lt;1||i&gt;sq.length+1) return false;//如果i值不合法，则不作插入
-    if(sq.length==maxsize) return false;//如果表长已经达到最大，则判断表满，不作插入
-    for(j=sq.length-1;j&gt;=i-1;j--)
-    //让j为最后一个元素的角标，循环递减，并且当j等于插入位置i的前驱时，停止循环
-    &#123;
-        sq.elem[j+1]=sq.elem[j];        //给j+1角标的空间赋值当前j角标的值，实现后移
-    &#125;
-    sq.elem[i-1]=a;                     //赋值第i个位置，即角标为i-1的空间为a
-    sq.length++;                        //表长增加
-    return true;                        //返回插入成功
-&#125;</code></pre>
-<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><p>顺序表的删除是将待删除位置后面的全部往前覆盖，向前移动较多元素，并且需要从待删除位置的后一个开始移动，以免覆盖数据</p>
-<pre><code>bool delete(SQlist &amp;sq,int i)
-//传址需要删除元素的顺序表，并且传值需要删除的元素位置
-&#123;
-    int j;
-    if(i&lt;1||i&gt;sq.length) return false;   //如果i值不合法，则不作插入
-    for(j=i;j&lt;=sq.length-1;j++)
-    //将i位置之后的所有元素都向前移，并且循环在将最后一个元素移动到表长减一后的位置停止
-    &#123;
-        sq.elem[j-1]=sq.elem[j];        //被删位置后的元素全部前移
-    &#125;
-    sq.length--;                        //表长减少
-    return true;
-&#125;</code></pre>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>数据结构学习</tag>
       </tags>
   </entry>
   <entry>
@@ -2590,6 +2514,82 @@ CentOS release 6.4 (Final)</code></pre>
       </categories>
       <tags>
         <tag>《南城院校风纪委员部》</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构-1</title>
+    <url>/2021/03/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-1/</url>
+    <content><![CDATA[<h1 id="线性表-顺序表"><a href="#线性表-顺序表" class="headerlink" title="线性表-顺序表"></a>线性表-顺序表</h1><p>【Elemtype为数据类型】</p>
+<h2 id="创建（初始化）"><a href="#创建（初始化）" class="headerlink" title="创建（初始化）"></a>创建（初始化）</h2><p>以数组的形式创建顺序表</p>
+<pre><code>typedef struct      //理解为将定义的结构体改称为&#123;&#125;后的名字，如SQlist
+&#123;
+    Elemtype *elem； //定义顺序表具有首元素地址
+    int length;     //定义顺序表具有表长这一属性
+&#125;SQlist;</code></pre>
+<p>初始化设置顺序表的最大存储空间，以及初始化其表长为0</p>
+<pre><code>bool initList(SQlist &amp;sq)     //将需要初始化的表传址
+&#123;
+    sq.elem=new maxsize;        //为顺序表分配maxsize的空间作为最大上限
+    if(!sq.elem) return false;      //如果空间分配失败，直接返回提示错误
+    sq.length=0;                    //如果分配空间成功，则继续初始化表长为0
+    return true;                    //返回参数提示顺序表初始化成功
+&#125;</code></pre>
+<h2 id="取值"><a href="#取值" class="headerlink" title="取值"></a>取值</h2><p>顺序表能够随机存取，故而方便存取指定位置的值，即可以随机存取</p>
+<pre><code>bool getelem(SQlist &amp;sq,int i，elemtype &amp;a)  
+//将需要初始化的表传址，并且传值需要获取的是第i个值，返回的值传给a
+&#123;
+    if(i&lt;1||i&gt;sq.length) return false;    //如果i为非法位置，返回提示错误
+    a=sq.elem[i];                 //否则返回第i个元素给a
+    return true;                  //返回提示执行正常
+&#125;</code></pre>
+<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>顺序表的查找就是顺序比较表内元素和待查找元素，相同查找成功，始终不同查找失败</p>
+<pre><code>int find(SQlist &amp;sq,elemtype a)
+//传址需要查找的表，并传值需要查找的数值a,返回查找到的序号为int类型
+&#123;
+    int i;
+    for(i=0;i&lt;sq.length;i++)
+    &#123;
+    if(sq.elem[i]==a) return i;
+    //如果查找到了，返回该值在表中的序号，此处为数组下标，若返回第几个元素序号，则需要i+1
+    &#125;
+    return -1;            //查找失败，返回负数
+&#125;</code></pre>
+<h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><p>顺序表为紧邻的线性表，故而插入时需要向后移动较多元素，并且需要从最后一个元素开始向后移动，以免数据被覆盖</p>
+<pre><code>bool insert(SQlist &amp;sq,elemtype a,int i)
+//将元素a的值插入表中第i个位置，传址需要做插入的表，以及传值a，i
+&#123;
+    int j;
+    if(i&lt;1||i&gt;sq.length+1) return false;//如果i值不合法，则不作插入
+    if(sq.length==maxsize) return false;//如果表长已经达到最大，则判断表满，不作插入
+    for(j=sq.length-1;j&gt;=i-1;j--)
+    //让j为最后一个元素的角标，循环递减，并且当j等于插入位置i的前驱时，停止循环
+    &#123;
+        sq.elem[j+1]=sq.elem[j];        //给j+1角标的空间赋值当前j角标的值，实现后移
+    &#125;
+    sq.elem[i-1]=a;                     //赋值第i个位置，即角标为i-1的空间为a
+    sq.length++;                        //表长增加
+    return true;                        //返回插入成功
+&#125;</code></pre>
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><p>顺序表的删除是将待删除位置后面的全部往前覆盖，向前移动较多元素，并且需要从待删除位置的后一个开始移动，以免覆盖数据</p>
+<pre><code>bool delete(SQlist &amp;sq,int i)
+//传址需要删除元素的顺序表，并且传值需要删除的元素位置
+&#123;
+    int j;
+    if(i&lt;1||i&gt;sq.length) return false;   //如果i值不合法，则不作插入
+    for(j=i;j&lt;=sq.length-1;j++)
+    //将i位置之后的所有元素都向前移，并且循环在将最后一个元素移动到表长减一后的位置停止
+    &#123;
+        sq.elem[j-1]=sq.elem[j];        //被删位置后的元素全部前移
+    &#125;
+    sq.length--;                        //表长减少
+    return true;
+&#125;</code></pre>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>数据结构学习</tag>
       </tags>
   </entry>
 </search>
