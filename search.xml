@@ -955,87 +955,41 @@ hexo new page</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>数据结构-2</title>
-    <url>/2021/03/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-2/</url>
-    <content><![CDATA[<h1 id="线性表-单链表"><a href="#线性表-单链表" class="headerlink" title="线性表-单链表"></a>线性表-单链表</h1><p>【Elemtype为数据类型】</p>
-<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><pre><code>typedef struct LNode        //创建结点类型
-&#123;
-    elemtype data;         //结点中包含数据域
-    struct LNode *next;    //结点中包含指向下一个结点的指针
-&#125;*Linklist                 //将该类型定义为一个链表（常使用指针方式价）</code></pre>
-<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><pre><code>bool init(Linklist &amp;L)       //传址创建的链表
-&#123;
-    L=new LNode;            //新生成一个结点，让头指针指向头结点
-    L-&gt;next=NULL;          //为统一操作，头结点仅作为首元结点的前驱，数据域不放入数据，且指针域指向空
-    return true;           //返回值提示完成初始化
-&#125;</code></pre>
-<h2 id="取值"><a href="#取值" class="headerlink" title="取值"></a>取值</h2><p>单链表的取值需要顺序遍历，耗时较长，故而不适合频繁获取特定位置的值</p>
-<pre><code>bool getelem(Linklist &amp;L,int i,elemtype &amp;e)
-//传址数据所在的表，并且传值需要取值的元素序号i，将得到的值传给e
-&#123;
-    int j;
-    LNode *p=L-&gt;next;               //令p指向首元结点
-    for(j=1;j&lt;i&amp;&amp;p!=NULL;j++)       //j作为计数器，确定遍历到的位置，当p指针指向空或j==i时结束循环
-    &#123;
-        p=p-&gt;next;                  //让p指向p的下一个结点，实现p后移
-    &#125;                               //结束循环时，j==i，p指向的结点为第i-1个结点
-     if(p==NULL) return false;       //如果p指针指向空，则返回取值失败
-    e=p-&gt;next-&gt;data;                //否则，将p指向结点的下一个结点的数据域赋给e
-    return true;                   //返回取值完成
-&#125;</code></pre>
-<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>单链表的查找同顺序表一样，需要遍历整个表，比较每个数据域和待查找值，若相同则返回其序号，若始终不相同则返回查找失败</p>
-<pre><code>bool find(Linklist &amp;L,LNode *&amp;p,elemtype a)
-//传址需要查找的表，和返回序号的i，同时传值需要查找的数据a
-&#123;
-    int j;
-    p=L-&gt;next;
-    for(j=1;p-&gt;next!=NULL;j++)      //j作为计数器，确定遍历到的位置，当p指针指向为空时结束循环
-    &#123;
-        if(p-&gt;data==a) break;       //查找到与数据a相同的数据域，提前退出循环
-        p=p-&gt;next;                  //p指针继续后移，继续遍历整个链表
-    &#125;
-    if(p-&gt;next==NULL&amp;&amp;p-&gt;data!=a)   return false;  
-    //如果p指针已经指向尾结点，且尾结点数据域域不等于a，则查找失败
-    q=p;                         //否则令q等于p，得到指向该元素的指针
-    return true;                   //返回查找成功
-&#125;</code></pre>
-<h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><p>插入时，需要先让新结点连接需要插入位置前驱的后一个结点，再让前驱的next指针指向新结点，否则会直接丢失后面数据的地址</p>
-<pre><code>bool insert(Linklist &amp;L,int i，elem e)
-//传址链表，需要插入的位置i，需要插入的元素值e
-&#123;
-    int j;
-    Lnode *p=L-&gt;next;                //使p指针指向首元结点
-    Lnode *s=new Lnode;              //新建一个结点，并用s指针指向它
-    s-&gt;data=e;                       //将新建结点的数据域赋为e
-    for(j=0;j&lt;i-1&amp;&amp;p!=NULL;j++)      
-    //当j移动到需要插入位置的前驱时或者链表结束时结束循环
-    &#123;
-        p=p-&gt;next;                   //让p指向下一个结点
-    &#125;
-    if(p==NULL) return false;        //如果p指向不合法位置则返回插入失败
-    s-&gt;next=p-&gt;next;                 //否则让s的next指针指向p的下一个结点
-    p-&gt;next=s;                       //并让p的next指针指向s
-    return true;                     //返回成功插入
-&#125;</code></pre>
-<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><pre><code>bool del(Linklist &amp;L,int i)
-&#123;
-    int j;
-    Lnode *p=L-&gt;next;                //使p指向首元结点
-    for(j=0;j&lt;i-1&amp;&amp;p!=NULL)           
-    //当j移动到需要删除位置的前驱或链表结束时结束循环
-    &#123;
-        p=p-&gt;next;                  //让p指向p的下一个结点
-    &#125;
-    if(p=NULL) return false;        //p指向不合法位置时，返回删除失败
-    p-&gt;next=p-&gt;next-&gt;next;          //让p的next指针等于p下一个结点的next
-    return true;                    //返回删除成功
-&#125;</code></pre>
+    <title>网页设计学习-1</title>
+    <url>/2021/03/19/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0-1/</url>
+    <content><![CDATA[<h1 id="基础标签："><a href="#基础标签：" class="headerlink" title="基础标签："></a>基础标签：</h1><h2 id="主框架标签："><a href="#主框架标签：" class="headerlink" title="主框架标签："></a>主框架标签：</h2><pre><code>&lt;html&gt;&lt;/html&gt;     //表示文件为html文件
+&lt;head&gt;&lt;/head&gt;     //包含文件的标题，使用的脚本，样式定义等
+&lt;meta charset=&quot;utf-8&quot;&gt; //网页代码编译方式为utf-8
+&lt;title&gt;&lt;/title&gt;   //包含文件标题，标题出现在浏览器页签上，置于&lt;head&gt;内部
+&lt;body&gt;&lt;/body&gt;     //表明主体部分，内容均写入该部分</code></pre>
+<h2 id="格式标签："><a href="#格式标签：" class="headerlink" title="格式标签："></a>格式标签：</h2><pre><code>&lt;p&gt;&lt;/p&gt;       //段落标签，前后自动转行
+&lt;br/&gt;         //手动转行标签
+&lt;b&gt;&lt;/b&gt;       //粗体字标签
+&lt;i&gt;&lt;/i&gt;       //斜体字标签
+&lt;hr/&gt;         //水平划线标签
+&lt;ins&gt;&lt;/ins&gt;   //文字下划线标签
+&lt;del&gt;&lt;/del&gt;   //文字删除线标签
+&lt;sup&gt;&lt;/sup&gt;   //将文字化为右上标
+&lt;sub&gt;&lt;/sub&gt;   //将文字化为右下标
+&lt;hn&gt;&lt;/hn&gt;     //将文字转化为n级标题
+&lt;font&gt;&lt;/font&gt; //更改字体样式</code></pre>
+<h2 id="制表标签："><a href="#制表标签：" class="headerlink" title="制表标签："></a>制表标签：</h2><pre><code>&lt;table&gt;&lt;/table&gt;   //定义表格
+&lt;tr&gt;&lt;/tr&gt;         //定义表格的行，用在&lt;table&gt;中
+&lt;td&gt;&lt;/td&gt;         //定义表格的单元格，用在&lt;tr&gt;中</code></pre>
+<h1 id="属性："><a href="#属性：" class="headerlink" title="属性："></a>属性：</h1><h2 id="常用属性："><a href="#常用属性：" class="headerlink" title="常用属性："></a>常用属性：</h2><pre><code>align=      
+//left：左对齐；right：右对齐；center：居中；width：对象宽度；height：对象高度
+color=#色彩对照表序号        //前景色
+bgcolor=#色彩对照表序号     //背景色
+border=                  //制表边框宽度
+face=                    //文字字体
+style=font-size：大小（pt）//用样式表方式控制字体大小</code></pre>
+<p>##色彩对照表查询：<a href="https://www.sojson.com/rgb.html">https://www.sojson.com/rgb.html</a>    </p>
 ]]></content>
       <categories>
         <category>学习</category>
       </categories>
       <tags>
-        <tag>数据结构学习</tag>
+        <tag>网页设计学习</tag>
       </tags>
   </entry>
   <entry>
@@ -1225,41 +1179,87 @@ hexo new page</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>网页设计学习-1</title>
-    <url>/2021/03/19/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0-1/</url>
-    <content><![CDATA[<h1 id="基础标签："><a href="#基础标签：" class="headerlink" title="基础标签："></a>基础标签：</h1><h2 id="主框架标签："><a href="#主框架标签：" class="headerlink" title="主框架标签："></a>主框架标签：</h2><pre><code>&lt;html&gt;&lt;/html&gt;     //表示文件为html文件
-&lt;head&gt;&lt;/head&gt;     //包含文件的标题，使用的脚本，样式定义等
-&lt;meta charset=&quot;utf-8&quot;&gt; //网页代码编译方式为utf-8
-&lt;title&gt;&lt;/title&gt;   //包含文件标题，标题出现在浏览器页签上，置于&lt;head&gt;内部
-&lt;body&gt;&lt;/body&gt;     //表明主体部分，内容均写入该部分</code></pre>
-<h2 id="格式标签："><a href="#格式标签：" class="headerlink" title="格式标签："></a>格式标签：</h2><pre><code>&lt;p&gt;&lt;/p&gt;       //段落标签，前后自动转行
-&lt;br/&gt;         //手动转行标签
-&lt;b&gt;&lt;/b&gt;       //粗体字标签
-&lt;i&gt;&lt;/i&gt;       //斜体字标签
-&lt;hr/&gt;         //水平划线标签
-&lt;ins&gt;&lt;/ins&gt;   //文字下划线标签
-&lt;del&gt;&lt;/del&gt;   //文字删除线标签
-&lt;sup&gt;&lt;/sup&gt;   //将文字化为右上标
-&lt;sub&gt;&lt;/sub&gt;   //将文字化为右下标
-&lt;hn&gt;&lt;/hn&gt;     //将文字转化为n级标题
-&lt;font&gt;&lt;/font&gt; //更改字体样式</code></pre>
-<h2 id="制表标签："><a href="#制表标签：" class="headerlink" title="制表标签："></a>制表标签：</h2><pre><code>&lt;table&gt;&lt;/table&gt;   //定义表格
-&lt;tr&gt;&lt;/tr&gt;         //定义表格的行，用在&lt;table&gt;中
-&lt;td&gt;&lt;/td&gt;         //定义表格的单元格，用在&lt;tr&gt;中</code></pre>
-<h1 id="属性："><a href="#属性：" class="headerlink" title="属性："></a>属性：</h1><h2 id="常用属性："><a href="#常用属性：" class="headerlink" title="常用属性："></a>常用属性：</h2><pre><code>align=      
-//left：左对齐；right：右对齐；center：居中；width：对象宽度；height：对象高度
-color=#色彩对照表序号        //前景色
-bgcolor=#色彩对照表序号     //背景色
-border=                  //制表边框宽度
-face=                    //文字字体
-style=font-size：大小（pt）//用样式表方式控制字体大小</code></pre>
-<p>##色彩对照表查询：<a href="https://www.sojson.com/rgb.html">https://www.sojson.com/rgb.html</a>    </p>
+    <title>数据结构-2</title>
+    <url>/2021/03/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-2/</url>
+    <content><![CDATA[<h1 id="线性表-单链表"><a href="#线性表-单链表" class="headerlink" title="线性表-单链表"></a>线性表-单链表</h1><p>【Elemtype为数据类型】</p>
+<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><pre><code>typedef struct LNode        //创建结点类型
+&#123;
+    elemtype data;         //结点中包含数据域
+    struct LNode *next;    //结点中包含指向下一个结点的指针
+&#125;*Linklist                 //将该类型定义为一个链表（常使用指针方式价）</code></pre>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><pre><code>bool init(Linklist &amp;L)       //传址创建的链表
+&#123;
+    L=new LNode;            //新生成一个结点，让头指针指向头结点
+    L-&gt;next=NULL;          //为统一操作，头结点仅作为首元结点的前驱，数据域不放入数据，且指针域指向空
+    return true;           //返回值提示完成初始化
+&#125;</code></pre>
+<h2 id="取值"><a href="#取值" class="headerlink" title="取值"></a>取值</h2><p>单链表的取值需要顺序遍历，耗时较长，故而不适合频繁获取特定位置的值</p>
+<pre><code>bool getelem(Linklist &amp;L,int i,elemtype &amp;e)
+//传址数据所在的表，并且传值需要取值的元素序号i，将得到的值传给e
+&#123;
+    int j;
+    LNode *p=L-&gt;next;               //令p指向首元结点
+    for(j=1;j&lt;i&amp;&amp;p!=NULL;j++)       //j作为计数器，确定遍历到的位置，当p指针指向空或j==i时结束循环
+    &#123;
+        p=p-&gt;next;                  //让p指向p的下一个结点，实现p后移
+    &#125;                               //结束循环时，j==i，p指向的结点为第i-1个结点
+     if(p==NULL) return false;       //如果p指针指向空，则返回取值失败
+    e=p-&gt;next-&gt;data;                //否则，将p指向结点的下一个结点的数据域赋给e
+    return true;                   //返回取值完成
+&#125;</code></pre>
+<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>单链表的查找同顺序表一样，需要遍历整个表，比较每个数据域和待查找值，若相同则返回其序号，若始终不相同则返回查找失败</p>
+<pre><code>bool find(Linklist &amp;L,LNode *&amp;p,elemtype a)
+//传址需要查找的表，和返回序号的i，同时传值需要查找的数据a
+&#123;
+    int j;
+    p=L-&gt;next;
+    for(j=1;p-&gt;next!=NULL;j++)      //j作为计数器，确定遍历到的位置，当p指针指向为空时结束循环
+    &#123;
+        if(p-&gt;data==a) break;       //查找到与数据a相同的数据域，提前退出循环
+        p=p-&gt;next;                  //p指针继续后移，继续遍历整个链表
+    &#125;
+    if(p-&gt;next==NULL&amp;&amp;p-&gt;data!=a)   return false;  
+    //如果p指针已经指向尾结点，且尾结点数据域域不等于a，则查找失败
+    q=p;                         //否则令q等于p，得到指向该元素的指针
+    return true;                   //返回查找成功
+&#125;</code></pre>
+<h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><p>插入时，需要先让新结点连接需要插入位置前驱的后一个结点，再让前驱的next指针指向新结点，否则会直接丢失后面数据的地址</p>
+<pre><code>bool insert(Linklist &amp;L,int i，elem e)
+//传址链表，需要插入的位置i，需要插入的元素值e
+&#123;
+    int j;
+    Lnode *p=L-&gt;next;                //使p指针指向首元结点
+    Lnode *s=new Lnode;              //新建一个结点，并用s指针指向它
+    s-&gt;data=e;                       //将新建结点的数据域赋为e
+    for(j=0;j&lt;i-1&amp;&amp;p!=NULL;j++)      
+    //当j移动到需要插入位置的前驱时或者链表结束时结束循环
+    &#123;
+        p=p-&gt;next;                   //让p指向下一个结点
+    &#125;
+    if(p==NULL) return false;        //如果p指向不合法位置则返回插入失败
+    s-&gt;next=p-&gt;next;                 //否则让s的next指针指向p的下一个结点
+    p-&gt;next=s;                       //并让p的next指针指向s
+    return true;                     //返回成功插入
+&#125;</code></pre>
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><pre><code>bool del(Linklist &amp;L,int i)
+&#123;
+    int j;
+    Lnode *p=L-&gt;next;                //使p指向首元结点
+    for(j=0;j&lt;i-1&amp;&amp;p!=NULL)           
+    //当j移动到需要删除位置的前驱或链表结束时结束循环
+    &#123;
+        p=p-&gt;next;                  //让p指向p的下一个结点
+    &#125;
+    if(p=NULL) return false;        //p指向不合法位置时，返回删除失败
+    p-&gt;next=p-&gt;next-&gt;next;          //让p的next指针等于p下一个结点的next
+    return true;                    //返回删除成功
+&#125;</code></pre>
 ]]></content>
       <categories>
         <category>学习</category>
       </categories>
       <tags>
-        <tag>网页设计学习</tag>
+        <tag>数据结构学习</tag>
       </tags>
   </entry>
   <entry>
