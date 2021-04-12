@@ -583,6 +583,105 @@ int (*p)(int i, int j);//指向函数的指针p</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>c++学习-4：string头文件</title>
+    <url>/2021/03/23/c++%E5%AD%A6%E4%B9%A0-4/</url>
+    <content><![CDATA[<h1 id="头文件：string"><a href="#头文件：string" class="headerlink" title="头文件：string"></a>头文件：string</h1><h2 id="用于简化操作的常用函数"><a href="#用于简化操作的常用函数" class="headerlink" title="用于简化操作的常用函数"></a>用于简化操作的常用函数</h2><ul>
+<li><p>string变量读取单个字符用s[i]可以读出</p>
+</li>
+<li><p>输入带空格的字符串，用getline(cin,a)；(a为字符串类型变量)</p>
+</li>
+<li><p>str.=“”——清空</p>
+</li>
+<li><p>str.empty()——是否为空</p>
+</li>
+<li><p>str.size()——str长度</p>
+</li>
+<li><p>swap(s1，s2)——交换s1，s2</p>
+</li>
+<li><p>str. insert(x,“aaa”)——在下标x处插入aaa</p>
+</li>
+<li><p>str.substr(x,y)——读出下标为x开始长度为y的字符串</p>
+</li>
+<li><p>str.erase(x,y)——移除下标x长度为y的字符</p>
+</li>
+<li><p>str.find(“字符或字符串”)——找str中第一次出现的下标，找不到就是-1</p>
+</li>
+<li><p>while((i=str.find(“a”,i))!=-1) { i++; cout&lt;&lt;i&lt;&lt;endl; }  ——读出所有a字符出现的下标</p>
+<p>  (基本思路是找到一个就从那个下标+1继续找)</p>
+</li>
+<li><p>str.replace(x，y，“aa”)——用aa替换(x，y)(删掉下标x开始长度为y个，在下标为x处插入aa)</p>
+</li>
+</ul>
+<h2 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h2><p>string s——生成一个空字符串s</p>
+<p>string s(str) ——拷贝构造函数 生成str的复制品</p>
+<p>string s(str,stridx)——将字符串str内“始于位置stridx”的部分当作字符串的初值</p>
+<p>string s(str,stridx,strlen) ——将字符串str内“始于stridx且长度顶多strlen”的部分作为字符串的初值</p>
+<p>string s(cstr) ——将C字符串作为s的初值</p>
+<p>string s(chars,chars_len) ——将C字符串前chars_len个字符作为字符串s的初值。</p>
+<p> string s(num,c) ——生成一个字符串，包含num个c字符</p>
+<p> string s(beg,end) ——以区间beg;end(不包含end)内的字符作为字符串s的初值</p>
+<p>s.~string() ——销毁所有字符，释放内存</p>
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><ul>
+<li><p> =，assign()——赋以新值</p>
+</li>
+<li><p>swap()——交换两个字符串的内容</p>
+</li>
+<li><p>+=，append()，push_back()——在尾部添加字符</p>
+</li>
+<li><p>insert()——插入字符</p>
+</li>
+<li><p>erase()——删除字符</p>
+</li>
+<li><p>clear()——删除全部字符</p>
+</li>
+<li><p>replace()——替换字符</p>
+</li>
+<li><p>+——串联字符串</p>
+</li>
+<li><p>==，!=，&lt;，&lt;=，&gt;，&gt;=，compare()——比较字符串</p>
+</li>
+<li><p>size(),length()——返回字符数量</p>
+</li>
+<li><p>max_size()——返回字符的可能最大个数</p>
+</li>
+<li><p>empty()——判断字符串是否为空</p>
+</li>
+<li><p>capacity()——返回重新分配之前的字符容量</p>
+</li>
+<li><p>reserve()——保留一定量内存以容纳一定数量的字符</p>
+</li>
+<li><p> [ ], at()——存取单一字符</p>
+</li>
+<li><p>“&gt;&gt;”,getline()——从stream读取某值</p>
+</li>
+<li><p>” &lt;&lt;“ ——将谋值写入stream</p>
+</li>
+<li><p>copy()——将某值赋值为一个C_string</p>
+</li>
+<li><p>c_str()——将内容以C_string返回</p>
+</li>
+<li><p> data()——将内容以字符数组形式返回</p>
+</li>
+<li><p>substr()——返回某个子字符串</p>
+</li>
+<li><p>begin() end()——提供类似STL的迭代器支持</p>
+</li>
+<li><p> rbegin() rend()——逆向迭代器</p>
+</li>
+<li><p>get_allocator()——返回配置器</p>
+</li>
+</ul>
+<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>find()<br>rfind()<br>find_first_of()<br>find_last_of()<br>find_first_not_of()<br>find_last_not_of()</p>
+<p>这些函数返回符合搜索条件的字符区间内的第一个字符的索引，没找到目标就返回npos。所有的函数的参数说明如下：<br>第一个参数是被搜寻的对象。第二个参数（可有可无）指出string内的搜寻起点索引，第三个参数（可有可无）指出搜寻的字符个数。</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>c++学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>c++学习-3：algorithm头文件</title>
     <url>/2021/03/19/c++%E5%AD%A6%E4%B9%A0-3/</url>
     <content><![CDATA[<h1 id="头文件：algorithm"><a href="#头文件：algorithm" class="headerlink" title="头文件：algorithm"></a>头文件：algorithm</h1><p>algorithm意为”算法”,是C++的标准模版库（STL）中最重要的头文件之一，提供了大量基于迭代器的非成员模版函数。</p>
@@ -724,158 +823,6 @@ int (*p)(int i, int j);//指向函数的指针p</code></pre>
       </categories>
       <tags>
         <tag>c++学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>c++学习-4：string头文件</title>
-    <url>/2021/03/23/c++%E5%AD%A6%E4%B9%A0-4/</url>
-    <content><![CDATA[<h1 id="头文件：string"><a href="#头文件：string" class="headerlink" title="头文件：string"></a>头文件：string</h1><h2 id="用于简化操作的常用函数"><a href="#用于简化操作的常用函数" class="headerlink" title="用于简化操作的常用函数"></a>用于简化操作的常用函数</h2><ul>
-<li><p>string变量读取单个字符用s[i]可以读出</p>
-</li>
-<li><p>输入带空格的字符串，用getline(cin,a)；(a为字符串类型变量)</p>
-</li>
-<li><p>str.=“”——清空</p>
-</li>
-<li><p>str.empty()——是否为空</p>
-</li>
-<li><p>str.size()——str长度</p>
-</li>
-<li><p>swap(s1，s2)——交换s1，s2</p>
-</li>
-<li><p>str. insert(x,“aaa”)——在下标x处插入aaa</p>
-</li>
-<li><p>str.substr(x,y)——读出下标为x开始长度为y的字符串</p>
-</li>
-<li><p>str.erase(x,y)——移除下标x长度为y的字符</p>
-</li>
-<li><p>str.find(“字符或字符串”)——找str中第一次出现的下标，找不到就是-1</p>
-</li>
-<li><p>while((i=str.find(“a”,i))!=-1) { i++; cout&lt;&lt;i&lt;&lt;endl; }  ——读出所有a字符出现的下标</p>
-<p>  (基本思路是找到一个就从那个下标+1继续找)</p>
-</li>
-<li><p>str.replace(x，y，“aa”)——用aa替换(x，y)(删掉下标x开始长度为y个，在下标为x处插入aa)</p>
-</li>
-</ul>
-<h2 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h2><p>string s——生成一个空字符串s</p>
-<p>string s(str) ——拷贝构造函数 生成str的复制品</p>
-<p>string s(str,stridx)——将字符串str内“始于位置stridx”的部分当作字符串的初值</p>
-<p>string s(str,stridx,strlen) ——将字符串str内“始于stridx且长度顶多strlen”的部分作为字符串的初值</p>
-<p>string s(cstr) ——将C字符串作为s的初值</p>
-<p>string s(chars,chars_len) ——将C字符串前chars_len个字符作为字符串s的初值。</p>
-<p> string s(num,c) ——生成一个字符串，包含num个c字符</p>
-<p> string s(beg,end) ——以区间beg;end(不包含end)内的字符作为字符串s的初值</p>
-<p>s.~string() ——销毁所有字符，释放内存</p>
-<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><ul>
-<li><p> =，assign()——赋以新值</p>
-</li>
-<li><p>swap()——交换两个字符串的内容</p>
-</li>
-<li><p>+=，append()，push_back()——在尾部添加字符</p>
-</li>
-<li><p>insert()——插入字符</p>
-</li>
-<li><p>erase()——删除字符</p>
-</li>
-<li><p>clear()——删除全部字符</p>
-</li>
-<li><p>replace()——替换字符</p>
-</li>
-<li><p>+——串联字符串</p>
-</li>
-<li><p>==，!=，&lt;，&lt;=，&gt;，&gt;=，compare()——比较字符串</p>
-</li>
-<li><p>size(),length()——返回字符数量</p>
-</li>
-<li><p>max_size()——返回字符的可能最大个数</p>
-</li>
-<li><p>empty()——判断字符串是否为空</p>
-</li>
-<li><p>capacity()——返回重新分配之前的字符容量</p>
-</li>
-<li><p>reserve()——保留一定量内存以容纳一定数量的字符</p>
-</li>
-<li><p> [ ], at()——存取单一字符</p>
-</li>
-<li><p>“&gt;&gt;”,getline()——从stream读取某值</p>
-</li>
-<li><p>” &lt;&lt;“ ——将谋值写入stream</p>
-</li>
-<li><p>copy()——将某值赋值为一个C_string</p>
-</li>
-<li><p>c_str()——将内容以C_string返回</p>
-</li>
-<li><p> data()——将内容以字符数组形式返回</p>
-</li>
-<li><p>substr()——返回某个子字符串</p>
-</li>
-<li><p>begin() end()——提供类似STL的迭代器支持</p>
-</li>
-<li><p> rbegin() rend()——逆向迭代器</p>
-</li>
-<li><p>get_allocator()——返回配置器</p>
-</li>
-</ul>
-<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>find()<br>rfind()<br>find_first_of()<br>find_last_of()<br>find_first_not_of()<br>find_last_not_of()</p>
-<p>这些函数返回符合搜索条件的字符区间内的第一个字符的索引，没找到目标就返回npos。所有的函数的参数说明如下：<br>第一个参数是被搜寻的对象。第二个参数（可有可无）指出string内的搜寻起点索引，第三个参数（可有可无）指出搜寻的字符个数。</p>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>c++学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo基础命令行</title>
-    <url>/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/</url>
-    <content><![CDATA[<h1 id="hexo的基础命令行："><a href="#hexo的基础命令行：" class="headerlink" title="hexo的基础命令行："></a>hexo的基础命令行：</h1><h2 id="hexo-s"><a href="#hexo-s" class="headerlink" title="hexo s"></a>hexo s</h2><pre><code class="undefined">hexo s</code></pre>
-<ul>
-<li>启动本地服务器，用于预览主题。默认地址： <a href="http://localhost:4000/">http://localhost:4000/</a></li>
-<li><code>hexo s</code> 是 <code>hexo server</code> 的缩写，命令效果一致。</li>
-<li>预览的同时可以修改文章内容或主题代码，保存后刷新页面即可。</li>
-<li>对 Hexo 根目录 <code>_config.yml</code> 的修改，需要重启本地服务器后才能预览效果。</li>
-<li>预览草稿文章 <code>hexo s --drafts</code></li>
-</ul>
-<h2 id="hexo-new"><a href="#hexo-new" class="headerlink" title="hexo new"></a>hexo new</h2><pre><code class="cpp">hexo new &quot;title&quot;
-hexo new  draft &quot;草稿文章&quot;
-hexo new page</code></pre>
-<ul>
-<li>新建一个title.md博客文章</li>
-<li>draft 为草稿文档，不会展现在博客上，可用<code>hexo publish &quot;草稿文章&quot;</code> 发布成正式文章</li>
-<li><code>hexo new page</code> 创建一个文件夹</li>
-</ul>
-<h2 id="hexo-d"><a href="#hexo-d" class="headerlink" title="hexo d"></a>hexo d</h2><pre><code class="undefined">hexo d</code></pre>
-<ul>
-<li>自动生成网站静态文件，并部署到设定的仓库。</li>
-<li><code>hexo d</code> 是 <code>hexo deploy</code> 的缩写，命令效果一致。</li>
-</ul>
-<h2 id="hexo-clean"><a href="#hexo-clean" class="headerlink" title="hexo clean"></a>hexo clean</h2><pre><code class="undefined">hexo clean</code></pre>
-<ul>
-<li>清除缓存文件 db.json 和已生成的静态文件 public 。</li>
-<li>网站显示异常时可以执行这条命令试试</li>
-</ul>
-<h2 id="hexo-g"><a href="#hexo-g" class="headerlink" title="hexo g"></a>hexo g</h2><pre><code class="undefined">hexo g</code></pre>
-<p>生成网站静态文件到默认设置的 public 文件夹。</p>
-<ul>
-<li>便于查看网站生成的静态文件或者手动部署网站；</li>
-<li>如果使用自动部署，不需要先执行该命令；</li>
-<li><code>hexo g</code> 是 <code>hexo generate</code> 的缩写，命令效果一致。</li>
-</ul>
-<pre><code class="undefined">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code></pre>
-<p>部署发布，命令可用&amp;&amp;连接</p>
-<p>原创封面</p>
-<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/c++cover.jpg" alt="c++cover"></p>
-<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/Linux-cover.jpg" alt="Linux-cover"></p>
-<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BD%91%E9%A1%B5%E5%9F%BA%E7%A1%80cover.jpg" alt="网页基础cover"></p>
-<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E6%9C%AA%E5%88%86%E7%B1%BBcover.jpg" alt="未分类cover"></p>
-<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BA%BF%E6%80%A7%E8%A1%A8cover.jpg" alt="线性表cover"></p>
-<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E8%99%9A%E5%B9%BBcover.jpg" alt="虚幻cover"></p>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>hexo使用</tag>
       </tags>
   </entry>
   <entry>
@@ -1068,6 +1015,59 @@ int main()
       </categories>
       <tags>
         <tag>数据结构学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo基础命令行</title>
+    <url>/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/</url>
+    <content><![CDATA[<h1 id="hexo的基础命令行："><a href="#hexo的基础命令行：" class="headerlink" title="hexo的基础命令行："></a>hexo的基础命令行：</h1><h2 id="hexo-s"><a href="#hexo-s" class="headerlink" title="hexo s"></a>hexo s</h2><pre><code class="undefined">hexo s</code></pre>
+<ul>
+<li>启动本地服务器，用于预览主题。默认地址： <a href="http://localhost:4000/">http://localhost:4000/</a></li>
+<li><code>hexo s</code> 是 <code>hexo server</code> 的缩写，命令效果一致。</li>
+<li>预览的同时可以修改文章内容或主题代码，保存后刷新页面即可。</li>
+<li>对 Hexo 根目录 <code>_config.yml</code> 的修改，需要重启本地服务器后才能预览效果。</li>
+<li>预览草稿文章 <code>hexo s --drafts</code></li>
+</ul>
+<h2 id="hexo-new"><a href="#hexo-new" class="headerlink" title="hexo new"></a>hexo new</h2><pre><code class="cpp">hexo new &quot;title&quot;
+hexo new  draft &quot;草稿文章&quot;
+hexo new page</code></pre>
+<ul>
+<li>新建一个title.md博客文章</li>
+<li>draft 为草稿文档，不会展现在博客上，可用<code>hexo publish &quot;草稿文章&quot;</code> 发布成正式文章</li>
+<li><code>hexo new page</code> 创建一个文件夹</li>
+</ul>
+<h2 id="hexo-d"><a href="#hexo-d" class="headerlink" title="hexo d"></a>hexo d</h2><pre><code class="undefined">hexo d</code></pre>
+<ul>
+<li>自动生成网站静态文件，并部署到设定的仓库。</li>
+<li><code>hexo d</code> 是 <code>hexo deploy</code> 的缩写，命令效果一致。</li>
+</ul>
+<h2 id="hexo-clean"><a href="#hexo-clean" class="headerlink" title="hexo clean"></a>hexo clean</h2><pre><code class="undefined">hexo clean</code></pre>
+<ul>
+<li>清除缓存文件 db.json 和已生成的静态文件 public 。</li>
+<li>网站显示异常时可以执行这条命令试试</li>
+</ul>
+<h2 id="hexo-g"><a href="#hexo-g" class="headerlink" title="hexo g"></a>hexo g</h2><pre><code class="undefined">hexo g</code></pre>
+<p>生成网站静态文件到默认设置的 public 文件夹。</p>
+<ul>
+<li>便于查看网站生成的静态文件或者手动部署网站；</li>
+<li>如果使用自动部署，不需要先执行该命令；</li>
+<li><code>hexo g</code> 是 <code>hexo generate</code> 的缩写，命令效果一致。</li>
+</ul>
+<pre><code class="undefined">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code></pre>
+<p>部署发布，命令可用&amp;&amp;连接</p>
+<p>原创封面</p>
+<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/c++cover.jpg" alt="c++cover"></p>
+<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/Linux-cover.jpg" alt="Linux-cover"></p>
+<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BD%91%E9%A1%B5%E5%9F%BA%E7%A1%80cover.jpg" alt="网页基础cover"></p>
+<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E6%9C%AA%E5%88%86%E7%B1%BBcover.jpg" alt="未分类cover"></p>
+<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BA%BF%E6%80%A7%E8%A1%A8cover.jpg" alt="线性表cover"></p>
+<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E8%99%9A%E5%B9%BBcover.jpg" alt="虚幻cover"></p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>hexo使用</tag>
       </tags>
   </entry>
   <entry>
@@ -1463,6 +1463,496 @@ int main()
       </tags>
   </entry>
   <entry>
+    <title>网页设计学习-1</title>
+    <url>/2021/03/19/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0-1/</url>
+    <content><![CDATA[<h1 id="文字段落标签"><a href="#文字段落标签" class="headerlink" title="文字段落标签"></a>文字段落标签</h1><h2 id="标题与段落标签"><a href="#标题与段落标签" class="headerlink" title="标题与段落标签"></a>标题与段落标签</h2><h3 id="标题标签"><a href="#标题标签" class="headerlink" title="标题标签"></a>标题标签</h3><pre><code class="html">&lt;h1&gt; &lt;h2&gt; &lt;h3&gt; &lt;h4&gt; &lt;h5&gt; &lt;h6&gt; //从左到右重要性递减
+    &lt;hn align=&quot;对齐方式&quot;&gt;标题内容&lt;/hn&gt;</code></pre>
+<h3 id="段落标签"><a href="#段落标签" class="headerlink" title="段落标签"></a>段落标签</h3><pre><code class="html">&lt;p align=&quot;对齐方式&quot;&gt;段落文本&lt;/p&gt;</code></pre>
+<h3 id="水平分割线标签"><a href="#水平分割线标签" class="headerlink" title="水平分割线标签"></a>水平分割线标签</h3><pre><code class="html">&lt;hr 属性=&quot;属性值&quot;/&gt;
+//size设置粗细，align对齐方式，width设置宽度，color设置颜色，noshade设置3d阴影</code></pre>
+<h3 id="换行缩进标签"><a href="#换行缩进标签" class="headerlink" title="换行缩进标签"></a>换行缩进标签</h3><pre><code class="html">&lt;br/&gt;                        //强制换行
+&lt;blockquote&gt;&lt;/blockquote&gt;   //缩进</code></pre>
+<h2 id="文本的格式化标签"><a href="#文本的格式化标签" class="headerlink" title="文本的格式化标签"></a>文本的格式化标签</h2><pre><code class="html">&lt;b&gt;&lt;/b&gt;                        //粗体
+&lt;strong&gt;&lt;/strong&gt;            //强调，一般为粗体
+&lt;i&gt;&lt;/i&gt;                        //斜体
+&lt;em&gt;&lt;/em&gt;                    //强调，一般为斜体
+&lt;del&gt;&lt;/del&gt;                    //删除线
+&lt;ins&gt;&lt;/ins&gt;                    //加下划线
+&lt;sup&gt;&lt;/sup&gt;                    //上标
+&lt;sub&gt;&lt;/sub&gt;                    //下标</code></pre>
+<h2 id="特殊字符标签"><a href="#特殊字符标签" class="headerlink" title="特殊字符标签"></a>特殊字符标签</h2><table>
+<thead>
+<tr>
+<th>特殊字符</th>
+<th>字符代码</th>
+<th>特殊字符</th>
+<th>字符代码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>空格</td>
+<td>&amp;nbsp；</td>
+<td>“</td>
+<td>&amp;quot；</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>&amp;lt；</td>
+<td>©</td>
+<td>&amp;copy；</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>&amp;gt；</td>
+<td>®</td>
+<td>&amp;reg；</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>&amp;amp；</td>
+<td>×</td>
+<td>&amp;times；</td>
+</tr>
+</tbody></table>
+<h1 id="图像与超链接标签"><a href="#图像与超链接标签" class="headerlink" title="图像与超链接标签"></a>图像与超链接标签</h1><h2 id="图像标签"><a href="#图像标签" class="headerlink" title="图像标签"></a>图像标签</h2><pre><code class="html">&lt;img src=&quot;图像URL&quot;/&gt;</code></pre>
+<h2 id="超链接标签"><a href="#超链接标签" class="headerlink" title="超链接标签"></a>超链接标签</h2><h3 id="创建超链接"><a href="#创建超链接" class="headerlink" title="创建超链接"></a>创建超链接</h3><pre><code class="html">&lt;a href=&quot;资源地址&quot; target=&quot;窗口名称&quot; title=&quot;链接提示&quot;&gt;链接对象&lt;/a&gt;</code></pre>
+<h3 id="绝对路径和相对路径"><a href="#绝对路径和相对路径" class="headerlink" title="绝对路径和相对路径"></a>绝对路径和相对路径</h3><ol>
+<li>绝对路径：网络主页上所存在的，或是文件在硬盘上的真实路径。</li>
+<li>相对路径：以当前文件为起点，进行相对文件的查找。</li>
+</ol>
+<pre><code class="html">./          //指当前文件所在目录下（可省略）
+../         //指当前文件所在目录的上一目录下</code></pre>
+<h3 id="锚点链接"><a href="#锚点链接" class="headerlink" title="锚点链接"></a>锚点链接</h3><p>锚点定义：</p>
+<pre><code class="html">&lt;a name=&quot;锚点名称&quot;&gt;文字&lt;/a&gt;
+//或将name改做id</code></pre>
+<p>跳转锚点：</p>
+<pre><code class="html">&lt;a href=&quot;锚点名称&quot;&gt;链接的文字&lt;/a&gt;</code></pre>
+<h3 id="影像地图"><a href="#影像地图" class="headerlink" title="影像地图"></a>影像地图</h3><pre><code class="html">&lt;img src=&quot;图像地址&quot; usemap=&quot;#影像地图名称&quot;&gt;   //使用影像地图
+
+&lt;map name=&quot;影像地图名称&quot;&gt;                      //定义影像地图
+    &lt;area shape=&quot;热区形状&quot; coords=&quot;热区坐标&quot; href=&quot;链接地址&quot;&gt;
+    &lt;!--此处可以添加多个area--&gt;
+&lt;/map&gt;</code></pre>
+<p><strong>shape与coords的附加说明：</strong></p>
+<ul>
+<li>shape=”circle“，coords=”x,y,z“（x,y定义圆心位置，z为半径)</li>
+<li>shape=“polygon”，coords=“x1,y1,x2,y2……”（每个顶点的坐标都要写入）</li>
+<li>shape=“rectangle”，coords=“x1,y1,x2,y2”（一个顶点的坐标和其对角顶点坐标）</li>
+</ul>
+<h1 id="表格与列表标签"><a href="#表格与列表标签" class="headerlink" title="表格与列表标签"></a>表格与列表标签</h1><h2 id="表格标签"><a href="#表格标签" class="headerlink" title="表格标签"></a>表格标签</h2><h3 id="表格的定义与属性"><a href="#表格的定义与属性" class="headerlink" title="表格的定义与属性"></a>表格的定义与属性</h3><p><strong>表格的定义范例</strong></p>
+<pre><code class="html">&lt;table&gt;
+    &lt;tr&gt;                                //表格的第一个横行
+        &lt;th&gt;此处表头字体自动加粗&lt;/th&gt;         //具体到行内的一个单元格
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;                                //表格的第二个横行
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+<pre><code class="html">&lt;caption&gt;定义表格的标题&lt;/caption&gt;
+&lt;thead&gt;定义表格的表头&lt;/thead&gt;
+&lt;tbody&gt;对表格中的主体内容进行分组&lt;/tbody&gt;
+&lt;tfoot&gt;对表格中的页脚内容进行分组&lt;/tfoot&gt;
+// 后三个标签应该结合使用</code></pre>
+<p><strong>表格标签”table”的属性：</strong></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>width/height</td>
+<td>表格的宽度（高度），值可以是数值或百分比，数值表示像素点数，百分比是占浏览器宽度（高度）的比例</td>
+</tr>
+<tr>
+<td>align</td>
+<td>表格相对周围元素的对齐方式</td>
+</tr>
+<tr>
+<td>background</td>
+<td>表格的背景图片</td>
+</tr>
+<tr>
+<td>bgcolor</td>
+<td>表格的背景颜色，一般后期通过样式控制，不建议使用</td>
+</tr>
+<tr>
+<td>border</td>
+<td>表格边框宽度（像素为单位）</td>
+</tr>
+<tr>
+<td>bordercolor</td>
+<td>表格边框的颜色</td>
+</tr>
+<tr>
+<td>cellspacing</td>
+<td>单元格之间的间距</td>
+</tr>
+<tr>
+<td>cellpadding</td>
+<td>单元格内容与边界之间空白距离的大小</td>
+</tr>
+</tbody></table>
+<p><strong>表格设置border时，可以设置显示隐藏边框</strong></p>
+<table>
+<thead>
+<tr>
+<th>frame</th>
+<th>描述</th>
+<th>frame</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>box</td>
+<td>显示所有边框</td>
+<td>alove</td>
+<td>只显示上边框</td>
+</tr>
+<tr>
+<td>void</td>
+<td>不显示边框</td>
+<td>below</td>
+<td>只显示下边框</td>
+</tr>
+<tr>
+<td>hsides</td>
+<td>只显示上下边框</td>
+<td>lhs</td>
+<td>只显示左边框</td>
+</tr>
+<tr>
+<td>vsides</td>
+<td>只显示左右边框</td>
+<td>rhs</td>
+<td>只显示右边框</td>
+</tr>
+</tbody></table>
+<h3 id="单元格的设置"><a href="#单元格的设置" class="headerlink" title="单元格的设置"></a>单元格的设置</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>width/height</td>
+<td>单元格的宽和高，接受绝对值和相对值</td>
+<td>align</td>
+<td>单元格内容的水平对齐方式（left、right、center等）</td>
+</tr>
+<tr>
+<td>colspan</td>
+<td>规定单元格横跨列数（纵向合并单元格）</td>
+<td>valign</td>
+<td>单元格内容的垂直对齐方式（top、middle、bottom等）</td>
+</tr>
+<tr>
+<td>rowspan</td>
+<td>规定单元格横跨行数（横向合并单元格）</td>
+<td>bgcolor</td>
+<td>单元格的背景色</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>网页设计学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>虚幻引擎-2</title>
+    <url>/2021/04/09/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-2/</url>
+    <content><![CDATA[<h1 id="材质"><a href="#材质" class="headerlink" title="材质"></a>材质</h1><p>普通材质的文件下边框为浅绿色，直接资源管理器中右键创建即可</p>
+<h2 id="材质域（常用）"><a href="#材质域（常用）" class="headerlink" title="材质域（常用）"></a>材质域（常用）</h2><p>材质的类型一般由材质域区分（材质界面左下角中，细节页的材质栏）</p>
+<ul>
+<li><h3 id="表面"><a href="#表面" class="headerlink" title="表面"></a>表面</h3><p>普通的基本材质，如木质、铁质、玻璃等覆盖在表面的东西</p>
+</li>
+<li><h3 id="延迟贴花"><a href="#延迟贴花" class="headerlink" title="延迟贴花"></a>延迟贴花</h3><p>类似等同于喷漆，混合模式只能是半透明，如同投影一样覆盖在物体表面，本质是Actor组件，但可以作为只有一个贴花组件的Actor放入场景</p>
+</li>
+<li><h3 id="用户界面"><a href="#用户界面" class="headerlink" title="用户界面"></a>用户界面</h3><p>用于UI显示，需要新建媒体播放器，使用媒体纹理生成材质，更改材质域为“用户界面”，在用户UI中添加图像时便可以使用该材质放入外观-笔刷中。</p>
+<p>注：使用生成的材质时，需要在UI图表中添加默认值为该材质源媒体播放器的媒体播放器变量，并且事件构造中通过该变量添加对应播放器的“打开源”，如下图</p>
+<p><img src="/2021/04/09/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-2/8.png" alt="8"></p>
+</li>
+</ul>
+<p>左二接口接入媒体播放器（仅作为媒介），而左三接口则接入具体的视频媒体</p>
+<h2 id="混合模式（常用）"><a href="#混合模式（常用）" class="headerlink" title="混合模式（常用）"></a>混合模式（常用）</h2><ul>
+<li><h3 id="不透明"><a href="#不透明" class="headerlink" title="不透明"></a>不透明</h3><p>整个材质完全不透光，一般作为底层材质</p>
+</li>
+<li><h3 id="半透明"><a href="#半透明" class="headerlink" title="半透明"></a>半透明</h3><p>材质呈现半透明，可以和下层叠加，一般是作为贴花使用</p>
+</li>
+</ul>
+<h2 id="材质结点引脚（常用）"><a href="#材质结点引脚（常用）" class="headerlink" title="材质结点引脚（常用）"></a>材质结点引脚（常用）</h2><ul>
+<li><h3 id="基础颜色"><a href="#基础颜色" class="headerlink" title="基础颜色"></a>基础颜色</h3><p>材质的基本图像，可以是纯色或贴图，是整个材质的主外观</p>
+</li>
+<li><h3 id="Metallic"><a href="#Metallic" class="headerlink" title="Metallic"></a>Metallic</h3><p>一般叫做金属度，针对金属材质，设置金属的质感，反光光泽等</p>
+</li>
+<li><h3 id="高光度"><a href="#高光度" class="headerlink" title="高光度"></a>高光度</h3><p>基本用于非金属表面，一般输入一张比标准贴图亮的贴图，用于扩大光照面和暗面的对比，也可以直接输入一个具体的值，改变整体的反光强度，类似对比度</p>
+</li>
+<li><h3 id="粗糙度"><a href="#粗糙度" class="headerlink" title="粗糙度"></a>粗糙度</h3><p>决定材质的粗糙程度，0为完全光滑的镜面反射，1为完全粗糙的漫反射</p>
+</li>
+<li><h3 id="自发光颜色"><a href="#自发光颜色" class="headerlink" title="自发光颜色"></a>自发光颜色</h3><p>控制材质发光部位，设置自发光颜色或强度</p>
+</li>
+<li><h3 id="Normal"><a href="#Normal" class="headerlink" title="Normal"></a>Normal</h3><p>法线，输入一张法线贴图，用于记录材质不同位置的凹凸感</p>
+</li>
+<li><h3 id="折射"><a href="#折射" class="headerlink" title="折射"></a>折射</h3><p>输入一个很小的数，影响折射率，可以实现透明玻璃之类的折射，<strong>但效果不怎么样</strong></p>
+</li>
+</ul>
+<h2 id="材质快捷键节点"><a href="#材质快捷键节点" class="headerlink" title="材质快捷键节点"></a>材质快捷键节点</h2><p><img src="/2021/04/09/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-2/1.png" alt="1"></p>
+<p>快捷键：1+Left</p>
+<p>具体作用：创建一个常数值</p>
+<p><img src="/2021/04/09/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-2/3.png" alt="3"></p>
+<p>快捷键：3+Left</p>
+<p>具体作用：创建一个常量颜色值</p>
+<p><img src="/2021/04/09/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-2/2.png" alt="2"></p>
+<p>快捷键：s+Left</p>
+<p>具体作用：创建一个变量数值</p>
+<p><img src="/2021/04/09/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-2/6.png" alt="6"></p>
+<p>快捷键：V+Left</p>
+<p>具体作用：创建一个颜色变量</p>
+<p><img src="/2021/04/09/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-2/5.png" alt="5"></p>
+<p>快捷键：U+Left</p>
+<p>具体作用：创建一个UV缩放节点，用于缩放贴图</p>
+<p><img src="/2021/04/09/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-2/4.png" alt="4"></p>
+<p>快捷键：A+Left</p>
+<p>具体作用：将两种颜色或贴图叠加在一起</p>
+<p><img src="/2021/04/09/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-2/7.png" alt="7"></p>
+<p>快捷键：M+Left</p>
+<p>具体作用：将两种颜色或贴图混合在一起，一般用选定颜色乘白色贴图进行染色</p>
+<h2 id="材质实例"><a href="#材质实例" class="headerlink" title="材质实例"></a>材质实例</h2><p>由材质生成的材质实例将材质蓝图中的变量节点显示于右面接口，通过改变接口值来更加直观的实时改变材质的颜色等各种属性，能够实现一个材质创造一堆材质实例的操作</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>虚幻引擎学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux学习-1</title>
+    <url>/2021/01/26/Linux%E5%AD%A6%E4%B9%A0-1/</url>
+    <content><![CDATA[<p>Linux 是一套免费使用和自由传播的类 Unix 操作系统，是一个基于 POSIX 和 UNIX 的多用户、多任务、支持多线程和多 CPU 的操作系统。</p>
+<p>Linux 能运行主要的 UNIX 工具软件、应用程序和网络协议。它支持 32 位和 64 位硬件。Linux 继承了 Unix 以网络为核心的设计思想，是一个性能稳定的多用户网络操作系统。</p>
+<h1 id="Linux-应用领域"><a href="#Linux-应用领域" class="headerlink" title="Linux 应用领域"></a>Linux 应用领域</h1><p>今天各种场合都有使用各种 Linux 发行版，从嵌入式设备到超级计算机，并且在服务器领域确定了地位，通常服务器使用 LAMP（Linux + Apache + MySQL + PHP）或 LNMP（Linux + Nginx+ MySQL + PHP）组合。</p>
+<h1 id="Linux-和-Windows的区别"><a href="#Linux-和-Windows的区别" class="headerlink" title="Linux 和 Windows的区别"></a>Linux 和 Windows的区别</h1><p>目前国内 Linux 更多的是应用于服务器上，而桌面操作系统更多使用的是 Windows。主要区别如下</p>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">Windows</th>
+<th align="left">Linux</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">界面</td>
+<td align="left">界面统一，外壳程序固定所有 Windows 程序菜单几乎一致，快捷键也几乎相同</td>
+<td align="left">图形界面风格依发布版不同而不同，可能互不兼容。GNU/Linux 的终端机是从 UNIX 传承下来，基本命令和操作方法也几乎一致。</td>
+</tr>
+<tr>
+<td align="left">驱动程序</td>
+<td align="left">驱动程序丰富，版本更新频繁。默认安装程序里面一般包含有该版本发布时流行的硬件驱动程序，之后所出的新硬件驱动依赖于硬件厂商提供。对于一些老硬件，如果没有了原配的驱动有时很难支持。另外，有时硬件厂商未提供所需版本的 Windows 下的驱动，也会比较头痛。</td>
+<td align="left">由志愿者开发，由 Linux 核心开发小组发布，很多硬件厂商基于版权考虑并未提供驱动程序，尽管多数无需手动安装，但是涉及安装则相对复杂，使得新用户面对驱动程序问题（是否存在和安装方法）会一筹莫展。但是在开源开发模式下，许多老硬件尽管在Windows下很难支持的也容易找到驱动。HP、Intel、AMD 等硬件厂商逐步不同程度支持开源驱动，问题正在得到缓解。</td>
+</tr>
+<tr>
+<td align="left">使用</td>
+<td align="left">使用比较简单，容易入门。图形化界面对没有计算机背景知识的用户使用十分有利。</td>
+<td align="left">图形界面使用简单，容易入门。文字界面，需要学习才能掌握。</td>
+</tr>
+<tr>
+<td align="left">学习</td>
+<td align="left">系统构造复杂、变化频繁，且知识、技能淘汰快，深入学习困难。</td>
+<td align="left">系统构造简单、稳定，且知识、技能传承性好，深入学习相对容易。</td>
+</tr>
+<tr>
+<td align="left">软件</td>
+<td align="left">每一种特定功能可能都需要商业软件的支持，需要购买相应的授权。</td>
+<td align="left">大部分软件都可以自由获取，同样功能的软件选择较少。</td>
+</tr>
+</tbody></table>
+<h1 id="Linux-系统启动过程"><a href="#Linux-系统启动过程" class="headerlink" title="Linux 系统启动过程"></a>Linux 系统启动过程</h1><p>linux启动时我们会看到许多启动信息。</p>
+<p>Linux系统的启动过程并不是大家想象中的那么复杂，其过程可以分为5个阶段：</p>
+<ul>
+<li>内核的引导</li>
+<li>运行 init</li>
+<li>系统初始化</li>
+<li>建立终端 </li>
+<li>用户登录系统</li>
+</ul>
+<h2 id="init程序的类型："><a href="#init程序的类型：" class="headerlink" title="init程序的类型："></a>init程序的类型：</h2><ul>
+<li>SysV: init, CentOS 5之前, 配置文件： /etc/inittab</li>
+<li>Upstart: init,CentOS 6, 配置文件： /etc/inittab, /etc/init/*.conf</li>
+<li>Systemd： systemd, CentOS 7,配置文件： /usr/lib/systemd/system、 /etc/systemd/system</li>
+</ul>
+<h2 id="内核引导"><a href="#内核引导" class="headerlink" title="内核引导"></a>内核引导</h2><p>当计算机打开电源后，首先是BIOS开机自检，按照BIOS中设置的启动设备（通常是硬盘）来启动。</p>
+<p>操作系统接管硬件以后，首先读入 /boot 目录下的内核文件。</p>
+<h2 id="运行init"><a href="#运行init" class="headerlink" title="运行init"></a>运行init</h2><p>init 进程是系统所有进程的起点，你可以把它比拟成系统所有进程的老祖宗，没有这个进程，系统中任何进程都不会启动。</p>
+<p>init 程序首先是需要读取配置文件 /etc/inittab。</p>
+<h2 id="运行级别"><a href="#运行级别" class="headerlink" title="运行级别"></a>运行级别</h2><p>许多程序需要开机启动。它们在Windows叫做”服务”（service），在Linux就叫做”守护进程”（daemon）。</p>
+<p>init进程的一大任务，就是去运行这些开机启动的程序。</p>
+<p>但是，不同的场合需要启动不同的程序，比如用作服务器时，需要启动Apache，用作桌面就不需要。</p>
+<p>Linux允许为不同的场合，分配不同的开机启动程序，这就叫做”运行级别”（runlevel）。也就是说，启动时根据”运行级别”，确定要运行哪些程序。</p>
+<p>Linux系统有7个运行级别(runlevel)：</p>
+<ul>
+<li>运行级别0：系统停机状态，系统默认运行级别不能设为0，否则不能正常启动</li>
+<li>运行级别1：单用户工作状态，root权限，用于系统维护，禁止远程登陆</li>
+<li>运行级别2：多用户状态(没有NFS)</li>
+<li>运行级别3：完全的多用户状态(有NFS)，登陆后进入控制台命令行模式</li>
+<li>运行级别4：系统未使用，保留</li>
+<li>运行级别5：X11控制台，登陆后进入图形GUI模式</li>
+<li>运行级别6：系统正常关闭并重启，默认运行级别不能设为6，否则不能正常启动</li>
+</ul>
+<h2 id="系统初始化"><a href="#系统初始化" class="headerlink" title="系统初始化"></a>系统初始化</h2><p>在init的配置文件中有这么一行： si::sysinit:/etc/rc.d/rc.sysinit　它调用执行了/etc/rc.d/rc.sysinit，而rc.sysinit是一个bash shell的脚本，它主要是完成一些系统初始化的工作，rc.sysinit是每一个运行级别都要首先运行的重要脚本。</p>
+<p>它主要完成的工作有：激活交换分区，检查磁盘，加载硬件模块以及其它一些需要优先执行任务。</p>
+<pre><code>l5:5:wait:/etc/rc.d/rc 5</code></pre>
+<p>这一行表示以5为参数运行/etc/rc.d/rc，/etc/rc.d/rc是一个Shell脚本，它接受5作为参数，去执行/etc/rc.d/rc5.d/目录下的所有的rc启动脚本，/etc/rc.d/rc5.d/目录中的这些启动脚本实际上都是一些连接文件，而不是真正的rc启动脚本，真正的rc启动脚本实际上都是放在/etc/rc.d/init.d/目录下。</p>
+<p>而这些rc启动脚本有着类似的用法，它们一般能接受start、stop、restart、status等参数。</p>
+<p>/etc/rc.d/rc5.d/中的rc启动脚本通常是K或S开头的连接文件，对于以 S 开头的启动脚本，将以start参数来运行。</p>
+<p>而如果发现存在相应的脚本也存在K打头的连接，而且已经处于运行态了(以/var/lock/subsys/下的文件作为标志)，则将首先以stop为参数停止这些已经启动了的守护进程，然后再重新运行。</p>
+<p>这样做是为了保证是当init改变运行级别时，所有相关的守护进程都将重启。</p>
+<p>至于在每个运行级中将运行哪些守护进程，用户可以通过chkconfig或setup中的”System Services”来自行设定。</p>
+<h2 id="建立终端"><a href="#建立终端" class="headerlink" title="建立终端"></a>建立终端</h2><p>rc执行完毕后，返回init。这时基本系统环境已经设置好了，各种守护进程也已经启动了。</p>
+<p>init接下来会打开6个终端，以便用户登录系统。在inittab中的以下6行就是定义了6个终端：</p>
+<pre><code>1:2345:respawn:/sbin/mingetty tty1
+2:2345:respawn:/sbin/mingetty tty2
+3:2345:respawn:/sbin/mingetty tty3
+4:2345:respawn:/sbin/mingetty tty4
+5:2345:respawn:/sbin/mingetty tty5
+6:2345:respawn:/sbin/mingetty tty6</code></pre>
+<p>从上面可以看出在2、3、4、5的运行级别中都将以respawn方式运行mingetty程序，mingetty程序能打开终端、设置模式。</p>
+<p>同时它会显示一个文本登录界面，这个界面就是我们经常看到的登录界面，在这个登录界面中会提示用户输入用户名，而用户输入的用户将作为参数传给login程序来验证用户的身份。</p>
+<h1 id="用户登录系统"><a href="#用户登录系统" class="headerlink" title="用户登录系统"></a>用户登录系统</h1><p>一般来说，用户的登录方式有三种：</p>
+<ul>
+<li>（1）命令行登录</li>
+<li>（2）ssh登录</li>
+<li>（3）图形界面登录</li>
+</ul>
+<p>对于运行级别为5的图形方式用户来说，他们的登录是通过一个图形化的登录界面。登录成功后可以直接进入 KDE、Gnome 等窗口管理器。</p>
+<p>而本文主要讲的还是文本方式登录的情况：当我们看到mingetty的登录界面时，我们就可以输入用户名和密码来登录系统了。</p>
+<p>Linux 的账号验证程序是 login，login 会接收 mingetty 传来的用户名作为用户名参数。</p>
+<p>然后 login 会对用户名进行分析：如果用户名不是 root，且存在 /etc/nologin 文件，login 将输出 nologin 文件的内容，然后退出。</p>
+<p>这通常用来系统维护时防止非root用户登录。只有/etc/securetty中登记了的终端才允许 root 用户登录，如果不存在这个文件，则 root 用户可以在任何终端上登录。</p>
+<p>/etc/usertty文件用于对用户作出附加访问限制，如果不存在这个文件，则没有其他限制。</p>
+<h2 id="图形模式与文字模式的切换方式"><a href="#图形模式与文字模式的切换方式" class="headerlink" title="图形模式与文字模式的切换方式"></a>图形模式与文字模式的切换方式</h2><p>Linux预设提供了六个命令窗口终端机让我们来登录。</p>
+<p>默认我们登录的就是第一个窗口，也就是tty1，这个六个窗口分别为tty1,tty2 … tty6，你可以按下Ctrl + Alt + F1 ~ F6 来切换它们。</p>
+<p>如果你安装了图形界面，默认情况下是进入图形界面的，此时你就可以按Ctrl + Alt + F1 ~ F6来进入其中一个命令窗口界面。</p>
+<p>当你进入命令窗口界面后再返回图形界面只要按下Ctrl + Alt + F7 就回来了。</p>
+<p>如果你用的vmware 虚拟机，命令窗口切换的快捷键为 Alt + Space +（ F1-F6）. </p>
+<p>如果你在图形界面下请按Alt + Shift + Ctrl + （F1-F6） 切换至命令窗口。</p>
+<h1 id="Linux-关机"><a href="#Linux-关机" class="headerlink" title="Linux 关机"></a>Linux 关机</h1><p>在linux领域内<strong>大多用在服务器上，很少遇到关机的操作</strong>。毕竟服务器上跑一个服务是永无止境的，除非特殊情况下，不得已才会关机。</p>
+<p>正确的关机流程为：sync &gt; shutdown &gt; reboot &gt; halt</p>
+<p>关机指令为：shutdown ，你可以man shutdown 来看一下帮助文档。</p>
+<pre><code>sync 将数据由内存同步到硬盘中。
+
+shutdown 关机指令，你可以man shutdown 来看一下帮助文档。例如你可以运行如下命令关机：
+
+shutdown –h 10 ‘This server will shutdown after 10 mins’ 这个命令告诉大家，计算机将在10分钟后关机，并且会显示在登陆用户的当前屏幕中。
+
+shutdown –h now 立马关机
+
+shutdown –h 20:25 系统会在今天20:25关机
+
+shutdown –h +10 十分钟后关机
+
+shutdown –r now 系统立马重启
+
+shutdown –r +10 系统十分钟后重启
+
+reboot 就是重启，等同于 shutdown –r now
+
+halt 关闭系统，等同于shutdown –h now 和 poweroff</code></pre>
+<p>最后总结一下，不管是重启系统还是关闭系统，首先要运行 <strong>sync</strong> 命令，把内存中的数据写到磁盘中。</p>
+<p>关机的命令有 <strong>shutdown –h now halt poweroff</strong> 和 <strong>init 0</strong> , 重启系统的命令有 <strong>shutdown –r now reboot init 6</strong>。</p>
+<h2 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h2><p><strong>[Tab] 有『命令补全』与『文件补齐』的功能</strong></p>
+<pre><code>[Tab]      ## 接在一串指令的第一个字的后面，则为『命令补全』
+[Tab]      ## 接在一串指令的第二个字以后时，则为『文件补齐』</code></pre>
+<p>若安装 bash-completion 软件，则在某些指令后面使用 [tab] 按键时，可以进行『选项/参数的补齐』功能！</p>
+<p><strong>[Ctrl]+ C 如果在Linux 底下输入了错误的指令或参数，想让当前的程序『停掉』的话，可以输入：</strong></p>
+<pre><code>[Ctrl] + c </code></pre>
+<p><strong>[Ctrl]-d 『键盘输入结束(End Of File, EOF 或 End Of Input)』的意思</strong></p>
+<p>另外，他也可以用来取代 exit 的输入。</p>
+<p>例如你想要直接离开文字接口，可以直接按下：</p>
+<pre><code>[Ctrl] + d   ## 相当于输入 exit</code></pre>
+<p><strong>[shift]+{[PageUP]|[Page Down]}</strong></p>
+<pre><code>[Shift]+[Page Up]    ## 往前翻页 
+
+[Shift]+[Page Down] ## 往后翻页</code></pre>
+<p>shutdown 会给系统计划一个时间关机。它可以被用于停止、关机、重启机器。shutdown 会给系统计划一个时间关机。它可以被用于停止、关机、重启机器。</p>
+<pre><code># shutdown -p now  ### 关闭机器
+# shutdown -H now  ### 停止机器      
+# shutdown -r 09:35 ### 在 09:35am 重启机器</code></pre>
+<p>要取消即将进行的关机，只要输入下面的命令：</p>
+<pre><code># shutdown -c</code></pre>
+<p>halt 命令通知硬件来停止所有的 CPU 功能，但是仍然保持通电。你可以用它使系统处于低层维护状态。注意在有些情况会它会完全关闭系统。</p>
+<pre><code># halt             ### 停止机器
+# halt -p          ### 关闭机器、关闭电源
+# halt --reboot    ### 重启机器</code></pre>
+<p>poweroff 会发送一个 ACPI 信号来通知系统关机。</p>
+<pre><code># poweroff           ### 关闭机器、关闭电源
+# poweroff --halt    ### 停止机器
+# poweroff --reboot  ### 重启机器</code></pre>
+<p>reboot 命令 reboot 通知系统重启。</p>
+<pre><code># reboot           ### 重启机器
+# reboot --halt    ### 停止机器
+# reboot -p        ### 关闭机器</code></pre>
+<h1 id="Linux-系统目录结构"><a href="#Linux-系统目录结构" class="headerlink" title="Linux 系统目录结构"></a>Linux 系统目录结构</h1><p>登录系统后，在当前命令窗口下输入命令：</p>
+<pre><code> ls / </code></pre>
+<p>可显示当前层的目录。</p>
+<p><img src="/2021/01/26/Linux%E5%AD%A6%E4%B9%A0-1/pic-1.png" alt="树状目录结构图"></p>
+<p>在 Linux 或 Unix 操作系统中，所有的文件和目录都被组织成以一个根节点开始的倒置的树状结构。</p>
+<p>文件系统的最顶层是由根目录开始的，系统使用 <strong>/</strong> 来表示根目录。在根目录之下的既可以是目录，也可以是文件，而每一个目录中又可以包含子目录文件。如此反复就可以构成一个庞大的文件系统。</p>
+<p>在Linux文件系统中有两个特殊的目录，一个用户所在的工作目录，也叫当前目录，可以使用一个点 <strong>.</strong> 来表示；另一个是当前目录的上一级目录，也叫父目录，可以使用两个点 <strong>..</strong> 来表示。</p>
+<ul>
+<li> . ：代表当前的目录，也可以使用 ./ 来表示；</li>
+<li> .. ：代表上一层目录，也可以 ../ 来代表。</li>
+</ul>
+<p>如果一个目录或文件名以一个点 . 开始，表示这个目录或文件是一个隐藏目录或文件(如：.bashrc)。即以默认方式查找时，不显示该目录或文件。</p>
+<h2 id="1-系统启动必须："><a href="#1-系统启动必须：" class="headerlink" title="1.系统启动必须："></a><strong>1.系统启动必须：</strong></h2><p><strong>/boot：</strong>存放的启动Linux 时使用的内核文件，包括连接文件以及镜像文件。</p>
+<p><strong>/etc：</strong>存放<strong>所有</strong>的系统需要的<strong>配置文件</strong>和<strong>子目录列表，</strong>更改目录下的文件可能会导致系统不能启动。</p>
+<p><strong>/lib</strong>：存放基本代码库（比如c++库），其作用类似于Windows里的DLL文件。几乎所有的应用程序都需要用到这些共享库。</p>
+<p><strong>/sys</strong>： 这是linux2.6内核的一个很大的变化。该目录下安装了2.6内核中新出现的一个文件系统 sysfs 。sysfs文件系统集成了下面3种文件系统的信息：针对进程信息的proc文件系统、针对设备的devfs文件系统以及针对伪终端的devpts文件系统。该文件系统是内核设备树的一个直观反映。当一个内核对象被创建的时候，对应的文件和目录也在内核对象子系统中</p>
+<h2 id="2-指令集合："><a href="#2-指令集合：" class="headerlink" title="2.指令集合："></a><strong>2.指令集合：</strong></h2><p><strong>/bin：</strong>存放着最常用的程序和指令</p>
+<p><strong>/sbin：</strong>只有系统管理员能使用的程序和指令。</p>
+<h2 id="3-外部文件管理："><a href="#3-外部文件管理：" class="headerlink" title="3.外部文件管理："></a><strong>3.外部文件管理：</strong></h2><p><strong>/dev ：</strong>Device(设备)的缩写, 存放的是Linux的外部设备。<strong>注意：</strong>在Linux中访问设备和访问文件的方式是相同的。</p>
+<p><strong>/media</strong>：类windows的<strong>其他设备，</strong>例如U盘、光驱等等，识别后linux会把设备放到这个目录下。</p>
+<p><strong>/mnt</strong>：临时挂载别的文件系统的，我们可以将光驱挂载在/mnt/上，然后进入该目录就可以查看光驱里的内容了。</p>
+<h2 id="4-临时文件："><a href="#4-临时文件：" class="headerlink" title="4.临时文件："></a><strong>4.临时文件：</strong></h2><p><strong>/run</strong>：是一个临时文件系统，存储系统启动以来的信息。当系统重启时，这个目录下的文件应该被删掉或清除。如果你的系统上有 /var/run 目录，应该让它指向 run。</p>
+<p><strong>/lost+found</strong>：一般情况下为空的，系统非法关机后，这里就存放一些文件。</p>
+<p><strong>/tmp</strong>：这个目录是用来存放一些临时文件的。</p>
+<h2 id="5-账户："><a href="#5-账户：" class="headerlink" title="5.账户："></a><strong>5.账户：</strong></h2><p><strong>/root</strong>：系统管理员的用户主目录。</p>
+<p><strong>/home</strong>：用户的主目录，以用户的账号命名的。</p>
+<p><strong>/usr</strong>：用户的很多应用程序和文件都放在这个目录下，类似于windows下的program files目录。</p>
+<p><strong>/usr/bin：</strong>系统用户使用的应用程序与指令。</p>
+<p><strong>/usr/sbin：</strong>超级用户使用的比较高级的管理程序和系统守护程序。</p>
+<p><strong>/usr/src：</strong>内核源代码默认的放置目录。</p>
+<h2 id="6-运行过程中要用："><a href="#6-运行过程中要用：" class="headerlink" title="6.运行过程中要用："></a><strong>6.运行过程中要用：</strong></h2><p><strong>/var</strong>：存放经常修改的数据，比如程序运行的日志文件（/var/log 目录下）。</p>
+<p><strong>/proc</strong>：管理<strong>内存空间！</strong>虚拟的目录，是系统内存的映射，我们可以直接访问这个目录来，获取系统信息。这个目录的内容不在硬盘上而是在内存里，我们也可以直接修改里面的某些文件来做修改。</p>
+<h2 id="7-扩展用的："><a href="#7-扩展用的：" class="headerlink" title="7.扩展用的："></a><strong>7.扩展用的：</strong></h2><p><strong>/opt</strong>：默认是空的，我们安装额外软件可以放在这个里面。</p>
+<p><strong>/srv</strong>：存放服务启动后需要提取的数据<strong>（不用服务器就是空）</strong></p>
+<h2 id="8-其他："><a href="#8-其他：" class="headerlink" title="8.其他："></a>8.其他：</h2><p><strong>/proc</strong>：<br>proc 是 Processes(进程) 的缩写，/proc 是一种伪文件系统（也即虚拟文件系统），存储的是当前内核运行状态的一系列特殊文件，这个目录是一个虚拟的目录，它是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息。<br>这个目录的内容不在硬盘上而是在内存里，我们也可以直接修改里面的某些文件，比如可以通过下面的命令来屏蔽主机的ping命令，使别人无法ping你的机器：</p>
+<pre><code>echo 1 &gt; /proc/sys/net/ipv4/icmp_echo_ignore_all</code></pre>
+<p><strong>/selinux：</strong><br> 这个目录是 Redhat/CentOS 所特有的目录，Selinux 是一个安全机制，类似于 windows 的防火墙，但是这套机制比较复杂，这个目录就是存放selinux相关的文件的。</p>
+<h4 id="在-Linux-系统中，有几个目录是比较重要的，平时需要注意不要误删除或者随意更改内部文件。"><a href="#在-Linux-系统中，有几个目录是比较重要的，平时需要注意不要误删除或者随意更改内部文件。" class="headerlink" title="在 Linux 系统中，有几个目录是比较重要的，平时需要注意不要误删除或者随意更改内部文件。"></a>在 Linux 系统中，有几个目录是比较重要的，平时需要注意不要误删除或者随意更改内部文件。</h4><p><strong>/etc</strong>： 上边也提到了，这个是系统中的配置文件，如果你更改了该目录下的某个文件可能会导致系统不能启动。</p>
+<p><strong>/bin, /sbin, /usr/bin, /usr/sbin</strong>: 这是系统预设的执行文件的放置目录，比如 ls 就是在 /bin/ls 目录下的。</p>
+<p>值得提出的是，/bin, /usr/bin 是给系统用户使用的指令（除root外的通用户），而/sbin, /usr/sbin 则是给 root 使用的指令。</p>
+<p><strong>/var</strong>： 这是一个非常重要的目录，系统上跑了很多程序，那么每个程序都会有相应的日志产生，而这些日志就被记录到这个目录下，具体在 /var/log 目录下，另外 mail 的预设放置也是在这里。</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>Linux学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>虚幻引擎-1</title>
     <url>/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/</url>
     <content><![CDATA[<h1 id="快捷键节点："><a href="#快捷键节点：" class="headerlink" title="快捷键节点："></a>快捷键节点：</h1><p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/1.png" alt="1"></p>
@@ -1761,362 +2251,6 @@ int main()
       </categories>
       <tags>
         <tag>虚幻引擎学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>网页设计学习-1</title>
-    <url>/2021/03/19/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0-1/</url>
-    <content><![CDATA[<h1 id="文字段落标签"><a href="#文字段落标签" class="headerlink" title="文字段落标签"></a>文字段落标签</h1><h2 id="标题与段落标签"><a href="#标题与段落标签" class="headerlink" title="标题与段落标签"></a>标题与段落标签</h2><h3 id="标题标签"><a href="#标题标签" class="headerlink" title="标题标签"></a>标题标签</h3><pre><code class="html">&lt;h1&gt; &lt;h2&gt; &lt;h3&gt; &lt;h4&gt; &lt;h5&gt; &lt;h6&gt; //从左到右重要性递减
-    &lt;hn align=&quot;对齐方式&quot;&gt;标题内容&lt;/hn&gt;</code></pre>
-<h3 id="段落标签"><a href="#段落标签" class="headerlink" title="段落标签"></a>段落标签</h3><pre><code class="html">&lt;p align=&quot;对齐方式&quot;&gt;段落文本&lt;/p&gt;</code></pre>
-<h3 id="水平分割线标签"><a href="#水平分割线标签" class="headerlink" title="水平分割线标签"></a>水平分割线标签</h3><pre><code class="html">&lt;hr 属性=&quot;属性值&quot;/&gt;
-//size设置粗细，align对齐方式，width设置宽度，color设置颜色，noshade设置3d阴影</code></pre>
-<h3 id="换行缩进标签"><a href="#换行缩进标签" class="headerlink" title="换行缩进标签"></a>换行缩进标签</h3><pre><code class="html">&lt;br/&gt;                        //强制换行
-&lt;blockquote&gt;&lt;/blockquote&gt;   //缩进</code></pre>
-<h2 id="文本的格式化标签"><a href="#文本的格式化标签" class="headerlink" title="文本的格式化标签"></a>文本的格式化标签</h2><pre><code class="html">&lt;b&gt;&lt;/b&gt;                        //粗体
-&lt;strong&gt;&lt;/strong&gt;            //强调，一般为粗体
-&lt;i&gt;&lt;/i&gt;                        //斜体
-&lt;em&gt;&lt;/em&gt;                    //强调，一般为斜体
-&lt;del&gt;&lt;/del&gt;                    //删除线
-&lt;ins&gt;&lt;/ins&gt;                    //加下划线
-&lt;sup&gt;&lt;/sup&gt;                    //上标
-&lt;sub&gt;&lt;/sub&gt;                    //下标</code></pre>
-<h2 id="特殊字符标签"><a href="#特殊字符标签" class="headerlink" title="特殊字符标签"></a>特殊字符标签</h2><table>
-<thead>
-<tr>
-<th>特殊字符</th>
-<th>字符代码</th>
-<th>特殊字符</th>
-<th>字符代码</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>空格</td>
-<td>&amp;nbsp；</td>
-<td>“</td>
-<td>&amp;quot；</td>
-</tr>
-<tr>
-<td>&lt;</td>
-<td>&amp;lt；</td>
-<td>©</td>
-<td>&amp;copy；</td>
-</tr>
-<tr>
-<td>&gt;</td>
-<td>&amp;gt；</td>
-<td>®</td>
-<td>&amp;reg；</td>
-</tr>
-<tr>
-<td>&amp;</td>
-<td>&amp;amp；</td>
-<td>×</td>
-<td>&amp;times；</td>
-</tr>
-</tbody></table>
-<h1 id="图像与超链接标签"><a href="#图像与超链接标签" class="headerlink" title="图像与超链接标签"></a>图像与超链接标签</h1><h2 id="图像标签"><a href="#图像标签" class="headerlink" title="图像标签"></a>图像标签</h2><pre><code class="html">&lt;img src=&quot;图像URL&quot;/&gt;</code></pre>
-<h2 id="超链接标签"><a href="#超链接标签" class="headerlink" title="超链接标签"></a>超链接标签</h2><h3 id="创建超链接"><a href="#创建超链接" class="headerlink" title="创建超链接"></a>创建超链接</h3><pre><code class="html">&lt;a href=&quot;资源地址&quot; target=&quot;窗口名称&quot; title=&quot;链接提示&quot;&gt;链接对象&lt;/a&gt;</code></pre>
-<h3 id="绝对路径和相对路径"><a href="#绝对路径和相对路径" class="headerlink" title="绝对路径和相对路径"></a>绝对路径和相对路径</h3><ol>
-<li>绝对路径：网络主页上所存在的，或是文件在硬盘上的真实路径。</li>
-<li>相对路径：以当前文件为起点，进行相对文件的查找。</li>
-</ol>
-<pre><code class="html">./          //指当前文件所在目录下（可省略）
-../         //指当前文件所在目录的上一目录下</code></pre>
-<h3 id="锚点链接"><a href="#锚点链接" class="headerlink" title="锚点链接"></a>锚点链接</h3><p>锚点定义：</p>
-<pre><code class="html">&lt;a name=&quot;锚点名称&quot;&gt;文字&lt;/a&gt;
-//或将name改做id</code></pre>
-<p>跳转锚点：</p>
-<pre><code class="html">&lt;a href=&quot;锚点名称&quot;&gt;链接的文字&lt;/a&gt;</code></pre>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>网页设计学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>虚幻引擎-2</title>
-    <url>/2021/04/09/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-2/</url>
-    <content><![CDATA[<h1 id="材质"><a href="#材质" class="headerlink" title="材质"></a>材质</h1><p>普通材质的文件下边框为浅绿色，直接资源管理器中右键创建即可</p>
-<h2 id="材质域（常用）"><a href="#材质域（常用）" class="headerlink" title="材质域（常用）"></a>材质域（常用）</h2><p>材质的类型一般由材质域区分（材质界面左下角中，细节页的材质栏）</p>
-<ul>
-<li><h3 id="表面"><a href="#表面" class="headerlink" title="表面"></a>表面</h3><p>普通的基本材质，如木质、铁质、玻璃等覆盖在表面的东西</p>
-</li>
-<li><h3 id="延迟贴花"><a href="#延迟贴花" class="headerlink" title="延迟贴花"></a>延迟贴花</h3><p>类似等同于喷漆，混合模式只能是半透明，如同投影一样覆盖在物体表面，本质是Actor组件，但可以作为只有一个贴花组件的Actor放入场景</p>
-</li>
-<li><h3 id="用户界面"><a href="#用户界面" class="headerlink" title="用户界面"></a>用户界面</h3><p>用于UI显示，需要新建媒体播放器，使用媒体纹理生成材质，更改材质域为“用户界面”，在用户UI中添加图像时便可以使用该材质放入外观-笔刷中。</p>
-<p>注：使用生成的材质时，需要在UI图表中添加默认值为该材质源媒体播放器的媒体播放器变量，并且事件构造中通过该变量添加对应播放器的“打开源”，如下图</p>
-<p><img src="/2021/04/09/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-2/8.png" alt="8"></p>
-</li>
-</ul>
-<p>左二接口接入媒体播放器（仅作为媒介），而左三接口则接入具体的视频媒体</p>
-<h2 id="混合模式（常用）"><a href="#混合模式（常用）" class="headerlink" title="混合模式（常用）"></a>混合模式（常用）</h2><ul>
-<li><h3 id="不透明"><a href="#不透明" class="headerlink" title="不透明"></a>不透明</h3><p>整个材质完全不透光，一般作为底层材质</p>
-</li>
-<li><h3 id="半透明"><a href="#半透明" class="headerlink" title="半透明"></a>半透明</h3><p>材质呈现半透明，可以和下层叠加，一般是作为贴花使用</p>
-</li>
-</ul>
-<h2 id="材质结点引脚（常用）"><a href="#材质结点引脚（常用）" class="headerlink" title="材质结点引脚（常用）"></a>材质结点引脚（常用）</h2><ul>
-<li><h3 id="基础颜色"><a href="#基础颜色" class="headerlink" title="基础颜色"></a>基础颜色</h3><p>材质的基本图像，可以是纯色或贴图，是整个材质的主外观</p>
-</li>
-<li><h3 id="Metallic"><a href="#Metallic" class="headerlink" title="Metallic"></a>Metallic</h3><p>一般叫做金属度，针对金属材质，设置金属的质感，反光光泽等</p>
-</li>
-<li><h3 id="高光度"><a href="#高光度" class="headerlink" title="高光度"></a>高光度</h3><p>基本用于非金属表面，一般输入一张比标准贴图亮的贴图，用于扩大光照面和暗面的对比，也可以直接输入一个具体的值，改变整体的反光强度，类似对比度</p>
-</li>
-<li><h3 id="粗糙度"><a href="#粗糙度" class="headerlink" title="粗糙度"></a>粗糙度</h3><p>决定材质的粗糙程度，0为完全光滑的镜面反射，1为完全粗糙的漫反射</p>
-</li>
-<li><h3 id="自发光颜色"><a href="#自发光颜色" class="headerlink" title="自发光颜色"></a>自发光颜色</h3><p>控制材质发光部位，设置自发光颜色或强度</p>
-</li>
-<li><h3 id="Normal"><a href="#Normal" class="headerlink" title="Normal"></a>Normal</h3><p>法线，输入一张法线贴图，用于记录材质不同位置的凹凸感</p>
-</li>
-<li><h3 id="折射"><a href="#折射" class="headerlink" title="折射"></a>折射</h3><p>输入一个很小的数，影响折射率，可以实现透明玻璃之类的折射，<strong>但效果不怎么样</strong></p>
-</li>
-</ul>
-<h2 id="材质快捷键节点"><a href="#材质快捷键节点" class="headerlink" title="材质快捷键节点"></a>材质快捷键节点</h2><p><img src="/2021/04/09/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-2/1.png" alt="1"></p>
-<p>快捷键：1+Left</p>
-<p>具体作用：创建一个常数值</p>
-<p><img src="/2021/04/09/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-2/3.png" alt="3"></p>
-<p>快捷键：3+Left</p>
-<p>具体作用：创建一个常量颜色值</p>
-<p><img src="/2021/04/09/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-2/2.png" alt="2"></p>
-<p>快捷键：s+Left</p>
-<p>具体作用：创建一个变量数值</p>
-<p><img src="/2021/04/09/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-2/6.png" alt="6"></p>
-<p>快捷键：V+Left</p>
-<p>具体作用：创建一个颜色变量</p>
-<p><img src="/2021/04/09/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-2/5.png" alt="5"></p>
-<p>快捷键：U+Left</p>
-<p>具体作用：创建一个UV缩放节点，用于缩放贴图</p>
-<p><img src="/2021/04/09/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-2/4.png" alt="4"></p>
-<p>快捷键：A+Left</p>
-<p>具体作用：将两种颜色或贴图叠加在一起</p>
-<p><img src="/2021/04/09/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-2/7.png" alt="7"></p>
-<p>快捷键：M+Left</p>
-<p>具体作用：将两种颜色或贴图混合在一起，一般用选定颜色乘白色贴图进行染色</p>
-<h2 id="材质实例"><a href="#材质实例" class="headerlink" title="材质实例"></a>材质实例</h2><p>由材质生成的材质实例将材质蓝图中的变量节点显示于右面接口，通过改变接口值来更加直观的实时改变材质的颜色等各种属性，能够实现一个材质创造一堆材质实例的操作</p>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>虚幻引擎学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux学习-1</title>
-    <url>/2021/01/26/Linux%E5%AD%A6%E4%B9%A0-1/</url>
-    <content><![CDATA[<p>Linux 是一套免费使用和自由传播的类 Unix 操作系统，是一个基于 POSIX 和 UNIX 的多用户、多任务、支持多线程和多 CPU 的操作系统。</p>
-<p>Linux 能运行主要的 UNIX 工具软件、应用程序和网络协议。它支持 32 位和 64 位硬件。Linux 继承了 Unix 以网络为核心的设计思想，是一个性能稳定的多用户网络操作系统。</p>
-<h1 id="Linux-应用领域"><a href="#Linux-应用领域" class="headerlink" title="Linux 应用领域"></a>Linux 应用领域</h1><p>今天各种场合都有使用各种 Linux 发行版，从嵌入式设备到超级计算机，并且在服务器领域确定了地位，通常服务器使用 LAMP（Linux + Apache + MySQL + PHP）或 LNMP（Linux + Nginx+ MySQL + PHP）组合。</p>
-<h1 id="Linux-和-Windows的区别"><a href="#Linux-和-Windows的区别" class="headerlink" title="Linux 和 Windows的区别"></a>Linux 和 Windows的区别</h1><p>目前国内 Linux 更多的是应用于服务器上，而桌面操作系统更多使用的是 Windows。主要区别如下</p>
-<table>
-<thead>
-<tr>
-<th align="left"></th>
-<th align="left">Windows</th>
-<th align="left">Linux</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">界面</td>
-<td align="left">界面统一，外壳程序固定所有 Windows 程序菜单几乎一致，快捷键也几乎相同</td>
-<td align="left">图形界面风格依发布版不同而不同，可能互不兼容。GNU/Linux 的终端机是从 UNIX 传承下来，基本命令和操作方法也几乎一致。</td>
-</tr>
-<tr>
-<td align="left">驱动程序</td>
-<td align="left">驱动程序丰富，版本更新频繁。默认安装程序里面一般包含有该版本发布时流行的硬件驱动程序，之后所出的新硬件驱动依赖于硬件厂商提供。对于一些老硬件，如果没有了原配的驱动有时很难支持。另外，有时硬件厂商未提供所需版本的 Windows 下的驱动，也会比较头痛。</td>
-<td align="left">由志愿者开发，由 Linux 核心开发小组发布，很多硬件厂商基于版权考虑并未提供驱动程序，尽管多数无需手动安装，但是涉及安装则相对复杂，使得新用户面对驱动程序问题（是否存在和安装方法）会一筹莫展。但是在开源开发模式下，许多老硬件尽管在Windows下很难支持的也容易找到驱动。HP、Intel、AMD 等硬件厂商逐步不同程度支持开源驱动，问题正在得到缓解。</td>
-</tr>
-<tr>
-<td align="left">使用</td>
-<td align="left">使用比较简单，容易入门。图形化界面对没有计算机背景知识的用户使用十分有利。</td>
-<td align="left">图形界面使用简单，容易入门。文字界面，需要学习才能掌握。</td>
-</tr>
-<tr>
-<td align="left">学习</td>
-<td align="left">系统构造复杂、变化频繁，且知识、技能淘汰快，深入学习困难。</td>
-<td align="left">系统构造简单、稳定，且知识、技能传承性好，深入学习相对容易。</td>
-</tr>
-<tr>
-<td align="left">软件</td>
-<td align="left">每一种特定功能可能都需要商业软件的支持，需要购买相应的授权。</td>
-<td align="left">大部分软件都可以自由获取，同样功能的软件选择较少。</td>
-</tr>
-</tbody></table>
-<h1 id="Linux-系统启动过程"><a href="#Linux-系统启动过程" class="headerlink" title="Linux 系统启动过程"></a>Linux 系统启动过程</h1><p>linux启动时我们会看到许多启动信息。</p>
-<p>Linux系统的启动过程并不是大家想象中的那么复杂，其过程可以分为5个阶段：</p>
-<ul>
-<li>内核的引导</li>
-<li>运行 init</li>
-<li>系统初始化</li>
-<li>建立终端 </li>
-<li>用户登录系统</li>
-</ul>
-<h2 id="init程序的类型："><a href="#init程序的类型：" class="headerlink" title="init程序的类型："></a>init程序的类型：</h2><ul>
-<li>SysV: init, CentOS 5之前, 配置文件： /etc/inittab</li>
-<li>Upstart: init,CentOS 6, 配置文件： /etc/inittab, /etc/init/*.conf</li>
-<li>Systemd： systemd, CentOS 7,配置文件： /usr/lib/systemd/system、 /etc/systemd/system</li>
-</ul>
-<h2 id="内核引导"><a href="#内核引导" class="headerlink" title="内核引导"></a>内核引导</h2><p>当计算机打开电源后，首先是BIOS开机自检，按照BIOS中设置的启动设备（通常是硬盘）来启动。</p>
-<p>操作系统接管硬件以后，首先读入 /boot 目录下的内核文件。</p>
-<h2 id="运行init"><a href="#运行init" class="headerlink" title="运行init"></a>运行init</h2><p>init 进程是系统所有进程的起点，你可以把它比拟成系统所有进程的老祖宗，没有这个进程，系统中任何进程都不会启动。</p>
-<p>init 程序首先是需要读取配置文件 /etc/inittab。</p>
-<h2 id="运行级别"><a href="#运行级别" class="headerlink" title="运行级别"></a>运行级别</h2><p>许多程序需要开机启动。它们在Windows叫做”服务”（service），在Linux就叫做”守护进程”（daemon）。</p>
-<p>init进程的一大任务，就是去运行这些开机启动的程序。</p>
-<p>但是，不同的场合需要启动不同的程序，比如用作服务器时，需要启动Apache，用作桌面就不需要。</p>
-<p>Linux允许为不同的场合，分配不同的开机启动程序，这就叫做”运行级别”（runlevel）。也就是说，启动时根据”运行级别”，确定要运行哪些程序。</p>
-<p>Linux系统有7个运行级别(runlevel)：</p>
-<ul>
-<li>运行级别0：系统停机状态，系统默认运行级别不能设为0，否则不能正常启动</li>
-<li>运行级别1：单用户工作状态，root权限，用于系统维护，禁止远程登陆</li>
-<li>运行级别2：多用户状态(没有NFS)</li>
-<li>运行级别3：完全的多用户状态(有NFS)，登陆后进入控制台命令行模式</li>
-<li>运行级别4：系统未使用，保留</li>
-<li>运行级别5：X11控制台，登陆后进入图形GUI模式</li>
-<li>运行级别6：系统正常关闭并重启，默认运行级别不能设为6，否则不能正常启动</li>
-</ul>
-<h2 id="系统初始化"><a href="#系统初始化" class="headerlink" title="系统初始化"></a>系统初始化</h2><p>在init的配置文件中有这么一行： si::sysinit:/etc/rc.d/rc.sysinit　它调用执行了/etc/rc.d/rc.sysinit，而rc.sysinit是一个bash shell的脚本，它主要是完成一些系统初始化的工作，rc.sysinit是每一个运行级别都要首先运行的重要脚本。</p>
-<p>它主要完成的工作有：激活交换分区，检查磁盘，加载硬件模块以及其它一些需要优先执行任务。</p>
-<pre><code>l5:5:wait:/etc/rc.d/rc 5</code></pre>
-<p>这一行表示以5为参数运行/etc/rc.d/rc，/etc/rc.d/rc是一个Shell脚本，它接受5作为参数，去执行/etc/rc.d/rc5.d/目录下的所有的rc启动脚本，/etc/rc.d/rc5.d/目录中的这些启动脚本实际上都是一些连接文件，而不是真正的rc启动脚本，真正的rc启动脚本实际上都是放在/etc/rc.d/init.d/目录下。</p>
-<p>而这些rc启动脚本有着类似的用法，它们一般能接受start、stop、restart、status等参数。</p>
-<p>/etc/rc.d/rc5.d/中的rc启动脚本通常是K或S开头的连接文件，对于以 S 开头的启动脚本，将以start参数来运行。</p>
-<p>而如果发现存在相应的脚本也存在K打头的连接，而且已经处于运行态了(以/var/lock/subsys/下的文件作为标志)，则将首先以stop为参数停止这些已经启动了的守护进程，然后再重新运行。</p>
-<p>这样做是为了保证是当init改变运行级别时，所有相关的守护进程都将重启。</p>
-<p>至于在每个运行级中将运行哪些守护进程，用户可以通过chkconfig或setup中的”System Services”来自行设定。</p>
-<h2 id="建立终端"><a href="#建立终端" class="headerlink" title="建立终端"></a>建立终端</h2><p>rc执行完毕后，返回init。这时基本系统环境已经设置好了，各种守护进程也已经启动了。</p>
-<p>init接下来会打开6个终端，以便用户登录系统。在inittab中的以下6行就是定义了6个终端：</p>
-<pre><code>1:2345:respawn:/sbin/mingetty tty1
-2:2345:respawn:/sbin/mingetty tty2
-3:2345:respawn:/sbin/mingetty tty3
-4:2345:respawn:/sbin/mingetty tty4
-5:2345:respawn:/sbin/mingetty tty5
-6:2345:respawn:/sbin/mingetty tty6</code></pre>
-<p>从上面可以看出在2、3、4、5的运行级别中都将以respawn方式运行mingetty程序，mingetty程序能打开终端、设置模式。</p>
-<p>同时它会显示一个文本登录界面，这个界面就是我们经常看到的登录界面，在这个登录界面中会提示用户输入用户名，而用户输入的用户将作为参数传给login程序来验证用户的身份。</p>
-<h1 id="用户登录系统"><a href="#用户登录系统" class="headerlink" title="用户登录系统"></a>用户登录系统</h1><p>一般来说，用户的登录方式有三种：</p>
-<ul>
-<li>（1）命令行登录</li>
-<li>（2）ssh登录</li>
-<li>（3）图形界面登录</li>
-</ul>
-<p>对于运行级别为5的图形方式用户来说，他们的登录是通过一个图形化的登录界面。登录成功后可以直接进入 KDE、Gnome 等窗口管理器。</p>
-<p>而本文主要讲的还是文本方式登录的情况：当我们看到mingetty的登录界面时，我们就可以输入用户名和密码来登录系统了。</p>
-<p>Linux 的账号验证程序是 login，login 会接收 mingetty 传来的用户名作为用户名参数。</p>
-<p>然后 login 会对用户名进行分析：如果用户名不是 root，且存在 /etc/nologin 文件，login 将输出 nologin 文件的内容，然后退出。</p>
-<p>这通常用来系统维护时防止非root用户登录。只有/etc/securetty中登记了的终端才允许 root 用户登录，如果不存在这个文件，则 root 用户可以在任何终端上登录。</p>
-<p>/etc/usertty文件用于对用户作出附加访问限制，如果不存在这个文件，则没有其他限制。</p>
-<h2 id="图形模式与文字模式的切换方式"><a href="#图形模式与文字模式的切换方式" class="headerlink" title="图形模式与文字模式的切换方式"></a>图形模式与文字模式的切换方式</h2><p>Linux预设提供了六个命令窗口终端机让我们来登录。</p>
-<p>默认我们登录的就是第一个窗口，也就是tty1，这个六个窗口分别为tty1,tty2 … tty6，你可以按下Ctrl + Alt + F1 ~ F6 来切换它们。</p>
-<p>如果你安装了图形界面，默认情况下是进入图形界面的，此时你就可以按Ctrl + Alt + F1 ~ F6来进入其中一个命令窗口界面。</p>
-<p>当你进入命令窗口界面后再返回图形界面只要按下Ctrl + Alt + F7 就回来了。</p>
-<p>如果你用的vmware 虚拟机，命令窗口切换的快捷键为 Alt + Space +（ F1-F6）. </p>
-<p>如果你在图形界面下请按Alt + Shift + Ctrl + （F1-F6） 切换至命令窗口。</p>
-<h1 id="Linux-关机"><a href="#Linux-关机" class="headerlink" title="Linux 关机"></a>Linux 关机</h1><p>在linux领域内<strong>大多用在服务器上，很少遇到关机的操作</strong>。毕竟服务器上跑一个服务是永无止境的，除非特殊情况下，不得已才会关机。</p>
-<p>正确的关机流程为：sync &gt; shutdown &gt; reboot &gt; halt</p>
-<p>关机指令为：shutdown ，你可以man shutdown 来看一下帮助文档。</p>
-<pre><code>sync 将数据由内存同步到硬盘中。
-
-shutdown 关机指令，你可以man shutdown 来看一下帮助文档。例如你可以运行如下命令关机：
-
-shutdown –h 10 ‘This server will shutdown after 10 mins’ 这个命令告诉大家，计算机将在10分钟后关机，并且会显示在登陆用户的当前屏幕中。
-
-shutdown –h now 立马关机
-
-shutdown –h 20:25 系统会在今天20:25关机
-
-shutdown –h +10 十分钟后关机
-
-shutdown –r now 系统立马重启
-
-shutdown –r +10 系统十分钟后重启
-
-reboot 就是重启，等同于 shutdown –r now
-
-halt 关闭系统，等同于shutdown –h now 和 poweroff</code></pre>
-<p>最后总结一下，不管是重启系统还是关闭系统，首先要运行 <strong>sync</strong> 命令，把内存中的数据写到磁盘中。</p>
-<p>关机的命令有 <strong>shutdown –h now halt poweroff</strong> 和 <strong>init 0</strong> , 重启系统的命令有 <strong>shutdown –r now reboot init 6</strong>。</p>
-<h2 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h2><p><strong>[Tab] 有『命令补全』与『文件补齐』的功能</strong></p>
-<pre><code>[Tab]      ## 接在一串指令的第一个字的后面，则为『命令补全』
-[Tab]      ## 接在一串指令的第二个字以后时，则为『文件补齐』</code></pre>
-<p>若安装 bash-completion 软件，则在某些指令后面使用 [tab] 按键时，可以进行『选项/参数的补齐』功能！</p>
-<p><strong>[Ctrl]+ C 如果在Linux 底下输入了错误的指令或参数，想让当前的程序『停掉』的话，可以输入：</strong></p>
-<pre><code>[Ctrl] + c </code></pre>
-<p><strong>[Ctrl]-d 『键盘输入结束(End Of File, EOF 或 End Of Input)』的意思</strong></p>
-<p>另外，他也可以用来取代 exit 的输入。</p>
-<p>例如你想要直接离开文字接口，可以直接按下：</p>
-<pre><code>[Ctrl] + d   ## 相当于输入 exit</code></pre>
-<p><strong>[shift]+{[PageUP]|[Page Down]}</strong></p>
-<pre><code>[Shift]+[Page Up]    ## 往前翻页 
-
-[Shift]+[Page Down] ## 往后翻页</code></pre>
-<p>shutdown 会给系统计划一个时间关机。它可以被用于停止、关机、重启机器。shutdown 会给系统计划一个时间关机。它可以被用于停止、关机、重启机器。</p>
-<pre><code># shutdown -p now  ### 关闭机器
-# shutdown -H now  ### 停止机器      
-# shutdown -r 09:35 ### 在 09:35am 重启机器</code></pre>
-<p>要取消即将进行的关机，只要输入下面的命令：</p>
-<pre><code># shutdown -c</code></pre>
-<p>halt 命令通知硬件来停止所有的 CPU 功能，但是仍然保持通电。你可以用它使系统处于低层维护状态。注意在有些情况会它会完全关闭系统。</p>
-<pre><code># halt             ### 停止机器
-# halt -p          ### 关闭机器、关闭电源
-# halt --reboot    ### 重启机器</code></pre>
-<p>poweroff 会发送一个 ACPI 信号来通知系统关机。</p>
-<pre><code># poweroff           ### 关闭机器、关闭电源
-# poweroff --halt    ### 停止机器
-# poweroff --reboot  ### 重启机器</code></pre>
-<p>reboot 命令 reboot 通知系统重启。</p>
-<pre><code># reboot           ### 重启机器
-# reboot --halt    ### 停止机器
-# reboot -p        ### 关闭机器</code></pre>
-<h1 id="Linux-系统目录结构"><a href="#Linux-系统目录结构" class="headerlink" title="Linux 系统目录结构"></a>Linux 系统目录结构</h1><p>登录系统后，在当前命令窗口下输入命令：</p>
-<pre><code> ls / </code></pre>
-<p>可显示当前层的目录。</p>
-<p><img src="/2021/01/26/Linux%E5%AD%A6%E4%B9%A0-1/pic-1.png" alt="树状目录结构图"></p>
-<p>在 Linux 或 Unix 操作系统中，所有的文件和目录都被组织成以一个根节点开始的倒置的树状结构。</p>
-<p>文件系统的最顶层是由根目录开始的，系统使用 <strong>/</strong> 来表示根目录。在根目录之下的既可以是目录，也可以是文件，而每一个目录中又可以包含子目录文件。如此反复就可以构成一个庞大的文件系统。</p>
-<p>在Linux文件系统中有两个特殊的目录，一个用户所在的工作目录，也叫当前目录，可以使用一个点 <strong>.</strong> 来表示；另一个是当前目录的上一级目录，也叫父目录，可以使用两个点 <strong>..</strong> 来表示。</p>
-<ul>
-<li> . ：代表当前的目录，也可以使用 ./ 来表示；</li>
-<li> .. ：代表上一层目录，也可以 ../ 来代表。</li>
-</ul>
-<p>如果一个目录或文件名以一个点 . 开始，表示这个目录或文件是一个隐藏目录或文件(如：.bashrc)。即以默认方式查找时，不显示该目录或文件。</p>
-<h2 id="1-系统启动必须："><a href="#1-系统启动必须：" class="headerlink" title="1.系统启动必须："></a><strong>1.系统启动必须：</strong></h2><p><strong>/boot：</strong>存放的启动Linux 时使用的内核文件，包括连接文件以及镜像文件。</p>
-<p><strong>/etc：</strong>存放<strong>所有</strong>的系统需要的<strong>配置文件</strong>和<strong>子目录列表，</strong>更改目录下的文件可能会导致系统不能启动。</p>
-<p><strong>/lib</strong>：存放基本代码库（比如c++库），其作用类似于Windows里的DLL文件。几乎所有的应用程序都需要用到这些共享库。</p>
-<p><strong>/sys</strong>： 这是linux2.6内核的一个很大的变化。该目录下安装了2.6内核中新出现的一个文件系统 sysfs 。sysfs文件系统集成了下面3种文件系统的信息：针对进程信息的proc文件系统、针对设备的devfs文件系统以及针对伪终端的devpts文件系统。该文件系统是内核设备树的一个直观反映。当一个内核对象被创建的时候，对应的文件和目录也在内核对象子系统中</p>
-<h2 id="2-指令集合："><a href="#2-指令集合：" class="headerlink" title="2.指令集合："></a><strong>2.指令集合：</strong></h2><p><strong>/bin：</strong>存放着最常用的程序和指令</p>
-<p><strong>/sbin：</strong>只有系统管理员能使用的程序和指令。</p>
-<h2 id="3-外部文件管理："><a href="#3-外部文件管理：" class="headerlink" title="3.外部文件管理："></a><strong>3.外部文件管理：</strong></h2><p><strong>/dev ：</strong>Device(设备)的缩写, 存放的是Linux的外部设备。<strong>注意：</strong>在Linux中访问设备和访问文件的方式是相同的。</p>
-<p><strong>/media</strong>：类windows的<strong>其他设备，</strong>例如U盘、光驱等等，识别后linux会把设备放到这个目录下。</p>
-<p><strong>/mnt</strong>：临时挂载别的文件系统的，我们可以将光驱挂载在/mnt/上，然后进入该目录就可以查看光驱里的内容了。</p>
-<h2 id="4-临时文件："><a href="#4-临时文件：" class="headerlink" title="4.临时文件："></a><strong>4.临时文件：</strong></h2><p><strong>/run</strong>：是一个临时文件系统，存储系统启动以来的信息。当系统重启时，这个目录下的文件应该被删掉或清除。如果你的系统上有 /var/run 目录，应该让它指向 run。</p>
-<p><strong>/lost+found</strong>：一般情况下为空的，系统非法关机后，这里就存放一些文件。</p>
-<p><strong>/tmp</strong>：这个目录是用来存放一些临时文件的。</p>
-<h2 id="5-账户："><a href="#5-账户：" class="headerlink" title="5.账户："></a><strong>5.账户：</strong></h2><p><strong>/root</strong>：系统管理员的用户主目录。</p>
-<p><strong>/home</strong>：用户的主目录，以用户的账号命名的。</p>
-<p><strong>/usr</strong>：用户的很多应用程序和文件都放在这个目录下，类似于windows下的program files目录。</p>
-<p><strong>/usr/bin：</strong>系统用户使用的应用程序与指令。</p>
-<p><strong>/usr/sbin：</strong>超级用户使用的比较高级的管理程序和系统守护程序。</p>
-<p><strong>/usr/src：</strong>内核源代码默认的放置目录。</p>
-<h2 id="6-运行过程中要用："><a href="#6-运行过程中要用：" class="headerlink" title="6.运行过程中要用："></a><strong>6.运行过程中要用：</strong></h2><p><strong>/var</strong>：存放经常修改的数据，比如程序运行的日志文件（/var/log 目录下）。</p>
-<p><strong>/proc</strong>：管理<strong>内存空间！</strong>虚拟的目录，是系统内存的映射，我们可以直接访问这个目录来，获取系统信息。这个目录的内容不在硬盘上而是在内存里，我们也可以直接修改里面的某些文件来做修改。</p>
-<h2 id="7-扩展用的："><a href="#7-扩展用的：" class="headerlink" title="7.扩展用的："></a><strong>7.扩展用的：</strong></h2><p><strong>/opt</strong>：默认是空的，我们安装额外软件可以放在这个里面。</p>
-<p><strong>/srv</strong>：存放服务启动后需要提取的数据<strong>（不用服务器就是空）</strong></p>
-<h2 id="8-其他："><a href="#8-其他：" class="headerlink" title="8.其他："></a>8.其他：</h2><p><strong>/proc</strong>：<br>proc 是 Processes(进程) 的缩写，/proc 是一种伪文件系统（也即虚拟文件系统），存储的是当前内核运行状态的一系列特殊文件，这个目录是一个虚拟的目录，它是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息。<br>这个目录的内容不在硬盘上而是在内存里，我们也可以直接修改里面的某些文件，比如可以通过下面的命令来屏蔽主机的ping命令，使别人无法ping你的机器：</p>
-<pre><code>echo 1 &gt; /proc/sys/net/ipv4/icmp_echo_ignore_all</code></pre>
-<p><strong>/selinux：</strong><br> 这个目录是 Redhat/CentOS 所特有的目录，Selinux 是一个安全机制，类似于 windows 的防火墙，但是这套机制比较复杂，这个目录就是存放selinux相关的文件的。</p>
-<h4 id="在-Linux-系统中，有几个目录是比较重要的，平时需要注意不要误删除或者随意更改内部文件。"><a href="#在-Linux-系统中，有几个目录是比较重要的，平时需要注意不要误删除或者随意更改内部文件。" class="headerlink" title="在 Linux 系统中，有几个目录是比较重要的，平时需要注意不要误删除或者随意更改内部文件。"></a>在 Linux 系统中，有几个目录是比较重要的，平时需要注意不要误删除或者随意更改内部文件。</h4><p><strong>/etc</strong>： 上边也提到了，这个是系统中的配置文件，如果你更改了该目录下的某个文件可能会导致系统不能启动。</p>
-<p><strong>/bin, /sbin, /usr/bin, /usr/sbin</strong>: 这是系统预设的执行文件的放置目录，比如 ls 就是在 /bin/ls 目录下的。</p>
-<p>值得提出的是，/bin, /usr/bin 是给系统用户使用的指令（除root外的通用户），而/sbin, /usr/sbin 则是给 root 使用的指令。</p>
-<p><strong>/var</strong>： 这是一个非常重要的目录，系统上跑了很多程序，那么每个程序都会有相应的日志产生，而这些日志就被记录到这个目录下，具体在 /var/log 目录下，另外 mail 的预设放置也是在这里。</p>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>Linux学习</tag>
       </tags>
   </entry>
   <entry>
