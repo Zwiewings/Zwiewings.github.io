@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-04-10T15:30:02.534Z</updated>
+  <updated>2021-04-13T06:03:41.879Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>网页设计学习-2</title>
+    <link href="http://example.com/2021/04/13/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0-2/"/>
+    <id>http://example.com/2021/04/13/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0-2/</id>
+    <published>2021-04-13T05:51:17.000Z</published>
+    <updated>2021-04-13T06:03:41.879Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="表单结构"><a href="#表单结构" class="headerlink" title="表单结构"></a>表单结构</h1><p>表单是收集用户的信息和反馈意见，是前端和后端数据的传递媒介</p><h2 id="表单的组成"><a href="#表单的组成" class="headerlink" title="表单的组成"></a>表单的组成</h2><ul><li><h3 id="表单标签-form"><a href="#表单标签-form" class="headerlink" title="表单标签-form"></a>表单标签-form</h3><pre><code class="html">&lt;form action=&quot;url&quot; method=&quot;get/post&quot; name=&quot;value&quot;&gt;    填入表单域和表单按钮等&lt;/form&gt;</code></pre><p><strong>action：</strong>表示接受并处理表单数据的服务器程序的url地址</p><p><strong>method：get</strong>为默认，表单数据和URL一起发送，提交的数据显示在浏览器地址栏中，保密性差，有数据量限制；post保密性好，并且无数据量限制，表单数据和URL分开发送，保密性好</p><p><strong>name：</strong>指定表单名称，以区分一个页面中的多个表单</p></li></ul><ul><li><h3 id="表单域"><a href="#表单域" class="headerlink" title="表单域"></a>表单域</h3></li></ul><ul><li><h3 id="表单按钮"><a href="#表单按钮" class="headerlink" title="表单按钮"></a>表单按钮</h3></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;表单结构&quot;&gt;&lt;a href=&quot;#表单结构&quot; class=&quot;headerlink&quot; title=&quot;表单结构&quot;&gt;&lt;/a&gt;表单结构&lt;/h1&gt;&lt;p&gt;表单是收集用户的信息和反馈意见，是前端和后端数据的传递媒介&lt;/p&gt;
+&lt;h2 id=&quot;表单的组成&quot;&gt;&lt;a href=&quot;#表单的</summary>
+      
+    
+    
+    
+    <category term="学习" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="网页设计学习" scheme="http://example.com/tags/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>虚幻引擎-2</title>

@@ -1,6 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>hexo基础命令行</title>
+    <url>/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/</url>
+    <content><![CDATA[<h1 id="hexo的基础命令行："><a href="#hexo的基础命令行：" class="headerlink" title="hexo的基础命令行："></a>hexo的基础命令行：</h1><h2 id="hexo-s"><a href="#hexo-s" class="headerlink" title="hexo s"></a>hexo s</h2><pre><code class="undefined">hexo s</code></pre>
+<ul>
+<li>启动本地服务器，用于预览主题。默认地址： <a href="http://localhost:4000/">http://localhost:4000/</a></li>
+<li><code>hexo s</code> 是 <code>hexo server</code> 的缩写，命令效果一致。</li>
+<li>预览的同时可以修改文章内容或主题代码，保存后刷新页面即可。</li>
+<li>对 Hexo 根目录 <code>_config.yml</code> 的修改，需要重启本地服务器后才能预览效果。</li>
+<li>预览草稿文章 <code>hexo s --drafts</code></li>
+</ul>
+<h2 id="hexo-new"><a href="#hexo-new" class="headerlink" title="hexo new"></a>hexo new</h2><pre><code class="cpp">hexo new &quot;title&quot;
+hexo new  draft &quot;草稿文章&quot;
+hexo new page</code></pre>
+<ul>
+<li>新建一个title.md博客文章</li>
+<li>draft 为草稿文档，不会展现在博客上，可用<code>hexo publish &quot;草稿文章&quot;</code> 发布成正式文章</li>
+<li><code>hexo new page</code> 创建一个文件夹</li>
+</ul>
+<h2 id="hexo-d"><a href="#hexo-d" class="headerlink" title="hexo d"></a>hexo d</h2><pre><code class="undefined">hexo d</code></pre>
+<ul>
+<li>自动生成网站静态文件，并部署到设定的仓库。</li>
+<li><code>hexo d</code> 是 <code>hexo deploy</code> 的缩写，命令效果一致。</li>
+</ul>
+<h2 id="hexo-clean"><a href="#hexo-clean" class="headerlink" title="hexo clean"></a>hexo clean</h2><pre><code class="undefined">hexo clean</code></pre>
+<ul>
+<li>清除缓存文件 db.json 和已生成的静态文件 public 。</li>
+<li>网站显示异常时可以执行这条命令试试</li>
+</ul>
+<h2 id="hexo-g"><a href="#hexo-g" class="headerlink" title="hexo g"></a>hexo g</h2><pre><code class="undefined">hexo g</code></pre>
+<p>生成网站静态文件到默认设置的 public 文件夹。</p>
+<ul>
+<li>便于查看网站生成的静态文件或者手动部署网站；</li>
+<li>如果使用自动部署，不需要先执行该命令；</li>
+<li><code>hexo g</code> 是 <code>hexo generate</code> 的缩写，命令效果一致。</li>
+</ul>
+<pre><code class="undefined">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code></pre>
+<p>部署发布，命令可用&amp;&amp;连接</p>
+<p>原创封面</p>
+<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/c++cover.jpg" alt="c++cover"></p>
+<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/Linux-cover.jpg" alt="Linux-cover"></p>
+<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BD%91%E9%A1%B5%E5%9F%BA%E7%A1%80cover.jpg" alt="网页基础cover"></p>
+<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E6%9C%AA%E5%88%86%E7%B1%BBcover.jpg" alt="未分类cover"></p>
+<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BA%BF%E6%80%A7%E8%A1%A8cover.jpg" alt="线性表cover"></p>
+<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E8%99%9A%E5%B9%BBcover.jpg" alt="虚幻cover"></p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>hexo使用</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>c++学习-1</title>
     <url>/2021/01/18/c++%E5%AD%A6%E4%B9%A0-1/</url>
     <content><![CDATA[<h1 id="c-基础（同c比较）"><a href="#c-基础（同c比较）" class="headerlink" title="c++基础（同c比较）"></a>c++基础（同c比较）</h1><table>
@@ -826,59 +879,6 @@ int (*p)(int i, int j);//指向函数的指针p</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>hexo基础命令行</title>
-    <url>/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/</url>
-    <content><![CDATA[<h1 id="hexo的基础命令行："><a href="#hexo的基础命令行：" class="headerlink" title="hexo的基础命令行："></a>hexo的基础命令行：</h1><h2 id="hexo-s"><a href="#hexo-s" class="headerlink" title="hexo s"></a>hexo s</h2><pre><code class="undefined">hexo s</code></pre>
-<ul>
-<li>启动本地服务器，用于预览主题。默认地址： <a href="http://localhost:4000/">http://localhost:4000/</a></li>
-<li><code>hexo s</code> 是 <code>hexo server</code> 的缩写，命令效果一致。</li>
-<li>预览的同时可以修改文章内容或主题代码，保存后刷新页面即可。</li>
-<li>对 Hexo 根目录 <code>_config.yml</code> 的修改，需要重启本地服务器后才能预览效果。</li>
-<li>预览草稿文章 <code>hexo s --drafts</code></li>
-</ul>
-<h2 id="hexo-new"><a href="#hexo-new" class="headerlink" title="hexo new"></a>hexo new</h2><pre><code class="cpp">hexo new &quot;title&quot;
-hexo new  draft &quot;草稿文章&quot;
-hexo new page</code></pre>
-<ul>
-<li>新建一个title.md博客文章</li>
-<li>draft 为草稿文档，不会展现在博客上，可用<code>hexo publish &quot;草稿文章&quot;</code> 发布成正式文章</li>
-<li><code>hexo new page</code> 创建一个文件夹</li>
-</ul>
-<h2 id="hexo-d"><a href="#hexo-d" class="headerlink" title="hexo d"></a>hexo d</h2><pre><code class="undefined">hexo d</code></pre>
-<ul>
-<li>自动生成网站静态文件，并部署到设定的仓库。</li>
-<li><code>hexo d</code> 是 <code>hexo deploy</code> 的缩写，命令效果一致。</li>
-</ul>
-<h2 id="hexo-clean"><a href="#hexo-clean" class="headerlink" title="hexo clean"></a>hexo clean</h2><pre><code class="undefined">hexo clean</code></pre>
-<ul>
-<li>清除缓存文件 db.json 和已生成的静态文件 public 。</li>
-<li>网站显示异常时可以执行这条命令试试</li>
-</ul>
-<h2 id="hexo-g"><a href="#hexo-g" class="headerlink" title="hexo g"></a>hexo g</h2><pre><code class="undefined">hexo g</code></pre>
-<p>生成网站静态文件到默认设置的 public 文件夹。</p>
-<ul>
-<li>便于查看网站生成的静态文件或者手动部署网站；</li>
-<li>如果使用自动部署，不需要先执行该命令；</li>
-<li><code>hexo g</code> 是 <code>hexo generate</code> 的缩写，命令效果一致。</li>
-</ul>
-<pre><code class="undefined">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code></pre>
-<p>部署发布，命令可用&amp;&amp;连接</p>
-<p>原创封面</p>
-<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/c++cover.jpg" alt="c++cover"></p>
-<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/Linux-cover.jpg" alt="Linux-cover"></p>
-<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BD%91%E9%A1%B5%E5%9F%BA%E7%A1%80cover.jpg" alt="网页基础cover"></p>
-<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E6%9C%AA%E5%88%86%E7%B1%BBcover.jpg" alt="未分类cover"></p>
-<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BA%BF%E6%80%A7%E8%A1%A8cover.jpg" alt="线性表cover"></p>
-<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E8%99%9A%E5%B9%BBcover.jpg" alt="虚幻cover"></p>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>hexo使用</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>数据结构-1</title>
     <url>/2021/03/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-1/</url>
     <content><![CDATA[<h1 id="线性表-顺序表"><a href="#线性表-顺序表" class="headerlink" title="线性表-顺序表"></a>线性表-顺序表</h1><p>【Elemtype为数据类型】</p>
@@ -1463,304 +1463,30 @@ int main()
       </tags>
   </entry>
   <entry>
-    <title>虚幻引擎-1</title>
-    <url>/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/</url>
-    <content><![CDATA[<h1 id="快捷键节点："><a href="#快捷键节点：" class="headerlink" title="快捷键节点："></a>快捷键节点：</h1><p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/1.png" alt="1"></p>
-<p>节点名：延迟</p>
-<p>呼出方式：（快捷键）D+left</p>
-<p>具体作用：实现程序暂停，延迟一段时间继续执行后续节点</p>
-<p>接口：Duration——延迟时长，单位为秒</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/2.png" alt="2"></p>
-<p>节点名：分支</p>
-<p>呼出方式：（快捷键）B+left</p>
-<p>具体作用：实现程序因布尔值变化而条件分歧</p>
-<p>接口：Condition——决定选择支的布尔值</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/3.png" alt="3"></p>
-<p>节点名：序列</p>
-<p>呼出方式：（快捷键）S+left</p>
-<p>具体作用：使多个分支同时进行</p>
-<p>接口：Then——同时进行的分支接口</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/4.png" alt="4"></p>
-<p>节点名：For each loop</p>
-<p>呼出方式：（快捷键）F+left</p>
-<p>具体作用：根据数组元素的个数执行循环</p>
-<p>接口：array——需要遍历的数组</p>
-<p>Loop body——循环体</p>
-<p>Array Element——当前数组元素的值</p>
-<p>Array Index——当前数组元素的下标</p>
-<p>Completed——循环出口</p>
-<h1 id="普通节点："><a href="#普通节点：" class="headerlink" title="普通节点："></a>普通节点：</h1><p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/5.png" alt="5"></p>
-<p>节点名：获取类的所有actor</p>
-<p>呼出方式：右键查询（使用节点名或get all actor）</p>
-<p>具体作用：获取场景中所有某类的实例</p>
-<p>接口：Actor Class——需要获取的类</p>
-<p>Out Actors——选中类的所有actor的数组</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/6.png" alt="6"></p>
-<p>节点名：自定义事件（事件名称）</p>
-<p>呼出方式：右键查询（使用节点名或custom event）</p>
-<p>具体作用：定义一个自定义事件</p>
-<p>接口：无</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/11.png" alt="11"></p>
-<p>节点名：（事件名称）</p>
-<p>呼出方式：右键查询（使用节点名查找引用）</p>
-<p>具体作用：引用一个在某蓝图中定义好的自定义事件</p>
-<p>接口：无</p>
-<h1 id="时间轴与变换节点："><a href="#时间轴与变换节点：" class="headerlink" title="时间轴与变换节点："></a>时间轴与变换节点：</h1><p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/10.png" alt="10"></p>
-<p>节点名：时间轴</p>
-<p>呼出方式：右键查询（使用节点名或timeline）</p>
-<p>具体作用：创建时间轴（用于播放动画等）</p>
-<p>接口：play——正放</p>
-<p>play from start——从头正放</p>
-<p>stop——暂停</p>
-<p>Reverse——倒放</p>
-<p>Reverse from End——从最后倒放</p>
-<p>Set New Time——跳转到特定时间轴</p>
-<p>New Time——设定跳转到的特定时间轴（需要Set New Time启用）</p>
-<p>Update——在时间轴移动时不断执行</p>
-<p>Finished——时间轴结束后执行（无论正放倒放）</p>
-<p>Direction——为时间轴进行方向，可在update或finished后接入switch判断正放倒放</p>
-<p>*创建时间轴和圆滑曲线化：</p>
-<p>通常使用浮点型轨道（f+），键入轨道名称后会出现相应接口，返回时间轴窗口创建关键帧，在两个不同关键帧间会形成对应时间和值的变化直线（折线），最后修改时间轴总长度等于有效变化直线的时间，若同时将两个或以上的关键帧插值改为“用户”型，可通过调整其切线使整个变化折线变为曲线，更加圆滑的完成值的变化</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/12.png" alt="12"></p>
-<p>节点名：拆分变换</p>
-<p>呼出方式：右键查找（使用节点名或break）</p>
-<p>具体作用：将一个变换过程拆分成L、R、S三者</p>
-<p>接口：In Transform——需要拆分的变换</p>
-<p>Location——位置变化量</p>
-<p>Rotation——旋转变化量</p>
-<p>Scale——缩放变化量</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/13.png" alt="13"></p>
-<p>节点名：创建变换</p>
-<p>呼出方式：右键查找（使用节点名或make）</p>
-<p>具体作用：合并L、R、S三者为一个变换过程</p>
-<p>接口：Location——位置变化量</p>
-<p>Rotation——旋转变化量</p>
-<p>Scale——缩放变化量</p>
-<p>Return value——变换的返回值</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/15.png" alt="15"></p>
-<p>节点名：插值</p>
-<p>呼出方式：右键查找（使用节点名或lerp）</p>
-<p>具体作用：取出某个值随时间变化中特定比例处的值</p>
-<p>接口：A——变化开始时值的初始量</p>
-<p>B——变化结束时值的终点量</p>
-<p>Alpha——变化量占A，B差值的比例（只能为0~1）</p>
-<p>Return Value——返回初始值加变化量的结果</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/16.png" alt="16"></p>
-<p>节点名：插值（向量）</p>
-<p>呼出方式：右键查找（使用节点名或lerp）</p>
-<p>具体作用：取出某个向量随时间变化中特定比例处的值</p>
-<p>接口：A——变化开始时向量的初始值</p>
-<p>B——变化结束时向量的终点值</p>
-<p>Alpha——变化量占A，B差值的比例（只能为0~1）</p>
-<p>Return Value——返回初始值加变化量的结果</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/14.png" alt="14"></p>
-<p>节点名：已限制映射范围</p>
-<p>呼出方式：右键查找（使用节点名或Clamp）</p>
-<p>具体作用：将基准值实现In A~In B的变化，并且按In和Out的A、B比例缩放</p>
-<p>接口：Value——输入的基准值</p>
-<p>In Range A——输入的初始比例</p>
-<p>In Range B——输入的终点比例</p>
-<p>Out Range A——输出的初始比例</p>
-<p>Out Range B——输出的终点比例</p>
-<p>Return Value——返回变化且缩放后的值</p>
-<p>注：上文所提到的普通插值可视作In A=0.0，In B=1.0的该结点</p>
-<h1 id="运算节点："><a href="#运算节点：" class="headerlink" title="运算节点："></a>运算节点：</h1><p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/17.png" alt="17"></p>
-<p>节点名：限制（浮点）</p>
-<p>呼出方式：右键查找（使用节点名或clamp）</p>
-<p>具体作用：将数据限制在范围内，范围外的数小于min的输出min，大于max输出max</p>
-<p>接口：Value——输入值</p>
-<p>Min——范围的最小值</p>
-<p>Max——范围的最大值</p>
-<p>Return Value——数据限制后的返回值</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/18.png" alt="18"></p>
-<p>节点名：截断</p>
-<p>呼出方式：右键查找（使用节点名）/将浮点数据直接接入整数接口</p>
-<p>具体作用：将数据向0舍入，截断小数部分</p>
-<p>注：1.6舍入为1，但-1.6舍入为-1</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/19.png" alt="19"></p>
-<p>节点名：底部</p>
-<p>呼出方式：右键查找（使用节点名或floor）</p>
-<p>具体作用：将数据向负无穷舍入，下舍到前一个整数</p>
-<p>注：1.6舍入为1，但-1.6舍入为-2</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/20.png" alt="20"></p>
-<p>节点名：顶部</p>
-<p>呼出方式：右键查找（使用节点名）</p>
-<p>具体作用：将数据向正无穷/向上舍入到下一个整数</p>
-<p>注：1.6舍入为2，而-1.6舍入为-1</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/21.png" alt="21"></p>
-<p>节点名：舍入</p>
-<p>呼出方式：右键查找（使用节点名或round）</p>
-<p>具体作用：将数据舍入到最近的整数</p>
-<p>注：1.6舍入为2，而-1.6舍入为-2</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/22.png" alt="22"></p>
-<p>节点名：（dot）</p>
-<p>呼出方式：右键查找（点乘积）</p>
-<p>具体作用：计算向量点乘</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/23.png" alt="23"></p>
-<p>节点名：（cross）</p>
-<p>呼出方式：右键查找（叉乘积）</p>
-<p>具体作用：计算向量叉乘</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/24.png" alt="24"></p>
-<p>节点名：范围内随机浮点（其他数据类型也可）</p>
-<p>呼出方式：右键查找（使用节点名或random float）</p>
-<p>具体作用：生成随机浮点数</p>
-<p>接口：min——最小值</p>
-<p>max——最大值</p>
-<p>return value——范围内的随机数</p>
-<h1 id="选择节点："><a href="#选择节点：" class="headerlink" title="选择节点："></a>选择节点：</h1><p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/7.png" alt="7"></p>
-<p>节点名：切换整型</p>
-<p>呼出方式：右键查询（使用节点名或switch）</p>
-<p>具体作用：利用整数切换引脚流程</p>
-<p>接口：Selection——作为切换标准的整型</p>
-<p>Default——不满足其他引脚时的默认执行引脚</p>
-<p>注：除切换为整型以外，其他类型的数据也可使用switch查找对应类型的切换</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/9.png" alt="9"></p>
-<p>节点名：开启字符串【翻译可能有误】</p>
-<p>呼出方式：右键查询（使用节点名或switch）</p>
-<p>具体作用：输入指定字符串选择完全相同的引脚执行</p>
-<p>接口：Selection——输入作为判断依据的字符</p>
-<p>Default——不满足其他引脚时的默认执行引脚</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/8.png" alt="8"></p>
-<p>节点名：选择</p>
-<p>呼出方式：右键查询（使用节点名或select）</p>
-<p>具体作用：通过输入的内容得到已设定的返回值</p>
-<p>接口：Option 0，Option 1——设置给出的index值得到的返回值</p>
-<p>Index——可以接入任何类型的通配符</p>
-<p>Return value——返回值的出口</p>
-<h1 id="控制器节点："><a href="#控制器节点：" class="headerlink" title="控制器节点："></a>控制器节点：</h1><p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/26.png" alt="26"></p>
-<p>节点名：设置仅输入模式游戏</p>
-<p>呼出方式：右键查询（使用节点名或input only）</p>
-<p>具体作用：设置鼠标的输入模式，将光标锁定在游戏界面中心</p>
-<p>接口：Player Controller——接玩家控制器</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/25.png" alt="25"></p>
-<p>节点名：设置仅输入模式UI</p>
-<p>呼出方式：右键查询（使用节点名或input only）</p>
-<p>具体作用：设置鼠标的输入模式，将光标锁定在某个UI上</p>
-<p>接口：Player Controller——接玩家控制器</p>
-<p>In Widget to Focus——将光标锁定在该接口指定的UI上</p>
-<p>In Mouse Lock Mode——设置系统光标状态</p>
-<p>注：In Mouse Lock Mode接口分不锁定、捕获时锁定、固定锁定、锁定为全屏；捕获时锁定指运行窗口在最前端时将系统光标锁定在程序窗口内，直到win键强行解锁；固定锁定指一直将系统光标锁定在程序窗口内，直到win键强行解锁；锁定为全屏指仅全屏时锁定光标。</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/31.png" alt="31"></p>
-<p>节点名：获取玩家控制器/角色/pawn</p>
-<p>呼出方式：右键查询（使用节点名或蓝色引脚牵出搜索get player）</p>
-<p>具体作用：得到一个玩家控制器的返回值</p>
-<p>接口：Player Index——玩家控制器的序号</p>
-<p>Return Value——返回玩家控制器</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/33.png" alt="33"></p>
-<p>节点名：（set）</p>
-<p>呼出方式：右键查询（show mouse）[需要取消情境关联]</p>
-<p>具体作用：设置鼠标的显示</p>
-<p>接口：Show Mouse Cursor——是否显示鼠标</p>
-<p>目标——接玩家控制器</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/32.png" alt="32"></p>
-<p>节点名：生成Actor</p>
-<p>呼出方式：右键查询（使用节点名或create）</p>
-<p>具体作用：凭空创建一个actor</p>
-<p>接口：Class——生成的actor类型</p>
-<p>Spawn Transform——指定actor初始变换（生成位置、缩放、旋转度）</p>
-<p>Collision Handing Override——判断生成的条件（和碰撞体积有关）</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/27.png" alt="27"></p>
-<p>节点名：销毁Actor</p>
-<p>呼出方式：右键查询（使用节点名或destroy）</p>
-<p>具体作用：销毁目标Actor</p>
-<p>接口：目标——被销毁的对象</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/30.png" alt="30"></p>
-<p>节点名：构建</p>
-<p>呼出方式：右键查询（使用节点名或create）</p>
-<p>具体作用：创建一个UI</p>
-<p>接口：Class——UI的类型</p>
-<p>Owning Player——指定UI属于哪一个玩家</p>
-<p>Return Value——生成的UI</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/29.png" alt="29"></p>
-<p>节点名：添加到视口</p>
-<p>呼出方式：右键查询（使用节点名或牵引构建ui的返回值引脚，输入add to）</p>
-<p>具体作用：让创建的UI显示到用户界面</p>
-<p>接口：目标——接已创建的UI</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/28.png" alt="28"></p>
-<p>节点名：从父项中移除</p>
-<p>呼出方式：右键查询（使用节点名或remove from parent）</p>
-<p>具体作用：移除目标控件</p>
-<p>接口：目标——需要移除的控件</p>
-<h1 id="数组节点"><a href="#数组节点" class="headerlink" title="数组节点"></a>数组节点</h1><p>创建数组：在创建好的变量左侧图标上右键，能够创建一个同类型变量的数组</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/34.png" alt="34"></p>
-<p>节点名：获取数组元素（上为复制，下为引用）</p>
-<p>呼出方式：右键查询（使用节点名或数组引线查询get）</p>
-<p>具体作用：获取数组中指定下标的元素</p>
-<p>接口：（数组接口）——该元素所在数组</p>
-<p>（整数型接口）——需要获取的数组元素下标</p>
-<p>（右值）——返回值（复制返回值，引用返回地址）</p>
-<p>注：该节点分为复制和引用两种方式，同c/c++中函数的传值和引用传址，复制会生成副本，引起的变化不改变数组本身，而引用则可以改变数组内元素的值，但操作不当易使数据受损</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/35.png" alt="35"></p>
-<p>节点名：创建数组</p>
-<p>呼出方式：右键查询（使用节点名或从set左值牵引查询make）</p>
-<p>具体作用：创建一个数组</p>
-<p>接口：左侧——设置序号下的数组值</p>
-<p>右侧——得到数组变量</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/36.png" alt="36"></p>
-<p>节点名：（set）</p>
-<p>呼出方式：有引出变量的情况下，输入set查询</p>
-<p>具体作用：设置数组</p>
-<p>接口：左侧——被设置的对象变量数组</p>
-<p>右侧——接已经创建的数组</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/37.png" alt="37"></p>
-<p>节点名：设置阵列元素</p>
-<p>呼出方式：右键查询（使用节点名或牵引数组接口查询set）</p>
-<p>具体作用：设置数组单个元素的值</p>
-<p>接口：Target Array——接该元素所在数组</p>
-<p>Index——指定的数组元素的序号</p>
-<p>Item——为该数组元素所赋的值</p>
-<p>Size to Fit——当index大于数组大小时，数组将扩展</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/38.png" alt="38"></p>
-<p>节点名：查找项目</p>
-<p>呼出方式：右键查询（使用节点名或牵引数组接口查询array）</p>
-<p>具体作用：查找与给定值相等的数组下标</p>
-<p>接口：左侧——数组与需要查找的给定值</p>
-<p>右侧——数组序号返回值</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/39.png" alt="39"></p>
-<p>节点名：为有效索引</p>
-<p>呼出方式：右键查询（使用节点名或牵引数组接口查询array）</p>
-<p>具体作用：判断能否查找到指定元素</p>
-<p>接口：左侧——数组与需要查找的给定值</p>
-<p>右侧——能否找到的bool值返回</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/40.png" alt="40"></p>
-<p>节点名：添加</p>
-<p>呼出方式：右键查询（使用节点名或牵引数组接口查询array）</p>
-<p>具体作用：在数组最后添加一个元素</p>
-<p>接口：左侧——数组与需要添加的值</p>
-<p>右侧——数组序号返回值</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/41.png" alt="41"></p>
-<p>节点名：插入</p>
-<p>呼出方式：右键查询（使用节点名或牵引数组接口查询array）</p>
-<p>具体作用：在指定下标处插入一个元素，其他元素自动后移</p>
-<p>接口：左侧——数组与需要查找的给定值，以及需要插入的位置序号</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/42.png" alt="42"></p>
-<p>节点名：长度</p>
-<p>呼出方式：右键查询（使用节点名或牵引数组接口查询array）</p>
-<p>具体作用：返回数组长度</p>
-<p>接口：左侧——数组</p>
-<p>右侧——数组长度返回值</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/43.png" alt="43"></p>
-<p>节点名：清空</p>
-<p>呼出方式：右键查询（使用节点名或牵引数组接口查询array）</p>
-<p>具体作用：清空整个数组</p>
-<p>接口：左侧——需要清空的数组</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/44.png" alt="44"></p>
-<p>节点名：移除项目</p>
-<p>呼出方式：右键查询（使用节点名或牵引数组接口查询array）</p>
-<p>具体作用：移除等于这个值的元素</p>
-<p>接口：左侧——数组与需要移除的给定值</p>
-<p>右侧——返回是否成功移除</p>
-<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/45.png" alt="45"></p>
-<p>节点名：移除索引</p>
-<p>呼出方式：右键查询（使用节点名或牵引数组接口查询array）</p>
-<p>具体作用：移除这个下标的元素</p>
-<p>接口：左侧——数组和元素下标</p>
+    <title>网页设计学习-2</title>
+    <url>/2021/04/13/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0-2/</url>
+    <content><![CDATA[<h1 id="表单结构"><a href="#表单结构" class="headerlink" title="表单结构"></a>表单结构</h1><p>表单是收集用户的信息和反馈意见，是前端和后端数据的传递媒介</p>
+<h2 id="表单的组成"><a href="#表单的组成" class="headerlink" title="表单的组成"></a>表单的组成</h2><ul>
+<li><h3 id="表单标签-form"><a href="#表单标签-form" class="headerlink" title="表单标签-form"></a>表单标签-form</h3><pre><code class="html">&lt;form action=&quot;url&quot; method=&quot;get/post&quot; name=&quot;value&quot;&gt;
+    填入表单域和表单按钮等
+&lt;/form&gt;</code></pre>
+<p><strong>action：</strong>表示接受并处理表单数据的服务器程序的url地址</p>
+<p><strong>method：get</strong>为默认，表单数据和URL一起发送，提交的数据显示在浏览器地址栏中，保密性差，有数据量限制；post保密性好，并且无数据量限制，表单数据和URL分开发送，保密性好</p>
+<p><strong>name：</strong>指定表单名称，以区分一个页面中的多个表单</p>
+</li>
+</ul>
+<ul>
+<li><h3 id="表单域"><a href="#表单域" class="headerlink" title="表单域"></a>表单域</h3></li>
+</ul>
+<ul>
+<li><h3 id="表单按钮"><a href="#表单按钮" class="headerlink" title="表单按钮"></a>表单按钮</h3></li>
+</ul>
 ]]></content>
       <categories>
         <category>学习</category>
       </categories>
       <tags>
-        <tag>虚幻引擎学习</tag>
+        <tag>网页设计学习</tag>
       </tags>
   </entry>
   <entry>
@@ -2101,6 +1827,307 @@ int main()
 <p>快捷键：M+Left</p>
 <p>具体作用：将两种颜色或贴图混合在一起，一般用选定颜色乘白色贴图进行染色</p>
 <h2 id="材质实例"><a href="#材质实例" class="headerlink" title="材质实例"></a>材质实例</h2><p>由材质生成的材质实例将材质蓝图中的变量节点显示于右面接口，通过改变接口值来更加直观的实时改变材质的颜色等各种属性，能够实现一个材质创造一堆材质实例的操作</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>虚幻引擎学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>虚幻引擎-1</title>
+    <url>/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/</url>
+    <content><![CDATA[<h1 id="快捷键节点："><a href="#快捷键节点：" class="headerlink" title="快捷键节点："></a>快捷键节点：</h1><p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/1.png" alt="1"></p>
+<p>节点名：延迟</p>
+<p>呼出方式：（快捷键）D+left</p>
+<p>具体作用：实现程序暂停，延迟一段时间继续执行后续节点</p>
+<p>接口：Duration——延迟时长，单位为秒</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/2.png" alt="2"></p>
+<p>节点名：分支</p>
+<p>呼出方式：（快捷键）B+left</p>
+<p>具体作用：实现程序因布尔值变化而条件分歧</p>
+<p>接口：Condition——决定选择支的布尔值</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/3.png" alt="3"></p>
+<p>节点名：序列</p>
+<p>呼出方式：（快捷键）S+left</p>
+<p>具体作用：使多个分支同时进行</p>
+<p>接口：Then——同时进行的分支接口</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/4.png" alt="4"></p>
+<p>节点名：For each loop</p>
+<p>呼出方式：（快捷键）F+left</p>
+<p>具体作用：根据数组元素的个数执行循环</p>
+<p>接口：array——需要遍历的数组</p>
+<p>Loop body——循环体</p>
+<p>Array Element——当前数组元素的值</p>
+<p>Array Index——当前数组元素的下标</p>
+<p>Completed——循环出口</p>
+<h1 id="普通节点："><a href="#普通节点：" class="headerlink" title="普通节点："></a>普通节点：</h1><p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/5.png" alt="5"></p>
+<p>节点名：获取类的所有actor</p>
+<p>呼出方式：右键查询（使用节点名或get all actor）</p>
+<p>具体作用：获取场景中所有某类的实例</p>
+<p>接口：Actor Class——需要获取的类</p>
+<p>Out Actors——选中类的所有actor的数组</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/6.png" alt="6"></p>
+<p>节点名：自定义事件（事件名称）</p>
+<p>呼出方式：右键查询（使用节点名或custom event）</p>
+<p>具体作用：定义一个自定义事件</p>
+<p>接口：无</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/11.png" alt="11"></p>
+<p>节点名：（事件名称）</p>
+<p>呼出方式：右键查询（使用节点名查找引用）</p>
+<p>具体作用：引用一个在某蓝图中定义好的自定义事件</p>
+<p>接口：无</p>
+<h1 id="时间轴与变换节点："><a href="#时间轴与变换节点：" class="headerlink" title="时间轴与变换节点："></a>时间轴与变换节点：</h1><p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/10.png" alt="10"></p>
+<p>节点名：时间轴</p>
+<p>呼出方式：右键查询（使用节点名或timeline）</p>
+<p>具体作用：创建时间轴（用于播放动画等）</p>
+<p>接口：play——正放</p>
+<p>play from start——从头正放</p>
+<p>stop——暂停</p>
+<p>Reverse——倒放</p>
+<p>Reverse from End——从最后倒放</p>
+<p>Set New Time——跳转到特定时间轴</p>
+<p>New Time——设定跳转到的特定时间轴（需要Set New Time启用）</p>
+<p>Update——在时间轴移动时不断执行</p>
+<p>Finished——时间轴结束后执行（无论正放倒放）</p>
+<p>Direction——为时间轴进行方向，可在update或finished后接入switch判断正放倒放</p>
+<p>*创建时间轴和圆滑曲线化：</p>
+<p>通常使用浮点型轨道（f+），键入轨道名称后会出现相应接口，返回时间轴窗口创建关键帧，在两个不同关键帧间会形成对应时间和值的变化直线（折线），最后修改时间轴总长度等于有效变化直线的时间，若同时将两个或以上的关键帧插值改为“用户”型，可通过调整其切线使整个变化折线变为曲线，更加圆滑的完成值的变化</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/12.png" alt="12"></p>
+<p>节点名：拆分变换</p>
+<p>呼出方式：右键查找（使用节点名或break）</p>
+<p>具体作用：将一个变换过程拆分成L、R、S三者</p>
+<p>接口：In Transform——需要拆分的变换</p>
+<p>Location——位置变化量</p>
+<p>Rotation——旋转变化量</p>
+<p>Scale——缩放变化量</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/13.png" alt="13"></p>
+<p>节点名：创建变换</p>
+<p>呼出方式：右键查找（使用节点名或make）</p>
+<p>具体作用：合并L、R、S三者为一个变换过程</p>
+<p>接口：Location——位置变化量</p>
+<p>Rotation——旋转变化量</p>
+<p>Scale——缩放变化量</p>
+<p>Return value——变换的返回值</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/15.png" alt="15"></p>
+<p>节点名：插值</p>
+<p>呼出方式：右键查找（使用节点名或lerp）</p>
+<p>具体作用：取出某个值随时间变化中特定比例处的值</p>
+<p>接口：A——变化开始时值的初始量</p>
+<p>B——变化结束时值的终点量</p>
+<p>Alpha——变化量占A，B差值的比例（只能为0~1）</p>
+<p>Return Value——返回初始值加变化量的结果</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/16.png" alt="16"></p>
+<p>节点名：插值（向量）</p>
+<p>呼出方式：右键查找（使用节点名或lerp）</p>
+<p>具体作用：取出某个向量随时间变化中特定比例处的值</p>
+<p>接口：A——变化开始时向量的初始值</p>
+<p>B——变化结束时向量的终点值</p>
+<p>Alpha——变化量占A，B差值的比例（只能为0~1）</p>
+<p>Return Value——返回初始值加变化量的结果</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/14.png" alt="14"></p>
+<p>节点名：已限制映射范围</p>
+<p>呼出方式：右键查找（使用节点名或Clamp）</p>
+<p>具体作用：将基准值实现In A~In B的变化，并且按In和Out的A、B比例缩放</p>
+<p>接口：Value——输入的基准值</p>
+<p>In Range A——输入的初始比例</p>
+<p>In Range B——输入的终点比例</p>
+<p>Out Range A——输出的初始比例</p>
+<p>Out Range B——输出的终点比例</p>
+<p>Return Value——返回变化且缩放后的值</p>
+<p>注：上文所提到的普通插值可视作In A=0.0，In B=1.0的该结点</p>
+<h1 id="运算节点："><a href="#运算节点：" class="headerlink" title="运算节点："></a>运算节点：</h1><p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/17.png" alt="17"></p>
+<p>节点名：限制（浮点）</p>
+<p>呼出方式：右键查找（使用节点名或clamp）</p>
+<p>具体作用：将数据限制在范围内，范围外的数小于min的输出min，大于max输出max</p>
+<p>接口：Value——输入值</p>
+<p>Min——范围的最小值</p>
+<p>Max——范围的最大值</p>
+<p>Return Value——数据限制后的返回值</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/18.png" alt="18"></p>
+<p>节点名：截断</p>
+<p>呼出方式：右键查找（使用节点名）/将浮点数据直接接入整数接口</p>
+<p>具体作用：将数据向0舍入，截断小数部分</p>
+<p>注：1.6舍入为1，但-1.6舍入为-1</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/19.png" alt="19"></p>
+<p>节点名：底部</p>
+<p>呼出方式：右键查找（使用节点名或floor）</p>
+<p>具体作用：将数据向负无穷舍入，下舍到前一个整数</p>
+<p>注：1.6舍入为1，但-1.6舍入为-2</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/20.png" alt="20"></p>
+<p>节点名：顶部</p>
+<p>呼出方式：右键查找（使用节点名）</p>
+<p>具体作用：将数据向正无穷/向上舍入到下一个整数</p>
+<p>注：1.6舍入为2，而-1.6舍入为-1</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/21.png" alt="21"></p>
+<p>节点名：舍入</p>
+<p>呼出方式：右键查找（使用节点名或round）</p>
+<p>具体作用：将数据舍入到最近的整数</p>
+<p>注：1.6舍入为2，而-1.6舍入为-2</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/22.png" alt="22"></p>
+<p>节点名：（dot）</p>
+<p>呼出方式：右键查找（点乘积）</p>
+<p>具体作用：计算向量点乘</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/23.png" alt="23"></p>
+<p>节点名：（cross）</p>
+<p>呼出方式：右键查找（叉乘积）</p>
+<p>具体作用：计算向量叉乘</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/24.png" alt="24"></p>
+<p>节点名：范围内随机浮点（其他数据类型也可）</p>
+<p>呼出方式：右键查找（使用节点名或random float）</p>
+<p>具体作用：生成随机浮点数</p>
+<p>接口：min——最小值</p>
+<p>max——最大值</p>
+<p>return value——范围内的随机数</p>
+<h1 id="选择节点："><a href="#选择节点：" class="headerlink" title="选择节点："></a>选择节点：</h1><p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/7.png" alt="7"></p>
+<p>节点名：切换整型</p>
+<p>呼出方式：右键查询（使用节点名或switch）</p>
+<p>具体作用：利用整数切换引脚流程</p>
+<p>接口：Selection——作为切换标准的整型</p>
+<p>Default——不满足其他引脚时的默认执行引脚</p>
+<p>注：除切换为整型以外，其他类型的数据也可使用switch查找对应类型的切换</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/9.png" alt="9"></p>
+<p>节点名：开启字符串【翻译可能有误】</p>
+<p>呼出方式：右键查询（使用节点名或switch）</p>
+<p>具体作用：输入指定字符串选择完全相同的引脚执行</p>
+<p>接口：Selection——输入作为判断依据的字符</p>
+<p>Default——不满足其他引脚时的默认执行引脚</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/8.png" alt="8"></p>
+<p>节点名：选择</p>
+<p>呼出方式：右键查询（使用节点名或select）</p>
+<p>具体作用：通过输入的内容得到已设定的返回值</p>
+<p>接口：Option 0，Option 1——设置给出的index值得到的返回值</p>
+<p>Index——可以接入任何类型的通配符</p>
+<p>Return value——返回值的出口</p>
+<h1 id="控制器节点："><a href="#控制器节点：" class="headerlink" title="控制器节点："></a>控制器节点：</h1><p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/26.png" alt="26"></p>
+<p>节点名：设置仅输入模式游戏</p>
+<p>呼出方式：右键查询（使用节点名或input only）</p>
+<p>具体作用：设置鼠标的输入模式，将光标锁定在游戏界面中心</p>
+<p>接口：Player Controller——接玩家控制器</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/25.png" alt="25"></p>
+<p>节点名：设置仅输入模式UI</p>
+<p>呼出方式：右键查询（使用节点名或input only）</p>
+<p>具体作用：设置鼠标的输入模式，将光标锁定在某个UI上</p>
+<p>接口：Player Controller——接玩家控制器</p>
+<p>In Widget to Focus——将光标锁定在该接口指定的UI上</p>
+<p>In Mouse Lock Mode——设置系统光标状态</p>
+<p>注：In Mouse Lock Mode接口分不锁定、捕获时锁定、固定锁定、锁定为全屏；捕获时锁定指运行窗口在最前端时将系统光标锁定在程序窗口内，直到win键强行解锁；固定锁定指一直将系统光标锁定在程序窗口内，直到win键强行解锁；锁定为全屏指仅全屏时锁定光标。</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/31.png" alt="31"></p>
+<p>节点名：获取玩家控制器/角色/pawn</p>
+<p>呼出方式：右键查询（使用节点名或蓝色引脚牵出搜索get player）</p>
+<p>具体作用：得到一个玩家控制器的返回值</p>
+<p>接口：Player Index——玩家控制器的序号</p>
+<p>Return Value——返回玩家控制器</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/33.png" alt="33"></p>
+<p>节点名：（set）</p>
+<p>呼出方式：右键查询（show mouse）[需要取消情境关联]</p>
+<p>具体作用：设置鼠标的显示</p>
+<p>接口：Show Mouse Cursor——是否显示鼠标</p>
+<p>目标——接玩家控制器</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/32.png" alt="32"></p>
+<p>节点名：生成Actor</p>
+<p>呼出方式：右键查询（使用节点名或create）</p>
+<p>具体作用：凭空创建一个actor</p>
+<p>接口：Class——生成的actor类型</p>
+<p>Spawn Transform——指定actor初始变换（生成位置、缩放、旋转度）</p>
+<p>Collision Handing Override——判断生成的条件（和碰撞体积有关）</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/27.png" alt="27"></p>
+<p>节点名：销毁Actor</p>
+<p>呼出方式：右键查询（使用节点名或destroy）</p>
+<p>具体作用：销毁目标Actor</p>
+<p>接口：目标——被销毁的对象</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/30.png" alt="30"></p>
+<p>节点名：构建</p>
+<p>呼出方式：右键查询（使用节点名或create）</p>
+<p>具体作用：创建一个UI</p>
+<p>接口：Class——UI的类型</p>
+<p>Owning Player——指定UI属于哪一个玩家</p>
+<p>Return Value——生成的UI</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/29.png" alt="29"></p>
+<p>节点名：添加到视口</p>
+<p>呼出方式：右键查询（使用节点名或牵引构建ui的返回值引脚，输入add to）</p>
+<p>具体作用：让创建的UI显示到用户界面</p>
+<p>接口：目标——接已创建的UI</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/28.png" alt="28"></p>
+<p>节点名：从父项中移除</p>
+<p>呼出方式：右键查询（使用节点名或remove from parent）</p>
+<p>具体作用：移除目标控件</p>
+<p>接口：目标——需要移除的控件</p>
+<h1 id="数组节点"><a href="#数组节点" class="headerlink" title="数组节点"></a>数组节点</h1><p>创建数组：在创建好的变量左侧图标上右键，能够创建一个同类型变量的数组</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/34.png" alt="34"></p>
+<p>节点名：获取数组元素（上为复制，下为引用）</p>
+<p>呼出方式：右键查询（使用节点名或数组引线查询get）</p>
+<p>具体作用：获取数组中指定下标的元素</p>
+<p>接口：（数组接口）——该元素所在数组</p>
+<p>（整数型接口）——需要获取的数组元素下标</p>
+<p>（右值）——返回值（复制返回值，引用返回地址）</p>
+<p>注：该节点分为复制和引用两种方式，同c/c++中函数的传值和引用传址，复制会生成副本，引起的变化不改变数组本身，而引用则可以改变数组内元素的值，但操作不当易使数据受损</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/35.png" alt="35"></p>
+<p>节点名：创建数组</p>
+<p>呼出方式：右键查询（使用节点名或从set左值牵引查询make）</p>
+<p>具体作用：创建一个数组</p>
+<p>接口：左侧——设置序号下的数组值</p>
+<p>右侧——得到数组变量</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/36.png" alt="36"></p>
+<p>节点名：（set）</p>
+<p>呼出方式：有引出变量的情况下，输入set查询</p>
+<p>具体作用：设置数组</p>
+<p>接口：左侧——被设置的对象变量数组</p>
+<p>右侧——接已经创建的数组</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/37.png" alt="37"></p>
+<p>节点名：设置阵列元素</p>
+<p>呼出方式：右键查询（使用节点名或牵引数组接口查询set）</p>
+<p>具体作用：设置数组单个元素的值</p>
+<p>接口：Target Array——接该元素所在数组</p>
+<p>Index——指定的数组元素的序号</p>
+<p>Item——为该数组元素所赋的值</p>
+<p>Size to Fit——当index大于数组大小时，数组将扩展</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/38.png" alt="38"></p>
+<p>节点名：查找项目</p>
+<p>呼出方式：右键查询（使用节点名或牵引数组接口查询array）</p>
+<p>具体作用：查找与给定值相等的数组下标</p>
+<p>接口：左侧——数组与需要查找的给定值</p>
+<p>右侧——数组序号返回值</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/39.png" alt="39"></p>
+<p>节点名：为有效索引</p>
+<p>呼出方式：右键查询（使用节点名或牵引数组接口查询array）</p>
+<p>具体作用：判断能否查找到指定元素</p>
+<p>接口：左侧——数组与需要查找的给定值</p>
+<p>右侧——能否找到的bool值返回</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/40.png" alt="40"></p>
+<p>节点名：添加</p>
+<p>呼出方式：右键查询（使用节点名或牵引数组接口查询array）</p>
+<p>具体作用：在数组最后添加一个元素</p>
+<p>接口：左侧——数组与需要添加的值</p>
+<p>右侧——数组序号返回值</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/41.png" alt="41"></p>
+<p>节点名：插入</p>
+<p>呼出方式：右键查询（使用节点名或牵引数组接口查询array）</p>
+<p>具体作用：在指定下标处插入一个元素，其他元素自动后移</p>
+<p>接口：左侧——数组与需要查找的给定值，以及需要插入的位置序号</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/42.png" alt="42"></p>
+<p>节点名：长度</p>
+<p>呼出方式：右键查询（使用节点名或牵引数组接口查询array）</p>
+<p>具体作用：返回数组长度</p>
+<p>接口：左侧——数组</p>
+<p>右侧——数组长度返回值</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/43.png" alt="43"></p>
+<p>节点名：清空</p>
+<p>呼出方式：右键查询（使用节点名或牵引数组接口查询array）</p>
+<p>具体作用：清空整个数组</p>
+<p>接口：左侧——需要清空的数组</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/44.png" alt="44"></p>
+<p>节点名：移除项目</p>
+<p>呼出方式：右键查询（使用节点名或牵引数组接口查询array）</p>
+<p>具体作用：移除等于这个值的元素</p>
+<p>接口：左侧——数组与需要移除的给定值</p>
+<p>右侧——返回是否成功移除</p>
+<p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/45.png" alt="45"></p>
+<p>节点名：移除索引</p>
+<p>呼出方式：右键查询（使用节点名或牵引数组接口查询array）</p>
+<p>具体作用：移除这个下标的元素</p>
+<p>接口：左侧——数组和元素下标</p>
 ]]></content>
       <categories>
         <category>学习</category>
