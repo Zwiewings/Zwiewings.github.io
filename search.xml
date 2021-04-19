@@ -1,6 +1,296 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Linux学习-3</title>
+    <url>/2021/02/10/Linux%E5%AD%A6%E4%B9%A0-3/</url>
+    <content><![CDATA[<h1 id="Linux-文件与目录管理"><a href="#Linux-文件与目录管理" class="headerlink" title="Linux 文件与目录管理"></a>Linux 文件与目录管理</h1><p>我们知道Linux的目录结构为树状结构，最顶级的目录为根目录 /。</p>
+<p>其他目录通过挂载可以将它们添加到树中，通过解除挂载可以移除它们。</p>
+<p>在开始本教程前我们需要先知道什么是绝对路径与相对路径。</p>
+<ul>
+<li><p><strong>绝对路径：</strong><br>路径的写法，由根目录 <strong>/</strong> 写起，例如： /usr/share/doc 这个目录。</p>
+</li>
+<li><p><strong>相对路径：</strong><br>路径的写法，不是由 <strong>/</strong> 写起，例如由 /usr/share/doc 要到 /usr/share/man 底下时，可以写成： <strong>cd ../man</strong> 这就是相对路径的写法。</p>
+</li>
+</ul>
+<hr>
+<h2 id="处理目录的常用命令"><a href="#处理目录的常用命令" class="headerlink" title="处理目录的常用命令"></a>处理目录的常用命令</h2><p>接下来我们就来看几个常见的处理目录的命令吧：</p>
+<ul>
+<li>ls（英文全拼：list files）: 列出目录及文件名</li>
+<li>cd（英文全拼：change directory）：切换目录</li>
+<li>pwd（英文全拼：print work directory）：显示目前的目录</li>
+<li>mkdir（英文全拼：make directory）：创建一个新的目录</li>
+<li>rmdir（英文全拼：remove directory）：删除一个空的目录</li>
+<li>cp（英文全拼：copy file）: 复制文件或目录</li>
+<li>rm（英文全拼：remove）: 删除文件或目录</li>
+<li>mv（英文全拼：move file）: 移动文件与目录，或修改文件与目录的名称</li>
+</ul>
+<p>你可以使用 <em>man [命令]</em> 来查看各个命令的使用文档，如 ：man cp。</p>
+<h3 id="ls-列出目录"><a href="#ls-列出目录" class="headerlink" title="ls (列出目录)"></a>ls (列出目录)</h3><p>在Linux系统当中， ls 命令可能是最常被运行的。</p>
+<p>语法：</p>
+<pre><code>[root@www ~]# ls [-aAdfFhilnrRSt] 目录名称
+[root@www ~]# ls [--color=&#123;never,auto,always&#125;] 目录名称
+[root@www ~]# ls [--full-time] 目录名称</code></pre>
+<p>选项与参数：</p>
+<ul>
+<li>-a ：全部的文件，连同隐藏文件( 开头为 . 的文件) 一起列出来(常用)</li>
+<li>-d ：仅列出目录本身，而不是列出目录内的文件数据(常用)</li>
+<li>-l ：长数据串列出，包含文件的属性与权限等等数据；(常用)</li>
+</ul>
+<p>将家目录下的所有文件列出来(含属性与隐藏档)</p>
+<pre><code>[root@www ~]# ls -al ~</code></pre>
+<h3 id="cd-切换目录"><a href="#cd-切换目录" class="headerlink" title="cd (切换目录)"></a>cd (切换目录)</h3><p>cd是Change Directory的缩写，这是用来变换工作目录的命令。</p>
+<p>语法：</p>
+<pre><code> cd [相对路径或绝对路径]
+#使用 mkdir 命令创建 runoob 目录
+[root@www ~]# mkdir runoob
+
+#使用绝对路径切换到 runoob 目录
+[root@www ~]# cd /root/runoob/
+
+#使用相对路径切换到 runoob 目录
+[root@www ~]# cd ./runoob/
+
+# 表示回到自己的家目录，亦即是 /root 这个目录
+[root@www runoob]# cd ~
+
+# 表示去到目前的上一级目录，亦即是 /root 的上一级目录的意思；
+[root@www ~]# cd ..</code></pre>
+<p>接下来大家多操作几次应该就可以很好的理解 cd 命令的。</p>
+<h3 id="pwd-显示目前所在的目录"><a href="#pwd-显示目前所在的目录" class="headerlink" title="pwd (显示目前所在的目录)"></a>pwd (显示目前所在的目录)</h3><p>pwd 是 <strong>Print Working Directory</strong> 的缩写，也就是显示目前所在目录的命令。</p>
+<pre><code>[root@www ~]# pwd [-P]</code></pre>
+<p>选项与参数：</p>
+<ul>
+<li><strong>-P</strong> ：显示出确实的路径，而非使用连结 (link) 路径。</li>
+</ul>
+<p>实例：单纯显示出目前的工作目录：</p>
+<pre><code>[root@www ~]# pwd
+/root   &lt;== 显示出目录啦～</code></pre>
+<p>实例显示出实际的工作目录，而非连结档本身的目录名而已。</p>
+<pre><code>[root@www ~]# cd /var/mail   &lt;==注意，/var/mail是一个连结档
+[root@www mail]# pwd
+/var/mail         &lt;==列出目前的工作目录
+[root@www mail]# pwd -P
+/var/spool/mail   &lt;==怎么回事？有没有加 -P 差很多～
+[root@www mail]# ls -ld /var/mail
+lrwxrwxrwx 1 root root 10 Sep  4 17:54 /var/mail -&gt; spool/mail
+# 看到这里应该知道为啥了吧？因为 /var/mail 是连结档，连结到 /var/spool/mail 
+# 所以，加上 pwd -P 的选项后，会不以连结档的数据显示，而是显示正确的完整路径啊！</code></pre>
+<h3 id="mkdir-创建新目录"><a href="#mkdir-创建新目录" class="headerlink" title="mkdir (创建新目录)"></a>mkdir (创建新目录)</h3><p>如果想要创建新的目录的话，那么就使用mkdir (make directory)吧。</p>
+<p>语法：</p>
+<pre><code>mkdir [-mp] 目录名称</code></pre>
+<p>选项与参数：</p>
+<ul>
+<li>-m ：配置文件的权限喔！直接配置，不需要看默认权限 (umask) 的脸色～</li>
+<li>-p ：帮助你直接将所需要的目录(包含上一级目录)递归创建起来！</li>
+</ul>
+<p>实例：请到/tmp底下尝试创建数个新目录看看：</p>
+<pre><code>[root@www ~]# cd /tmp
+[root@www tmp]# mkdir test    &lt;==创建一名为 test 的新目录
+[root@www tmp]# mkdir test1/test2/test3/test4
+mkdir: cannot create directory `test1/test2/test3/test4&#39;: 
+No such file or directory       &lt;== 没办法直接创建此目录啊！
+[root@www tmp]# mkdir -p test1/test2/test3/test4</code></pre>
+<p>加了这个 -p 的选项，可以自行帮你创建多层目录！</p>
+<p>实例：创建权限为 <strong>rwx–x–x</strong> 的目录。</p>
+<pre><code>[root@www tmp]# mkdir -m 711 test2
+[root@www tmp]# ls -l
+drwxr-xr-x  3 root  root 4096 Jul 18 12:50 test
+drwxr-xr-x  3 root  root 4096 Jul 18 12:53 test1
+drwx--x--x  2 root  root 4096 Jul 18 12:54 test2</code></pre>
+<p>上面的权限部分，如果没有加上 -m 来强制配置属性，系统会使用默认属性。</p>
+<p>如果我们使用 -m ，如上例我们给予 -m 711 来给予新的目录 drwx–x–x 的权限。</p>
+<h3 id="rmdir-删除空的目录"><a href="#rmdir-删除空的目录" class="headerlink" title="rmdir (删除空的目录)"></a>rmdir (删除空的目录)</h3><p>语法：</p>
+<pre><code> rmdir [-p] 目录名称</code></pre>
+<p>选项与参数：</p>
+<ul>
+<li><strong>-p ：</strong>连同上一级『空的』目录也一起删除</li>
+</ul>
+<p>删除 runoob 目录</p>
+<pre><code>[root@www tmp]# rmdir runoob/</code></pre>
+<p>将 mkdir 实例中创建的目录(/tmp 底下)删除掉！</p>
+<pre><code>[root@www tmp]# ls -l   &lt;==看看有多少目录存在？
+drwxr-xr-x  3 root  root 4096 Jul 18 12:50 test
+drwxr-xr-x  3 root  root 4096 Jul 18 12:53 test1
+drwx--x--x  2 root  root 4096 Jul 18 12:54 test2
+[root@www tmp]# rmdir test   &lt;==可直接删除掉，没问题
+[root@www tmp]# rmdir test1  &lt;==因为尚有内容，所以无法删除！
+rmdir: `test1&#39;: Directory not empty
+[root@www tmp]# rmdir -p test1/test2/test3/test4
+[root@www tmp]# ls -l        &lt;==您看看，底下的输出中test与test1不见了！
+drwx--x--x  2 root  root 4096 Jul 18 12:54 test2</code></pre>
+<p>利用 -p 这个选项，立刻就可以将 test1/test2/test3/test4 一次删除。</p>
+<p>不过要注意的是，这个 rmdir 仅能删除空的目录，你可以使用 rm 命令来删除非空目录。</p>
+<h3 id="cp-复制文件或目录"><a href="#cp-复制文件或目录" class="headerlink" title="cp (复制文件或目录)"></a>cp (复制文件或目录)</h3><p>cp 即拷贝文件和目录。</p>
+<p>语法:</p>
+<pre><code>[root@www ~]# cp [-adfilprsu] 来源档(source) 目标档(destination)
+[root@www ~]# cp [options] source1 source2 source3 .... directory</code></pre>
+<p>选项与参数：</p>
+<ul>
+<li><strong>-a：</strong>相当於 -pdr 的意思，至於 pdr 请参考下列说明；(常用)</li>
+<li><strong>-d：</strong>若来源档为连结档的属性(link file)，则复制连结档属性而非文件本身；</li>
+<li><strong>-f：</strong>为强制(force)的意思，若目标文件已经存在且无法开启，则移除后再尝试一次；</li>
+<li><strong>-i：</strong>若目标档(destination)已经存在时，在覆盖时会先询问动作的进行(常用)</li>
+<li><strong>-l：</strong>进行硬式连结(hard link)的连结档创建，而非复制文件本身；</li>
+<li><strong>-p：</strong>连同文件的属性一起复制过去，而非使用默认属性(备份常用)；</li>
+<li><strong>-r：</strong>递归持续复制，用於目录的复制行为；(常用)</li>
+<li><strong>-s：</strong>复制成为符号连结档 (symbolic link)，亦即『捷径』文件；</li>
+<li><strong>-u：</strong>若 destination 比 source 旧才升级 destination ！</li>
+</ul>
+<p>用 root 身份，将 root 目录下的 .bashrc 复制到 /tmp 下，并命名为 bashrc</p>
+<pre><code>[root@www ~]# cp ~/.bashrc /tmp/bashrc
+[root@www ~]# cp -i ~/.bashrc /tmp/bashrc
+cp: overwrite `/tmp/bashrc&#39;? n  &lt;==n不覆盖，y为覆盖</code></pre>
+<h3 id="rm-移除文件或目录"><a href="#rm-移除文件或目录" class="headerlink" title="rm (移除文件或目录)"></a>rm (移除文件或目录)</h3><p>语法：</p>
+<pre><code> rm [-fir] 文件或目录</code></pre>
+<p>选项与参数：</p>
+<ul>
+<li>-f ：就是 force 的意思，忽略不存在的文件，不会出现警告信息；</li>
+<li>-i ：互动模式，在删除前会询问使用者是否动作</li>
+<li>-r ：递归删除啊！最常用在目录的删除了！这是非常危险的选项！！！</li>
+<li></li>
+</ul>
+<p>将刚刚在 cp 的实例中创建的 bashrc 删除掉！</p>
+<pre><code>[root@www tmp]# rm -i bashrc
+rm: remove regular file `bashrc&#39;? y</code></pre>
+<p>如果加上 -i 的选项就会主动询问喔，避免你删除到错误的档名！</p>
+<h3 id="mv-移动文件与目录，或修改名称"><a href="#mv-移动文件与目录，或修改名称" class="headerlink" title="mv (移动文件与目录，或修改名称)"></a>mv (移动文件与目录，或修改名称)</h3><p>语法：</p>
+<pre><code>[root@www ~]# mv [-fiu] source destination
+[root@www ~]# mv [options] source1 source2 source3 .... directory</code></pre>
+<p>选项与参数：</p>
+<ul>
+<li>-f ：force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖；</li>
+<li>-i ：若目标文件 (destination) 已经存在时，就会询问是否覆盖！</li>
+<li>-u ：若目标文件已经存在，且 source 比较新，才会升级 (update)</li>
+</ul>
+<p>复制一文件，创建一目录，将文件移动到目录中</p>
+<pre><code>[root@www ~]# cd /tmp
+[root@www tmp]# cp ~/.bashrc bashrc
+[root@www tmp]# mkdir mvtest
+[root@www tmp]# mv bashrc mvtest</code></pre>
+<p>将某个文件移动到某个目录去，就是这样做！</p>
+<p>将刚刚的目录名称更名为 mvtest2</p>
+<pre><code>[root@www tmp]# mv mvtest mvtest2</code></pre>
+<h2 id="Linux-文件内容查看"><a href="#Linux-文件内容查看" class="headerlink" title="Linux 文件内容查看"></a>Linux 文件内容查看</h2><p>Linux系统中使用以下命令来查看文件的内容：</p>
+<ul>
+<li>cat 由第一行开始显示文件内容</li>
+<li>tac 从最后一行开始显示，可以看出 tac 是 cat 的倒着写！</li>
+<li>nl  显示的时候，顺道输出行号！</li>
+<li>more 一页一页的显示文件内容</li>
+<li>less 与 more 类似，但是比 more 更好的是，他可以往前翻页！</li>
+<li>head 只看头几行</li>
+<li>tail 只看尾巴几行</li>
+</ul>
+<p>你可以使用 *man [命令]*来查看各个命令的使用文档，如 ：man cp。</p>
+<h3 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h3><p>由第一行开始显示文件内容</p>
+<p>语法：</p>
+<pre><code>cat [-AbEnTv]</code></pre>
+<p>选项与参数：</p>
+<ul>
+<li>-A ：相当於 -vET 的整合选项，可列出一些特殊字符而不是空白而已；</li>
+<li>-b ：列出行号，仅针对非空白行做行号显示，空白行不标行号！</li>
+<li>-E ：将结尾的断行字节 $ 显示出来；</li>
+<li>-n ：列印出行号，连同空白行也会有行号，与 -b 的选项不同；</li>
+<li>-T ：将 [tab] 按键以 ^I 显示出来；</li>
+<li>-v ：列出一些看不出来的特殊字符</li>
+</ul>
+<p>检看 /etc/issue 这个文件的内容：</p>
+<pre><code>[root@www ~]# cat /etc/issue
+CentOS release 6.4 (Final)
+Kernel \r on an \m</code></pre>
+<h3 id="tac"><a href="#tac" class="headerlink" title="tac"></a>tac</h3><p>tac与cat命令刚好相反，文件内容从最后一行开始显示，可以看出 tac 是 cat 的倒着写！如：</p>
+<pre><code>[root@www ~]# tac /etc/issue
+
+Kernel \r on an \m
+CentOS release 6.4 (Final)</code></pre>
+<h3 id="nl"><a href="#nl" class="headerlink" title="nl"></a>nl</h3><p>显示行号</p>
+<p>语法：</p>
+<pre><code>nl [-bnw] 文件</code></pre>
+<p>选项与参数：</p>
+<ul>
+<li>-b ：指定行号指定的方式，主要有两种：<br>-b a ：表示不论是否为空行，也同样列出行号(类似 cat -n)；<br>-b t ：如果有空行，空的那一行不要列出行号(默认值)；</li>
+<li>-n ：列出行号表示的方法，主要有三种：<br>-n ln ：行号在荧幕的最左方显示；<br>-n rn ：行号在自己栏位的最右方显示，且不加 0 ；<br>-n rz ：行号在自己栏位的最右方显示，且加 0 ；</li>
+<li>-w ：行号栏位的占用的位数。</li>
+</ul>
+<p>实例一：用 nl 列出 /etc/issue 的内容</p>
+<pre><code>[root@www ~]# nl /etc/issue
+     1  CentOS release 6.4 (Final)
+     2  Kernel \r on an \m</code></pre>
+<h3 id="more"><a href="#more" class="headerlink" title="more"></a>more</h3><p>一页一页翻动</p>
+<pre><code>[root@www ~]# more /etc/man_db.config 
+#
+# Generated automatically from man.conf.in by the
+# configure script.
+#
+# man.conf from man-1.6d
+....(中间省略)....
+--More--(28%)  &lt;== </code></pre>
+<p>在 more 这个程序的运行过程中：</p>
+<ul>
+<li>空白键 (space)：代表向下翻一页；</li>
+<li>Enter     ：代表向下翻『一行』；</li>
+<li>/字串     ：代表在这个显示的内容当中，向下搜寻『字串』这个关键字；</li>
+<li>:f      ：立刻显示出档名以及目前显示的行数；</li>
+<li>q       ：代表立刻离开 more ，不再显示该文件内容。</li>
+<li>b 或 [ctrl]-b ：代表往回翻页，不过这动作只对文件有用，对管线无用。</li>
+</ul>
+<h3 id="less"><a href="#less" class="headerlink" title="less"></a>less</h3><p>一页一页翻动，以下实例输出/etc/man.config文件的内容：</p>
+<pre><code>[root@www ~]# less /etc/man.config
+#
+# Generated automatically from man.conf.in by the
+# configure script.
+#
+# man.conf from man-1.6d
+....(中间省略)....
+:   &lt;== 这里可以等待你输入命令！</code></pre>
+<p>less运行时可以输入的命令有：</p>
+<ul>
+<li>空白键  ：向下翻动一页；</li>
+<li>[pagedown]：向下翻动一页；</li>
+<li>[pageup] ：向上翻动一页；</li>
+<li>/字串   ：向下搜寻『字串』的功能；</li>
+<li>?字串   ：向上搜寻『字串』的功能；</li>
+<li>n     ：重复前一个搜寻 (与 / 或 ? 有关！)</li>
+<li>N     ：反向的重复前一个搜寻 (与 / 或 ? 有关！)</li>
+<li>q     ：离开 less 这个程序；</li>
+</ul>
+<h3 id="head"><a href="#head" class="headerlink" title="head"></a>head</h3><p>取出文件前面几行</p>
+<p>语法：</p>
+<pre><code>head [-n number] 文件 </code></pre>
+<p>选项与参数：</p>
+<ul>
+<li>-n ：后面接数字，代表显示几行的意思</li>
+</ul>
+<pre><code>[root@www ~]# head /etc/man.config</code></pre>
+<p>默认的情况中，显示前面 10 行！若要显示前 20 行，就得要这样：</p>
+<pre><code>[root@www ~]# head -n 20 /etc/man.config</code></pre>
+<h3 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h3><p>取出文件后面几行</p>
+<p>语法：</p>
+<pre><code>tail [-n number] 文件 </code></pre>
+<p>选项与参数：</p>
+<ul>
+<li>-n ：后面接数字，代表显示几行的意思</li>
+<li>-f ：表示持续侦测后面所接的档名，要等到按下[ctrl]-c才会结束tail的侦测</li>
+</ul>
+<pre><code>[root@www ~]# tail /etc/man.config
+# 默认的情况中，显示最后的十行！若要显示最后的 20 行，就得要这样：
+[root@www ~]# tail -n 20 /etc/man.config</code></pre>
+<h2 id="Linux-链接概念"><a href="#Linux-链接概念" class="headerlink" title="Linux 链接概念"></a>Linux 链接概念</h2><p>Linux 链接分两种，一种被称为硬链接（Hard Link），另一种被称为符号链接（Symbolic Link）。默认情况下，<strong>ln</strong> 命令产生硬链接。</p>
+<h3 id="硬连接"><a href="#硬连接" class="headerlink" title="硬连接"></a><strong>硬连接</strong></h3><p>硬连接指通过索引节点来进行连接。在 Linux 的文件系统中，保存在磁盘分区中的文件不管是什么类型都给它分配一个编号，称为索引节点号(Inode Index)。在 Linux 中，多个文件名指向同一索引节点是存在的。比如：A 是 B 的硬链接（A 和 B 都是文件名），则 A 的目录项中的 inode 节点号与 B 的目录项中的 inode 节点号相同，即一个 inode 节点对应两个不同的文件名，两个文件名指向同一个文件，A 和 B 对文件系统来说是完全平等的。删除其中任何一个都不会影响另外一个的访问。</p>
+<p>硬连接的作用是允许一个文件拥有多个有效路径名，这样用户就可以建立硬连接到重要文件，以防止“误删”的功能。其原因如上所述，因为对应该目录的索引节点有一个以上的连接。只删除一个连接并不影响索引节点本身和其它的连接，只有当最后一个连接被删除后，文件的数据块及目录的连接才会被释放。也就是说，文件真正删除的条件是与之相关的所有硬连接文件均被删除。</p>
+<h3 id="软连接"><a href="#软连接" class="headerlink" title="软连接"></a><strong>软连接</strong></h3><p>另外一种连接称之为符号连接（Symbolic Link），也叫软连接。软链接文件有类似于 Windows 的快捷方式。它实际上是一个特殊的文件。在符号连接中，文件实际上是一个文本文件，其中包含的有另一文件的位置信息。比如：A 是 B 的软链接（A 和 B 都是文件名），A 的目录项中的 inode 节点号与 B 的目录项中的 inode 节点号不相同，A 和 B 指向的是两个不同的 inode，继而指向两块不同的数据块。但是 A 的数据块中存放的只是 B 的路径名（可以根据这个找到 B 的目录项）。A 和 B 之间是“主从”关系，如果 B 被删除了，A 仍然存在（因为两个是不同的文件），但指向的是一个无效的链接。</p>
+<h3 id="可以得到以下全部结论："><a href="#可以得到以下全部结论：" class="headerlink" title="可以得到以下全部结论："></a>可以得到以下全部结论：</h3><p>1).删除符号连接f3,对f1,f2无影响</p>
+<p>2).删除硬连接f2，对f1,f3也无影响</p>
+<p>3).删除原文件f1，对硬连接f2没有影响，导致符号连接f3失效</p>
+<p> 4).同时删除原文件f1,硬连接f2，整个文件会真正的被删除</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>Linux学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>c++学习-1</title>
     <url>/2021/01/18/c++%E5%AD%A6%E4%B9%A0-1/</url>
     <content><![CDATA[<h1 id="c-基础（同c比较）"><a href="#c-基础（同c比较）" class="headerlink" title="c++基础（同c比较）"></a>c++基础（同c比较）</h1><table>
@@ -854,392 +1144,57 @@ int (*p)(int i, int j);//指向函数的指针p</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>Linux学习-3</title>
-    <url>/2021/02/10/Linux%E5%AD%A6%E4%B9%A0-3/</url>
-    <content><![CDATA[<h1 id="Linux-文件与目录管理"><a href="#Linux-文件与目录管理" class="headerlink" title="Linux 文件与目录管理"></a>Linux 文件与目录管理</h1><p>我们知道Linux的目录结构为树状结构，最顶级的目录为根目录 /。</p>
-<p>其他目录通过挂载可以将它们添加到树中，通过解除挂载可以移除它们。</p>
-<p>在开始本教程前我们需要先知道什么是绝对路径与相对路径。</p>
+    <title>hexo基础命令行</title>
+    <url>/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/</url>
+    <content><![CDATA[<h1 id="hexo的基础命令行："><a href="#hexo的基础命令行：" class="headerlink" title="hexo的基础命令行："></a>hexo的基础命令行：</h1><h2 id="hexo-s"><a href="#hexo-s" class="headerlink" title="hexo s"></a>hexo s</h2><pre><code class="undefined">hexo s</code></pre>
 <ul>
-<li><p><strong>绝对路径：</strong><br>路径的写法，由根目录 <strong>/</strong> 写起，例如： /usr/share/doc 这个目录。</p>
-</li>
-<li><p><strong>相对路径：</strong><br>路径的写法，不是由 <strong>/</strong> 写起，例如由 /usr/share/doc 要到 /usr/share/man 底下时，可以写成： <strong>cd ../man</strong> 这就是相对路径的写法。</p>
-</li>
+<li>启动本地服务器，用于预览主题。默认地址： <a href="http://localhost:4000/">http://localhost:4000/</a></li>
+<li><code>hexo s</code> 是 <code>hexo server</code> 的缩写，命令效果一致。</li>
+<li>预览的同时可以修改文章内容或主题代码，保存后刷新页面即可。</li>
+<li>对 Hexo 根目录 <code>_config.yml</code> 的修改，需要重启本地服务器后才能预览效果。</li>
+<li>预览草稿文章 <code>hexo s --drafts</code></li>
 </ul>
-<hr>
-<h2 id="处理目录的常用命令"><a href="#处理目录的常用命令" class="headerlink" title="处理目录的常用命令"></a>处理目录的常用命令</h2><p>接下来我们就来看几个常见的处理目录的命令吧：</p>
+<h2 id="hexo-new"><a href="#hexo-new" class="headerlink" title="hexo new"></a>hexo new</h2><pre><code class="cpp">hexo new &quot;title&quot;
+hexo new  draft &quot;草稿文章&quot;
+hexo new page</code></pre>
 <ul>
-<li>ls（英文全拼：list files）: 列出目录及文件名</li>
-<li>cd（英文全拼：change directory）：切换目录</li>
-<li>pwd（英文全拼：print work directory）：显示目前的目录</li>
-<li>mkdir（英文全拼：make directory）：创建一个新的目录</li>
-<li>rmdir（英文全拼：remove directory）：删除一个空的目录</li>
-<li>cp（英文全拼：copy file）: 复制文件或目录</li>
-<li>rm（英文全拼：remove）: 删除文件或目录</li>
-<li>mv（英文全拼：move file）: 移动文件与目录，或修改文件与目录的名称</li>
+<li>新建一个title.md博客文章</li>
+<li>draft 为草稿文档，不会展现在博客上，可用<code>hexo publish &quot;草稿文章&quot;</code> 发布成正式文章</li>
+<li><code>hexo new page</code> 创建一个文件夹</li>
 </ul>
-<p>你可以使用 <em>man [命令]</em> 来查看各个命令的使用文档，如 ：man cp。</p>
-<h3 id="ls-列出目录"><a href="#ls-列出目录" class="headerlink" title="ls (列出目录)"></a>ls (列出目录)</h3><p>在Linux系统当中， ls 命令可能是最常被运行的。</p>
-<p>语法：</p>
-<pre><code>[root@www ~]# ls [-aAdfFhilnrRSt] 目录名称
-[root@www ~]# ls [--color=&#123;never,auto,always&#125;] 目录名称
-[root@www ~]# ls [--full-time] 目录名称</code></pre>
-<p>选项与参数：</p>
+<h2 id="hexo-d"><a href="#hexo-d" class="headerlink" title="hexo d"></a>hexo d</h2><pre><code class="undefined">hexo d</code></pre>
 <ul>
-<li>-a ：全部的文件，连同隐藏文件( 开头为 . 的文件) 一起列出来(常用)</li>
-<li>-d ：仅列出目录本身，而不是列出目录内的文件数据(常用)</li>
-<li>-l ：长数据串列出，包含文件的属性与权限等等数据；(常用)</li>
+<li>自动生成网站静态文件，并部署到设定的仓库。</li>
+<li><code>hexo d</code> 是 <code>hexo deploy</code> 的缩写，命令效果一致。</li>
 </ul>
-<p>将家目录下的所有文件列出来(含属性与隐藏档)</p>
-<pre><code>[root@www ~]# ls -al ~</code></pre>
-<h3 id="cd-切换目录"><a href="#cd-切换目录" class="headerlink" title="cd (切换目录)"></a>cd (切换目录)</h3><p>cd是Change Directory的缩写，这是用来变换工作目录的命令。</p>
-<p>语法：</p>
-<pre><code> cd [相对路径或绝对路径]
-#使用 mkdir 命令创建 runoob 目录
-[root@www ~]# mkdir runoob
-
-#使用绝对路径切换到 runoob 目录
-[root@www ~]# cd /root/runoob/
-
-#使用相对路径切换到 runoob 目录
-[root@www ~]# cd ./runoob/
-
-# 表示回到自己的家目录，亦即是 /root 这个目录
-[root@www runoob]# cd ~
-
-# 表示去到目前的上一级目录，亦即是 /root 的上一级目录的意思；
-[root@www ~]# cd ..</code></pre>
-<p>接下来大家多操作几次应该就可以很好的理解 cd 命令的。</p>
-<h3 id="pwd-显示目前所在的目录"><a href="#pwd-显示目前所在的目录" class="headerlink" title="pwd (显示目前所在的目录)"></a>pwd (显示目前所在的目录)</h3><p>pwd 是 <strong>Print Working Directory</strong> 的缩写，也就是显示目前所在目录的命令。</p>
-<pre><code>[root@www ~]# pwd [-P]</code></pre>
-<p>选项与参数：</p>
+<h2 id="hexo-clean"><a href="#hexo-clean" class="headerlink" title="hexo clean"></a>hexo clean</h2><pre><code class="undefined">hexo clean</code></pre>
 <ul>
-<li><strong>-P</strong> ：显示出确实的路径，而非使用连结 (link) 路径。</li>
+<li>清除缓存文件 db.json 和已生成的静态文件 public 。</li>
+<li>网站显示异常时可以执行这条命令试试</li>
 </ul>
-<p>实例：单纯显示出目前的工作目录：</p>
-<pre><code>[root@www ~]# pwd
-/root   &lt;== 显示出目录啦～</code></pre>
-<p>实例显示出实际的工作目录，而非连结档本身的目录名而已。</p>
-<pre><code>[root@www ~]# cd /var/mail   &lt;==注意，/var/mail是一个连结档
-[root@www mail]# pwd
-/var/mail         &lt;==列出目前的工作目录
-[root@www mail]# pwd -P
-/var/spool/mail   &lt;==怎么回事？有没有加 -P 差很多～
-[root@www mail]# ls -ld /var/mail
-lrwxrwxrwx 1 root root 10 Sep  4 17:54 /var/mail -&gt; spool/mail
-# 看到这里应该知道为啥了吧？因为 /var/mail 是连结档，连结到 /var/spool/mail 
-# 所以，加上 pwd -P 的选项后，会不以连结档的数据显示，而是显示正确的完整路径啊！</code></pre>
-<h3 id="mkdir-创建新目录"><a href="#mkdir-创建新目录" class="headerlink" title="mkdir (创建新目录)"></a>mkdir (创建新目录)</h3><p>如果想要创建新的目录的话，那么就使用mkdir (make directory)吧。</p>
-<p>语法：</p>
-<pre><code>mkdir [-mp] 目录名称</code></pre>
-<p>选项与参数：</p>
+<h2 id="hexo-g"><a href="#hexo-g" class="headerlink" title="hexo g"></a>hexo g</h2><pre><code class="undefined">hexo g</code></pre>
+<p>生成网站静态文件到默认设置的 public 文件夹。</p>
 <ul>
-<li>-m ：配置文件的权限喔！直接配置，不需要看默认权限 (umask) 的脸色～</li>
-<li>-p ：帮助你直接将所需要的目录(包含上一级目录)递归创建起来！</li>
+<li>便于查看网站生成的静态文件或者手动部署网站；</li>
+<li>如果使用自动部署，不需要先执行该命令；</li>
+<li><code>hexo g</code> 是 <code>hexo generate</code> 的缩写，命令效果一致。</li>
 </ul>
-<p>实例：请到/tmp底下尝试创建数个新目录看看：</p>
-<pre><code>[root@www ~]# cd /tmp
-[root@www tmp]# mkdir test    &lt;==创建一名为 test 的新目录
-[root@www tmp]# mkdir test1/test2/test3/test4
-mkdir: cannot create directory `test1/test2/test3/test4&#39;: 
-No such file or directory       &lt;== 没办法直接创建此目录啊！
-[root@www tmp]# mkdir -p test1/test2/test3/test4</code></pre>
-<p>加了这个 -p 的选项，可以自行帮你创建多层目录！</p>
-<p>实例：创建权限为 <strong>rwx–x–x</strong> 的目录。</p>
-<pre><code>[root@www tmp]# mkdir -m 711 test2
-[root@www tmp]# ls -l
-drwxr-xr-x  3 root  root 4096 Jul 18 12:50 test
-drwxr-xr-x  3 root  root 4096 Jul 18 12:53 test1
-drwx--x--x  2 root  root 4096 Jul 18 12:54 test2</code></pre>
-<p>上面的权限部分，如果没有加上 -m 来强制配置属性，系统会使用默认属性。</p>
-<p>如果我们使用 -m ，如上例我们给予 -m 711 来给予新的目录 drwx–x–x 的权限。</p>
-<h3 id="rmdir-删除空的目录"><a href="#rmdir-删除空的目录" class="headerlink" title="rmdir (删除空的目录)"></a>rmdir (删除空的目录)</h3><p>语法：</p>
-<pre><code> rmdir [-p] 目录名称</code></pre>
-<p>选项与参数：</p>
-<ul>
-<li><strong>-p ：</strong>连同上一级『空的』目录也一起删除</li>
-</ul>
-<p>删除 runoob 目录</p>
-<pre><code>[root@www tmp]# rmdir runoob/</code></pre>
-<p>将 mkdir 实例中创建的目录(/tmp 底下)删除掉！</p>
-<pre><code>[root@www tmp]# ls -l   &lt;==看看有多少目录存在？
-drwxr-xr-x  3 root  root 4096 Jul 18 12:50 test
-drwxr-xr-x  3 root  root 4096 Jul 18 12:53 test1
-drwx--x--x  2 root  root 4096 Jul 18 12:54 test2
-[root@www tmp]# rmdir test   &lt;==可直接删除掉，没问题
-[root@www tmp]# rmdir test1  &lt;==因为尚有内容，所以无法删除！
-rmdir: `test1&#39;: Directory not empty
-[root@www tmp]# rmdir -p test1/test2/test3/test4
-[root@www tmp]# ls -l        &lt;==您看看，底下的输出中test与test1不见了！
-drwx--x--x  2 root  root 4096 Jul 18 12:54 test2</code></pre>
-<p>利用 -p 这个选项，立刻就可以将 test1/test2/test3/test4 一次删除。</p>
-<p>不过要注意的是，这个 rmdir 仅能删除空的目录，你可以使用 rm 命令来删除非空目录。</p>
-<h3 id="cp-复制文件或目录"><a href="#cp-复制文件或目录" class="headerlink" title="cp (复制文件或目录)"></a>cp (复制文件或目录)</h3><p>cp 即拷贝文件和目录。</p>
-<p>语法:</p>
-<pre><code>[root@www ~]# cp [-adfilprsu] 来源档(source) 目标档(destination)
-[root@www ~]# cp [options] source1 source2 source3 .... directory</code></pre>
-<p>选项与参数：</p>
-<ul>
-<li><strong>-a：</strong>相当於 -pdr 的意思，至於 pdr 请参考下列说明；(常用)</li>
-<li><strong>-d：</strong>若来源档为连结档的属性(link file)，则复制连结档属性而非文件本身；</li>
-<li><strong>-f：</strong>为强制(force)的意思，若目标文件已经存在且无法开启，则移除后再尝试一次；</li>
-<li><strong>-i：</strong>若目标档(destination)已经存在时，在覆盖时会先询问动作的进行(常用)</li>
-<li><strong>-l：</strong>进行硬式连结(hard link)的连结档创建，而非复制文件本身；</li>
-<li><strong>-p：</strong>连同文件的属性一起复制过去，而非使用默认属性(备份常用)；</li>
-<li><strong>-r：</strong>递归持续复制，用於目录的复制行为；(常用)</li>
-<li><strong>-s：</strong>复制成为符号连结档 (symbolic link)，亦即『捷径』文件；</li>
-<li><strong>-u：</strong>若 destination 比 source 旧才升级 destination ！</li>
-</ul>
-<p>用 root 身份，将 root 目录下的 .bashrc 复制到 /tmp 下，并命名为 bashrc</p>
-<pre><code>[root@www ~]# cp ~/.bashrc /tmp/bashrc
-[root@www ~]# cp -i ~/.bashrc /tmp/bashrc
-cp: overwrite `/tmp/bashrc&#39;? n  &lt;==n不覆盖，y为覆盖</code></pre>
-<h3 id="rm-移除文件或目录"><a href="#rm-移除文件或目录" class="headerlink" title="rm (移除文件或目录)"></a>rm (移除文件或目录)</h3><p>语法：</p>
-<pre><code> rm [-fir] 文件或目录</code></pre>
-<p>选项与参数：</p>
-<ul>
-<li>-f ：就是 force 的意思，忽略不存在的文件，不会出现警告信息；</li>
-<li>-i ：互动模式，在删除前会询问使用者是否动作</li>
-<li>-r ：递归删除啊！最常用在目录的删除了！这是非常危险的选项！！！</li>
-<li></li>
-</ul>
-<p>将刚刚在 cp 的实例中创建的 bashrc 删除掉！</p>
-<pre><code>[root@www tmp]# rm -i bashrc
-rm: remove regular file `bashrc&#39;? y</code></pre>
-<p>如果加上 -i 的选项就会主动询问喔，避免你删除到错误的档名！</p>
-<h3 id="mv-移动文件与目录，或修改名称"><a href="#mv-移动文件与目录，或修改名称" class="headerlink" title="mv (移动文件与目录，或修改名称)"></a>mv (移动文件与目录，或修改名称)</h3><p>语法：</p>
-<pre><code>[root@www ~]# mv [-fiu] source destination
-[root@www ~]# mv [options] source1 source2 source3 .... directory</code></pre>
-<p>选项与参数：</p>
-<ul>
-<li>-f ：force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖；</li>
-<li>-i ：若目标文件 (destination) 已经存在时，就会询问是否覆盖！</li>
-<li>-u ：若目标文件已经存在，且 source 比较新，才会升级 (update)</li>
-</ul>
-<p>复制一文件，创建一目录，将文件移动到目录中</p>
-<pre><code>[root@www ~]# cd /tmp
-[root@www tmp]# cp ~/.bashrc bashrc
-[root@www tmp]# mkdir mvtest
-[root@www tmp]# mv bashrc mvtest</code></pre>
-<p>将某个文件移动到某个目录去，就是这样做！</p>
-<p>将刚刚的目录名称更名为 mvtest2</p>
-<pre><code>[root@www tmp]# mv mvtest mvtest2</code></pre>
-<h2 id="Linux-文件内容查看"><a href="#Linux-文件内容查看" class="headerlink" title="Linux 文件内容查看"></a>Linux 文件内容查看</h2><p>Linux系统中使用以下命令来查看文件的内容：</p>
-<ul>
-<li>cat 由第一行开始显示文件内容</li>
-<li>tac 从最后一行开始显示，可以看出 tac 是 cat 的倒着写！</li>
-<li>nl  显示的时候，顺道输出行号！</li>
-<li>more 一页一页的显示文件内容</li>
-<li>less 与 more 类似，但是比 more 更好的是，他可以往前翻页！</li>
-<li>head 只看头几行</li>
-<li>tail 只看尾巴几行</li>
-</ul>
-<p>你可以使用 *man [命令]*来查看各个命令的使用文档，如 ：man cp。</p>
-<h3 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h3><p>由第一行开始显示文件内容</p>
-<p>语法：</p>
-<pre><code>cat [-AbEnTv]</code></pre>
-<p>选项与参数：</p>
-<ul>
-<li>-A ：相当於 -vET 的整合选项，可列出一些特殊字符而不是空白而已；</li>
-<li>-b ：列出行号，仅针对非空白行做行号显示，空白行不标行号！</li>
-<li>-E ：将结尾的断行字节 $ 显示出来；</li>
-<li>-n ：列印出行号，连同空白行也会有行号，与 -b 的选项不同；</li>
-<li>-T ：将 [tab] 按键以 ^I 显示出来；</li>
-<li>-v ：列出一些看不出来的特殊字符</li>
-</ul>
-<p>检看 /etc/issue 这个文件的内容：</p>
-<pre><code>[root@www ~]# cat /etc/issue
-CentOS release 6.4 (Final)
-Kernel \r on an \m</code></pre>
-<h3 id="tac"><a href="#tac" class="headerlink" title="tac"></a>tac</h3><p>tac与cat命令刚好相反，文件内容从最后一行开始显示，可以看出 tac 是 cat 的倒着写！如：</p>
-<pre><code>[root@www ~]# tac /etc/issue
-
-Kernel \r on an \m
-CentOS release 6.4 (Final)</code></pre>
-<h3 id="nl"><a href="#nl" class="headerlink" title="nl"></a>nl</h3><p>显示行号</p>
-<p>语法：</p>
-<pre><code>nl [-bnw] 文件</code></pre>
-<p>选项与参数：</p>
-<ul>
-<li>-b ：指定行号指定的方式，主要有两种：<br>-b a ：表示不论是否为空行，也同样列出行号(类似 cat -n)；<br>-b t ：如果有空行，空的那一行不要列出行号(默认值)；</li>
-<li>-n ：列出行号表示的方法，主要有三种：<br>-n ln ：行号在荧幕的最左方显示；<br>-n rn ：行号在自己栏位的最右方显示，且不加 0 ；<br>-n rz ：行号在自己栏位的最右方显示，且加 0 ；</li>
-<li>-w ：行号栏位的占用的位数。</li>
-</ul>
-<p>实例一：用 nl 列出 /etc/issue 的内容</p>
-<pre><code>[root@www ~]# nl /etc/issue
-     1  CentOS release 6.4 (Final)
-     2  Kernel \r on an \m</code></pre>
-<h3 id="more"><a href="#more" class="headerlink" title="more"></a>more</h3><p>一页一页翻动</p>
-<pre><code>[root@www ~]# more /etc/man_db.config 
-#
-# Generated automatically from man.conf.in by the
-# configure script.
-#
-# man.conf from man-1.6d
-....(中间省略)....
---More--(28%)  &lt;== </code></pre>
-<p>在 more 这个程序的运行过程中：</p>
-<ul>
-<li>空白键 (space)：代表向下翻一页；</li>
-<li>Enter     ：代表向下翻『一行』；</li>
-<li>/字串     ：代表在这个显示的内容当中，向下搜寻『字串』这个关键字；</li>
-<li>:f      ：立刻显示出档名以及目前显示的行数；</li>
-<li>q       ：代表立刻离开 more ，不再显示该文件内容。</li>
-<li>b 或 [ctrl]-b ：代表往回翻页，不过这动作只对文件有用，对管线无用。</li>
-</ul>
-<h3 id="less"><a href="#less" class="headerlink" title="less"></a>less</h3><p>一页一页翻动，以下实例输出/etc/man.config文件的内容：</p>
-<pre><code>[root@www ~]# less /etc/man.config
-#
-# Generated automatically from man.conf.in by the
-# configure script.
-#
-# man.conf from man-1.6d
-....(中间省略)....
-:   &lt;== 这里可以等待你输入命令！</code></pre>
-<p>less运行时可以输入的命令有：</p>
-<ul>
-<li>空白键  ：向下翻动一页；</li>
-<li>[pagedown]：向下翻动一页；</li>
-<li>[pageup] ：向上翻动一页；</li>
-<li>/字串   ：向下搜寻『字串』的功能；</li>
-<li>?字串   ：向上搜寻『字串』的功能；</li>
-<li>n     ：重复前一个搜寻 (与 / 或 ? 有关！)</li>
-<li>N     ：反向的重复前一个搜寻 (与 / 或 ? 有关！)</li>
-<li>q     ：离开 less 这个程序；</li>
-</ul>
-<h3 id="head"><a href="#head" class="headerlink" title="head"></a>head</h3><p>取出文件前面几行</p>
-<p>语法：</p>
-<pre><code>head [-n number] 文件 </code></pre>
-<p>选项与参数：</p>
-<ul>
-<li>-n ：后面接数字，代表显示几行的意思</li>
-</ul>
-<pre><code>[root@www ~]# head /etc/man.config</code></pre>
-<p>默认的情况中，显示前面 10 行！若要显示前 20 行，就得要这样：</p>
-<pre><code>[root@www ~]# head -n 20 /etc/man.config</code></pre>
-<h3 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h3><p>取出文件后面几行</p>
-<p>语法：</p>
-<pre><code>tail [-n number] 文件 </code></pre>
-<p>选项与参数：</p>
-<ul>
-<li>-n ：后面接数字，代表显示几行的意思</li>
-<li>-f ：表示持续侦测后面所接的档名，要等到按下[ctrl]-c才会结束tail的侦测</li>
-</ul>
-<pre><code>[root@www ~]# tail /etc/man.config
-# 默认的情况中，显示最后的十行！若要显示最后的 20 行，就得要这样：
-[root@www ~]# tail -n 20 /etc/man.config</code></pre>
-<h2 id="Linux-链接概念"><a href="#Linux-链接概念" class="headerlink" title="Linux 链接概念"></a>Linux 链接概念</h2><p>Linux 链接分两种，一种被称为硬链接（Hard Link），另一种被称为符号链接（Symbolic Link）。默认情况下，<strong>ln</strong> 命令产生硬链接。</p>
-<h3 id="硬连接"><a href="#硬连接" class="headerlink" title="硬连接"></a><strong>硬连接</strong></h3><p>硬连接指通过索引节点来进行连接。在 Linux 的文件系统中，保存在磁盘分区中的文件不管是什么类型都给它分配一个编号，称为索引节点号(Inode Index)。在 Linux 中，多个文件名指向同一索引节点是存在的。比如：A 是 B 的硬链接（A 和 B 都是文件名），则 A 的目录项中的 inode 节点号与 B 的目录项中的 inode 节点号相同，即一个 inode 节点对应两个不同的文件名，两个文件名指向同一个文件，A 和 B 对文件系统来说是完全平等的。删除其中任何一个都不会影响另外一个的访问。</p>
-<p>硬连接的作用是允许一个文件拥有多个有效路径名，这样用户就可以建立硬连接到重要文件，以防止“误删”的功能。其原因如上所述，因为对应该目录的索引节点有一个以上的连接。只删除一个连接并不影响索引节点本身和其它的连接，只有当最后一个连接被删除后，文件的数据块及目录的连接才会被释放。也就是说，文件真正删除的条件是与之相关的所有硬连接文件均被删除。</p>
-<h3 id="软连接"><a href="#软连接" class="headerlink" title="软连接"></a><strong>软连接</strong></h3><p>另外一种连接称之为符号连接（Symbolic Link），也叫软连接。软链接文件有类似于 Windows 的快捷方式。它实际上是一个特殊的文件。在符号连接中，文件实际上是一个文本文件，其中包含的有另一文件的位置信息。比如：A 是 B 的软链接（A 和 B 都是文件名），A 的目录项中的 inode 节点号与 B 的目录项中的 inode 节点号不相同，A 和 B 指向的是两个不同的 inode，继而指向两块不同的数据块。但是 A 的数据块中存放的只是 B 的路径名（可以根据这个找到 B 的目录项）。A 和 B 之间是“主从”关系，如果 B 被删除了，A 仍然存在（因为两个是不同的文件），但指向的是一个无效的链接。</p>
-<h3 id="可以得到以下全部结论："><a href="#可以得到以下全部结论：" class="headerlink" title="可以得到以下全部结论："></a>可以得到以下全部结论：</h3><p>1).删除符号连接f3,对f1,f2无影响</p>
-<p>2).删除硬连接f2，对f1,f3也无影响</p>
-<p>3).删除原文件f1，对硬连接f2没有影响，导致符号连接f3失效</p>
-<p> 4).同时删除原文件f1,硬连接f2，整个文件会真正的被删除</p>
+<pre><code class="undefined">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code></pre>
+<p>部署发布，命令可用&amp;&amp;连接</p>
+<p>原创封面</p>
+<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/c++cover.jpg" alt="c++cover"></p>
+<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/Linux-cover.jpg" alt="Linux-cover"></p>
+<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BD%91%E9%A1%B5%E5%9F%BA%E7%A1%80cover.jpg" alt="网页基础cover"></p>
+<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E6%9C%AA%E5%88%86%E7%B1%BBcover.jpg" alt="未分类cover"></p>
+<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BA%BF%E6%80%A7%E8%A1%A8cover.jpg" alt="线性表cover"></p>
+<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E8%99%9A%E5%B9%BBcover.jpg" alt="虚幻cover"></p>
+<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/Java-cover.jpg" alt="Java-cover"></p>
 ]]></content>
       <categories>
         <category>学习</category>
       </categories>
       <tags>
-        <tag>Linux学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>c++学习-5：string头文件</title>
-    <url>/2021/03/23/c++%E5%AD%A6%E4%B9%A0-5/</url>
-    <content><![CDATA[<h1 id="头文件：string"><a href="#头文件：string" class="headerlink" title="头文件：string"></a>头文件：string</h1><h2 id="用于简化操作的常用函数"><a href="#用于简化操作的常用函数" class="headerlink" title="用于简化操作的常用函数"></a>用于简化操作的常用函数</h2><ul>
-<li><p>string变量读取单个字符用s[i]可以读出</p>
-</li>
-<li><p>输入带空格的字符串，用getline(cin,a)；(a为字符串类型变量)</p>
-</li>
-<li><p>str.=“”——清空</p>
-</li>
-<li><p>str.empty()——是否为空</p>
-</li>
-<li><p>str.size()——str长度</p>
-</li>
-<li><p>swap(s1，s2)——交换s1，s2</p>
-</li>
-<li><p>str. insert(x,“aaa”)——在下标x处插入aaa</p>
-</li>
-<li><p>str.substr(x,y)——读出下标为x开始长度为y的字符串</p>
-</li>
-<li><p>str.erase(x,y)——移除下标x长度为y的字符</p>
-</li>
-<li><p>str.find(“字符或字符串”)——找str中第一次出现的下标，找不到就是-1</p>
-</li>
-<li><p>while((i=str.find(“a”,i))!=-1) { i++; cout&lt;&lt;i&lt;&lt;endl; }  ——读出所有a字符出现的下标</p>
-<p>  (基本思路是找到一个就从那个下标+1继续找)</p>
-</li>
-<li><p>str.replace(x，y，“aa”)——用aa替换(x，y)(删掉下标x开始长度为y个，在下标为x处插入aa)</p>
-</li>
-</ul>
-<h2 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h2><p>string s——生成一个空字符串s</p>
-<p>string s(str) ——拷贝构造函数 生成str的复制品</p>
-<p>string s(str,stridx)——将字符串str内“始于位置stridx”的部分当作字符串的初值</p>
-<p>string s(str,stridx,strlen) ——将字符串str内“始于stridx且长度顶多strlen”的部分作为字符串的初值</p>
-<p>string s(cstr) ——将C字符串作为s的初值</p>
-<p>string s(chars,chars_len) ——将C字符串前chars_len个字符作为字符串s的初值。</p>
-<p> string s(num,c) ——生成一个字符串，包含num个c字符</p>
-<p> string s(beg,end) ——以区间beg;end(不包含end)内的字符作为字符串s的初值</p>
-<p>s.~string() ——销毁所有字符，释放内存</p>
-<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><ul>
-<li><p> =，assign()——赋以新值</p>
-</li>
-<li><p>swap()——交换两个字符串的内容</p>
-</li>
-<li><p>+=，append()，push_back()——在尾部添加字符</p>
-</li>
-<li><p>insert()——插入字符</p>
-</li>
-<li><p>erase()——删除字符</p>
-</li>
-<li><p>clear()——删除全部字符</p>
-</li>
-<li><p>replace()——替换字符</p>
-</li>
-<li><p>+——串联字符串</p>
-</li>
-<li><p>==，!=，&lt;，&lt;=，&gt;，&gt;=，compare()——比较字符串</p>
-</li>
-<li><p>size(),length()——返回字符数量</p>
-</li>
-<li><p>max_size()——返回字符的可能最大个数</p>
-</li>
-<li><p>empty()——判断字符串是否为空</p>
-</li>
-<li><p>capacity()——返回重新分配之前的字符容量</p>
-</li>
-<li><p>reserve()——保留一定量内存以容纳一定数量的字符</p>
-</li>
-<li><p> [ ], at()——存取单一字符</p>
-</li>
-<li><p>“&gt;&gt;”,getline()——从stream读取某值</p>
-</li>
-<li><p>” &lt;&lt;“ ——将谋值写入stream</p>
-</li>
-<li><p>copy()——将某值赋值为一个C_string</p>
-</li>
-<li><p>c_str()——将内容以C_string返回</p>
-</li>
-<li><p> data()——将内容以字符数组形式返回</p>
-</li>
-<li><p>substr()——返回某个子字符串</p>
-</li>
-<li><p>begin() end()——提供类似STL的迭代器支持</p>
-</li>
-<li><p> rbegin() rend()——逆向迭代器</p>
-</li>
-<li><p>get_allocator()——返回配置器</p>
-</li>
-</ul>
-<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>find()<br>rfind()<br>find_first_of()<br>find_last_of()<br>find_first_not_of()<br>find_last_not_of()</p>
-<p>这些函数返回符合搜索条件的字符区间内的第一个字符的索引，没找到目标就返回npos。所有的函数的参数说明如下：<br>第一个参数是被搜寻的对象。第二个参数（可有可无）指出string内的搜寻起点索引，第三个参数（可有可无）指出搜寻的字符个数。</p>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>c++学习</tag>
+        <tag>hexo使用</tag>
       </tags>
   </entry>
   <entry>
@@ -1387,57 +1342,294 @@ CentOS release 6.4 (Final)</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>hexo基础命令行</title>
-    <url>/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/</url>
-    <content><![CDATA[<h1 id="hexo的基础命令行："><a href="#hexo的基础命令行：" class="headerlink" title="hexo的基础命令行："></a>hexo的基础命令行：</h1><h2 id="hexo-s"><a href="#hexo-s" class="headerlink" title="hexo s"></a>hexo s</h2><pre><code class="undefined">hexo s</code></pre>
-<ul>
-<li>启动本地服务器，用于预览主题。默认地址： <a href="http://localhost:4000/">http://localhost:4000/</a></li>
-<li><code>hexo s</code> 是 <code>hexo server</code> 的缩写，命令效果一致。</li>
-<li>预览的同时可以修改文章内容或主题代码，保存后刷新页面即可。</li>
-<li>对 Hexo 根目录 <code>_config.yml</code> 的修改，需要重启本地服务器后才能预览效果。</li>
-<li>预览草稿文章 <code>hexo s --drafts</code></li>
-</ul>
-<h2 id="hexo-new"><a href="#hexo-new" class="headerlink" title="hexo new"></a>hexo new</h2><pre><code class="cpp">hexo new &quot;title&quot;
-hexo new  draft &quot;草稿文章&quot;
-hexo new page</code></pre>
-<ul>
-<li>新建一个title.md博客文章</li>
-<li>draft 为草稿文档，不会展现在博客上，可用<code>hexo publish &quot;草稿文章&quot;</code> 发布成正式文章</li>
-<li><code>hexo new page</code> 创建一个文件夹</li>
-</ul>
-<h2 id="hexo-d"><a href="#hexo-d" class="headerlink" title="hexo d"></a>hexo d</h2><pre><code class="undefined">hexo d</code></pre>
-<ul>
-<li>自动生成网站静态文件，并部署到设定的仓库。</li>
-<li><code>hexo d</code> 是 <code>hexo deploy</code> 的缩写，命令效果一致。</li>
-</ul>
-<h2 id="hexo-clean"><a href="#hexo-clean" class="headerlink" title="hexo clean"></a>hexo clean</h2><pre><code class="undefined">hexo clean</code></pre>
-<ul>
-<li>清除缓存文件 db.json 和已生成的静态文件 public 。</li>
-<li>网站显示异常时可以执行这条命令试试</li>
-</ul>
-<h2 id="hexo-g"><a href="#hexo-g" class="headerlink" title="hexo g"></a>hexo g</h2><pre><code class="undefined">hexo g</code></pre>
-<p>生成网站静态文件到默认设置的 public 文件夹。</p>
-<ul>
-<li>便于查看网站生成的静态文件或者手动部署网站；</li>
-<li>如果使用自动部署，不需要先执行该命令；</li>
-<li><code>hexo g</code> 是 <code>hexo generate</code> 的缩写，命令效果一致。</li>
-</ul>
-<pre><code class="undefined">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code></pre>
-<p>部署发布，命令可用&amp;&amp;连接</p>
-<p>原创封面</p>
-<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/c++cover.jpg" alt="c++cover"></p>
-<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/Linux-cover.jpg" alt="Linux-cover"></p>
-<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BD%91%E9%A1%B5%E5%9F%BA%E7%A1%80cover.jpg" alt="网页基础cover"></p>
-<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E6%9C%AA%E5%88%86%E7%B1%BBcover.jpg" alt="未分类cover"></p>
-<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BA%BF%E6%80%A7%E8%A1%A8cover.jpg" alt="线性表cover"></p>
-<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E8%99%9A%E5%B9%BBcover.jpg" alt="虚幻cover"></p>
-<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/Java-cover.png" alt="Java-cover"></p>
+    <title>数据结构-1</title>
+    <url>/2021/03/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-1/</url>
+    <content><![CDATA[<h1 id="线性表-顺序表"><a href="#线性表-顺序表" class="headerlink" title="线性表-顺序表"></a>线性表-顺序表</h1><p>【Elemtype为数据类型】</p>
+<h2 id="创建（初始化）"><a href="#创建（初始化）" class="headerlink" title="创建（初始化）"></a>创建（初始化）</h2><p>以数组的形式创建顺序表</p>
+<pre><code>typedef struct      //理解为将定义的结构体改称为&#123;&#125;后的名字，如SQlist
+&#123;
+    Elemtype *elem； //定义顺序表具有首元素地址
+    int length;     //定义顺序表具有表长这一属性
+&#125;SQlist;</code></pre>
+<p>初始化设置顺序表的最大存储空间，以及初始化其表长为0</p>
+<pre><code>bool initList(SQlist &amp;sq)     //将需要初始化的表传址
+&#123;
+    sq.elem=new maxsize;        //为顺序表分配maxsize的空间作为最大上限
+    if(!sq.elem) return false;      //如果空间分配失败，直接返回提示错误
+    sq.length=0;                    //如果分配空间成功，则继续初始化表长为0
+    return true;                    //返回参数提示顺序表初始化成功
+&#125;</code></pre>
+<h2 id="取值"><a href="#取值" class="headerlink" title="取值"></a>取值</h2><p>顺序表能够随机存取，故而方便存取指定位置的值，即可以随机存取</p>
+<pre><code>bool getelem(SQlist &amp;sq,int i，elemtype &amp;a)  
+//将需要初始化的表传址，并且传值需要获取的是第i个值，返回的值传给a
+&#123;
+    if(i&lt;1||i&gt;sq.length) return false;    //如果i为非法位置，返回提示错误
+    a=sq.elem[i];                 //否则返回第i个元素给a
+    return true;                  //返回提示执行正常
+&#125;</code></pre>
+<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>顺序表的查找就是顺序比较表内元素和待查找元素，相同查找成功，始终不同查找失败</p>
+<pre><code>int find(SQlist &amp;sq,elemtype a)
+//传址需要查找的表，并传值需要查找的数值a,返回查找到的序号为int类型
+&#123;
+    int i;
+    for(i=0;i&lt;sq.length;i++)
+    &#123;
+    if(sq.elem[i]==a) return i;
+    //如果查找到了，返回该值在表中的序号，此处为数组下标，若返回第几个元素序号，则需要i+1
+    &#125;
+    return -1;            //查找失败，返回负数
+&#125;</code></pre>
+<h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><p>顺序表为紧邻的线性表，故而插入时需要向后移动较多元素，并且需要从最后一个元素开始向后移动，以免数据被覆盖</p>
+<pre><code>bool insert(SQlist &amp;sq,elemtype a,int i)
+//将元素a的值插入表中第i个位置，传址需要做插入的表，以及传值a，i
+&#123;
+    int j;
+    if(i&lt;1||i&gt;sq.length+1) return false;//如果i值不合法，则不作插入
+    if(sq.length==maxsize) return false;//如果表长已经达到最大，则判断表满，不作插入
+    for(j=sq.length-1;j&gt;=i-1;j--)
+    //让j为最后一个元素的角标，循环递减，并且当j等于插入位置i的前驱时，停止循环
+    &#123;
+        sq.elem[j+1]=sq.elem[j];        //给j+1角标的空间赋值当前j角标的值，实现后移
+    &#125;
+    sq.elem[i-1]=a;                     //赋值第i个位置，即角标为i-1的空间为a
+    sq.length++;                        //表长增加
+    return true;                        //返回插入成功
+&#125;</code></pre>
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><p>顺序表的删除是将待删除位置后面的全部往前覆盖，向前移动较多元素，并且需要从待删除位置的后一个开始移动，以免覆盖数据</p>
+<pre><code>bool delete(SQlist &amp;sq,int i)
+//传址需要删除元素的顺序表，并且传值需要删除的元素位置
+&#123;
+    int j;
+    if(i&lt;1||i&gt;sq.length) return false;   //如果i值不合法，则不作插入
+    for(j=i;j&lt;=sq.length-1;j++)
+    //将i位置之后的所有元素都向前移，并且循环在将最后一个元素移动到表长减一后的位置停止
+    &#123;
+        sq.elem[j-1]=sq.elem[j];        //被删位置后的元素全部前移
+    &#125;
+    sq.length--;                        //表长减少
+    return true;
+&#125;</code></pre>
+<h2 id="实际题目"><a href="#实际题目" class="headerlink" title="实际题目"></a>实际题目</h2><h3 id="R7-1-顺序表的建立及遍历-20-分"><a href="#R7-1-顺序表的建立及遍历-20-分" class="headerlink" title="R7-1 顺序表的建立及遍历 (20 分)"></a>R7-1 顺序表的建立及遍历 (20 分)</h3><p>读入n值及n个整数，建立顺序表并遍历输出。</p>
+<p>输入格式:<br>读入n及n个整数</p>
+<p>输出格式:<br>输出n个整数，以空格分隔（最后一个数的后面没有空格）。</p>
+<p>输入样例:<br>在这里给出一组输入。例如：</p>
+<pre><code>4
+-3 10 20 78</code></pre>
+<p>输出样例:<br>在这里给出相应的输出。例如：</p>
+<pre><code>-3 10 20 78</code></pre>
+<p><strong>解法：</strong></p>
+<pre><code class="c++">#include&lt;iostream&gt;
+using namespace std;
+
+typedef struct
+&#123;
+    int *a;
+    int length;
+&#125;List;
+
+int create(List &amp;sq)
+&#123;
+    sq.a= new int[100];
+    if(!sq.a) return 0;
+    sq.length=0;
+    return 1;
+&#125;
+
+
+int output(List &amp;sq)
+&#123;
+    int j;
+    cout&lt;&lt;sq.a[0];
+    for(j=1;j&lt;sq.length;j++)
+    &#123;
+        cout&lt;&lt;&quot; &quot;&lt;&lt;sq.a[j];
+    &#125;
+&#125;
+
+int main()
+&#123;
+    List sqlist;
+    int i,n;
+    cin&gt;&gt;n;
+    create(sqlist);
+    for(i=0;i&lt;n;i++)
+    &#123;
+        cin&gt;&gt;sqlist.a[i];
+        sqlist.length++;
+    &#125;
+    if(sqlist.length!=0) 
+        output(sqlist);
+    return 0;
+&#125;</code></pre>
+<h3 id="R7-2-jmu-ds-顺序表区间元素删除-20-分"><a href="#R7-2-jmu-ds-顺序表区间元素删除-20-分" class="headerlink" title="R7-2 jmu-ds-顺序表区间元素删除 (20 分)"></a>R7-2 jmu-ds-顺序表区间元素删除 (20 分)</h3><p>若一个线性表L采用顺序存储结构存储，其中所有的元素为整数。设计一个算法，删除元素值在[x,y]之间的所有元素，要求算法的时间复杂度为O(n)，空间复杂度为O(1)。</p>
+<p>输入格式:<br>三行数据，第一行是顺序表的元素个数，第二行是顺序表的元素，第三行是x和y。</p>
+<p>输出格式:<br>删除元素值在[x,y]之间的所有元素后的顺序表。</p>
+<p>输入样例:</p>
+<pre><code>10
+5 1 9 10 67 12 8 33 6 2
+3 10</code></pre>
+<p>输出样例:</p>
+<pre><code>1 67 12 33 2</code></pre>
+<p><strong>解法：</strong></p>
+<pre><code class="c++">#include&lt;iostream&gt;
+using namespace std;
+
+typedef struct
+&#123;
+    int *a;
+    int length;
+&#125;sqlist;
+
+bool create(sqlist &amp;sq)
+&#123;
+    sq.a= new int[100];
+    if(!sq.a) return false;
+    sq.length=0;
+    return true;
+&#125;
+
+bool del(sqlist &amp;sq,int x,int y)
+&#123;
+    int j,i;
+    for(j=0;j&lt;sq.length;j++)
+    &#123;
+        if(sq.a[j]&gt;=x&amp;&amp;sq.a[j]&lt;=y)
+        &#123;
+            for(i=j;i&lt;sq.length;i++)
+            &#123;
+                sq.a[i]=sq.a[i+1];
+            &#125;
+            sq.length--;
+            j--;
+        &#125;
+    &#125;
+&#125;
+
+int main()
+&#123;
+    sqlist List;
+    int n,i,x,y;
+    cin&gt;&gt;n;
+    create(List);
+    for(i=0;i&lt;n;i++)
+    &#123;
+        cin&gt;&gt;List.a[i];
+        List.length++;
+    &#125;
+    cin&gt;&gt;x&gt;&gt;y;
+    del(List,x,y);
+    cout&lt;&lt;List.a[0];
+    for(i=1;i&lt;List.length;i++)
+    &#123;
+        cout&lt;&lt;&quot; &quot;&lt;&lt;List.a[i];
+    &#125;
+    return 0;
+&#125;</code></pre>
 ]]></content>
       <categories>
         <category>学习</category>
       </categories>
       <tags>
-        <tag>hexo使用</tag>
+        <tag>数据结构学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>c++学习-5：string头文件</title>
+    <url>/2021/03/23/c++%E5%AD%A6%E4%B9%A0-5/</url>
+    <content><![CDATA[<h1 id="头文件：string"><a href="#头文件：string" class="headerlink" title="头文件：string"></a>头文件：string</h1><h2 id="用于简化操作的常用函数"><a href="#用于简化操作的常用函数" class="headerlink" title="用于简化操作的常用函数"></a>用于简化操作的常用函数</h2><ul>
+<li><p>string变量读取单个字符用s[i]可以读出</p>
+</li>
+<li><p>输入带空格的字符串，用getline(cin,a)；(a为字符串类型变量)</p>
+</li>
+<li><p>str.=“”——清空</p>
+</li>
+<li><p>str.empty()——是否为空</p>
+</li>
+<li><p>str.size()——str长度</p>
+</li>
+<li><p>swap(s1，s2)——交换s1，s2</p>
+</li>
+<li><p>str. insert(x,“aaa”)——在下标x处插入aaa</p>
+</li>
+<li><p>str.substr(x,y)——读出下标为x开始长度为y的字符串</p>
+</li>
+<li><p>str.erase(x,y)——移除下标x长度为y的字符</p>
+</li>
+<li><p>str.find(“字符或字符串”)——找str中第一次出现的下标，找不到就是-1</p>
+</li>
+<li><p>while((i=str.find(“a”,i))!=-1) { i++; cout&lt;&lt;i&lt;&lt;endl; }  ——读出所有a字符出现的下标</p>
+<p>  (基本思路是找到一个就从那个下标+1继续找)</p>
+</li>
+<li><p>str.replace(x，y，“aa”)——用aa替换(x，y)(删掉下标x开始长度为y个，在下标为x处插入aa)</p>
+</li>
+</ul>
+<h2 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h2><p>string s——生成一个空字符串s</p>
+<p>string s(str) ——拷贝构造函数 生成str的复制品</p>
+<p>string s(str,stridx)——将字符串str内“始于位置stridx”的部分当作字符串的初值</p>
+<p>string s(str,stridx,strlen) ——将字符串str内“始于stridx且长度顶多strlen”的部分作为字符串的初值</p>
+<p>string s(cstr) ——将C字符串作为s的初值</p>
+<p>string s(chars,chars_len) ——将C字符串前chars_len个字符作为字符串s的初值。</p>
+<p> string s(num,c) ——生成一个字符串，包含num个c字符</p>
+<p> string s(beg,end) ——以区间beg;end(不包含end)内的字符作为字符串s的初值</p>
+<p>s.~string() ——销毁所有字符，释放内存</p>
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><ul>
+<li><p> =，assign()——赋以新值</p>
+</li>
+<li><p>swap()——交换两个字符串的内容</p>
+</li>
+<li><p>+=，append()，push_back()——在尾部添加字符</p>
+</li>
+<li><p>insert()——插入字符</p>
+</li>
+<li><p>erase()——删除字符</p>
+</li>
+<li><p>clear()——删除全部字符</p>
+</li>
+<li><p>replace()——替换字符</p>
+</li>
+<li><p>+——串联字符串</p>
+</li>
+<li><p>==，!=，&lt;，&lt;=，&gt;，&gt;=，compare()——比较字符串</p>
+</li>
+<li><p>size(),length()——返回字符数量</p>
+</li>
+<li><p>max_size()——返回字符的可能最大个数</p>
+</li>
+<li><p>empty()——判断字符串是否为空</p>
+</li>
+<li><p>capacity()——返回重新分配之前的字符容量</p>
+</li>
+<li><p>reserve()——保留一定量内存以容纳一定数量的字符</p>
+</li>
+<li><p> [ ], at()——存取单一字符</p>
+</li>
+<li><p>“&gt;&gt;”,getline()——从stream读取某值</p>
+</li>
+<li><p>” &lt;&lt;“ ——将谋值写入stream</p>
+</li>
+<li><p>copy()——将某值赋值为一个C_string</p>
+</li>
+<li><p>c_str()——将内容以C_string返回</p>
+</li>
+<li><p> data()——将内容以字符数组形式返回</p>
+</li>
+<li><p>substr()——返回某个子字符串</p>
+</li>
+<li><p>begin() end()——提供类似STL的迭代器支持</p>
+</li>
+<li><p> rbegin() rend()——逆向迭代器</p>
+</li>
+<li><p>get_allocator()——返回配置器</p>
+</li>
+</ul>
+<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>find()<br>rfind()<br>find_first_of()<br>find_last_of()<br>find_first_not_of()<br>find_last_not_of()</p>
+<p>这些函数返回符合搜索条件的字符区间内的第一个字符的索引，没找到目标就返回npos。所有的函数的参数说明如下：<br>第一个参数是被搜寻的对象。第二个参数（可有可无）指出string内的搜寻起点索引，第三个参数（可有可无）指出搜寻的字符个数。</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>c++学习</tag>
       </tags>
   </entry>
   <entry>
@@ -1833,6 +2025,147 @@ int main()
       </tags>
   </entry>
   <entry>
+    <title>数据结构-3</title>
+    <url>/2021/04/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-3/</url>
+    <content><![CDATA[<h1 id="顺序栈"><a href="#顺序栈" class="headerlink" title="顺序栈"></a>顺序栈</h1><p>【Elemtype为数据类型】</p>
+<p>顺序栈本身是操作受限制的顺序表，只能在栈顶做插入删除，称入栈出栈，因为操作受限，算法相较普通顺序表简单。</p>
+<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><pre><code>typedef struct 
+&#123;
+    Elemtype *base;                    //定义栈底指针
+    Elemtype *top;                    //定义栈顶指针
+    int maxsize;                    //定义最大栈的最大容量
+&#125;SQstack;</code></pre>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><pre><code>bool initstack(SQstack &amp;sq)            //传址需要初始化的表
+&#123;
+    sq.base=new Elemtype[MAXSIZE];
+    //分配大小为MAXSIZE的空间，并返回首地址给表的栈底指针
+    if(!sq.base) return false;      //若分配失败则返回
+    sq.top=sq.base;                    //栈顶指针等于栈底指针，表示空栈
+    sq.maxsize=MAXSIZE;                //记录栈的最大容量为MAXSIZE
+    return true;                    //返回创建成功
+&#125;</code></pre>
+<h2 id="入栈（从栈顶插入）"><a href="#入栈（从栈顶插入）" class="headerlink" title="入栈（从栈顶插入）"></a>入栈（从栈顶插入）</h2><pre><code>bool Push(SQstack &amp;sq,Elemtype e)        //传址需要操作的栈，传值需要入栈的值
+&#123;
+    if(sq.top-sq.base&gt;=sq.maxsize) return false;
+    //若栈顶指针与栈底指针的差为最大空间（即栈满），返回入栈失败
+    e=*sq.top;
+    //栈顶指针总是指在栈顶元素的下一个位置，故而直接赋值
+    sq.top++;                            //栈顶指针后移
+    return true;                        //返回入栈成功
+&#125;</code></pre>
+<h2 id="出栈（从栈顶删除）"><a href="#出栈（从栈顶删除）" class="headerlink" title="出栈（从栈顶删除）"></a>出栈（从栈顶删除）</h2><pre><code>bool Pop(SQstack &amp;sq,Elemtype &amp;e)            //传址需要操作的表和出栈的元素
+&#123;
+    if(sq.top==sq.base) return false;
+    //若栈顶指针与栈底指针相同（即栈空），则返回失败
+    sq.top--;
+    //栈顶指针总是指在栈顶元素的下一个位置，故而栈顶指针后移
+    e=*sq.top;                                //将出栈的元素传给e
+    return true;
+&#125;</code></pre>
+<h2 id="取栈顶（取值）"><a href="#取栈顶（取值）" class="headerlink" title="取栈顶（取值）"></a>取栈顶（取值）</h2><pre><code>Elemtype gettop(SQstack &amp;sq)
+//传址需要操作的表，返回栈顶元素，该操作只取栈顶，不修改栈顶指针
+&#123;
+    if(sq.top!=base)            //若该栈非空
+    &#123;
+    return *(sq.top-1);            //取栈顶指针的前一个位置，即栈顶元素向外传递
+    &#125;
+&#125;</code></pre>
+<h1 id="链式栈"><a href="#链式栈" class="headerlink" title="链式栈"></a>链式栈</h1><p>【Elemtype为数据类型】</p>
+<p>在无法估计栈数据量时，通常采用链式栈，而且因为栈的主要操作是插入和删除，所以用链表的头部作栈顶更加方便。</p>
+<h2 id="创建-1"><a href="#创建-1" class="headerlink" title="创建"></a>创建</h2><pre><code>typedef struct Lnode
+&#123;
+    Elemtype data;            //定义链表结点的数据域
+    struct Lnode *next;        //定义指向下一节点的指针域
+&#125;*Linkstack;</code></pre>
+<h2 id="初始化-1"><a href="#初始化-1" class="headerlink" title="初始化"></a>初始化</h2><pre><code>bool initstack(Linkstack &amp;ls)
+&#123;
+    ls=NULL;
+    //由于栈不需要对栈顶以外的元素操作，故而不需要设置头结点来使表头操作与表中表尾一致
+    return true;            //返回初始化成功
+&#125;</code></pre>
+<h2 id="入栈（从栈顶插入）-1"><a href="#入栈（从栈顶插入）-1" class="headerlink" title="入栈（从栈顶插入）"></a>入栈（从栈顶插入）</h2><pre><code>bool Push(Linkstack &amp;ls,Elemtype e)        //传址需要操作的表，传值需要插入的元素
+&#123;
+    Lnode *p;
+    p=new Lnode;                //重新分配一个结点空间，首地址赋给p
+    p-&gt;data=e;                    //新结点的数据域为e
+    p-&gt;next=ls;                    //新结点的指针域指向头指针ls，即将新结点作头插
+    ls=p;                        //头指针前移
+    return true;                //返回入栈成功
+&#125;</code></pre>
+<h2 id="出栈（从栈顶删除）-1"><a href="#出栈（从栈顶删除）-1" class="headerlink" title="出栈（从栈顶删除）"></a>出栈（从栈顶删除）</h2><pre><code>bool Pop(Linkstack &amp;ls，Elemtype &amp;e)   //传址需要操作的表和出栈的元素
+&#123;
+    if(ls==NULL) return false;        //栈空则返回删除失败
+    e=ls-&gt;data;                        //e接收出栈元素
+    Lnode *p=ls;                    //定义一个p指针指向原栈顶元素
+    ls=ls-&gt;data;                    //让头指针后移
+    delete p;                        //删除p指向的结点
+    return true;                    //返回删除完成
+&#125;</code></pre>
+<h2 id="取栈顶（取值）-1"><a href="#取栈顶（取值）-1" class="headerlink" title="取栈顶（取值）"></a>取栈顶（取值）</h2><pre><code>Elemtype gettop(Linkstack &amp;ls)    //传址需要操作的表
+&#123;
+    if(ls!=NULL)                //栈非空
+    return ls-&gt;data;            //返回栈顶元素的值，栈顶指针不变
+&#125;</code></pre>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>数据结构学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构-4</title>
+    <url>/2021/04/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-4/</url>
+    <content><![CDATA[<h1 id="顺序队列"><a href="#顺序队列" class="headerlink" title="顺序队列"></a>顺序队列</h1><p>队列是先进先出的线性结构，也是只能从队头删除，从队尾插入的线性表，为了使空间利用更加充分，从而避免假溢出，通常采用循环队列</p>
+<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><pre><code>typedef struct 
+&#123;
+    Elemtype *base;                //储存空间的基址指针
+    int front;                    //定义一个头指针
+    int rear;                    //定义一个尾指针
+&#125;SQqueue;</code></pre>
+<p><strong>注：此处front和rear指针仅仅设为了int类型，而并非真正的指针类型，所表述的是队头队尾元素所在的位置下标</strong></p>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><pre><code>bool initqueue(SQqueue &amp;sq)
+&#123;
+    sq.base=new Elemtype[MAXSIZE];            //为队列分配空间
+    if(!sq.base) return false;                //没能分配成功，返回失败
+    sq.front=sq.rear=0;                        //头尾指针置为零，队列为空
+    return true;
+&#125;</code></pre>
+<h2 id="求队列长度"><a href="#求队列长度" class="headerlink" title="求队列长度"></a>求队列长度</h2><pre><code>int queuelength(SQqueue &amp;sq)
+&#123;
+    return (sq.rear-sq.front+MAXSIZE)%MAXSIZE;
+&#125;</code></pre>
+<p>注：在没有特殊注明的情况下，所说队列都为循环队列，front指向队头元素，rear指向队尾元素的后一个元素，为区分队空与队满，此处少用一个元素空间，即队列空间大小为m-1个元素时队满，故而当队列满足“rear=front“时队空，当队列满足”(rear+1)%MAXSIZE=front“时队满。</p>
+<h2 id="入队（从队尾插入）"><a href="#入队（从队尾插入）" class="headerlink" title="入队（从队尾插入）"></a>入队（从队尾插入）</h2><pre><code>bool enterqueue(SQqueue &amp;sq,Elemtype e)          //传址需要操作的表，传值入队元素
+&#123;
+    if((sq.rear+1)%MAXSIZE==sq.front) return false;    //判断队满时返回失败
+    sq.base[sq.rear]=e;                     //让队尾元素的后一个元素等于e
+    sq.rear=(sq.rear+1)%MAXSIZE;         //队尾指针后移
+    return true；                        //返回成功入队
+&#125;</code></pre>
+<h2 id="出队（从队头删除）"><a href="#出队（从队头删除）" class="headerlink" title="出队（从队头删除）"></a>出队（从队头删除）</h2><pre><code>bool deletequeue(SQqueue &amp;sq,Elemtype &amp;e)
+&#123;
+    if(sq.front==sq.rear) return false;        //若队空，则返回出队失败
+    e=sq.base[sq.front];                    //用e获得出队的队头元素
+    sq.front=(sq.front+1)%MAXSIZE;            //队头指针后移
+    return true;                            //返回成功出队
+&#125;</code></pre>
+<h2 id="取队头元素"><a href="#取队头元素" class="headerlink" title="取队头元素"></a>取队头元素</h2><pre><code>Elemtype gethead(SQqueue &amp;sq)
+//仅返回表的队头元素，不修改头指针
+&#123;
+    if(sq.front!=sq.rear)             //判断队列非空
+    return     sq.base[sq.front];        //返回队头元素
+&#125;</code></pre>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>数据结构学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>网页设计学习-1</title>
     <url>/2021/03/19/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0-1/</url>
     <content><![CDATA[<h1 id="结构标签"><a href="#结构标签" class="headerlink" title="结构标签"></a>结构标签</h1><pre><code class="html">&lt;!DOCTYPE html&gt;
@@ -2108,339 +2441,6 @@ int main()
       </categories>
       <tags>
         <tag>网页设计学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数据结构-1</title>
-    <url>/2021/03/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-1/</url>
-    <content><![CDATA[<h1 id="线性表-顺序表"><a href="#线性表-顺序表" class="headerlink" title="线性表-顺序表"></a>线性表-顺序表</h1><p>【Elemtype为数据类型】</p>
-<h2 id="创建（初始化）"><a href="#创建（初始化）" class="headerlink" title="创建（初始化）"></a>创建（初始化）</h2><p>以数组的形式创建顺序表</p>
-<pre><code>typedef struct      //理解为将定义的结构体改称为&#123;&#125;后的名字，如SQlist
-&#123;
-    Elemtype *elem； //定义顺序表具有首元素地址
-    int length;     //定义顺序表具有表长这一属性
-&#125;SQlist;</code></pre>
-<p>初始化设置顺序表的最大存储空间，以及初始化其表长为0</p>
-<pre><code>bool initList(SQlist &amp;sq)     //将需要初始化的表传址
-&#123;
-    sq.elem=new maxsize;        //为顺序表分配maxsize的空间作为最大上限
-    if(!sq.elem) return false;      //如果空间分配失败，直接返回提示错误
-    sq.length=0;                    //如果分配空间成功，则继续初始化表长为0
-    return true;                    //返回参数提示顺序表初始化成功
-&#125;</code></pre>
-<h2 id="取值"><a href="#取值" class="headerlink" title="取值"></a>取值</h2><p>顺序表能够随机存取，故而方便存取指定位置的值，即可以随机存取</p>
-<pre><code>bool getelem(SQlist &amp;sq,int i，elemtype &amp;a)  
-//将需要初始化的表传址，并且传值需要获取的是第i个值，返回的值传给a
-&#123;
-    if(i&lt;1||i&gt;sq.length) return false;    //如果i为非法位置，返回提示错误
-    a=sq.elem[i];                 //否则返回第i个元素给a
-    return true;                  //返回提示执行正常
-&#125;</code></pre>
-<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>顺序表的查找就是顺序比较表内元素和待查找元素，相同查找成功，始终不同查找失败</p>
-<pre><code>int find(SQlist &amp;sq,elemtype a)
-//传址需要查找的表，并传值需要查找的数值a,返回查找到的序号为int类型
-&#123;
-    int i;
-    for(i=0;i&lt;sq.length;i++)
-    &#123;
-    if(sq.elem[i]==a) return i;
-    //如果查找到了，返回该值在表中的序号，此处为数组下标，若返回第几个元素序号，则需要i+1
-    &#125;
-    return -1;            //查找失败，返回负数
-&#125;</code></pre>
-<h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><p>顺序表为紧邻的线性表，故而插入时需要向后移动较多元素，并且需要从最后一个元素开始向后移动，以免数据被覆盖</p>
-<pre><code>bool insert(SQlist &amp;sq,elemtype a,int i)
-//将元素a的值插入表中第i个位置，传址需要做插入的表，以及传值a，i
-&#123;
-    int j;
-    if(i&lt;1||i&gt;sq.length+1) return false;//如果i值不合法，则不作插入
-    if(sq.length==maxsize) return false;//如果表长已经达到最大，则判断表满，不作插入
-    for(j=sq.length-1;j&gt;=i-1;j--)
-    //让j为最后一个元素的角标，循环递减，并且当j等于插入位置i的前驱时，停止循环
-    &#123;
-        sq.elem[j+1]=sq.elem[j];        //给j+1角标的空间赋值当前j角标的值，实现后移
-    &#125;
-    sq.elem[i-1]=a;                     //赋值第i个位置，即角标为i-1的空间为a
-    sq.length++;                        //表长增加
-    return true;                        //返回插入成功
-&#125;</code></pre>
-<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><p>顺序表的删除是将待删除位置后面的全部往前覆盖，向前移动较多元素，并且需要从待删除位置的后一个开始移动，以免覆盖数据</p>
-<pre><code>bool delete(SQlist &amp;sq,int i)
-//传址需要删除元素的顺序表，并且传值需要删除的元素位置
-&#123;
-    int j;
-    if(i&lt;1||i&gt;sq.length) return false;   //如果i值不合法，则不作插入
-    for(j=i;j&lt;=sq.length-1;j++)
-    //将i位置之后的所有元素都向前移，并且循环在将最后一个元素移动到表长减一后的位置停止
-    &#123;
-        sq.elem[j-1]=sq.elem[j];        //被删位置后的元素全部前移
-    &#125;
-    sq.length--;                        //表长减少
-    return true;
-&#125;</code></pre>
-<h2 id="实际题目"><a href="#实际题目" class="headerlink" title="实际题目"></a>实际题目</h2><h3 id="R7-1-顺序表的建立及遍历-20-分"><a href="#R7-1-顺序表的建立及遍历-20-分" class="headerlink" title="R7-1 顺序表的建立及遍历 (20 分)"></a>R7-1 顺序表的建立及遍历 (20 分)</h3><p>读入n值及n个整数，建立顺序表并遍历输出。</p>
-<p>输入格式:<br>读入n及n个整数</p>
-<p>输出格式:<br>输出n个整数，以空格分隔（最后一个数的后面没有空格）。</p>
-<p>输入样例:<br>在这里给出一组输入。例如：</p>
-<pre><code>4
--3 10 20 78</code></pre>
-<p>输出样例:<br>在这里给出相应的输出。例如：</p>
-<pre><code>-3 10 20 78</code></pre>
-<p><strong>解法：</strong></p>
-<pre><code class="c++">#include&lt;iostream&gt;
-using namespace std;
-
-typedef struct
-&#123;
-    int *a;
-    int length;
-&#125;List;
-
-int create(List &amp;sq)
-&#123;
-    sq.a= new int[100];
-    if(!sq.a) return 0;
-    sq.length=0;
-    return 1;
-&#125;
-
-
-int output(List &amp;sq)
-&#123;
-    int j;
-    cout&lt;&lt;sq.a[0];
-    for(j=1;j&lt;sq.length;j++)
-    &#123;
-        cout&lt;&lt;&quot; &quot;&lt;&lt;sq.a[j];
-    &#125;
-&#125;
-
-int main()
-&#123;
-    List sqlist;
-    int i,n;
-    cin&gt;&gt;n;
-    create(sqlist);
-    for(i=0;i&lt;n;i++)
-    &#123;
-        cin&gt;&gt;sqlist.a[i];
-        sqlist.length++;
-    &#125;
-    if(sqlist.length!=0) 
-        output(sqlist);
-    return 0;
-&#125;</code></pre>
-<h3 id="R7-2-jmu-ds-顺序表区间元素删除-20-分"><a href="#R7-2-jmu-ds-顺序表区间元素删除-20-分" class="headerlink" title="R7-2 jmu-ds-顺序表区间元素删除 (20 分)"></a>R7-2 jmu-ds-顺序表区间元素删除 (20 分)</h3><p>若一个线性表L采用顺序存储结构存储，其中所有的元素为整数。设计一个算法，删除元素值在[x,y]之间的所有元素，要求算法的时间复杂度为O(n)，空间复杂度为O(1)。</p>
-<p>输入格式:<br>三行数据，第一行是顺序表的元素个数，第二行是顺序表的元素，第三行是x和y。</p>
-<p>输出格式:<br>删除元素值在[x,y]之间的所有元素后的顺序表。</p>
-<p>输入样例:</p>
-<pre><code>10
-5 1 9 10 67 12 8 33 6 2
-3 10</code></pre>
-<p>输出样例:</p>
-<pre><code>1 67 12 33 2</code></pre>
-<p><strong>解法：</strong></p>
-<pre><code class="c++">#include&lt;iostream&gt;
-using namespace std;
-
-typedef struct
-&#123;
-    int *a;
-    int length;
-&#125;sqlist;
-
-bool create(sqlist &amp;sq)
-&#123;
-    sq.a= new int[100];
-    if(!sq.a) return false;
-    sq.length=0;
-    return true;
-&#125;
-
-bool del(sqlist &amp;sq,int x,int y)
-&#123;
-    int j,i;
-    for(j=0;j&lt;sq.length;j++)
-    &#123;
-        if(sq.a[j]&gt;=x&amp;&amp;sq.a[j]&lt;=y)
-        &#123;
-            for(i=j;i&lt;sq.length;i++)
-            &#123;
-                sq.a[i]=sq.a[i+1];
-            &#125;
-            sq.length--;
-            j--;
-        &#125;
-    &#125;
-&#125;
-
-int main()
-&#123;
-    sqlist List;
-    int n,i,x,y;
-    cin&gt;&gt;n;
-    create(List);
-    for(i=0;i&lt;n;i++)
-    &#123;
-        cin&gt;&gt;List.a[i];
-        List.length++;
-    &#125;
-    cin&gt;&gt;x&gt;&gt;y;
-    del(List,x,y);
-    cout&lt;&lt;List.a[0];
-    for(i=1;i&lt;List.length;i++)
-    &#123;
-        cout&lt;&lt;&quot; &quot;&lt;&lt;List.a[i];
-    &#125;
-    return 0;
-&#125;</code></pre>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>数据结构学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数据结构-3</title>
-    <url>/2021/04/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-3/</url>
-    <content><![CDATA[<h1 id="顺序栈"><a href="#顺序栈" class="headerlink" title="顺序栈"></a>顺序栈</h1><p>【Elemtype为数据类型】</p>
-<p>顺序栈本身是操作受限制的顺序表，只能在栈顶做插入删除，称入栈出栈，因为操作受限，算法相较普通顺序表简单。</p>
-<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><pre><code>typedef struct 
-&#123;
-    Elemtype *base;                    //定义栈底指针
-    Elemtype *top;                    //定义栈顶指针
-    int maxsize;                    //定义最大栈的最大容量
-&#125;SQstack;</code></pre>
-<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><pre><code>bool initstack(SQstack &amp;sq)            //传址需要初始化的表
-&#123;
-    sq.base=new Elemtype[MAXSIZE];
-    //分配大小为MAXSIZE的空间，并返回首地址给表的栈底指针
-    if(!sq.base) return false;      //若分配失败则返回
-    sq.top=sq.base;                    //栈顶指针等于栈底指针，表示空栈
-    sq.maxsize=MAXSIZE;                //记录栈的最大容量为MAXSIZE
-    return true;                    //返回创建成功
-&#125;</code></pre>
-<h2 id="入栈（从栈顶插入）"><a href="#入栈（从栈顶插入）" class="headerlink" title="入栈（从栈顶插入）"></a>入栈（从栈顶插入）</h2><pre><code>bool Push(SQstack &amp;sq,Elemtype e)        //传址需要操作的栈，传值需要入栈的值
-&#123;
-    if(sq.top-sq.base&gt;=sq.maxsize) return false;
-    //若栈顶指针与栈底指针的差为最大空间（即栈满），返回入栈失败
-    e=*sq.top;
-    //栈顶指针总是指在栈顶元素的下一个位置，故而直接赋值
-    sq.top++;                            //栈顶指针后移
-    return true;                        //返回入栈成功
-&#125;</code></pre>
-<h2 id="出栈（从栈顶删除）"><a href="#出栈（从栈顶删除）" class="headerlink" title="出栈（从栈顶删除）"></a>出栈（从栈顶删除）</h2><pre><code>bool Pop(SQstack &amp;sq,Elemtype &amp;e)            //传址需要操作的表和出栈的元素
-&#123;
-    if(sq.top==sq.base) return false;
-    //若栈顶指针与栈底指针相同（即栈空），则返回失败
-    sq.top--;
-    //栈顶指针总是指在栈顶元素的下一个位置，故而栈顶指针后移
-    e=*sq.top;                                //将出栈的元素传给e
-    return true;
-&#125;</code></pre>
-<h2 id="取栈顶（取值）"><a href="#取栈顶（取值）" class="headerlink" title="取栈顶（取值）"></a>取栈顶（取值）</h2><pre><code>Elemtype gettop(SQstack &amp;sq)
-//传址需要操作的表，返回栈顶元素，该操作只取栈顶，不修改栈顶指针
-&#123;
-    if(sq.top!=base)            //若该栈非空
-    &#123;
-    return *(sq.top-1);            //取栈顶指针的前一个位置，即栈顶元素向外传递
-    &#125;
-&#125;</code></pre>
-<h1 id="链式栈"><a href="#链式栈" class="headerlink" title="链式栈"></a>链式栈</h1><p>【Elemtype为数据类型】</p>
-<p>在无法估计栈数据量时，通常采用链式栈，而且因为栈的主要操作是插入和删除，所以用链表的头部作栈顶更加方便。</p>
-<h2 id="创建-1"><a href="#创建-1" class="headerlink" title="创建"></a>创建</h2><pre><code>typedef struct Lnode
-&#123;
-    Elemtype data;            //定义链表结点的数据域
-    struct Lnode *next;        //定义指向下一节点的指针域
-&#125;*Linkstack;</code></pre>
-<h2 id="初始化-1"><a href="#初始化-1" class="headerlink" title="初始化"></a>初始化</h2><pre><code>bool initstack(Linkstack &amp;ls)
-&#123;
-    ls=NULL;
-    //由于栈不需要对栈顶以外的元素操作，故而不需要设置头结点来使表头操作与表中表尾一致
-    return true;            //返回初始化成功
-&#125;</code></pre>
-<h2 id="入栈（从栈顶插入）-1"><a href="#入栈（从栈顶插入）-1" class="headerlink" title="入栈（从栈顶插入）"></a>入栈（从栈顶插入）</h2><pre><code>bool Push(Linkstack &amp;ls,Elemtype e)        //传址需要操作的表，传值需要插入的元素
-&#123;
-    Lnode *p;
-    p=new Lnode;                //重新分配一个结点空间，首地址赋给p
-    p-&gt;data=e;                    //新结点的数据域为e
-    p-&gt;next=ls;                    //新结点的指针域指向头指针ls，即将新结点作头插
-    ls=p;                        //头指针前移
-    return true;                //返回入栈成功
-&#125;</code></pre>
-<h2 id="出栈（从栈顶删除）-1"><a href="#出栈（从栈顶删除）-1" class="headerlink" title="出栈（从栈顶删除）"></a>出栈（从栈顶删除）</h2><pre><code>bool Pop(Linkstack &amp;ls，Elemtype &amp;e)   //传址需要操作的表和出栈的元素
-&#123;
-    if(ls==NULL) return false;        //栈空则返回删除失败
-    e=ls-&gt;data;                        //e接收出栈元素
-    Lnode *p=ls;                    //定义一个p指针指向原栈顶元素
-    ls=ls-&gt;data;                    //让头指针后移
-    delete p;                        //删除p指向的结点
-    return true;                    //返回删除完成
-&#125;</code></pre>
-<h2 id="取栈顶（取值）-1"><a href="#取栈顶（取值）-1" class="headerlink" title="取栈顶（取值）"></a>取栈顶（取值）</h2><pre><code>Elemtype gettop(Linkstack &amp;ls)    //传址需要操作的表
-&#123;
-    if(ls!=NULL)                //栈非空
-    return ls-&gt;data;            //返回栈顶元素的值，栈顶指针不变
-&#125;</code></pre>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>数据结构学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数据结构-4</title>
-    <url>/2021/04/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-4/</url>
-    <content><![CDATA[<h1 id="顺序队列"><a href="#顺序队列" class="headerlink" title="顺序队列"></a>顺序队列</h1><p>队列是先进先出的线性结构，也是只能从队头删除，从队尾插入的线性表，为了使空间利用更加充分，从而避免假溢出，通常采用循环队列</p>
-<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><pre><code>typedef struct 
-&#123;
-    Elemtype *base;                //储存空间的基址指针
-    int front;                    //定义一个头指针
-    int rear;                    //定义一个尾指针
-&#125;SQqueue;</code></pre>
-<p><strong>注：此处front和rear指针仅仅设为了int类型，而并非真正的指针类型，所表述的是队头队尾元素所在的位置下标</strong></p>
-<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><pre><code>bool initqueue(SQqueue &amp;sq)
-&#123;
-    sq.base=new Elemtype[MAXSIZE];            //为队列分配空间
-    if(!sq.base) return false;                //没能分配成功，返回失败
-    sq.front=sq.rear=0;                        //头尾指针置为零，队列为空
-    return true;
-&#125;</code></pre>
-<h2 id="求队列长度"><a href="#求队列长度" class="headerlink" title="求队列长度"></a>求队列长度</h2><pre><code>int queuelength(SQqueue &amp;sq)
-&#123;
-    return (sq.rear-sq.front+MAXSIZE)%MAXSIZE;
-&#125;</code></pre>
-<p>注：在没有特殊注明的情况下，所说队列都为循环队列，front指向队头元素，rear指向队尾元素的后一个元素，为区分队空与队满，此处少用一个元素空间，即队列空间大小为m-1个元素时队满，故而当队列满足“rear=front“时队空，当队列满足”(rear+1)%MAXSIZE=front“时队满。</p>
-<h2 id="入队（从队尾插入）"><a href="#入队（从队尾插入）" class="headerlink" title="入队（从队尾插入）"></a>入队（从队尾插入）</h2><pre><code>bool enterqueue(SQqueue &amp;sq,Elemtype e)          //传址需要操作的表，传值入队元素
-&#123;
-    if((sq.rear+1)%MAXSIZE==sq.front) return false;    //判断队满时返回失败
-    sq.base[sq.rear]=e;                     //让队尾元素的后一个元素等于e
-    sq.rear=(sq.rear+1)%MAXSIZE;         //队尾指针后移
-    return true；                        //返回成功入队
-&#125;</code></pre>
-<h2 id="出队（从队头删除）"><a href="#出队（从队头删除）" class="headerlink" title="出队（从队头删除）"></a>出队（从队头删除）</h2><pre><code>bool deletequeue(SQqueue &amp;sq,Elemtype &amp;e)
-&#123;
-    if(sq.front==sq.rear) return false;        //若队空，则返回出队失败
-    e=sq.base[sq.front];                    //用e获得出队的队头元素
-    sq.front=(sq.front+1)%MAXSIZE;            //队头指针后移
-    return true;                            //返回成功出队
-&#125;</code></pre>
-<h2 id="取队头元素"><a href="#取队头元素" class="headerlink" title="取队头元素"></a>取队头元素</h2><pre><code>Elemtype gethead(SQqueue &amp;sq)
-//仅返回表的队头元素，不修改头指针
-&#123;
-    if(sq.front!=sq.rear)             //判断队列非空
-    return     sq.base[sq.front];        //返回队头元素
-&#125;</code></pre>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>数据结构学习</tag>
       </tags>
   </entry>
   <entry>
@@ -3175,6 +3175,57 @@ int main()
 </ul>
 <h3 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h3><p>导入字体格式一般为otf，ttf也可行，对同种字体同时导入多个文件时，需要否定引擎导入时的新建（否则会每个文件导入一个字体资产），另外自行新建字体资产，分配字体族系</p>
 <p><img src="/2021/04/09/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-2/24.png" alt="24"></p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>虚幻引擎学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>虚幻引擎-3</title>
+    <url>/2021/04/13/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-3/</url>
+    <content><![CDATA[<h1 id="基础功能实现"><a href="#基础功能实现" class="headerlink" title="基础功能实现"></a>基础功能实现</h1><h2 id="人物操作功能"><a href="#人物操作功能" class="headerlink" title="人物操作功能"></a>人物操作功能</h2><h3 id="疾跑"><a href="#疾跑" class="headerlink" title="疾跑"></a>疾跑</h3><p>思路:在按下对应键（暂定shift）时，更改人物行走最大速度</p>
+<p>玩家人物蓝图内容：</p>
+<p><img src="/2021/04/13/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-3/1.png" alt="1"></p>
+<h3 id="射击（创建发射物）"><a href="#射击（创建发射物）" class="headerlink" title="射击（创建发射物）"></a>射击（创建发射物）</h3><p>思路：在按下对应键（暂定鼠标左键）时，生成一个发射物</p>
+<p>玩家蓝图内容：</p>
+<p><img src="/2021/04/13/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-3/2.png" alt="2"></p>
+<h3 id="过肩视角"><a href="#过肩视角" class="headerlink" title="过肩视角"></a>过肩视角</h3><p>思路：在按下对应键时（暂定鼠标右键），让视角缓缓变成过肩视角</p>
+<p>玩家蓝图内容：（时间轴具体操作参考之前的节点介绍）</p>
+<p><img src="/2021/04/13/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-3/3.png" alt="3"></p>
+<h3 id="★线检★"><a href="#★线检★" class="headerlink" title="★线检★"></a>★线检★</h3><p>思路：在actor正前方的创造一根不可见的线检测前方的物体，输出被检测到的物体，以便实现判断交互</p>
+<p><img src="/2021/04/13/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-3/4.png" alt="4"></p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>虚幻引擎学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>虚幻引擎-5</title>
+    <url>/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/</url>
+    <content><![CDATA[<h1 id="导入素材文件夹结构"><a href="#导入素材文件夹结构" class="headerlink" title="导入素材文件夹结构"></a>导入素材文件夹结构</h1><p>惯例为【Animations】、【Materials】、【Meshes】、【Map（Scenes）】、【Textures】五个文件夹，有时也有会将【Materials】、【Textures】、【Meshes】放在一个【character】文件夹下的构成</p>
+<h2 id="【Animations】"><a href="#【Animations】" class="headerlink" title="【Animations】"></a>【Animations】</h2><p>【Animations】为该素材包内包括的动画序列，根据固定的骨骼执行，执行动画的网格体可以替换预览并实际替换使用</p>
+<h2 id="【Materials】"><a href="#【Materials】" class="headerlink" title="【Materials】"></a>【Materials】</h2><p>【Materials】为该素材包内所用到的所有材质，一般通过【材质】蓝图修改或直接使用</p>
+<h2 id="【Meshes】"><a href="#【Meshes】" class="headerlink" title="【Meshes】"></a>【Meshes】</h2><p>【Meshes】为该素材包内用到的所有骨架模型（骨骼网格体）、物理模型（物理资产）、骨骼，骨架模型是没有碰撞体积的，而物理模型能够表现受力（例如场景中运行时会受重力，和玩家角色重叠时会发生移动）</p>
+<h2 id="【Map（scenes）】"><a href="#【Map（scenes）】" class="headerlink" title="【Map（scenes）】"></a>【Map（scenes）】</h2><p>【Map（Scenes）】为该素材包的场景地图，一般会有一个Overview场景，用于预览所有模型，动画，地形等该素材包的素材</p>
+<h2 id="【Textures】"><a href="#【Textures】" class="headerlink" title="【Textures】"></a>【Textures】</h2><p>【Textures】为该素材包的所有贴图，包括材质贴图，法线贴图，场景贴花等，通常在【材质】蓝图中找到需要更改的属性，再对应的更改贴图以达到更改材质的效果</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>虚幻引擎学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>虚幻引擎-4</title>
+    <url>/2021/04/15/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-4/</url>
+    <content><![CDATA[<p>AI空置</p>
 ]]></content>
       <categories>
         <category>学习</category>
