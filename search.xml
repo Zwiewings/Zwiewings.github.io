@@ -1,6 +1,379 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>数据结构-3</title>
+    <url>/2021/04/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-3/</url>
+    <content><![CDATA[<h1 id="顺序栈"><a href="#顺序栈" class="headerlink" title="顺序栈"></a>顺序栈</h1><p>【Elemtype为数据类型】</p>
+<p>顺序栈本身是操作受限制的顺序表，只能在栈顶做插入删除，称入栈出栈，因为操作受限，算法相较普通顺序表简单。</p>
+<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><pre><code class="c++">typedef struct 
+&#123;
+    Elemtype *base;                    //定义栈底指针
+    Elemtype *top;                    //定义栈顶指针
+    int maxsize;                    //定义最大栈的最大容量
+&#125;SQstack;</code></pre>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><pre><code class="c++">bool initstack(SQstack &amp;sq)            //传址需要初始化的表
+&#123;
+    sq.base=new Elemtype[MAXSIZE];
+    //分配大小为MAXSIZE的空间，并返回首地址给表的栈底指针
+    if(!sq.base) return false;      //若分配失败则返回
+    sq.top=sq.base;                    //栈顶指针等于栈底指针，表示空栈
+    sq.maxsize=MAXSIZE;                //记录栈的最大容量为MAXSIZE
+    return true;                    //返回创建成功
+&#125;</code></pre>
+<h2 id="入栈（从栈顶插入）"><a href="#入栈（从栈顶插入）" class="headerlink" title="入栈（从栈顶插入）"></a>入栈（从栈顶插入）</h2><pre><code class="c++">bool Push(SQstack &amp;sq,Elemtype e)        //传址需要操作的栈，传值需要入栈的值
+&#123;
+    if(sq.top-sq.base&gt;=sq.maxsize) return false;
+    //若栈顶指针与栈底指针的差为最大空间（即栈满），返回入栈失败
+    *sq.top=e;
+    //栈顶指针总是指在栈顶元素的下一个位置，故而直接赋值
+    sq.top++;                            //栈顶指针后移
+    return true;                        //返回入栈成功
+&#125;</code></pre>
+<h2 id="出栈（从栈顶删除）"><a href="#出栈（从栈顶删除）" class="headerlink" title="出栈（从栈顶删除）"></a>出栈（从栈顶删除）</h2><pre><code class="c++">bool Pop(SQstack &amp;sq,Elemtype &amp;e)            //传址需要操作的表和出栈的元素
+&#123;
+    if(sq.top==sq.base) return false;
+    //若栈顶指针与栈底指针相同（即栈空），则返回失败
+    sq.top--;
+    //栈顶指针总是指在栈顶元素的下一个位置，故而栈顶指针后移
+    e=*sq.top;                                //将出栈的元素传给e
+    return true;
+&#125;</code></pre>
+<h2 id="取栈顶（取值）"><a href="#取栈顶（取值）" class="headerlink" title="取栈顶（取值）"></a>取栈顶（取值）</h2><pre><code class="c++">Elemtype gettop(SQstack &amp;sq)
+//传址需要操作的表，返回栈顶元素，该操作只取栈顶，不修改栈顶指针
+&#123;
+    if(sq.top!=sq.base)            //若该栈非空
+    &#123;
+    return *(sq.top-1);            //取栈顶指针的前一个位置，即栈顶元素向外传递
+    &#125;
+&#125;</code></pre>
+<h1 id="链式栈"><a href="#链式栈" class="headerlink" title="链式栈"></a>链式栈</h1><p>【Elemtype为数据类型】</p>
+<p>在无法估计栈数据量时，通常采用链式栈，而且因为栈的主要操作是插入和删除，所以用链表的头部作栈顶更加方便。</p>
+<h2 id="创建-1"><a href="#创建-1" class="headerlink" title="创建"></a>创建</h2><pre><code class="c++">typedef struct Lnode
+&#123;
+    Elemtype data;            //定义链表结点的数据域
+    struct Lnode *next;        //定义指向下一节点的指针域
+&#125;*Linkstack;</code></pre>
+<h2 id="初始化-1"><a href="#初始化-1" class="headerlink" title="初始化"></a>初始化</h2><pre><code class="c++">bool initstack(Linkstack &amp;ls)
+&#123;
+    ls=NULL;
+    //由于栈不需要对栈顶以外的元素操作，故而不需要设置头结点来使表头操作与表中表尾一致
+    return true;            //返回初始化成功
+&#125;</code></pre>
+<h2 id="入栈（从栈顶插入）-1"><a href="#入栈（从栈顶插入）-1" class="headerlink" title="入栈（从栈顶插入）"></a>入栈（从栈顶插入）</h2><pre><code class="c++">bool Push(Linkstack &amp;ls,Elemtype e)        //传址需要操作的表，传值需要插入的元素
+&#123;
+    Lnode *p;
+    p=new Lnode;                //重新分配一个结点空间，首地址赋给p
+    p-&gt;data=e;                    //新结点的数据域为e
+    p-&gt;next=ls;                    //新结点的指针域指向头指针ls，即将新结点作头插
+    ls=p;                        //头指针前移
+    return true;                //返回入栈成功
+&#125;</code></pre>
+<h2 id="出栈（从栈顶删除）-1"><a href="#出栈（从栈顶删除）-1" class="headerlink" title="出栈（从栈顶删除）"></a>出栈（从栈顶删除）</h2><pre><code class="c++">bool Pop(Linkstack &amp;ls，Elemtype &amp;e)   //传址需要操作的表和出栈的元素
+&#123;
+    if(ls==NULL) return false;        //栈空则返回删除失败
+    e=ls-&gt;data;                        //e接收出栈元素
+    Lnode *p=ls;                    //定义一个p指针指向原栈顶元素
+    ls=ls-&gt;next;                    //让头指针后移
+    delete p;                        //删除p指向的结点
+    return true;                    //返回删除完成
+&#125;</code></pre>
+<h2 id="取栈顶（取值）-1"><a href="#取栈顶（取值）-1" class="headerlink" title="取栈顶（取值）"></a>取栈顶（取值）</h2><pre><code class="c++">Elemtype gettop(Linkstack &amp;ls)    //传址需要操作的表
+&#123;
+    if(ls!=NULL)                //栈非空
+    return ls-&gt;data;            //返回栈顶元素的值，栈顶指针不变
+&#125;</code></pre>
+<h1 id="实际题目"><a href="#实际题目" class="headerlink" title="实际题目"></a>实际题目</h1><h2 id="R7-1-堆栈操作合法性-20-分"><a href="#R7-1-堆栈操作合法性-20-分" class="headerlink" title="R7-1 堆栈操作合法性 (20 分)"></a>R7-1 堆栈操作合法性 (20 分)</h2><p>假设以S和X分别表示入栈和出栈操作。如果根据一个仅由S和X构成的序列，对一个空堆栈进行操作，相应操作均可行（如没有出现删除时栈空）且最后状态也是栈空，则称该序列是合法的堆栈操作序列。请编写程序，输入S和X序列，判断该序列是否合法。</p>
+<p>输入格式:<br>输入第一行给出两个正整数N和M，其中N是待测序列的个数，M（≤50）是堆栈的最大容量。随后N行，每行中给出一个仅由S和X构成的序列。序列保证不为空，且长度不超过100。</p>
+<p>输出格式:<br>对每个序列，在一行中输出YES如果该序列是合法的堆栈操作序列，或NO如果不是。</p>
+<p>输入样例：</p>
+<pre><code>4 10
+SSSXXSXXSX
+SSSXXSXXS
+SSSSSSSSSSXSSXXXXXXXXXXX
+SSSXXSXXX</code></pre>
+<p>输出样例：</p>
+<pre><code class="：">YES
+NO
+NO
+NO</code></pre>
+<p><strong>解法：</strong></p>
+<pre><code class="c++">#include&lt;iostream&gt;
+#include&lt;string&gt;
+using namespace std;
+
+typedef struct
+&#123;
+    char *top;
+    char *base;
+    int size;
+&#125;SQstack;
+
+bool init(SQstack &amp;sq,int m)
+&#123;
+    sq.base=new char[m];
+    if(!sq.base) return false;
+    sq.top=sq.base;
+    sq.size=m;
+    return true;
+&#125;
+
+bool pop(SQstack &amp;sq)
+&#123;
+    if(sq.top==sq.base) return false;
+    sq.top--;
+    return true;
+&#125;
+
+bool push(SQstack &amp;sq,char e)
+&#123;
+    if(sq.top-sq.base==sq.size) return false;
+    *sq.top=e;
+    sq.top++;
+    return true;
+&#125;
+
+int main()
+&#123;
+    int n,m,i,j=0;
+    bool flag=true;
+    cin&gt;&gt;n&gt;&gt;m;
+    string str;
+    SQstack L;
+    for(i=0;i&lt;n;i++)
+    &#123;
+        init(L,m);
+        cin&gt;&gt;str;
+        flag=true;
+        for(j=0;str[j]!=&#39;\0&#39;;j++)
+        &#123;
+            if(str[j]==&#39;S&#39;) 
+            &#123;
+                flag=push(L,str[j]);
+            &#125;
+            if(str[j]==&#39;X&#39;) 
+            &#123;
+                flag=pop(L);
+            &#125;
+        &#125;
+    if(L.base==L.top&amp;&amp;flag==true) cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;
+    else cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;
+    &#125;
+    return 0;
+&#125;</code></pre>
+<h2 id="R7-2-回文判断-20-分"><a href="#R7-2-回文判断-20-分" class="headerlink" title="R7-2 回文判断 (20 分)"></a>R7-2 回文判断 (20 分)</h2><p>回文是指正读反读均相同的字符序列，如“abba”和“abdba”均是回文，但“good”不是回文。编写一个程序，使用栈判定给定的字符序列是否为回文。</p>
+<p>输入格式:<br>输入待判断的字符序列，按回车键结束，字符序列长度&lt;20。</p>
+<p>输出格式:<br>若字符序列是回文，输出“YES”；否则，输出“NO”。</p>
+<p>输入样例:</p>
+<pre><code>abdba</code></pre>
+<p>输出样例:</p>
+<pre><code>YES</code></pre>
+<p><strong>解法：</strong></p>
+<pre><code class="c++">#include&lt;iostream&gt;
+#include&lt;string&gt;
+using namespace std;
+
+typedef struct 
+&#123;
+    char *top;
+    char *base;
+    int size;
+&#125;SQstack;
+
+bool init(SQstack &amp;sq)
+&#123;
+    sq.base=new char[20];
+    if(!sq.base) return false;
+    sq.top=sq.base;
+    sq.size=20;
+    return true;
+&#125;
+
+bool push(SQstack &amp;sq,char a)
+&#123;
+    if(sq.top-sq.base==sq.size) return false;
+    *sq.top=a;
+    sq.top++;
+
+    return true;
+&#125;
+
+bool pop(SQstack &amp;sq)
+&#123;
+    if(sq.top==sq.base) return false;
+    sq.top--;
+
+    return true;
+&#125;
+
+bool gettop(SQstack &amp;sq,int &amp;a)
+&#123;
+    if(sq.base==sq.top) return false;
+    a=*(sq.top-1);
+    return true;
+&#125;
+
+int main()
+&#123;
+    SQstack L;
+    init(L);
+    string str;
+    int i,n=0,a;
+    bool flag=true;
+    cin&gt;&gt;str;
+    n=str.size();
+    if(n%2==0)
+    &#123;
+
+        for(i=0;i&lt;n;i++)
+        &#123;
+            if(i&lt;n/2) push(L,str[i]);
+            else 
+            &#123;
+
+                gettop(L,a);
+
+                if(str[i]==a) pop(L);
+                else 
+                &#123;
+                    flag=false;
+                    break;
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+    else
+    &#123;
+
+        for(i=0;i&lt;n;i++)
+        &#123;
+            if(i==(n-1)/2);
+            else 
+            &#123;
+                if(i&lt;(n-1)/2) push(L,str[i]);
+                else 
+                &#123;
+                    gettop(L,a);
+
+                    if(str[i]==a) pop(L);
+                    else 
+                    &#123;
+
+                        flag=false;
+                        break;
+                    &#125;
+               &#125;
+        &#125;
+    &#125;
+    &#125;
+            if(flag==true) cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;
+        else cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;
+&#125;</code></pre>
+<h2 id="R7-3-括号匹配-20-分"><a href="#R7-3-括号匹配-20-分" class="headerlink" title="R7-3 括号匹配 (20 分)"></a>R7-3 括号匹配 (20 分)</h2><p>检查一段C语言代码的小括号( )、 中括号 [ ] 和大括号{ } 是否匹配。</p>
+<p>输入格式:<br>在一行中输入一段C语言代码，长度不超过1000个字符（行末以换行符结束）。</p>
+<p>输出格式:<br>第一行输出左括号的数量和右括号的数量，中间以一个空格间隔。<br>若括号是匹配的，在第二行打印YES，否则打印NO。</p>
+<p>输入样例1:</p>
+<pre><code>for(int i=0; i&lt;v; i++)&#123; visited[i] = 0; for(int j=0; j&lt;v; j++) scanf(&quot;%d&quot;,&amp;(g-&gt;Adj[i][j])); &#125;</code></pre>
+<p>输出样例1:</p>
+<pre><code>8 8
+YES</code></pre>
+<p>输入样例2:</p>
+<pre><code>for(int i=0; i&lt;v; i++) a(i]=0;</code></pre>
+<p>输出样例2:</p>
+<pre><code>2 2
+NO</code></pre>
+<p><strong>解法：</strong></p>
+<pre><code class="c++">#include&lt;iostream&gt;
+#include&lt;string&gt;
+using namespace std;
+
+typedef struct
+&#123;
+    char *top;
+    char *base;
+    int size;
+&#125;SQstack;
+
+bool init(SQstack &amp;sq)
+&#123;
+    sq.base=new char[500];
+    if(!sq.base) return false;
+    sq.top=sq.base;
+    sq.size=500;
+    return true;
+&#125;
+
+bool push(SQstack &amp;sq,char a)
+&#123;
+    if(sq.top-sq.base==sq.size) return false;
+    *sq.top=a;
+    sq.top++;
+    return true;
+&#125;
+
+bool pop(SQstack &amp;sq)
+&#123;
+    if(sq.top==sq.base) return true;
+    sq.top--;
+    return true;
+&#125;
+
+bool gettop(SQstack &amp;sq,char &amp;a)
+&#123;
+    if(sq.top==sq.base) return false;
+    a=*(sq.top-1);
+    return true;
+&#125;
+
+int main()
+&#123;
+    SQstack L;
+    init(L);
+    char a=&#39;1&#39;;
+    bool flag=true;
+    int i,left=0,right=0,k=0;
+    char str[500];
+    for(i=0;i&lt;500;i++)
+    &#123;
+        cin&gt;&gt;str[i];
+        k++;
+    &#125;
+    for(i=0;i&lt;k;i++)
+    &#123;
+        if(str[i]==&#39;(&#39;||str[i]==&#39;[&#39;||str[i]==&#39;&#123;&#39;)
+        &#123;
+            left++;
+            push(L,str[i]);
+        &#125;
+        else
+        &#123;
+        if(str[i]==&#39;)&#39;||str[i]==&#39;]&#39;||str[i]==&#39;&#125;&#39;)
+        &#123;
+            right++;
+            gettop(L,a);
+            if((str[i]==&#39;)&#39;&amp;&amp;a==&#39;(&#39;)||(str[i]==&#39;]&#39;&amp;&amp;a==&#39;[&#39;)||(str[i]==&#39;&#125;&#39;&amp;&amp;a==&#39;&#123;&#39;))
+            &#123;
+                pop(L);
+            &#125;
+            else flag=false;
+        &#125;
+        &#125;
+    &#125;
+    if(L.top!=L.base) flag=false;
+    if(left==0&amp;&amp;right==0) flag=true;
+    cout&lt;&lt;left&lt;&lt;&quot; &quot;&lt;&lt;right&lt;&lt;endl;
+    if(flag) cout&lt;&lt;&quot;YES&quot;;
+    else cout&lt;&lt;&quot;NO&quot;;
+    return 0;
+&#125;</code></pre>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>数据结构学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>虚幻引擎-4</title>
     <url>/2021/04/15/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-4/</url>
     <content><![CDATA[<h1 id="AI智能"><a href="#AI智能" class="headerlink" title="AI智能"></a>AI智能</h1><h2 id="寻路导航创建"><a href="#寻路导航创建" class="headerlink" title="寻路导航创建"></a>寻路导航创建</h2><h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><p>在主面板左上角的“放置actor”面板中找到“导航网格体边界体积”，放入场景中</p>
@@ -95,96 +468,6 @@
       </categories>
       <tags>
         <tag>网页设计学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数据结构-3</title>
-    <url>/2021/04/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-3/</url>
-    <content><![CDATA[<h1 id="顺序栈"><a href="#顺序栈" class="headerlink" title="顺序栈"></a>顺序栈</h1><p>【Elemtype为数据类型】</p>
-<p>顺序栈本身是操作受限制的顺序表，只能在栈顶做插入删除，称入栈出栈，因为操作受限，算法相较普通顺序表简单。</p>
-<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><pre><code>typedef struct 
-&#123;
-    Elemtype *base;                    //定义栈底指针
-    Elemtype *top;                    //定义栈顶指针
-    int maxsize;                    //定义最大栈的最大容量
-&#125;SQstack;</code></pre>
-<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><pre><code>bool initstack(SQstack &amp;sq)            //传址需要初始化的表
-&#123;
-    sq.base=new Elemtype[MAXSIZE];
-    //分配大小为MAXSIZE的空间，并返回首地址给表的栈底指针
-    if(!sq.base) return false;      //若分配失败则返回
-    sq.top=sq.base;                    //栈顶指针等于栈底指针，表示空栈
-    sq.maxsize=MAXSIZE;                //记录栈的最大容量为MAXSIZE
-    return true;                    //返回创建成功
-&#125;</code></pre>
-<h2 id="入栈（从栈顶插入）"><a href="#入栈（从栈顶插入）" class="headerlink" title="入栈（从栈顶插入）"></a>入栈（从栈顶插入）</h2><pre><code>bool Push(SQstack &amp;sq,Elemtype e)        //传址需要操作的栈，传值需要入栈的值
-&#123;
-    if(sq.top-sq.base&gt;=sq.maxsize) return false;
-    //若栈顶指针与栈底指针的差为最大空间（即栈满），返回入栈失败
-    e=*sq.top;
-    //栈顶指针总是指在栈顶元素的下一个位置，故而直接赋值
-    sq.top++;                            //栈顶指针后移
-    return true;                        //返回入栈成功
-&#125;</code></pre>
-<h2 id="出栈（从栈顶删除）"><a href="#出栈（从栈顶删除）" class="headerlink" title="出栈（从栈顶删除）"></a>出栈（从栈顶删除）</h2><pre><code>bool Pop(SQstack &amp;sq,Elemtype &amp;e)            //传址需要操作的表和出栈的元素
-&#123;
-    if(sq.top==sq.base) return false;
-    //若栈顶指针与栈底指针相同（即栈空），则返回失败
-    sq.top--;
-    //栈顶指针总是指在栈顶元素的下一个位置，故而栈顶指针后移
-    e=*sq.top;                                //将出栈的元素传给e
-    return true;
-&#125;</code></pre>
-<h2 id="取栈顶（取值）"><a href="#取栈顶（取值）" class="headerlink" title="取栈顶（取值）"></a>取栈顶（取值）</h2><pre><code>Elemtype gettop(SQstack &amp;sq)
-//传址需要操作的表，返回栈顶元素，该操作只取栈顶，不修改栈顶指针
-&#123;
-    if(sq.top!=sq.base)            //若该栈非空
-    &#123;
-    return *(sq.top-1);            //取栈顶指针的前一个位置，即栈顶元素向外传递
-    &#125;
-&#125;</code></pre>
-<h1 id="链式栈"><a href="#链式栈" class="headerlink" title="链式栈"></a>链式栈</h1><p>【Elemtype为数据类型】</p>
-<p>在无法估计栈数据量时，通常采用链式栈，而且因为栈的主要操作是插入和删除，所以用链表的头部作栈顶更加方便。</p>
-<h2 id="创建-1"><a href="#创建-1" class="headerlink" title="创建"></a>创建</h2><pre><code>typedef struct Lnode
-&#123;
-    Elemtype data;            //定义链表结点的数据域
-    struct Lnode *next;        //定义指向下一节点的指针域
-&#125;*Linkstack;</code></pre>
-<h2 id="初始化-1"><a href="#初始化-1" class="headerlink" title="初始化"></a>初始化</h2><pre><code>bool initstack(Linkstack &amp;ls)
-&#123;
-    ls=NULL;
-    //由于栈不需要对栈顶以外的元素操作，故而不需要设置头结点来使表头操作与表中表尾一致
-    return true;            //返回初始化成功
-&#125;</code></pre>
-<h2 id="入栈（从栈顶插入）-1"><a href="#入栈（从栈顶插入）-1" class="headerlink" title="入栈（从栈顶插入）"></a>入栈（从栈顶插入）</h2><pre><code>bool Push(Linkstack &amp;ls,Elemtype e)        //传址需要操作的表，传值需要插入的元素
-&#123;
-    Lnode *p;
-    p=new Lnode;                //重新分配一个结点空间，首地址赋给p
-    p-&gt;data=e;                    //新结点的数据域为e
-    p-&gt;next=ls;                    //新结点的指针域指向头指针ls，即将新结点作头插
-    ls=p;                        //头指针前移
-    return true;                //返回入栈成功
-&#125;</code></pre>
-<h2 id="出栈（从栈顶删除）-1"><a href="#出栈（从栈顶删除）-1" class="headerlink" title="出栈（从栈顶删除）"></a>出栈（从栈顶删除）</h2><pre><code>bool Pop(Linkstack &amp;ls，Elemtype &amp;e)   //传址需要操作的表和出栈的元素
-&#123;
-    if(ls==NULL) return false;        //栈空则返回删除失败
-    e=ls-&gt;data;                        //e接收出栈元素
-    Lnode *p=ls;                    //定义一个p指针指向原栈顶元素
-    ls=ls-&gt;data;                    //让头指针后移
-    delete p;                        //删除p指向的结点
-    return true;                    //返回删除完成
-&#125;</code></pre>
-<h2 id="取栈顶（取值）-1"><a href="#取栈顶（取值）-1" class="headerlink" title="取栈顶（取值）"></a>取栈顶（取值）</h2><pre><code>Elemtype gettop(Linkstack &amp;ls)    //传址需要操作的表
-&#123;
-    if(ls!=NULL)                //栈非空
-    return ls-&gt;data;            //返回栈顶元素的值，栈顶指针不变
-&#125;</code></pre>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>数据结构学习</tag>
       </tags>
   </entry>
   <entry>

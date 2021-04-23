@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BA%BF%E6%80%A7%E8%A1%A8cover.jpg">
 <meta property="article:published_time" content="2021-04-14T07:37:35.000Z">
-<meta property="article:modified_time" content="2021-04-21T12:50:29.639Z">
+<meta property="article:modified_time" content="2021-04-23T11:23:20.656Z">
 <meta property="article:author" content="Zweiwings">
 <meta property="article:tag" content="数据结构学习">
 <meta name="twitter:card" content="summary">
@@ -57,7 +57,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2021-04-21 20:50:29'
+  postUpdate: '2021-04-23 19:23:20'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -140,15 +140,15 @@
         }
       }
     })(window)</script><meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="Zweiwings" type="application/atom+xml">
-</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/head.jpg" onerror="onerror=null;src='/img/cover2.jpg'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">24</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BA%BF%E6%80%A7%E8%A1%A8cover.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Zweiwings</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">数据结构-3</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-04-14T07:37:35.000Z" title="发表于 2021-04-14 15:37:35">2021-04-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-21T12:50:29.639Z" title="更新于 2021-04-21 20:50:29">2021-04-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="数据结构-3"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2021/04/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-3/#post-comment"><span class="gitalk-comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="顺序栈"><a href="#顺序栈" class="headerlink" title="顺序栈"></a>顺序栈</h1><p>【Elemtype为数据类型】</p>
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/head.jpg" onerror="onerror=null;src='/img/cover2.jpg'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">24</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BA%BF%E6%80%A7%E8%A1%A8cover.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Zweiwings</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">数据结构-3</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-04-14T07:37:35.000Z" title="发表于 2021-04-14 15:37:35">2021-04-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-23T11:23:20.656Z" title="更新于 2021-04-23 19:23:20">2021-04-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="数据结构-3"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2021/04/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-3/#post-comment"><span class="gitalk-comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="顺序栈"><a href="#顺序栈" class="headerlink" title="顺序栈"></a>顺序栈</h1><p>【Elemtype为数据类型】</p>
 <p>顺序栈本身是操作受限制的顺序表，只能在栈顶做插入删除，称入栈出栈，因为操作受限，算法相较普通顺序表简单。</p>
-<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><pre><code>typedef struct 
+<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><pre><code class="c++">typedef struct 
 &#123;
     Elemtype *base;                    //定义栈底指针
     Elemtype *top;                    //定义栈顶指针
     int maxsize;                    //定义最大栈的最大容量
 &#125;SQstack;</code></pre>
-<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><pre><code>bool initstack(SQstack &amp;sq)            //传址需要初始化的表
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><pre><code class="c++">bool initstack(SQstack &amp;sq)            //传址需要初始化的表
 &#123;
     sq.base=new Elemtype[MAXSIZE];
     //分配大小为MAXSIZE的空间，并返回首地址给表的栈底指针
@@ -157,16 +157,16 @@
     sq.maxsize=MAXSIZE;                //记录栈的最大容量为MAXSIZE
     return true;                    //返回创建成功
 &#125;</code></pre>
-<h2 id="入栈（从栈顶插入）"><a href="#入栈（从栈顶插入）" class="headerlink" title="入栈（从栈顶插入）"></a>入栈（从栈顶插入）</h2><pre><code>bool Push(SQstack &amp;sq,Elemtype e)        //传址需要操作的栈，传值需要入栈的值
+<h2 id="入栈（从栈顶插入）"><a href="#入栈（从栈顶插入）" class="headerlink" title="入栈（从栈顶插入）"></a>入栈（从栈顶插入）</h2><pre><code class="c++">bool Push(SQstack &amp;sq,Elemtype e)        //传址需要操作的栈，传值需要入栈的值
 &#123;
     if(sq.top-sq.base&gt;=sq.maxsize) return false;
     //若栈顶指针与栈底指针的差为最大空间（即栈满），返回入栈失败
-    e=*sq.top;
+    *sq.top=e;
     //栈顶指针总是指在栈顶元素的下一个位置，故而直接赋值
     sq.top++;                            //栈顶指针后移
     return true;                        //返回入栈成功
 &#125;</code></pre>
-<h2 id="出栈（从栈顶删除）"><a href="#出栈（从栈顶删除）" class="headerlink" title="出栈（从栈顶删除）"></a>出栈（从栈顶删除）</h2><pre><code>bool Pop(SQstack &amp;sq,Elemtype &amp;e)            //传址需要操作的表和出栈的元素
+<h2 id="出栈（从栈顶删除）"><a href="#出栈（从栈顶删除）" class="headerlink" title="出栈（从栈顶删除）"></a>出栈（从栈顶删除）</h2><pre><code class="c++">bool Pop(SQstack &amp;sq,Elemtype &amp;e)            //传址需要操作的表和出栈的元素
 &#123;
     if(sq.top==sq.base) return false;
     //若栈顶指针与栈底指针相同（即栈空），则返回失败
@@ -175,7 +175,7 @@
     e=*sq.top;                                //将出栈的元素传给e
     return true;
 &#125;</code></pre>
-<h2 id="取栈顶（取值）"><a href="#取栈顶（取值）" class="headerlink" title="取栈顶（取值）"></a>取栈顶（取值）</h2><pre><code>Elemtype gettop(SQstack &amp;sq)
+<h2 id="取栈顶（取值）"><a href="#取栈顶（取值）" class="headerlink" title="取栈顶（取值）"></a>取栈顶（取值）</h2><pre><code class="c++">Elemtype gettop(SQstack &amp;sq)
 //传址需要操作的表，返回栈顶元素，该操作只取栈顶，不修改栈顶指针
 &#123;
     if(sq.top!=sq.base)            //若该栈非空
@@ -185,18 +185,18 @@
 &#125;</code></pre>
 <h1 id="链式栈"><a href="#链式栈" class="headerlink" title="链式栈"></a>链式栈</h1><p>【Elemtype为数据类型】</p>
 <p>在无法估计栈数据量时，通常采用链式栈，而且因为栈的主要操作是插入和删除，所以用链表的头部作栈顶更加方便。</p>
-<h2 id="创建-1"><a href="#创建-1" class="headerlink" title="创建"></a>创建</h2><pre><code>typedef struct Lnode
+<h2 id="创建-1"><a href="#创建-1" class="headerlink" title="创建"></a>创建</h2><pre><code class="c++">typedef struct Lnode
 &#123;
     Elemtype data;            //定义链表结点的数据域
     struct Lnode *next;        //定义指向下一节点的指针域
 &#125;*Linkstack;</code></pre>
-<h2 id="初始化-1"><a href="#初始化-1" class="headerlink" title="初始化"></a>初始化</h2><pre><code>bool initstack(Linkstack &amp;ls)
+<h2 id="初始化-1"><a href="#初始化-1" class="headerlink" title="初始化"></a>初始化</h2><pre><code class="c++">bool initstack(Linkstack &amp;ls)
 &#123;
     ls=NULL;
     //由于栈不需要对栈顶以外的元素操作，故而不需要设置头结点来使表头操作与表中表尾一致
     return true;            //返回初始化成功
 &#125;</code></pre>
-<h2 id="入栈（从栈顶插入）-1"><a href="#入栈（从栈顶插入）-1" class="headerlink" title="入栈（从栈顶插入）"></a>入栈（从栈顶插入）</h2><pre><code>bool Push(Linkstack &amp;ls,Elemtype e)        //传址需要操作的表，传值需要插入的元素
+<h2 id="入栈（从栈顶插入）-1"><a href="#入栈（从栈顶插入）-1" class="headerlink" title="入栈（从栈顶插入）"></a>入栈（从栈顶插入）</h2><pre><code class="c++">bool Push(Linkstack &amp;ls,Elemtype e)        //传址需要操作的表，传值需要插入的元素
 &#123;
     Lnode *p;
     p=new Lnode;                //重新分配一个结点空间，首地址赋给p
@@ -205,21 +205,304 @@
     ls=p;                        //头指针前移
     return true;                //返回入栈成功
 &#125;</code></pre>
-<h2 id="出栈（从栈顶删除）-1"><a href="#出栈（从栈顶删除）-1" class="headerlink" title="出栈（从栈顶删除）"></a>出栈（从栈顶删除）</h2><pre><code>bool Pop(Linkstack &amp;ls，Elemtype &amp;e)   //传址需要操作的表和出栈的元素
+<h2 id="出栈（从栈顶删除）-1"><a href="#出栈（从栈顶删除）-1" class="headerlink" title="出栈（从栈顶删除）"></a>出栈（从栈顶删除）</h2><pre><code class="c++">bool Pop(Linkstack &amp;ls，Elemtype &amp;e)   //传址需要操作的表和出栈的元素
 &#123;
     if(ls==NULL) return false;        //栈空则返回删除失败
     e=ls-&gt;data;                        //e接收出栈元素
     Lnode *p=ls;                    //定义一个p指针指向原栈顶元素
-    ls=ls-&gt;data;                    //让头指针后移
+    ls=ls-&gt;next;                    //让头指针后移
     delete p;                        //删除p指向的结点
     return true;                    //返回删除完成
 &#125;</code></pre>
-<h2 id="取栈顶（取值）-1"><a href="#取栈顶（取值）-1" class="headerlink" title="取栈顶（取值）"></a>取栈顶（取值）</h2><pre><code>Elemtype gettop(Linkstack &amp;ls)    //传址需要操作的表
+<h2 id="取栈顶（取值）-1"><a href="#取栈顶（取值）-1" class="headerlink" title="取栈顶（取值）"></a>取栈顶（取值）</h2><pre><code class="c++">Elemtype gettop(Linkstack &amp;ls)    //传址需要操作的表
 &#123;
     if(ls!=NULL)                //栈非空
     return ls-&gt;data;            //返回栈顶元素的值，栈顶指针不变
 &#125;</code></pre>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Zweiwings</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2021/04/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-3/">http://example.com/2021/04/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Zweiwings</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0/">数据结构学习</a></div><div class="post_share"><div class="social-share" data-image="https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BA%BF%E6%80%A7%E8%A1%A8cover.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/04/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-4/"><img class="prev-cover" src="https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BA%BF%E6%80%A7%E8%A1%A8cover.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">数据结构-4</div></div></a></div><div class="next-post pull-right"><a href="/2021/04/13/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-3/"><img class="next-cover" src="https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E8%99%9A%E5%B9%BBcover.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">虚幻引擎-3</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/03/30/数据结构-2/" title="数据结构-2"><img class="cover" src="https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BA%BF%E6%80%A7%E8%A1%A8cover.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2021-04-21</div><div class="title">数据结构-2</div></div></a></div><div><a href="/2021/04/14/数据结构-4/" title="数据结构-4"><img class="cover" src="https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BA%BF%E6%80%A7%E8%A1%A8cover.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2021-04-16</div><div class="title">数据结构-4</div></div></a></div><div><a href="/2021/03/24/数据结构-1/" title="数据结构-1"><img class="cover" src="https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BA%BF%E6%80%A7%E8%A1%A8cover.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2021-04-08</div><div class="title">数据结构-1</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/head.jpg" onerror="this.onerror=null;this.src='/img/cover2.jpg'" alt="avatar"/><div class="author-info__name">Zweiwings</div><div class="author-info__description">一个勤勤恳恳的笨蛋咕咕</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">24</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/zwiewings"><i class="fab fa-github"></i><span>加入书签</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">在下是一个勤勤恳恳的笨蛋咕咕，身为未来码农还仅仅是个萌新，总之，初来乍到，请多指教</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E6%A0%88"><span class="toc-number">1.</span> <span class="toc-text">顺序栈</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA"><span class="toc-number">1.1.</span> <span class="toc-text">创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">1.2.</span> <span class="toc-text">初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A5%E6%A0%88%EF%BC%88%E4%BB%8E%E6%A0%88%E9%A1%B6%E6%8F%92%E5%85%A5%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">入栈（从栈顶插入）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BA%E6%A0%88%EF%BC%88%E4%BB%8E%E6%A0%88%E9%A1%B6%E5%88%A0%E9%99%A4%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">出栈（从栈顶删除）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%96%E6%A0%88%E9%A1%B6%EF%BC%88%E5%8F%96%E5%80%BC%EF%BC%89"><span class="toc-number">1.5.</span> <span class="toc-text">取栈顶（取值）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%93%BE%E5%BC%8F%E6%A0%88"><span class="toc-number">2.</span> <span class="toc-text">链式栈</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-1"><span class="toc-number">2.1.</span> <span class="toc-text">创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96-1"><span class="toc-number">2.2.</span> <span class="toc-text">初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A5%E6%A0%88%EF%BC%88%E4%BB%8E%E6%A0%88%E9%A1%B6%E6%8F%92%E5%85%A5%EF%BC%89-1"><span class="toc-number">2.3.</span> <span class="toc-text">入栈（从栈顶插入）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BA%E6%A0%88%EF%BC%88%E4%BB%8E%E6%A0%88%E9%A1%B6%E5%88%A0%E9%99%A4%EF%BC%89-1"><span class="toc-number">2.4.</span> <span class="toc-text">出栈（从栈顶删除）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%96%E6%A0%88%E9%A1%B6%EF%BC%88%E5%8F%96%E5%80%BC%EF%BC%89-1"><span class="toc-number">2.5.</span> <span class="toc-text">取栈顶（取值）</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/04/15/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-4/" title="虚幻引擎-4"><img src="https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E8%99%9A%E5%B9%BBcover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="虚幻引擎-4"/></a><div class="content"><a class="title" href="/2021/04/15/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-4/" title="虚幻引擎-4">虚幻引擎-4</a><time datetime="2021-04-22T12:57:51.495Z" title="更新于 2021-04-22 20:57:51">2021-04-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/22/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0-3/" title="网页设计学习-3"><img src="https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BD%91%E9%A1%B5%E5%9F%BA%E7%A1%80cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="网页设计学习-3"/></a><div class="content"><a class="title" href="/2021/04/22/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0-3/" title="网页设计学习-3">网页设计学习-3</a><time datetime="2021-04-22T10:26:21.978Z" title="更新于 2021-04-22 18:26:21">2021-04-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-3/" title="数据结构-3"><img src="https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BA%BF%E6%80%A7%E8%A1%A8cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据结构-3"/></a><div class="content"><a class="title" href="/2021/04/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-3/" title="数据结构-3">数据结构-3</a><time datetime="2021-04-21T12:50:29.639Z" title="更新于 2021-04-21 20:50:29">2021-04-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/03/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-2/" title="数据结构-2"><img src="https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BA%BF%E6%80%A7%E8%A1%A8cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据结构-2"/></a><div class="content"><a class="title" href="/2021/03/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-2/" title="数据结构-2">数据结构-2</a><time datetime="2021-04-21T08:34:44.700Z" title="更新于 2021-04-21 16:34:44">2021-04-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/13/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-3/" title="虚幻引擎-3"><img src="https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E8%99%9A%E5%B9%BBcover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="虚幻引擎-3"/></a><div class="content"><a class="title" href="/2021/04/13/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-3/" title="虚幻引擎-3">虚幻引擎-3</a><time datetime="2021-04-20T14:43:07.392Z" title="更新于 2021-04-20 22:43:07">2021-04-20</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/Title1.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Zweiwings</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">天若赐我辉煌，我定比天更张狂</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+<h1 id="实际题目"><a href="#实际题目" class="headerlink" title="实际题目"></a>实际题目</h1><h2 id="R7-1-堆栈操作合法性-20-分"><a href="#R7-1-堆栈操作合法性-20-分" class="headerlink" title="R7-1 堆栈操作合法性 (20 分)"></a>R7-1 堆栈操作合法性 (20 分)</h2><p>假设以S和X分别表示入栈和出栈操作。如果根据一个仅由S和X构成的序列，对一个空堆栈进行操作，相应操作均可行（如没有出现删除时栈空）且最后状态也是栈空，则称该序列是合法的堆栈操作序列。请编写程序，输入S和X序列，判断该序列是否合法。</p>
+<p>输入格式:<br>输入第一行给出两个正整数N和M，其中N是待测序列的个数，M（≤50）是堆栈的最大容量。随后N行，每行中给出一个仅由S和X构成的序列。序列保证不为空，且长度不超过100。</p>
+<p>输出格式:<br>对每个序列，在一行中输出YES如果该序列是合法的堆栈操作序列，或NO如果不是。</p>
+<p>输入样例：</p>
+<pre><code>4 10
+SSSXXSXXSX
+SSSXXSXXS
+SSSSSSSSSSXSSXXXXXXXXXXX
+SSSXXSXXX</code></pre>
+<p>输出样例：</p>
+<pre><code class="：">YES
+NO
+NO
+NO</code></pre>
+<p><strong>解法：</strong></p>
+<pre><code class="c++">#include&lt;iostream&gt;
+#include&lt;string&gt;
+using namespace std;
+
+typedef struct
+&#123;
+    char *top;
+    char *base;
+    int size;
+&#125;SQstack;
+
+bool init(SQstack &amp;sq,int m)
+&#123;
+    sq.base=new char[m];
+    if(!sq.base) return false;
+    sq.top=sq.base;
+    sq.size=m;
+    return true;
+&#125;
+
+bool pop(SQstack &amp;sq)
+&#123;
+    if(sq.top==sq.base) return false;
+    sq.top--;
+    return true;
+&#125;
+
+bool push(SQstack &amp;sq,char e)
+&#123;
+    if(sq.top-sq.base==sq.size) return false;
+    *sq.top=e;
+    sq.top++;
+    return true;
+&#125;
+
+int main()
+&#123;
+    int n,m,i,j=0;
+    bool flag=true;
+    cin&gt;&gt;n&gt;&gt;m;
+    string str;
+    SQstack L;
+    for(i=0;i&lt;n;i++)
+    &#123;
+        init(L,m);
+        cin&gt;&gt;str;
+        flag=true;
+        for(j=0;str[j]!=&#39;\0&#39;;j++)
+        &#123;
+            if(str[j]==&#39;S&#39;) 
+            &#123;
+                flag=push(L,str[j]);
+            &#125;
+            if(str[j]==&#39;X&#39;) 
+            &#123;
+                flag=pop(L);
+            &#125;
+        &#125;
+    if(L.base==L.top&amp;&amp;flag==true) cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;
+    else cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;
+    &#125;
+    return 0;
+&#125;</code></pre>
+<h2 id="R7-2-回文判断-20-分"><a href="#R7-2-回文判断-20-分" class="headerlink" title="R7-2 回文判断 (20 分)"></a>R7-2 回文判断 (20 分)</h2><p>回文是指正读反读均相同的字符序列，如“abba”和“abdba”均是回文，但“good”不是回文。编写一个程序，使用栈判定给定的字符序列是否为回文。</p>
+<p>输入格式:<br>输入待判断的字符序列，按回车键结束，字符序列长度&lt;20。</p>
+<p>输出格式:<br>若字符序列是回文，输出“YES”；否则，输出“NO”。</p>
+<p>输入样例:</p>
+<pre><code>abdba</code></pre>
+<p>输出样例:</p>
+<pre><code>YES</code></pre>
+<p><strong>解法：</strong></p>
+<pre><code class="c++">#include&lt;iostream&gt;
+#include&lt;string&gt;
+using namespace std;
+
+typedef struct 
+&#123;
+    char *top;
+    char *base;
+    int size;
+&#125;SQstack;
+
+bool init(SQstack &amp;sq)
+&#123;
+    sq.base=new char[20];
+    if(!sq.base) return false;
+    sq.top=sq.base;
+    sq.size=20;
+    return true;
+&#125;
+
+bool push(SQstack &amp;sq,char a)
+&#123;
+    if(sq.top-sq.base==sq.size) return false;
+    *sq.top=a;
+    sq.top++;
+
+    return true;
+&#125;
+
+bool pop(SQstack &amp;sq)
+&#123;
+    if(sq.top==sq.base) return false;
+    sq.top--;
+
+    return true;
+&#125;
+
+bool gettop(SQstack &amp;sq,int &amp;a)
+&#123;
+    if(sq.base==sq.top) return false;
+    a=*(sq.top-1);
+    return true;
+&#125;
+
+int main()
+&#123;
+    SQstack L;
+    init(L);
+    string str;
+    int i,n=0,a;
+    bool flag=true;
+    cin&gt;&gt;str;
+    n=str.size();
+    if(n%2==0)
+    &#123;
+
+        for(i=0;i&lt;n;i++)
+        &#123;
+            if(i&lt;n/2) push(L,str[i]);
+            else 
+            &#123;
+
+                gettop(L,a);
+
+                if(str[i]==a) pop(L);
+                else 
+                &#123;
+                    flag=false;
+                    break;
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+    else
+    &#123;
+
+        for(i=0;i&lt;n;i++)
+        &#123;
+            if(i==(n-1)/2);
+            else 
+            &#123;
+                if(i&lt;(n-1)/2) push(L,str[i]);
+                else 
+                &#123;
+                    gettop(L,a);
+
+                    if(str[i]==a) pop(L);
+                    else 
+                    &#123;
+
+                        flag=false;
+                        break;
+                    &#125;
+               &#125;
+        &#125;
+    &#125;
+    &#125;
+            if(flag==true) cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;
+        else cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;
+&#125;</code></pre>
+<h2 id="R7-3-括号匹配-20-分"><a href="#R7-3-括号匹配-20-分" class="headerlink" title="R7-3 括号匹配 (20 分)"></a>R7-3 括号匹配 (20 分)</h2><p>检查一段C语言代码的小括号( )、 中括号 [ ] 和大括号{ } 是否匹配。</p>
+<p>输入格式:<br>在一行中输入一段C语言代码，长度不超过1000个字符（行末以换行符结束）。</p>
+<p>输出格式:<br>第一行输出左括号的数量和右括号的数量，中间以一个空格间隔。<br>若括号是匹配的，在第二行打印YES，否则打印NO。</p>
+<p>输入样例1:</p>
+<pre><code>for(int i=0; i&lt;v; i++)&#123; visited[i] = 0; for(int j=0; j&lt;v; j++) scanf(&quot;%d&quot;,&amp;(g-&gt;Adj[i][j])); &#125;</code></pre>
+<p>输出样例1:</p>
+<pre><code>8 8
+YES</code></pre>
+<p>输入样例2:</p>
+<pre><code>for(int i=0; i&lt;v; i++) a(i]=0;</code></pre>
+<p>输出样例2:</p>
+<pre><code>2 2
+NO</code></pre>
+<p><strong>解法：</strong></p>
+<pre><code class="c++">#include&lt;iostream&gt;
+#include&lt;string&gt;
+using namespace std;
+
+typedef struct
+&#123;
+    char *top;
+    char *base;
+    int size;
+&#125;SQstack;
+
+bool init(SQstack &amp;sq)
+&#123;
+    sq.base=new char[500];
+    if(!sq.base) return false;
+    sq.top=sq.base;
+    sq.size=500;
+    return true;
+&#125;
+
+bool push(SQstack &amp;sq,char a)
+&#123;
+    if(sq.top-sq.base==sq.size) return false;
+    *sq.top=a;
+    sq.top++;
+    return true;
+&#125;
+
+bool pop(SQstack &amp;sq)
+&#123;
+    if(sq.top==sq.base) return true;
+    sq.top--;
+    return true;
+&#125;
+
+bool gettop(SQstack &amp;sq,char &amp;a)
+&#123;
+    if(sq.top==sq.base) return false;
+    a=*(sq.top-1);
+    return true;
+&#125;
+
+int main()
+&#123;
+    SQstack L;
+    init(L);
+    char a=&#39;1&#39;;
+    bool flag=true;
+    int i,left=0,right=0,k=0;
+    char str[500];
+    for(i=0;i&lt;500;i++)
+    &#123;
+        cin&gt;&gt;str[i];
+        k++;
+    &#125;
+    for(i=0;i&lt;k;i++)
+    &#123;
+        if(str[i]==&#39;(&#39;||str[i]==&#39;[&#39;||str[i]==&#39;&#123;&#39;)
+        &#123;
+            left++;
+            push(L,str[i]);
+        &#125;
+        else
+        &#123;
+        if(str[i]==&#39;)&#39;||str[i]==&#39;]&#39;||str[i]==&#39;&#125;&#39;)
+        &#123;
+            right++;
+            gettop(L,a);
+            if((str[i]==&#39;)&#39;&amp;&amp;a==&#39;(&#39;)||(str[i]==&#39;]&#39;&amp;&amp;a==&#39;[&#39;)||(str[i]==&#39;&#125;&#39;&amp;&amp;a==&#39;&#123;&#39;))
+            &#123;
+                pop(L);
+            &#125;
+            else flag=false;
+        &#125;
+        &#125;
+    &#125;
+    if(L.top!=L.base) flag=false;
+    if(left==0&amp;&amp;right==0) flag=true;
+    cout&lt;&lt;left&lt;&lt;&quot; &quot;&lt;&lt;right&lt;&lt;endl;
+    if(flag) cout&lt;&lt;&quot;YES&quot;;
+    else cout&lt;&lt;&quot;NO&quot;;
+    return 0;
+&#125;</code></pre>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Zweiwings</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2021/04/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-3/">http://example.com/2021/04/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Zweiwings</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0/">数据结构学习</a></div><div class="post_share"><div class="social-share" data-image="https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BA%BF%E6%80%A7%E8%A1%A8cover.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/04/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-4/"><img class="prev-cover" src="https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BA%BF%E6%80%A7%E8%A1%A8cover.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">数据结构-4</div></div></a></div><div class="next-post pull-right"><a href="/2021/04/13/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-3/"><img class="next-cover" src="https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E8%99%9A%E5%B9%BBcover.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">虚幻引擎-3</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/03/30/数据结构-2/" title="数据结构-2"><img class="cover" src="https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BA%BF%E6%80%A7%E8%A1%A8cover.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2021-04-21</div><div class="title">数据结构-2</div></div></a></div><div><a href="/2021/04/14/数据结构-4/" title="数据结构-4"><img class="cover" src="https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BA%BF%E6%80%A7%E8%A1%A8cover.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2021-04-16</div><div class="title">数据结构-4</div></div></a></div><div><a href="/2021/03/24/数据结构-1/" title="数据结构-1"><img class="cover" src="https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BA%BF%E6%80%A7%E8%A1%A8cover.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2021-04-08</div><div class="title">数据结构-1</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/head.jpg" onerror="this.onerror=null;this.src='/img/cover2.jpg'" alt="avatar"/><div class="author-info__name">Zweiwings</div><div class="author-info__description">一个勤勤恳恳的笨蛋咕咕</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">24</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/zwiewings"><i class="fab fa-github"></i><span>加入书签</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">在下是一个勤勤恳恳的笨蛋咕咕，身为未来码农还仅仅是个萌新，总之，初来乍到，请多指教</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E6%A0%88"><span class="toc-number">1.</span> <span class="toc-text">顺序栈</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA"><span class="toc-number">1.1.</span> <span class="toc-text">创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">1.2.</span> <span class="toc-text">初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A5%E6%A0%88%EF%BC%88%E4%BB%8E%E6%A0%88%E9%A1%B6%E6%8F%92%E5%85%A5%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">入栈（从栈顶插入）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BA%E6%A0%88%EF%BC%88%E4%BB%8E%E6%A0%88%E9%A1%B6%E5%88%A0%E9%99%A4%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">出栈（从栈顶删除）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%96%E6%A0%88%E9%A1%B6%EF%BC%88%E5%8F%96%E5%80%BC%EF%BC%89"><span class="toc-number">1.5.</span> <span class="toc-text">取栈顶（取值）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%93%BE%E5%BC%8F%E6%A0%88"><span class="toc-number">2.</span> <span class="toc-text">链式栈</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-1"><span class="toc-number">2.1.</span> <span class="toc-text">创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96-1"><span class="toc-number">2.2.</span> <span class="toc-text">初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A5%E6%A0%88%EF%BC%88%E4%BB%8E%E6%A0%88%E9%A1%B6%E6%8F%92%E5%85%A5%EF%BC%89-1"><span class="toc-number">2.3.</span> <span class="toc-text">入栈（从栈顶插入）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BA%E6%A0%88%EF%BC%88%E4%BB%8E%E6%A0%88%E9%A1%B6%E5%88%A0%E9%99%A4%EF%BC%89-1"><span class="toc-number">2.4.</span> <span class="toc-text">出栈（从栈顶删除）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%96%E6%A0%88%E9%A1%B6%EF%BC%88%E5%8F%96%E5%80%BC%EF%BC%89-1"><span class="toc-number">2.5.</span> <span class="toc-text">取栈顶（取值）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E9%A2%98%E7%9B%AE"><span class="toc-number">3.</span> <span class="toc-text">实际题目</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#R7-1-%E5%A0%86%E6%A0%88%E6%93%8D%E4%BD%9C%E5%90%88%E6%B3%95%E6%80%A7-20-%E5%88%86"><span class="toc-number">3.1.</span> <span class="toc-text">R7-1 堆栈操作合法性 (20 分)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#R7-2-%E5%9B%9E%E6%96%87%E5%88%A4%E6%96%AD-20-%E5%88%86"><span class="toc-number">3.2.</span> <span class="toc-text">R7-2 回文判断 (20 分)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#R7-3-%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D-20-%E5%88%86"><span class="toc-number">3.3.</span> <span class="toc-text">R7-3 括号匹配 (20 分)</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/04/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-3/" title="数据结构-3"><img src="https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BA%BF%E6%80%A7%E8%A1%A8cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据结构-3"/></a><div class="content"><a class="title" href="/2021/04/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-3/" title="数据结构-3">数据结构-3</a><time datetime="2021-04-23T11:23:20.656Z" title="更新于 2021-04-23 19:23:20">2021-04-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/15/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-4/" title="虚幻引擎-4"><img src="https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E8%99%9A%E5%B9%BBcover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="虚幻引擎-4"/></a><div class="content"><a class="title" href="/2021/04/15/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-4/" title="虚幻引擎-4">虚幻引擎-4</a><time datetime="2021-04-22T12:57:51.495Z" title="更新于 2021-04-22 20:57:51">2021-04-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/22/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0-3/" title="网页设计学习-3"><img src="https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BD%91%E9%A1%B5%E5%9F%BA%E7%A1%80cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="网页设计学习-3"/></a><div class="content"><a class="title" href="/2021/04/22/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0-3/" title="网页设计学习-3">网页设计学习-3</a><time datetime="2021-04-22T10:26:21.978Z" title="更新于 2021-04-22 18:26:21">2021-04-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/03/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-2/" title="数据结构-2"><img src="https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BA%BF%E6%80%A7%E8%A1%A8cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据结构-2"/></a><div class="content"><a class="title" href="/2021/03/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-2/" title="数据结构-2">数据结构-2</a><time datetime="2021-04-21T08:34:44.700Z" title="更新于 2021-04-21 16:34:44">2021-04-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/13/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-3/" title="虚幻引擎-3"><img src="https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E8%99%9A%E5%B9%BBcover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="虚幻引擎-3"/></a><div class="content"><a class="title" href="/2021/04/13/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-3/" title="虚幻引擎-3">虚幻引擎-3</a><time datetime="2021-04-20T14:43:07.392Z" title="更新于 2021-04-20 22:43:07">2021-04-20</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/Title1.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Zweiwings</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">天若赐我辉煌，我定比天更张狂</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
   endLoading: () => {
     document.body.style.overflow = 'auto';
     document.getElementById('loading-box').classList.add("loaded")
