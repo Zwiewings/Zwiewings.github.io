@@ -35,7 +35,25 @@
 <p>镜头轨道：用于拼接多个镜头的轨道，也可以实现多个动画序列之间的拼接</p>
 <p>时间膨胀轨道：用于设置播放倍率的关键帧，实现部分慢镜头和快进</p>
 <p>渐变轨道：添加动画的黑幕（1为全黑，0为透明），多个关键帧可实现淡入淡出</p>
-<p><strong><em>（注：如果在单独一个元件下添加轨道，则所有轨道都作为其子元件，该元件的组件也可以实现调用为子元件，同时，在单一元件下还能够创建可视性轨道，调整特定时间下的actor是否可见）</em></strong></p>
+<p><strong><em>【注：如果在单独一个元件下添加轨道，则所有轨道都作为其子元件，该元件的组件也可以实现调用为子元件，同时，在单一元件下还能够创建可视性轨道，调整特定时间下的actor是否可见。</em></strong></p>
+<p><strong><em>特别地，对于相机actor来说，需要先获取CameraComponent子元件才能够更改具体具体属性（如：曝光补偿等）】</em></strong></p>
+<h2 id="相机晃动"><a href="#相机晃动" class="headerlink" title="相机晃动"></a>相机晃动</h2><p>【需要创建蓝图类-MatineeCameraShake文件】</p>
+<h4 id="振荡设置"><a href="#振荡设置" class="headerlink" title="振荡设置"></a>振荡设置</h4><p>振荡时长：振荡的总时长</p>
+<p>振荡混入时间：振荡开始的时间</p>
+<p>振荡混出时间：振荡结束的时间</p>
+<p>旋转振荡：实现镜头的各方位旋转振荡（如决定上下振荡或者左右振荡，或者两者混合等）</p>
+<p>位置振荡：实现镜头的移动性振荡（如决定相机位置前后振荡等）</p>
+<p>FOV振荡：实现镜头的缩放性振荡（相机位置不变，只是镜头缩放）</p>
+<h4 id="具体蓝图使用"><a href="#具体蓝图使用" class="headerlink" title="具体蓝图使用"></a>具体蓝图使用</h4><ol>
+<li><p>在需要使用的蓝图流程中加入以下结点</p>
+<p><img src="/2021/04/15/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-4/15.png" alt="15"></p>
+</li>
+</ol>
+<ol start="2">
+<li><p>在动画序列中相机组件下添加相机晃动子元件，可以拖拽缩放抖动条</p>
+<p><img src="/2021/04/15/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-4/16.png" alt="16"></p>
+</li>
+</ol>
 <h2 id="动画蓝图"><a href="#动画蓝图" class="headerlink" title="动画蓝图"></a>动画蓝图</h2><p>打开某个骨骼/网格体/动画序列/物理模型时，可在右上角看到动画蓝图标识</p>
 <p><strong><em>【注：此处以第三人称游戏模板的小白人为例】</em></strong></p>
 <p>打开默认的动画图表【AnimGraph】，找到默认状态机，双击打开</p>
@@ -65,6 +83,49 @@
       </categories>
       <tags>
         <tag>虚幻引擎学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网页设计学习-3</title>
+    <url>/2021/04/22/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0-3/</url>
+    <content><![CDATA[<h1 id="CSS操作"><a href="#CSS操作" class="headerlink" title="CSS操作"></a>CSS操作</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="css格式定义"><a href="#css格式定义" class="headerlink" title="css格式定义"></a>css格式定义</h3><pre><code>选择器类型&#123;
+    属性1:值;
+    属性2:值;
+    …………
+&#125;</code></pre>
+<h3 id="head部分插入"><a href="#head部分插入" class="headerlink" title="head部分插入"></a>head部分插入</h3><pre><code class="html">方法1：&lt;link href=&quot;相对地址&quot; type=&quot;text/css&quot; rel=&quot;stylesheeet&quot;&gt;
+
+方法2：&lt;style type=&quot;text/css&quot;&gt;
+        @import url(&quot;相对地址&quot;);
+      &lt;/style&gt;</code></pre>
+<p>注：也可以在当前网页内以css的方式写入本网页的样式，但是该样式仅作用于该网页，而且夹杂于内容中，故不推荐使用</p>
+<h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><h3 id="标签选择器：p、hn等标签"><a href="#标签选择器：p、hn等标签" class="headerlink" title="标签选择器：p、hn等标签"></a>标签选择器：p、hn等标签</h3><p>代表该标签的共性，用css修改时，将会作用于当前网页所有该标签</p>
+<p>调用方式：直接使用定义的标签</p>
+<p>选择器类型：指定的标签名字</p>
+<h3 id="类选择器：以-开头"><a href="#类选择器：以-开头" class="headerlink" title="类选择器：以.开头"></a>类选择器：以.开头</h3><p>把相同类型的元素分类定义成不同的样式，用css修改时，将改变这一类的所有元素样式</p>
+<p>调用方式：class=”类选择器的名字”（多个效果可用空格隔开）</p>
+<p>选择器类型：.类选择器名</p>
+<p><strong>注意：</strong></p>
+<ul>
+<li>不要试图用一个类名，把某个标签的所有样式写完，一个标签应该多携带几个类</li>
+<li>每个类要尽可能的小，以达到公共性</li>
+</ul>
+<h3 id="id选择器：以-开头"><a href="#id选择器：以-开头" class="headerlink" title="id选择器：以#开头"></a>id选择器：以#开头</h3><p>代表某一元素的个性，用css修改时，只改变当前元素的样式</p>
+<p>调用方式：id=”id选择器的名字”</p>
+<p>选择器类型：#id选择器的名字</p>
+<p>注：id选择器在文档中只能使用一次，而类选择器可以使用多次</p>
+<h3 id="通配符选择器：“-”"><a href="#通配符选择器：“-”" class="headerlink" title="通配符选择器：“*”"></a>通配符选择器：“*”</h3><p>作用于所有的标签样式，用css修改时会改变所有使用该css的网页样式</p>
+<p>使用方式：不需要调用，在css文件链接时直接附加</p>
+<h3 id="并集选择器：“，”"><a href="#并集选择器：“，”" class="headerlink" title="并集选择器：“，”"></a>并集选择器：“，”</h3><p>表达“或”的含义，部分样式相同或完全相同时使用</p>
+<p>使用方式：在选择器名处使用【如：（h1，h3）】</p>
+<h3 id="交集选择器：“空格”"><a href="#交集选择器：“空格”" class="headerlink" title="交集选择器：“空格”"></a>交集选择器：“空格”</h3><p>表达“和”的含义，同时使用两个样式时使用</p>
+<p>使用方式：直接在html文件中调用已设置好的选择器【如《p class=”xxx”》等】</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>网页设计学习</tag>
       </tags>
   </entry>
   <entry>
@@ -573,47 +634,6 @@ int main()
       </categories>
       <tags>
         <tag>数据结构学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>网页设计学习-3</title>
-    <url>/2021/04/22/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0-3/</url>
-    <content><![CDATA[<h1 id="CSS操作"><a href="#CSS操作" class="headerlink" title="CSS操作"></a>CSS操作</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="css格式定义"><a href="#css格式定义" class="headerlink" title="css格式定义"></a>css格式定义</h3><pre><code>选择器类型&#123;
-    属性1:值;
-    属性2:值;
-    …………
-&#125;</code></pre>
-<h3 id="head部分插入"><a href="#head部分插入" class="headerlink" title="head部分插入"></a>head部分插入</h3><pre><code class="html">方法1：&lt;link href=&quot;相对地址&quot; type=&quot;text/css&quot; rel=&quot;stylesheeet&quot;&gt;
-
-方法2：&lt;style type=&quot;text/css&quot;&gt;
-        @import url(&quot;相对地址&quot;);
-      &lt;/style&gt;</code></pre>
-<p>注：也可以在当前网页内以css的方式写入本网页的样式，但是该样式仅作用于该网页，而且夹杂于内容中，故不推荐使用</p>
-<h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><h3 id="标签选择器：p、hn等标签"><a href="#标签选择器：p、hn等标签" class="headerlink" title="标签选择器：p、hn等标签"></a>标签选择器：p、hn等标签</h3><p>代表该标签的共性，用css修改时，将会作用于当前网页所有该标签</p>
-<p>调用方式：直接使用定义的标签</p>
-<p>选择器类型：指定的标签名字</p>
-<h3 id="类选择器：以-开头"><a href="#类选择器：以-开头" class="headerlink" title="类选择器：以.开头"></a>类选择器：以.开头</h3><p>把相同类型的元素分类定义成不同的样式，用css修改时，将改变这一类的所有元素样式</p>
-<p>调用方式：class=”类选择器的名字”（多个效果可用空格隔开）</p>
-<p>选择器类型：.类选择器名</p>
-<p><strong>注意：</strong></p>
-<ul>
-<li>不要试图用一个类名，把某个标签的所有样式写完，一个标签应该多携带几个类</li>
-<li>每个类要尽可能的小，以达到公共性</li>
-</ul>
-<h3 id="id选择器：以-开头"><a href="#id选择器：以-开头" class="headerlink" title="id选择器：以#开头"></a>id选择器：以#开头</h3><p>代表某一元素的个性，用css修改时，只改变当前元素的样式</p>
-<p>调用方式：id=”id选择器的名字”</p>
-<p>选择器类型：#id选择器的名字</p>
-<p>注：id选择器在文档中只能使用一次，而类选择器可以使用多次</p>
-<h3 id="通配符选择器：“-”"><a href="#通配符选择器：“-”" class="headerlink" title="通配符选择器：“*”"></a>通配符选择器：“*”</h3><p>作用于所有的标签样式，用css修改时会改变所有使用该css的网页样式</p>
-<p>使用方式：不需要调用，在css文件链接时直接附加</p>
-<h3 id="并集选择器：“，”"><a href="#并集选择器：“，”" class="headerlink" title="并集选择器：“，”"></a>并集选择器：“，”</h3><p>表达“或”的含义，部分样式相同或完全相同时使用</p>
-<p>使用方式：在选择器名处使用【如：（h1，h3）】</p>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>网页设计学习</tag>
       </tags>
   </entry>
   <entry>
