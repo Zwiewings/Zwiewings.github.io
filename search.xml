@@ -1,6 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>网页设计学习-3</title>
+    <url>/2021/04/22/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0-3/</url>
+    <content><![CDATA[<h1 id="CSS操作"><a href="#CSS操作" class="headerlink" title="CSS操作"></a>CSS操作</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="css格式定义"><a href="#css格式定义" class="headerlink" title="css格式定义"></a>css格式定义</h3><p>css样式设置由选择器和声明部分组成，示例如下</p>
+<pre><code>选择器类型&#123;
+    属性1:值1;
+    属性2:值2;
+    …………
+&#125;</code></pre>
+<p>一般来说，作为分隔每个属性的标志，最末尾的属性后的分号可以省略，但规范上是不省略的</p>
+<h3 id="css样式调用"><a href="#css样式调用" class="headerlink" title="css样式调用"></a>css样式调用</h3><p>分为：行内样式表，内部样式表，链入外部样式表</p>
+<p>以下为链入外部样式表的两种方法：</p>
+<pre><code class="html">方法1：&lt;link href=&quot;相对地址&quot; type=&quot;text/css&quot; rel=&quot;stylesheeet&quot;&gt;
+
+方法2：&lt;style type=&quot;text/css&quot;&gt;
+        @import url(&quot;相对地址&quot;);
+      &lt;/style&gt;</code></pre>
+<p>注：也可以在当前网页内以css的方式写入本网页的样式（如行内样式表和内部样式表），但是该样式仅作用于该网页，而且夹杂于内容中，故不推荐使用</p>
+<h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><h3 id="标签选择器：p、hn等标签"><a href="#标签选择器：p、hn等标签" class="headerlink" title="标签选择器：p、hn等标签"></a>标签选择器：p、hn等标签</h3><p>代表该标签的共性，用css修改时，将会作用于当前网页所有该标签</p>
+<p>调用方式：直接使用定义的标签</p>
+<p>选择器类型：指定的标签名字</p>
+<h3 id="类选择器：以-开头"><a href="#类选择器：以-开头" class="headerlink" title="类选择器：以.开头"></a>类选择器：以.开头</h3><p>把相同类型的元素分类定义成不同的样式，用css修改时，将改变这一类的所有元素样式</p>
+<p>调用方式：class=”类选择器的名字”（多个效果可用空格隔开）</p>
+<p>选择器类型：.类选择器名</p>
+<p><strong>注意：</strong></p>
+<ul>
+<li>不要试图用一个类名，把某个标签的所有样式写完，一个标签应该多携带几个类</li>
+<li>每个类要尽可能的小，以达到公共性</li>
+</ul>
+<h3 id="id选择器：以-开头"><a href="#id选择器：以-开头" class="headerlink" title="id选择器：以#开头"></a>id选择器：以#开头</h3><p>代表某一元素的个性，用css修改时，只改变当前元素的样式</p>
+<p>调用方式：id=”id选择器的名字”</p>
+<p>选择器类型：#id选择器的名字</p>
+<p>注：id选择器在文档中只能使用一次，而类选择器可以使用多次</p>
+<h3 id="通配符选择器：“-”"><a href="#通配符选择器：“-”" class="headerlink" title="通配符选择器：“*”"></a>通配符选择器：“*”</h3><p>作用于所有的标签样式，用css修改时会改变所有使用该css的网页样式</p>
+<p>使用方式：不需要调用，在css文件链接时直接附加</p>
+<h3 id="群组选择器-并集选择器：“-”"><a href="#群组选择器-并集选择器：“-”" class="headerlink" title="群组选择器/并集选择器：“,”"></a>群组选择器/并集选择器：“,”</h3><p>表达“或”的含义，部分样式相同或完全相同时使用</p>
+<p>使用方式：</p>
+<pre><code>标签名1,标签名2,……&#123;属性表&#125;</code></pre>
+<h3 id="标签指定式选择器-交集选择器"><a href="#标签指定式选择器-交集选择器" class="headerlink" title="标签指定式选择器/交集选择器"></a>标签指定式选择器/交集选择器</h3><p>表达“和”的含义，同时使用标签选择器和类选择器或者同时使用标签选择器和id选择器</p>
+<p>使用方式：</p>
+<pre><code>标签名.类名&#123;属性表&#125;
+标签名#id&#123;属性表&#125;</code></pre>
+<h3 id="包含选择器-后代选择器"><a href="#包含选择器-后代选择器" class="headerlink" title="包含选择器/后代选择器"></a>包含选择器/后代选择器</h3><p>选择元素或元素组的后代，也称后代选择器，把外层标签写在前面，内层标签写在后面，中间用空格分隔</p>
+<p>使用方式：（两个选择器中间必须有空格）</p>
+<pre><code>选择器1 选择器2&#123;属性表&#125;</code></pre>
+<h3 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h3><p>为拥有指定属性的html元素设置样式，不局限于class和id属性，下表以attribute代替属性选择器名</p>
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[attribute]</td>
+<td>选取带有指定属性的元素</td>
+</tr>
+<tr>
+<td>[attribute=value]</td>
+<td>选取带有指定属性且取值为value的元素</td>
+</tr>
+<tr>
+<td>[attribute~=value]</td>
+<td>选取属性值中包含指定词汇的元素</td>
+</tr>
+<tr>
+<td>[attribute|=value]</td>
+<td>选取带有指定值开头的属性值的元素，值必须是整个单词</td>
+</tr>
+<tr>
+<td>[attribute^=value]</td>
+<td>匹配属性值以指定值开头的每个元素</td>
+</tr>
+<tr>
+<td>[attribute$=value]</td>
+<td>匹配属性值以指定值结尾的每个元素</td>
+</tr>
+<tr>
+<td>[attribute]*=value]</td>
+<td>匹配属性值中包含指定值的每个元素</td>
+</tr>
+</tbody></table>
+<p>使用方法：</p>
+<pre><code class="css">标签名[属性选择器名]&#123;属性表&#125;
+
+例如：
+选择器为[attribute]类型时：
+p[here]
+&#123;
+    background-color:red;
+&#125;
+
+选择器为[attribute=value]类型时：
+p[here=red]
+&#123;
+    background-color:red;
+&#125;</code></pre>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>网页设计学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>虚幻引擎-4</title>
     <url>/2021/04/15/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-4/</url>
     <content><![CDATA[<h1 id="AI智能"><a href="#AI智能" class="headerlink" title="AI智能"></a>AI智能</h1><h2 id="寻路导航创建"><a href="#寻路导航创建" class="headerlink" title="寻路导航创建"></a>寻路导航创建</h2><h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><p>在主面板左上角的“放置actor”面板中找到“导航网格体边界体积”，放入场景中</p>
@@ -83,49 +188,6 @@
       </categories>
       <tags>
         <tag>虚幻引擎学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>网页设计学习-3</title>
-    <url>/2021/04/22/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0-3/</url>
-    <content><![CDATA[<h1 id="CSS操作"><a href="#CSS操作" class="headerlink" title="CSS操作"></a>CSS操作</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="css格式定义"><a href="#css格式定义" class="headerlink" title="css格式定义"></a>css格式定义</h3><pre><code>选择器类型&#123;
-    属性1:值;
-    属性2:值;
-    …………
-&#125;</code></pre>
-<h3 id="head部分插入"><a href="#head部分插入" class="headerlink" title="head部分插入"></a>head部分插入</h3><pre><code class="html">方法1：&lt;link href=&quot;相对地址&quot; type=&quot;text/css&quot; rel=&quot;stylesheeet&quot;&gt;
-
-方法2：&lt;style type=&quot;text/css&quot;&gt;
-        @import url(&quot;相对地址&quot;);
-      &lt;/style&gt;</code></pre>
-<p>注：也可以在当前网页内以css的方式写入本网页的样式，但是该样式仅作用于该网页，而且夹杂于内容中，故不推荐使用</p>
-<h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><h3 id="标签选择器：p、hn等标签"><a href="#标签选择器：p、hn等标签" class="headerlink" title="标签选择器：p、hn等标签"></a>标签选择器：p、hn等标签</h3><p>代表该标签的共性，用css修改时，将会作用于当前网页所有该标签</p>
-<p>调用方式：直接使用定义的标签</p>
-<p>选择器类型：指定的标签名字</p>
-<h3 id="类选择器：以-开头"><a href="#类选择器：以-开头" class="headerlink" title="类选择器：以.开头"></a>类选择器：以.开头</h3><p>把相同类型的元素分类定义成不同的样式，用css修改时，将改变这一类的所有元素样式</p>
-<p>调用方式：class=”类选择器的名字”（多个效果可用空格隔开）</p>
-<p>选择器类型：.类选择器名</p>
-<p><strong>注意：</strong></p>
-<ul>
-<li>不要试图用一个类名，把某个标签的所有样式写完，一个标签应该多携带几个类</li>
-<li>每个类要尽可能的小，以达到公共性</li>
-</ul>
-<h3 id="id选择器：以-开头"><a href="#id选择器：以-开头" class="headerlink" title="id选择器：以#开头"></a>id选择器：以#开头</h3><p>代表某一元素的个性，用css修改时，只改变当前元素的样式</p>
-<p>调用方式：id=”id选择器的名字”</p>
-<p>选择器类型：#id选择器的名字</p>
-<p>注：id选择器在文档中只能使用一次，而类选择器可以使用多次</p>
-<h3 id="通配符选择器：“-”"><a href="#通配符选择器：“-”" class="headerlink" title="通配符选择器：“*”"></a>通配符选择器：“*”</h3><p>作用于所有的标签样式，用css修改时会改变所有使用该css的网页样式</p>
-<p>使用方式：不需要调用，在css文件链接时直接附加</p>
-<h3 id="并集选择器：“，”"><a href="#并集选择器：“，”" class="headerlink" title="并集选择器：“，”"></a>并集选择器：“，”</h3><p>表达“或”的含义，部分样式相同或完全相同时使用</p>
-<p>使用方式：在选择器名处使用【如：（h1，h3）】</p>
-<h3 id="交集选择器：“空格”"><a href="#交集选择器：“空格”" class="headerlink" title="交集选择器：“空格”"></a>交集选择器：“空格”</h3><p>表达“和”的含义，同时使用两个样式时使用</p>
-<p>使用方式：直接在html文件中调用已设置好的选择器【如《p class=”xxx”》等】</p>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>网页设计学习</tag>
       </tags>
   </entry>
   <entry>
