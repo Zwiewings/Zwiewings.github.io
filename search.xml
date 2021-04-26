@@ -200,6 +200,71 @@ h1:hover&#123;属性表&#125;      &lt;!--普通非链接元素伪类选择器--
 <td align="center">对页面中某个target元素指定样式，只在用户点击链接并跳转到target元素后生效</td>
 </tr>
 </tbody></table>
+<p>其中，:target使用时，前面不需要添加标签名，在锚点跳转后应用于跳转到的位置</p>
+<h4 id="子元素伪类选择器"><a href="#子元素伪类选择器" class="headerlink" title="子元素伪类选择器"></a>子元素伪类选择器</h4><table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:first-child</td>
+<td>对父元素中的第一个子元素指定样式</td>
+</tr>
+<tr>
+<td>:last-child</td>
+<td>对父元素中的最后一个子元素指定样式</td>
+</tr>
+<tr>
+<td>:only-child</td>
+<td>当某个父元素中只有一个子元素时使用的样式</td>
+</tr>
+<tr>
+<td>:nth-child(n)</td>
+<td>对指定序号的子元素设置样式（正数），表示第几个子元素</td>
+</tr>
+<tr>
+<td>:nth-last-child(n)</td>
+<td>对指定序号的子元素设置样式（正数），表示倒数第几个子元素</td>
+</tr>
+<tr>
+<td>:nth-child(even)</td>
+<td>所有正数第偶数个子元素，等同于:nth-child(2n)</td>
+</tr>
+<tr>
+<td>:nth-child(odd)</td>
+<td>所有正数第奇数个子元素，等同于:nth-child(2n+1)</td>
+</tr>
+<tr>
+<td>:nth-last-child(even)</td>
+<td>所有倒数第偶数个子元素</td>
+</tr>
+<tr>
+<td>:nth-last-child(odd)</td>
+<td>所有倒数第奇数个子元素</td>
+</tr>
+<tr>
+<td>:nth-of-type(n)</td>
+<td>用于匹配属于父元素的特定类型的第n个子元素</td>
+</tr>
+<tr>
+<td>:nth-last-of-type(n)</td>
+<td>用于匹配属于父元素的特定类型的倒数第n个子元素</td>
+</tr>
+</tbody></table>
+<h3 id="伪元素选择器"><a href="#伪元素选择器" class="headerlink" title="伪元素选择器"></a>伪元素选择器</h3><p>伪元素选择器是针对css中已经定义的伪元素使用的选择器，css中主要使用的伪元素为“:before”伪元素选择器和”:after”伪元素选择器</p>
+<h4 id="before伪元素选择器"><a href="#before伪元素选择器" class="headerlink" title=":before伪元素选择器"></a>:before伪元素选择器</h4><p>用于在被选元素的内容前面插入内容，必须配合“content”属性来指定要插入的具体内容</p>
+<p>使用方法：</p>
+<pre><code class="css">element:before&#123;
+    content:文字/url();
+&#125;</code></pre>
+<p>element表示元素，“{}”中的content属性用来指定要插入的具体内容，既可以为文本也可以为图片</p>
+<h4 id="after伪元素选择器"><a href="#after伪元素选择器" class="headerlink" title=":after伪元素选择器"></a>:after伪元素选择器</h4><p>用于在被选元素内容的后面插入内容，必须配合“content”属性来指定要插入的具体内容</p>
+<p>使用方法：</p>
+<pre><code class="css">element:after&#123;
+    content:文字/url();
+&#125;</code></pre>
 ]]></content>
       <categories>
         <category>学习</category>
