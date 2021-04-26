@@ -49,37 +49,37 @@
 <table>
 <thead>
 <tr>
-<th>选择器</th>
-<th>描述</th>
+<th align="center">选择器</th>
+<th align="center">描述</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>[attribute]</td>
-<td>选取带有指定属性的元素</td>
+<td align="center">[attribute]</td>
+<td align="center">选取带有指定属性的元素</td>
 </tr>
 <tr>
-<td>[attribute=value]</td>
-<td>选取带有指定属性且取值为value的元素</td>
+<td align="center">[attribute=value]</td>
+<td align="center">选取带有指定属性且取值为value的元素</td>
 </tr>
 <tr>
-<td>[attribute~=value]</td>
-<td>选取属性值中包含指定词汇的元素</td>
+<td align="center">[attribute~=value]</td>
+<td align="center">选取属性值中包含指定词汇的元素</td>
 </tr>
 <tr>
-<td>[attribute|=value]</td>
-<td>选取带有指定值开头的属性值的元素，值必须是整个单词</td>
+<td align="center">[attribute|=value]</td>
+<td align="center">选取带有指定值开头的属性值的元素，值必须是整个单词</td>
 </tr>
 <tr>
-<td>[attribute^=value]</td>
-<td>匹配属性值以指定值开头的每个元素</td>
+<td align="center">[attribute^=value]</td>
+<td align="center">匹配属性值以指定值开头的每个元素</td>
 </tr>
 <tr>
-<td>[attribute$=value]</td>
-<td>匹配属性值以指定值结尾的每个元素</td>
+<td align="center">[attribute$=value]</td>
+<td align="center">匹配属性值以指定值结尾的每个元素</td>
 </tr>
 <tr>
-<td>[attribute]*=value]</td>
-<td>匹配属性值中包含指定值的每个元素</td>
+<td align="center">[attribute]*=value]</td>
+<td align="center">匹配属性值中包含指定值的每个元素</td>
 </tr>
 </tbody></table>
 <p>使用方法：</p>
@@ -97,6 +97,109 @@ p[here=red]
 &#123;
     background-color:red;
 &#125;</code></pre>
+<h3 id="关系选择器"><a href="#关系选择器" class="headerlink" title="关系选择器"></a>关系选择器</h3><p>主要包括子元素选择器，相邻兄弟选择器，普通兄弟选择器</p>
+<table>
+<thead>
+<tr>
+<th align="center">属性名称</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">子元素选择器（E&gt;F）</td>
+<td align="center">选择所有作为E元素的<strong>直接子元素</strong>F，对更深一层的元素不起作用</td>
+</tr>
+<tr>
+<td align="center">兄弟相邻选择器（E+F)</td>
+<td align="center">选择<strong>紧跟</strong>在E元素<strong>后面</strong>的F元素，选择相邻的第一个兄弟元素</td>
+</tr>
+<tr>
+<td align="center">普通兄弟选择器（E~F）</td>
+<td align="center">选择E元素之后的<strong>所有</strong>兄弟元素F，作用于多个元素</td>
+</tr>
+</tbody></table>
+<p>使用方法：</p>
+<pre><code class="css">子元素选择器：
+标签名&gt;子元素标签名&#123;属性表&#125;
+
+如：
+div&gt;a&#123;
+    color:red;
+&#125;
+实现效果为div标签内，直接子元素的a标签都为红色
+
+兄弟相邻选择器：
+标签名+子元素标签名&#123;属性表&#125;
+
+如：
+div+a&#123;
+    color:red;
+&#125;
+实现效果为div标签同级的紧挨的下一个a标签为红色
+
+普通兄弟选择器：
+标签名~子元素标签名&#123;属性表&#125;
+div~a&#123;
+    color:red;
+&#125;
+实现效果为div标签后的所有同级的a标签都是红色</code></pre>
+<h3 id="伪类选择器"><a href="#伪类选择器" class="headerlink" title="伪类选择器"></a>伪类选择器</h3><h4 id="超链接伪类选择器"><a href="#超链接伪类选择器" class="headerlink" title="超链接伪类选择器"></a>超链接伪类选择器</h4><table>
+<thead>
+<tr>
+<th align="center">伪类名称</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">a:link</td>
+<td align="center">未访问时的超链接状态</td>
+</tr>
+<tr>
+<td align="center">a:visited</td>
+<td align="center">访问后的超链接的状态（也可用于普通非链接元素:visited）</td>
+</tr>
+<tr>
+<td align="center">a:hover</td>
+<td align="center">鼠标经过、悬停时超链接的状态</td>
+</tr>
+<tr>
+<td align="center">a:active</td>
+<td align="center">鼠标单击不动时超链接的状态（也可用于普通非链接元素:active）</td>
+</tr>
+</tbody></table>
+<p><strong><em>注：</em></strong></p>
+<ul>
+<li><strong><em>样式必须符合link、visited、hover、active顺序</em></strong></li>
+<li><strong><em>在css定义中，a:hover必须被置于a:link和a:visited后才有效</em></strong></li>
+<li><strong><em>a:active必须被置于a:hover之后才有效</em></strong></li>
+</ul>
+<p>使用方法：（以a:link和h1为例）</p>
+<pre><code class="css">a:link&#123;属性表&#125;       &lt;!--超链接伪类选择器--&gt;
+h1:hover&#123;属性表&#125;      &lt;!--普通非链接元素伪类选择器--&gt;</code></pre>
+<h4 id="结构伪类选择器"><a href="#结构伪类选择器" class="headerlink" title="结构伪类选择器"></a>结构伪类选择器</h4><table>
+<thead>
+<tr>
+<th align="center">表达式</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">:root</td>
+<td align="center">将样式绑定到页面的根元素中（即指位于文档树中最顶层结构的html标签）</td>
+</tr>
+<tr>
+<td align="center">:not</td>
+<td align="center">用于选择除某个元素之外的所有元素</td>
+</tr>
+<tr>
+<td align="center">:empty</td>
+<td align="center">指定当元素内容为空白时使用的样式</td>
+</tr>
+<tr>
+<td align="center">:target</td>
+<td align="center">对页面中某个target元素指定样式，只在用户点击链接并跳转到target元素后生效</td>
+</tr>
+</tbody></table>
 ]]></content>
       <categories>
         <category>学习</category>
