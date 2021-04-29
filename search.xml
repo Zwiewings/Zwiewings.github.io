@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>数据结构-6</title>
-    <url>/2021/04/27/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-6/</url>
+    <url>/Zwiewings.github.io.git/2021/04/27/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-6/</url>
     <content><![CDATA[<h1 id="树和二叉树"><a href="#树和二叉树" class="headerlink" title="树和二叉树"></a>树和二叉树</h1><h2 id="树的概念"><a href="#树的概念" class="headerlink" title="树的概念"></a>树的概念</h2><ul>
 <li>树：一个有限集，可以为空，非空时有且只有一个根结点，其余结点可以分为多个不相交的有限集（子树）</li>
 <li>结点的度：结点的子树个数</li>
@@ -93,7 +93,7 @@
   </entry>
   <entry>
     <title>网页设计-3</title>
-    <url>/2021/04/22/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1-3/</url>
+    <url>/Zwiewings.github.io.git/2021/04/22/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1-3/</url>
     <content><![CDATA[<h1 id="CSS操作"><a href="#CSS操作" class="headerlink" title="CSS操作"></a>CSS操作</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="css格式定义"><a href="#css格式定义" class="headerlink" title="css格式定义"></a>css格式定义</h3><p>css样式设置由选择器和声明部分组成，示例如下</p>
 <pre><code>选择器类型&#123;
     属性1:值1;
@@ -396,7 +396,7 @@ h1:hover&#123;属性表&#125;      &lt;!--普通非链接元素伪类选择器--
   </entry>
   <entry>
     <title>虚幻引擎-6</title>
-    <url>/2021/04/17/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-6/</url>
+    <url>/Zwiewings.github.io.git/2021/04/17/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-6/</url>
     <content><![CDATA[<h1 id="脚步声与相机晃动"><a href="#脚步声与相机晃动" class="headerlink" title="脚步声与相机晃动"></a>脚步声与相机晃动</h1><h2 id="实例说明"><a href="#实例说明" class="headerlink" title="实例说明"></a>实例说明</h2><p>实现角色在默认地板、木质地板和金属地板上的不同脚步声以及行走时的相机晃动</p>
 <h2 id="函数写入位置"><a href="#函数写入位置" class="headerlink" title="函数写入位置"></a>函数写入位置</h2><p>全局函数库、玩家角色蓝图</p>
 <h2 id="前置工作"><a href="#前置工作" class="headerlink" title="前置工作"></a>前置工作</h2><h3 id="相机晃动"><a href="#相机晃动" class="headerlink" title="相机晃动"></a>相机晃动</h3><p>创建相机晃动（下图为参考数值），需要勾上单一实例，保证每次使用只晃动一次</p>
@@ -421,7 +421,7 @@ h1:hover&#123;属性表&#125;      &lt;!--普通非链接元素伪类选择器--
   </entry>
   <entry>
     <title>hexo基础命令行</title>
-    <url>/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/</url>
+    <url>/Zwiewings.github.io.git/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/</url>
     <content><![CDATA[<h1 id="hexo的基础命令行："><a href="#hexo的基础命令行：" class="headerlink" title="hexo的基础命令行："></a>hexo的基础命令行：</h1><h2 id="hexo-s"><a href="#hexo-s" class="headerlink" title="hexo s"></a>hexo s</h2><pre><code class="undefined">hexo s</code></pre>
 <ul>
 <li>启动本地服务器，用于预览主题。默认地址： <a href="http://localhost:4000/">http://localhost:4000/</a></li>
@@ -476,7 +476,7 @@ hexo new page</code></pre>
   </entry>
   <entry>
     <title>网页设计-2</title>
-    <url>/2021/04/13/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1-2/</url>
+    <url>/Zwiewings.github.io.git/2021/04/13/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1-2/</url>
     <content><![CDATA[<h1 id="表单结构"><a href="#表单结构" class="headerlink" title="表单结构"></a>表单结构</h1><p>表单是收集用户的信息和反馈意见，是前端和后端数据的传递媒介</p>
 <h2 id="表单的组成"><a href="#表单的组成" class="headerlink" title="表单的组成"></a>表单的组成</h2><ul>
 <li><h3 id="表单标签-form"><a href="#表单标签-form" class="headerlink" title="表单标签-form"></a>表单标签-form</h3><pre><code class="html">&lt;form action=&quot;url&quot; method=&quot;get/post&quot; name=&quot;value&quot;&gt;
@@ -832,7 +832,7 @@ hexo new page</code></pre>
   </entry>
   <entry>
     <title>网页设计-1</title>
-    <url>/2021/03/19/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1-1/</url>
+    <url>/Zwiewings.github.io.git/2021/03/19/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1-1/</url>
     <content><![CDATA[<h1 id="结构标签"><a href="#结构标签" class="headerlink" title="结构标签"></a>结构标签</h1><pre><code class="html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
     &lt;head&gt;
@@ -1110,7 +1110,7 @@ hexo new page</code></pre>
   </entry>
   <entry>
     <title>数据结构-5</title>
-    <url>/2021/04/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-5/</url>
+    <url>/Zwiewings.github.io.git/2021/04/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-5/</url>
     <content><![CDATA[<h1 id="串类型"><a href="#串类型" class="headerlink" title="串类型"></a>串类型</h1><h2 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h2><p>串的存储结构可以使用顺序和链式结构，顺序结构中又分为定长和堆式存储结构，但由于链式不如顺序结构灵活，操作简单，故而此处只写入顺序结构</p>
 <h3 id="顺序-定长存储"><a href="#顺序-定长存储" class="headerlink" title="顺序-定长存储"></a>顺序-定长存储</h3><pre><code class="c++">typedef struct&#123;
     char ch[maxsize+1];        //定义字符数组，串的最大长度为maxsize，多申请防止溢出的存储空间
@@ -1215,7 +1215,7 @@ void get_next(Sstring t,int next[])
   </entry>
   <entry>
     <title>虚幻引擎-4</title>
-    <url>/2021/04/15/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-4/</url>
+    <url>/Zwiewings.github.io.git/2021/04/15/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-4/</url>
     <content><![CDATA[<h1 id="AI智能"><a href="#AI智能" class="headerlink" title="AI智能"></a>AI智能</h1><h2 id="寻路导航创建"><a href="#寻路导航创建" class="headerlink" title="寻路导航创建"></a>寻路导航创建</h2><h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><p>在主面板左上角的“放置actor”面板中找到“导航网格体边界体积”，放入场景中</p>
 <p><img src="/2021/04/15/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-4/1.png" alt="1"></p>
 <p>调整体积大小，将需要建构导航的场景放入该体积</p>
@@ -1300,7 +1300,7 @@ void get_next(Sstring t,int next[])
   </entry>
   <entry>
     <title>数据结构-4</title>
-    <url>/2021/04/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-4/</url>
+    <url>/Zwiewings.github.io.git/2021/04/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-4/</url>
     <content><![CDATA[<h1 id="顺序队列"><a href="#顺序队列" class="headerlink" title="顺序队列"></a>顺序队列</h1><p>队列是先进先出的线性结构，也是只能从队头删除，从队尾插入的线性表，为了使空间利用更加充分，从而避免假溢出，通常采用循环队列</p>
 <h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><pre><code>typedef struct 
 &#123;
@@ -1435,7 +1435,7 @@ int main()
   </entry>
   <entry>
     <title>数据结构-3</title>
-    <url>/2021/04/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-3/</url>
+    <url>/Zwiewings.github.io.git/2021/04/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-3/</url>
     <content><![CDATA[<h1 id="顺序栈"><a href="#顺序栈" class="headerlink" title="顺序栈"></a>顺序栈</h1><p>【Elemtype为数据类型】</p>
 <p>顺序栈本身是操作受限制的顺序表，只能在栈顶做插入删除，称入栈出栈，因为操作受限，算法相较普通顺序表简单。</p>
 <h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><pre><code class="c++">typedef struct 
@@ -1808,7 +1808,7 @@ int main()
   </entry>
   <entry>
     <title>数据结构-2</title>
-    <url>/2021/03/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-2/</url>
+    <url>/Zwiewings.github.io.git/2021/03/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-2/</url>
     <content><![CDATA[<h1 id="线性表-单链表"><a href="#线性表-单链表" class="headerlink" title="线性表-单链表"></a>线性表-单链表</h1><p>【Elemtype为数据类型】</p>
 <h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><h3 id="链表结点结构体创建"><a href="#链表结点结构体创建" class="headerlink" title="链表结点结构体创建"></a>链表结点结构体创建</h3><pre><code>typedef struct LNode        //创建结点类型
 &#123;
@@ -2199,7 +2199,7 @@ int main()
   </entry>
   <entry>
     <title>虚幻引擎-3</title>
-    <url>/2021/04/13/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-3/</url>
+    <url>/Zwiewings.github.io.git/2021/04/13/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-3/</url>
     <content><![CDATA[<h1 id="基础功能实现"><a href="#基础功能实现" class="headerlink" title="基础功能实现"></a>基础功能实现</h1><h2 id="人物操作功能"><a href="#人物操作功能" class="headerlink" title="人物操作功能"></a>人物操作功能</h2><h3 id="疾跑"><a href="#疾跑" class="headerlink" title="疾跑"></a>疾跑</h3><p>思路:在按下对应键（暂定shift）时，更改人物行走最大速度</p>
 <p>玩家角色蓝图：</p>
 <p><img src="/2021/04/13/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-3/1.png" alt="1"></p>
@@ -2272,7 +2272,7 @@ int main()
   </entry>
   <entry>
     <title>虚幻引擎-2</title>
-    <url>/2021/04/09/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-2/</url>
+    <url>/Zwiewings.github.io.git/2021/04/09/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-2/</url>
     <content><![CDATA[<h1 id="材质"><a href="#材质" class="headerlink" title="材质"></a>材质</h1><p>普通材质的文件下边框为浅绿色，直接资源管理器中右键创建即可</p>
 <h2 id="材质域（常用）"><a href="#材质域（常用）" class="headerlink" title="材质域（常用）"></a>材质域（常用）</h2><p>材质的类型一般由材质域区分（材质界面左下角中，细节页的材质栏）</p>
 <ul>
@@ -2397,7 +2397,7 @@ int main()
   </entry>
   <entry>
     <title>虚幻引擎-1</title>
-    <url>/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/</url>
+    <url>/Zwiewings.github.io.git/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/</url>
     <content><![CDATA[<h1 id="快捷键节点："><a href="#快捷键节点：" class="headerlink" title="快捷键节点："></a>快捷键节点：</h1><p><img src="/2021/04/02/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-1/1.png" alt="1"></p>
 <p>节点名：延迟</p>
 <p>呼出方式：（快捷键）D+left</p>
@@ -2698,7 +2698,7 @@ int main()
   </entry>
   <entry>
     <title>虚幻引擎-5</title>
-    <url>/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/</url>
+    <url>/Zwiewings.github.io.git/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/</url>
     <content><![CDATA[<h1 id="虚幻文件夹结构"><a href="#虚幻文件夹结构" class="headerlink" title="虚幻文件夹结构"></a>虚幻文件夹结构</h1><h2 id="本地工程文件夹"><a href="#本地工程文件夹" class="headerlink" title="本地工程文件夹"></a>本地工程文件夹</h2><p>惯例为【Config】、【Content】、【DerivedDataCache】、【Intermediate】、【Saved】、【Script】六个文件夹，和一个后缀名为.uproject的文件（该文件为工程本体，在引擎中打开工程使用该文件）</p>
 <h3 id="【Config】"><a href="#【Config】" class="headerlink" title="【Config】"></a>【Config】</h3><h3 id="【Content】"><a href="#【Content】" class="headerlink" title="【Content】"></a>【Content】</h3><h3 id="【DerivedDataCache】"><a href="#【DerivedDataCache】" class="headerlink" title="【DerivedDataCache】"></a>【DerivedDataCache】</h3><h3 id="【Intermediate】"><a href="#【Intermediate】" class="headerlink" title="【Intermediate】"></a>【Intermediate】</h3><h3 id="【Saved】"><a href="#【Saved】" class="headerlink" title="【Saved】"></a>【Saved】</h3><h3 id="【Script】"><a href="#【Script】" class="headerlink" title="【Script】"></a>【Script】</h3><h2 id="导入素材文件夹"><a href="#导入素材文件夹" class="headerlink" title="导入素材文件夹"></a>导入素材文件夹</h2><p>惯例为【Animations】、【Materials】、【Meshes】、【Map（Scenes）】、【Textures】五个文件夹，有时也有会将【Materials】、【Textures】、【Meshes】放在一个【character】文件夹下的构成</p>
 <h3 id="【Animations】"><a href="#【Animations】" class="headerlink" title="【Animations】"></a>【Animations】</h3><p>【Animations】为该素材包内包括的动画序列，根据固定的骨骼执行，执行动画的网格体可以替换预览并实际替换使用</p>
@@ -2716,7 +2716,7 @@ int main()
   </entry>
   <entry>
     <title>Linux学习-1</title>
-    <url>/2021/01/26/Linux%E5%AD%A6%E4%B9%A0-1/</url>
+    <url>/Zwiewings.github.io.git/2021/01/26/Linux%E5%AD%A6%E4%B9%A0-1/</url>
     <content><![CDATA[<p>Linux 是一套免费使用和自由传播的类 Unix 操作系统，是一个基于 POSIX 和 UNIX 的多用户、多任务、支持多线程和多 CPU 的操作系统。</p>
 <p>Linux 能运行主要的 UNIX 工具软件、应用程序和网络协议。它支持 32 位和 64 位硬件。Linux 继承了 Unix 以网络为核心的设计思想，是一个性能稳定的多用户网络操作系统。</p>
 <h1 id="Linux-应用领域"><a href="#Linux-应用领域" class="headerlink" title="Linux 应用领域"></a>Linux 应用领域</h1><p>今天各种场合都有使用各种 Linux 发行版，从嵌入式设备到超级计算机，并且在服务器领域确定了地位，通常服务器使用 LAMP（Linux + Apache + MySQL + PHP）或 LNMP（Linux + Nginx+ MySQL + PHP）组合。</p>
@@ -2931,7 +2931,7 @@ halt 关闭系统，等同于shutdown –h now 和 poweroff</code></pre>
   </entry>
   <entry>
     <title>Java学习-1</title>
-    <url>/2021/04/16/Java%E5%AD%A6%E4%B9%A0-1/</url>
+    <url>/Zwiewings.github.io.git/2021/04/16/Java%E5%AD%A6%E4%B9%A0-1/</url>
     <content><![CDATA[<h1 id="入门教程"><a href="#入门教程" class="headerlink" title="入门教程"></a>入门教程</h1><h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><p>1.下载并安装jdk，jre，建议放置同一文件夹下</p>
 <p>2.计算机-右键菜单-左侧高级系统设置-环境变量中，在下方系统变量内创建</p>
 <p>JAVA_HOME——填写jdk文件夹内部绝对路径（如：D:/Java/Jdk）</p>
@@ -3192,7 +3192,7 @@ halt 关闭系统，等同于shutdown –h now 和 poweroff</code></pre>
   </entry>
   <entry>
     <title>Linux学习-4</title>
-    <url>/2021/02/19/Linux%E5%AD%A6%E4%B9%A0-4/</url>
+    <url>/Zwiewings.github.io.git/2021/02/19/Linux%E5%AD%A6%E4%B9%A0-4/</url>
     <content><![CDATA[<h1 id="常用命令大全："><a href="#常用命令大全：" class="headerlink" title="常用命令大全："></a>常用命令大全：</h1><h2 id="日常使用命令"><a href="#日常使用命令" class="headerlink" title="日常使用命令"></a>日常使用命令</h2><p>开关机命令<br>1、shutdown –h now：立刻进行关机</p>
 <p>2、shutdown –r now：现在重新启动计算机</p>
 <p>3、reboot：现在重新启动计算机</p>
@@ -3299,7 +3299,7 @@ halt 关闭系统，等同于shutdown –h now 和 poweroff</code></pre>
   </entry>
   <entry>
     <title>Linux学习-3</title>
-    <url>/2021/02/10/Linux%E5%AD%A6%E4%B9%A0-3/</url>
+    <url>/Zwiewings.github.io.git/2021/02/10/Linux%E5%AD%A6%E4%B9%A0-3/</url>
     <content><![CDATA[<h1 id="Linux-文件与目录管理"><a href="#Linux-文件与目录管理" class="headerlink" title="Linux 文件与目录管理"></a>Linux 文件与目录管理</h1><p>我们知道Linux的目录结构为树状结构，最顶级的目录为根目录 /。</p>
 <p>其他目录通过挂载可以将它们添加到树中，通过解除挂载可以移除它们。</p>
 <p>在开始本教程前我们需要先知道什么是绝对路径与相对路径。</p>
@@ -3589,7 +3589,7 @@ CentOS release 6.4 (Final)</code></pre>
   </entry>
   <entry>
     <title>Linux学习-2</title>
-    <url>/2021/02/09/Linux%E5%AD%A6%E4%B9%A0-2/</url>
+    <url>/Zwiewings.github.io.git/2021/02/09/Linux%E5%AD%A6%E4%B9%A0-2/</url>
     <content><![CDATA[<h1 id="Linux-远程登录"><a href="#Linux-远程登录" class="headerlink" title="Linux 远程登录"></a>Linux 远程登录</h1><p>Linux 一般作为服务器使用，而服务器一般放在机房，你不可能在机房操作你的 Linux 服务器。</p>
 <p>这时我们就需要远程登录到Linux服务器来管理维护系统。</p>
 <p>Linux 系统中是通过 ssh 服务实现的远程登录功能，默认 ssh 服务端口号为 22。</p>
@@ -4052,7 +4052,7 @@ chown [-R] 属主名：属组名 文件名</code></pre>
   </entry>
   <entry>
     <title>c++学习-5：string头文件</title>
-    <url>/2021/03/23/c++%E5%AD%A6%E4%B9%A0-5/</url>
+    <url>/Zwiewings.github.io.git/2021/03/23/c++%E5%AD%A6%E4%B9%A0-5/</url>
     <content><![CDATA[<h1 id="头文件：string"><a href="#头文件：string" class="headerlink" title="头文件：string"></a>头文件：string</h1><h2 id="用于简化操作的常用函数"><a href="#用于简化操作的常用函数" class="headerlink" title="用于简化操作的常用函数"></a>用于简化操作的常用函数</h2><ul>
 <li><p>string变量读取单个字符用s[i]可以读出</p>
 </li>
@@ -4151,7 +4151,7 @@ chown [-R] 属主名：属组名 文件名</code></pre>
   </entry>
   <entry>
     <title>c++学习-4：algorithm头文件</title>
-    <url>/2021/03/19/c++%E5%AD%A6%E4%B9%A0-4/</url>
+    <url>/Zwiewings.github.io.git/2021/03/19/c++%E5%AD%A6%E4%B9%A0-4/</url>
     <content><![CDATA[<h1 id="头文件：algorithm"><a href="#头文件：algorithm" class="headerlink" title="头文件：algorithm"></a>头文件：algorithm</h1><p>algorithm意为”算法”,是C++的标准模版库（STL）中最重要的头文件之一，提供了大量基于迭代器的非成员模版函数。</p>
 <h2 id="相关概念说明"><a href="#相关概念说明" class="headerlink" title="相关概念说明"></a>相关概念说明</h2><ol>
 <li><strong>容器</strong> 容器是用来存放各种数据的一个东西，<code>&lt;algorithm&gt;</code>中的算法是针对容器设计的。因此，不论数据是一些<code>int</code>，<code>char</code>还是自定义的<code>class</code>，<code>&lt;algorithm&gt;</code>中的函数都可以正确应对。<code>vector</code>是最常用的容器。</li>
@@ -4295,7 +4295,7 @@ chown [-R] 属主名：属组名 文件名</code></pre>
   </entry>
   <entry>
     <title>c++学习-3</title>
-    <url>/2021/01/22/c++%E5%AD%A6%E4%B9%A0-3/</url>
+    <url>/Zwiewings.github.io.git/2021/01/22/c++%E5%AD%A6%E4%B9%A0-3/</url>
     <content><![CDATA[<h2 id="c-文件操作"><a href="#c-文件操作" class="headerlink" title="c++文件操作"></a>c++文件操作</h2><p>在C++中，有一个stream这个类，所有的I/O都以这个”流”类为基础的，包括我们要认识的文件I/O，stream这个类有两个重要的运算符：</p>
 <h3 id="1、插入器-lt-lt"><a href="#1、插入器-lt-lt" class="headerlink" title="1、插入器(&lt;&lt;)"></a><strong>1、插入器(&lt;&lt;)</strong></h3><p>　　向流输出数据。比如说系统有一个默认的标准输出流(cout)，一般情况下就是指的显示器，所以，cout&lt;&lt;”Write Stdout”&lt;&lt;’/n’;就表示把字符串”Write Stdout”和换行字符(‘/n’)输出到标准输出流。</p>
 <h3 id="2、析取器-gt-gt"><a href="#2、析取器-gt-gt" class="headerlink" title="2、析取器(&gt;&gt;)"></a><strong>2、析取器(&gt;&gt;)</strong></h3><p>　　从流中输入数据。比如说系统有一个默认的标准输入流(cin)，一般情况下就是指的键盘，所以，cin&gt;&gt;x;就表示从标准输入流中读取一个指定类型(即变量x的类型)的数据。</p>
@@ -4461,7 +4461,7 @@ chown [-R] 属主名：属组名 文件名</code></pre>
   </entry>
   <entry>
     <title>c++学习-2</title>
-    <url>/2021/01/20/c++%E5%AD%A6%E4%B9%A0-2/</url>
+    <url>/Zwiewings.github.io.git/2021/01/20/c++%E5%AD%A6%E4%B9%A0-2/</url>
     <content><![CDATA[<h2 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h2><p><strong>1.c++面向对象的三大特性：封装、继承、多态</strong></p>
 <p><strong>2.c++认为万物皆可对象，对象上有其属性和行为</strong></p>
 <p><strong>3.具有相同性质的对象，我们可以抽象称为类</strong></p>
@@ -4732,7 +4732,7 @@ chown [-R] 属主名：属组名 文件名</code></pre>
   </entry>
   <entry>
     <title>c++学习-1</title>
-    <url>/2021/01/18/c++%E5%AD%A6%E4%B9%A0-1/</url>
+    <url>/Zwiewings.github.io.git/2021/01/18/c++%E5%AD%A6%E4%B9%A0-1/</url>
     <content><![CDATA[<h1 id="c-基础（同c比较）"><a href="#c-基础（同c比较）" class="headerlink" title="c++基础（同c比较）"></a>c++基础（同c比较）</h1><table>
 <thead>
 <tr>
@@ -5314,7 +5314,7 @@ int (*p)(int i, int j);//指向函数的指针p</code></pre>
   </entry>
   <entry>
     <title>数据结构-1</title>
-    <url>/2021/03/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-1/</url>
+    <url>/Zwiewings.github.io.git/2021/03/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-1/</url>
     <content><![CDATA[<h1 id="线性表-顺序表"><a href="#线性表-顺序表" class="headerlink" title="线性表-顺序表"></a>线性表-顺序表</h1><p>【Elemtype为数据类型】</p>
 <h2 id="创建（初始化）"><a href="#创建（初始化）" class="headerlink" title="创建（初始化）"></a>创建（初始化）</h2><p>以数组的形式创建顺序表</p>
 <pre><code>typedef struct      //理解为将定义的结构体改称为&#123;&#125;后的名字，如SQlist
@@ -5506,7 +5506,7 @@ int main()
   </entry>
   <entry>
     <title>《南城院校风纪委员部》</title>
-    <url>/2021/01/18/%E3%80%8A%E5%8D%97%E5%9F%8E%E9%99%A2%E6%A0%A1%E9%A3%8E%E7%BA%AA%E5%A7%94%E5%91%98%E9%83%A8%E3%80%8B/</url>
+    <url>/Zwiewings.github.io.git/2021/01/18/%E3%80%8A%E5%8D%97%E5%9F%8E%E9%99%A2%E6%A0%A1%E9%A3%8E%E7%BA%AA%E5%A7%94%E5%91%98%E9%83%A8%E3%80%8B/</url>
     <content><![CDATA[<h1 id="《南城院校风纪委员部》"><a href="#《南城院校风纪委员部》" class="headerlink" title="《南城院校风纪委员部》"></a>《南城院校风纪委员部》</h1><p>*注：所有内容均为封艾羽原创，禁止未经允许的一切形式转载</p>
 <h1 id="第一卷：新生「太阳」与南城院校"><a href="#第一卷：新生「太阳」与南城院校" class="headerlink" title="第一卷：新生「太阳」与南城院校"></a>第一卷：新生「太阳」与南城院校</h1><h2 id="第1章：新生「太阳」与南城院校（一）"><a href="#第1章：新生「太阳」与南城院校（一）" class="headerlink" title="第1章：新生「太阳」与南城院校（一）"></a>第1章：新生「太阳」与南城院校（一）</h2><div>你听说过“南城院校”吗？</div><div>那是传说中的十四等魔法使所缔造的，有着「魔法使的天堂」、「天才的乐园」之称，仅次于「神之箱庭」的独立高级位面。</div><div>说到这个宛若乌托邦的南城院校，那么首先要提的便是学生会和风纪委员部——他们是屹立于最顶端的两大势力，学生会担任政府的角色，而风纪委则是支配着军事与纪律的一切。</div><div>因为年龄限制的缘故，他们都有着年轻气盛的正义感与超乎常人的天赋和实力，同时，担任学生会成员的人往往都会先一步在风纪委的环境中锻炼着自我。</div><div>这便注定了，南城院校风纪委员部，这个神话诞生的地方。</div><div>其中，最为耀眼的便数初代、三代、和实力巅峰的七代风纪委。</div><div>初代风纪委员部，仅凭四人击退由压境的「神之箱庭」，成功守护了刚刚创造不久的这个位面，其中一人甚至登上了真正的“神”的宝座。</div><div>三代风纪委员部，人数最少却开创了金三角时代，真正实现了将各个位面的天才汇聚于南院，彻底落实「天才的乐园」之名。</div><div>至于七代风纪委员部——</div><div>历史长河中的他们如何成为传说，如何以双手创造了这个神也无法知晓的未来，也正是这个故事的开始。</div><div>…………</div><div>穿过繁华的街道，在熙熙攘攘的人群间穿梭着，少年般的少女此刻正打量着周围的一切，一双碧绿的眸中颇有些不可思议的味道。</div><div>她，封艾羽，一月前才刚刚从下等位面来到这里的魔法使。由于原来所处的位面比起这里来说，资源过于贫乏，所以即便是现在，她也还仍旧还没能习惯这里的一切。</div><div>带有青草芬芳的空气中，有着她难以想象的魔力浓度。</div><div>现在的这个位面，让她总觉得曾经那些为一颗低等魔力核就拼死拼活的日子仿若是在做梦一样。</div><div>一路走来，原本极其贵重的魔法道具理所当然的被作为公共设施出现在大街小巷，成了人手一份的日常工具，以至于她的价值观不断遭到抨击。</div><div>这里果然是那个南城院校啊——她甚至不由得冒出了这样的念头。</div><div>当然，除了价值观的冲击之外，其实也有很多事情令她在这个陌生的世界感到安心。</div><div>比如，眼前这座“要塞”，曾被她戏称“龟壳”的结界，如今却意外令她感到十分安心。并不是因为结界本身能够阻挡陨星的满级防御力，而是这个结界，从来都只有一个人会构建，就连她自己也做不到。</div><div>只不过，当走进“要塞”包围的小洋楼，通过当初在对方身上留下的魔力标记，到达对方的所在地时，封艾羽不由得扯了扯嘴角，嗯，她其实早就猜到了一些的，不过还是感觉有点气就是了。</div><div>“啊啊，好可爱！！”某绿毛毫无形象的抱着光脑在地板上打滚，一边疯狂叫嚣着，一边擦口水：“简直太犯规了！萝莉这种小小的生物到底能可爱到什么地步啊！！”封艾羽当即一扶额，抬手敲了敲门框，好吧，至少能肯定她没找错人：“喂，安迪你个死萝莉控，麻烦收敛一下你变态的表情先。”</div><div>眼前的绿毛萝莉控名为安向阳，是她在原来位面的挚友之一，比她稍早通过空间裂缝来到这边，虽然是有时候行为的确是令人难以言喻了一点，但人品还是非常值得信任的。</div><div>而听到封艾羽的声音，安向阳猛然回头，迅雷不及掩耳盗铃之势整理好了自己的表情，仿佛刚刚的一切都没有发生过一样：“艾姐，没想到你来得这么突然。”听此，封艾羽嘴角再次一抽：“这还突然？有人进你结界都不知道？真亏你没被人入室抢劫啊。”</div><div>“别在意这种细节嘛——”</div><div>两人还没说上什么，忽然，不知从哪里来的一个金发少年莫名冲过来，提剑就挡在了安向阳身前，一脸警惕的看着封艾羽：“阁下擅自闯进别人的结界，有何贵干？”少年似乎有着很锐利的表情，只不过还在湿漉漉向下滴水的的短发完全破坏了整个人的气势，嗯……他这之前大概、也许是在洗澡？</div><div>还没等封艾羽回答，安向阳就赶紧制止了面前少年的行动，在他看来，这就是个找虐的行为：“啊，等等，维斯特，这是我朋友，不是什么可疑人物。”</div><div>“哎？是这样吗？”少年的表情化作有些天然的一愣，然后略为尴尬的笑出了两颗虎牙：“抱歉啊，好像是我误会了。”</div><div>“我叫维斯特·夏尔伯特，是名魔剑士，暂时在向阳这里借住。”</div><div>“我是安迪的旧友，封艾羽，很高兴认识你。”</div><div>“安迪？是说向阳吗？”维斯特有些疑惑的看向安向阳，他怎么从来不知道对方还有个这么女气的名字？</div><div>“嗯，诺灵克斯亚·冥·安迪，对吧？”封艾羽说着，开玩笑似的看向了安向阳，对方当即露出一个快哭的表情：“艾姐，算我求你，别再提这全名了好吧……超级羞耻的哎！”见此，封艾羽一笑：“那就不提了，现在先说回正题，关于南院招生的事情，你知道多少？”</div><div>“招生？”安向阳一愣：“艾姐要进外院吗？”</div><div>“嗯，准确来说是要去内院。”听见这个，在一旁擦着头发的维斯特不由得抬眼看了过来：“但是你可能来不及了呢，内院的招生据说是今天就结束。”</div><div>“你想多了，维斯特，艾姐根本不是常规生的。”安向阳带着一丝怜悯的眼神落向维斯特，就见他似乎没有反应过来，歪着头想了想，然后突然一下子站了起来：“哎？难道说有邀请函吗？！”</div><div>“是的，所以只需要通过外院考核就能直接成为内院生。”</div><div>“请、请教阁下……如今的等阶是？”维斯特的声音有点颤，连敬语都用上了，明显是难以置信导致的。</div><div>“啊，我是赤金十二等。”封艾羽抬起手指，指尖燃起一束魔法火焰，正是赤金色——</div><div>“果然被吓到了啊，维斯特。”安向阳抬手拍了拍他的肩膀，一副非常能理解他的表情。</div><div>维斯特和他虽然从下级位面前来，还不是外院的学员，但对于平时的魔力等级还是心里有数的，即使是面对外院生、甚至内院生也好，都对自己金色十等的水平还是挺自信的，毕竟金色十等已经是风委部都可以入门的等阶了，半数以上的内院生也就是白色七等和银色八等左右的水平。</div><div>至于赤金十二等更是少得可怜，听说过的也就那位风委部部长和学生会会长两人，哪怕将深藏不露的隐士计算在内，也绝对只是个位数。</div><div>“有那么夸张吗？”偏偏眼前的封艾羽还从来没有这种自觉，导致长期和她并肩作战的安向阳都逐渐习惯了被打击到吐血。</div><div>就是可怜了维斯特，现在还在被支配的深渊无法自拔——哎？人嘞？</div><div>刚想再拍拍维斯特的肩膀劝他振作，安向阳就发现人不见了。一抬头，维斯特已经满眼星星：“还请前辈参加考核的时候务必带上我同行！”</div><div>“前辈什么的，总觉得哪里奇奇怪怪的……你不嫌弃的话就跟安迪一样叫我艾姐就好了。”</div><div>“好的，前辈！”</div><div>…………</div><div>纷乱的桌面已经有许久无人整理，堆满了各种各样的文件，甚至有些已经被风吹得满房间都是，站在床头的御姐却仿若不知，只是望着窗外被阳光照亮的庭院发呆。</div><div>恰在这时，敲门的声音响起，随后传来了属于少女的声音：“命姐，学生会那边——”还没说完，御姐的声音便打断了她的话：“不是特别重要的事情，仙霖你就看着处理吧。”</div><div>“我又擅自决定可以吗……”似乎不是第一次发生这种事了，仙霖的声音有些失落，却并不出乎意料。御姐的话中则是满满的不容置疑：“交给你了。”</div><div>“知道了。”在门外应了一声，仙霖转身离开。</div><div>而房间内，御姐的目光始终未曾移开过，身后却不知什么时候出现了一个人影。</div><div>“你会来这里，真是出乎意料，尤利卡。”似乎早就察觉了一般，御姐终于转过了身，紫色的双眸望向这名突然出现的客人。尤利卡几乎是立刻就听懂了她话里的意思，随即摇了摇头：“我不是为了你的颓唐而来，君初晓。”</div><div>“那，是为什么？”她问道。</div><div>“「太阳」出现了。”</div><div>“……克洛斯说的？”</div><div>“嗯，主人希望你同时也留意一下「太阳」身边是否有「月亮」。”尤利卡说着，朝她笑了笑：“如果能早日确定「太阳」的所在，你也可以如愿以偿的离开这个位置了。”</div><div>“我会留意的，只希望，那是个性格可靠的孩子就好了。”君初晓轻轻垂下紫眸，毕竟她如今所在的位置是这个风纪委员部的部长，如果对方的性格不够沉稳可靠，她也无法放心的将这份权利交予对方手中。</div><div>“其实我完全不懂呢，为什么你一定要放弃呢？这个位置由你来掌控本该是最合适的。”面对尤利卡的提问，君初晓顿了顿，良久才道：“我是最合适的？呵。”</div><div>“不，仅仅是我姓君这一点，就已经是最不合适的了。”    </div>
 
