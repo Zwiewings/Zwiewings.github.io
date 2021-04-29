@@ -214,7 +214,7 @@
 <ul>
 <li><p>深拷贝：在堆区重新申请空间，进行拷贝操作</p>
 <p>【使用new在堆区开辟新空间（一般变量在栈上），并返回一段空间的首地址，一般用指针接收，需要手动在析构函数中用“delete”释放这一段空间，并且将指针变为空指针（指向NULL），如果用浅拷贝就会直接拷贝地址，从而发生重复释放，这时需要用深拷贝模仿操作开辟一个新空间】</p>
-<p><img src="/2021/01/20/c++%E5%AD%A6%E4%B9%A0-2/pic-2.png" alt="pic-2"></p>
+<p><img src="/Zwiewings.github.io.git/Zwiewings.github.io.git/2021/01/20/c++%E5%AD%A6%E4%B9%A0-2/pic-2.png" alt="pic-2"></p>
 </li>
 <li><p>浅拷贝：简单的赋值拷贝操作</p>
 </li>
@@ -334,7 +334,7 @@
 <h3 id="（5）继承"><a href="#（5）继承" class="headerlink" title="（5）继承"></a>（5）继承</h3><p>面向对象程序设计中最重要的一个概念是继承。继承允许我们依据另一个类来定义一个类，这使得创建和维护一个应用程序变得更容易。这样做，也达到了重用代码功能和提高执行效率的效果。</p>
 <p>当创建一个类时，您不需要重新编写新的数据成员和成员函数，只需指定新建的类继承了一个已有的类的成员即可。这个已有的类称为<strong>基类</strong>，新建的类称为<strong>派生类</strong>。</p>
 <p>继承代表了 <strong>is a</strong> 关系。例如，哺乳动物是动物，狗是哺乳动物，因此，狗是动物，等等。</p>
-<p><img src="/2021/01/20/c++%E5%AD%A6%E4%B9%A0-2/pic-3.png" alt="pic-3"></p>
+<p><img src="/Zwiewings.github.io.git/Zwiewings.github.io.git/2021/01/20/c++%E5%AD%A6%E4%B9%A0-2/pic-3.png" alt="pic-3"></p>
 <h4 id="基类-amp-派生类："><a href="#基类-amp-派生类：" class="headerlink" title="基类 &amp; 派生类："></a><strong>基类 &amp; 派生类：</strong></h4><p>一个类可以派生自多个类，这意味着，它可以从多个基类继承数据和函数。定义一个派生类，我们使用一个类派生列表来指定基类。类派生列表以一个或多个基类命名，形式如下：</p>
 <pre><code>class derived-class: access-specifier base-class</code></pre>
 <p>其中，访问修饰符 access-specifier 是 <strong>public、protected</strong> 或 <strong>private</strong> 其中的一个，base-class 是之前定义过的某个类的名称。如果未使用访问修饰符 access-specifier，则默认为 private。</p>

@@ -219,11 +219,11 @@ void get_next(Sstring t,int next[])
 <p>LOC（0，0）是a【0】【0】的存储位置，即二维数组A的起始存储位置、也称为基地址或基址</p>
 <p><strong>故而总结可知：</strong><br>$$<br>LOC(i , j) = 基址 + (副序长度 * 主序标号 + 另一标号) * 数据所占存储单元<br>$$</p>
 <h2 id="特殊矩阵的压缩存储"><a href="#特殊矩阵的压缩存储" class="headerlink" title="特殊矩阵的压缩存储"></a>特殊矩阵的压缩存储</h2><h3 id="对称矩阵"><a href="#对称矩阵" class="headerlink" title="对称矩阵"></a>对称矩阵</h3><p>特点：在n*n的矩阵a中，1&lt;= i，j &lt;= n<br>存储方法：只存储下（或者上）三角（包括主对角线）的数据元素。共占用n(n+1)/2个元素空间。</p>
-<p><img src="/2021/04/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-5/1.png" alt="1"></p>
+<p><img src="/Zwiewings.github.io.git/Zwiewings.github.io.git/2021/04/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-5/1.png" alt="1"></p>
 <p>上下三角中的元素均为：n(n+1) / 2<br>可以以行序为主序将元素存放在一个一维数组a[n(n+1) / 2]中，a[k]的位置可如下公式确定<br>$$<br>k=主序序号（主序序号-1）/2+副序序号-1，主序&gt;=副序<br>$$<br>注：上式的k从0开始计算</p>
-<h3 id="三角矩阵"><a href="#三角矩阵" class="headerlink" title="三角矩阵"></a>三角矩阵</h3><p><img src="/2021/04/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-5/2.png" alt="2"></p>
-<h3 id="对角矩阵"><a href="#对角矩阵" class="headerlink" title="对角矩阵"></a>对角矩阵</h3><p><img src="/2021/04/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-5/3-1.png" alt="3-1"></p>
-<h3 id><a href="#" class="headerlink" title></a><img src="/2021/04/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-5/3-2.png" alt="3-2"></h3><h3 id="稀疏矩阵"><a href="#稀疏矩阵" class="headerlink" title="稀疏矩阵"></a>稀疏矩阵</h3><p><img src="/2021/04/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-5/4.png" alt="4"></p>
+<h3 id="三角矩阵"><a href="#三角矩阵" class="headerlink" title="三角矩阵"></a>三角矩阵</h3><p><img src="/Zwiewings.github.io.git/Zwiewings.github.io.git/2021/04/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-5/2.png" alt="2"></p>
+<h3 id="对角矩阵"><a href="#对角矩阵" class="headerlink" title="对角矩阵"></a>对角矩阵</h3><p><img src="/Zwiewings.github.io.git/Zwiewings.github.io.git/2021/04/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-5/3-1.png" alt="3-1"></p>
+<h3 id><a href="#" class="headerlink" title></a><img src="/Zwiewings.github.io.git/Zwiewings.github.io.git/2021/04/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-5/3-2.png" alt="3-2"></h3><h3 id="稀疏矩阵"><a href="#稀疏矩阵" class="headerlink" title="稀疏矩阵"></a>稀疏矩阵</h3><p><img src="/Zwiewings.github.io.git/Zwiewings.github.io.git/2021/04/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-5/4.png" alt="4"></p>
 <h1 id="广义表"><a href="#广义表" class="headerlink" title="广义表"></a>广义表</h1><p>一般记作LS（a1，a2，……，an），其中LS为广义表的名称，n为广义表的长度，其中的元素可以是单个数据（原子）也可以是广义表（子表），一般小写为原子，大写为子表</p>
 <p><strong>广义表示例：</strong></p>
 <ul>
