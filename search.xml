@@ -88,7 +88,1501 @@
         <category>学习</category>
       </categories>
       <tags>
-        <tag>数据结构学习</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构-1</title>
+    <url>/2021/03/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-1/</url>
+    <content><![CDATA[<h1 id="线性表-顺序表"><a href="#线性表-顺序表" class="headerlink" title="线性表-顺序表"></a>线性表-顺序表</h1><p>【Elemtype为数据类型】</p>
+<h2 id="创建（初始化）"><a href="#创建（初始化）" class="headerlink" title="创建（初始化）"></a>创建（初始化）</h2><p>以数组的形式创建顺序表</p>
+<pre><code>typedef struct      //理解为将定义的结构体改称为&#123;&#125;后的名字，如SQlist
+&#123;
+    Elemtype *elem； //定义顺序表具有首元素地址
+    int length;     //定义顺序表具有表长这一属性
+&#125;SQlist;</code></pre>
+<p>初始化设置顺序表的最大存储空间，以及初始化其表长为0</p>
+<pre><code>bool initList(SQlist &amp;sq)     //将需要初始化的表传址
+&#123;
+    sq.elem=new maxsize;        //为顺序表分配maxsize的空间作为最大上限
+    if(!sq.elem) return false;      //如果空间分配失败，直接返回提示错误
+    sq.length=0;                    //如果分配空间成功，则继续初始化表长为0
+    return true;                    //返回参数提示顺序表初始化成功
+&#125;</code></pre>
+<h2 id="取值"><a href="#取值" class="headerlink" title="取值"></a>取值</h2><p>顺序表能够随机存取，故而方便存取指定位置的值，即可以随机存取</p>
+<pre><code>bool getelem(SQlist &amp;sq,int i，elemtype &amp;a)  
+//将需要初始化的表传址，并且传值需要获取的是第i个值，返回的值传给a
+&#123;
+    if(i&lt;1||i&gt;sq.length) return false;    //如果i为非法位置，返回提示错误
+    a=sq.elem[i];                 //否则返回第i个元素给a
+    return true;                  //返回提示执行正常
+&#125;</code></pre>
+<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>顺序表的查找就是顺序比较表内元素和待查找元素，相同查找成功，始终不同查找失败</p>
+<pre><code>int find(SQlist &amp;sq,elemtype a)
+//传址需要查找的表，并传值需要查找的数值a,返回查找到的序号为int类型
+&#123;
+    int i;
+    for(i=0;i&lt;sq.length;i++)
+    &#123;
+    if(sq.elem[i]==a) return i;
+    //如果查找到了，返回该值在表中的序号，此处为数组下标，若返回第几个元素序号，则需要i+1
+    &#125;
+    return -1;            //查找失败，返回负数
+&#125;</code></pre>
+<h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><p>顺序表为紧邻的线性表，故而插入时需要向后移动较多元素，并且需要从最后一个元素开始向后移动，以免数据被覆盖</p>
+<pre><code>bool insert(SQlist &amp;sq,elemtype a,int i)
+//将元素a的值插入表中第i个位置，传址需要做插入的表，以及传值a，i
+&#123;
+    int j;
+    if(i&lt;1||i&gt;sq.length+1) return false;//如果i值不合法，则不作插入
+    if(sq.length==maxsize) return false;//如果表长已经达到最大，则判断表满，不作插入
+    for(j=sq.length-1;j&gt;=i-1;j--)
+    //让j为最后一个元素的角标，循环递减，并且当j等于插入位置i的前驱时，停止循环
+    &#123;
+        sq.elem[j+1]=sq.elem[j];        //给j+1角标的空间赋值当前j角标的值，实现后移
+    &#125;
+    sq.elem[i-1]=a;                     //赋值第i个位置，即角标为i-1的空间为a
+    sq.length++;                        //表长增加
+    return true;                        //返回插入成功
+&#125;</code></pre>
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><p>顺序表的删除是将待删除位置后面的全部往前覆盖，向前移动较多元素，并且需要从待删除位置的后一个开始移动，以免覆盖数据</p>
+<pre><code>bool delete(SQlist &amp;sq,int i)
+//传址需要删除元素的顺序表，并且传值需要删除的元素位置
+&#123;
+    int j;
+    if(i&lt;1||i&gt;sq.length) return false;   //如果i值不合法，则不作插入
+    for(j=i;j&lt;=sq.length-1;j++)
+    //将i位置之后的所有元素都向前移，并且循环在将最后一个元素移动到表长减一后的位置停止
+    &#123;
+        sq.elem[j-1]=sq.elem[j];        //被删位置后的元素全部前移
+    &#125;
+    sq.length--;                        //表长减少
+    return true;
+&#125;</code></pre>
+<h2 id="实际题目"><a href="#实际题目" class="headerlink" title="实际题目"></a>实际题目</h2><h3 id="R7-1-顺序表的建立及遍历-20-分"><a href="#R7-1-顺序表的建立及遍历-20-分" class="headerlink" title="R7-1 顺序表的建立及遍历 (20 分)"></a>R7-1 顺序表的建立及遍历 (20 分)</h3><p>读入n值及n个整数，建立顺序表并遍历输出。</p>
+<p>输入格式:<br>读入n及n个整数</p>
+<p>输出格式:<br>输出n个整数，以空格分隔（最后一个数的后面没有空格）。</p>
+<p>输入样例:<br>在这里给出一组输入。例如：</p>
+<pre><code>4
+-3 10 20 78</code></pre>
+<p>输出样例:<br>在这里给出相应的输出。例如：</p>
+<pre><code>-3 10 20 78</code></pre>
+<p><strong>解法：</strong></p>
+<pre><code class="c++">#include&lt;iostream&gt;
+using namespace std;
+
+typedef struct
+&#123;
+    int *a;
+    int length;
+&#125;List;
+
+int create(List &amp;sq)
+&#123;
+    sq.a= new int[100];
+    if(!sq.a) return 0;
+    sq.length=0;
+    return 1;
+&#125;
+
+
+int output(List &amp;sq)
+&#123;
+    int j;
+    cout&lt;&lt;sq.a[0];
+    for(j=1;j&lt;sq.length;j++)
+    &#123;
+        cout&lt;&lt;&quot; &quot;&lt;&lt;sq.a[j];
+    &#125;
+&#125;
+
+int main()
+&#123;
+    List sqlist;
+    int i,n;
+    cin&gt;&gt;n;
+    create(sqlist);
+    for(i=0;i&lt;n;i++)
+    &#123;
+        cin&gt;&gt;sqlist.a[i];
+        sqlist.length++;
+    &#125;
+    if(sqlist.length!=0) 
+        output(sqlist);
+    return 0;
+&#125;</code></pre>
+<h3 id="R7-2-jmu-ds-顺序表区间元素删除-20-分"><a href="#R7-2-jmu-ds-顺序表区间元素删除-20-分" class="headerlink" title="R7-2 jmu-ds-顺序表区间元素删除 (20 分)"></a>R7-2 jmu-ds-顺序表区间元素删除 (20 分)</h3><p>若一个线性表L采用顺序存储结构存储，其中所有的元素为整数。设计一个算法，删除元素值在[x,y]之间的所有元素，要求算法的时间复杂度为O(n)，空间复杂度为O(1)。</p>
+<p>输入格式:<br>三行数据，第一行是顺序表的元素个数，第二行是顺序表的元素，第三行是x和y。</p>
+<p>输出格式:<br>删除元素值在[x,y]之间的所有元素后的顺序表。</p>
+<p>输入样例:</p>
+<pre><code>10
+5 1 9 10 67 12 8 33 6 2
+3 10</code></pre>
+<p>输出样例:</p>
+<pre><code>1 67 12 33 2</code></pre>
+<p><strong>解法：</strong></p>
+<pre><code class="c++">#include&lt;iostream&gt;
+using namespace std;
+
+typedef struct
+&#123;
+    int *a;
+    int length;
+&#125;sqlist;
+
+bool create(sqlist &amp;sq)
+&#123;
+    sq.a= new int[100];
+    if(!sq.a) return false;
+    sq.length=0;
+    return true;
+&#125;
+
+bool del(sqlist &amp;sq,int x,int y)
+&#123;
+    int j,i;
+    for(j=0;j&lt;sq.length;j++)
+    &#123;
+        if(sq.a[j]&gt;=x&amp;&amp;sq.a[j]&lt;=y)
+        &#123;
+            for(i=j;i&lt;sq.length;i++)
+            &#123;
+                sq.a[i]=sq.a[i+1];
+            &#125;
+            sq.length--;
+            j--;
+        &#125;
+    &#125;
+&#125;
+
+int main()
+&#123;
+    sqlist List;
+    int n,i,x,y;
+    cin&gt;&gt;n;
+    create(List);
+    for(i=0;i&lt;n;i++)
+    &#123;
+        cin&gt;&gt;List.a[i];
+        List.length++;
+    &#125;
+    cin&gt;&gt;x&gt;&gt;y;
+    del(List,x,y);
+    cout&lt;&lt;List.a[0];
+    for(i=1;i&lt;List.length;i++)
+    &#123;
+        cout&lt;&lt;&quot; &quot;&lt;&lt;List.a[i];
+    &#125;
+    return 0;
+&#125;</code></pre>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构-2</title>
+    <url>/2021/03/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-2/</url>
+    <content><![CDATA[<h1 id="线性表-单链表"><a href="#线性表-单链表" class="headerlink" title="线性表-单链表"></a>线性表-单链表</h1><p>【Elemtype为数据类型】</p>
+<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><h3 id="链表结点结构体创建"><a href="#链表结点结构体创建" class="headerlink" title="链表结点结构体创建"></a>链表结点结构体创建</h3><pre><code>typedef struct LNode        //创建结点类型
+&#123;
+    elemtype data;         //结点中包含数据域
+    struct LNode *next;    //结点中包含指向下一个结点的指针
+&#125;*Linklist                 //将该类型定义为一个链表（常使用指针方式价）</code></pre>
+<h3 id="尾插法创建"><a href="#尾插法创建" class="headerlink" title="尾插法创建"></a>尾插法创建</h3><pre><code class="c++">void create(Linklist &amp;L,int n)
+//传址需要创建的表L，以及初始表长n
+&#123;
+    L=new Lnode;        //为L新分配一个地址
+    L-&gt;next=NULL;        //将L的next设为空（前两步为初始化）
+    Lnode *E=L;            //令新指针指向L指向的头结点
+    int i,a;
+    Lnode *p;            //定义另一个指向结点的指针p
+    for(i=1;i&lt;=n;i++)    
+    &#123;
+     cin&gt;&gt;a;            //输入数据a
+     p=new Lnode;        //令p指向新建结点
+     p-&gt;data=a;            //将新建结点的数据域赋值为a
+     E-&gt;next=p;            //令E的next指向p指向的结点
+     p-&gt;next=NULL;        //p的next指向空
+     E=p;                //指针E后移，指向p指向的结点
+    &#125;
+&#125;
+</code></pre>
+<h3 id="头插法创建"><a href="#头插法创建" class="headerlink" title="头插法创建"></a>头插法创建</h3><pre><code>void create(Linklist &amp;L，int n)
+//传址需要创建的表L，以及初始表长n
+&#123;
+    L=new LNode;
+    L-&gt;next=NULL;
+    int i,a;
+    struct LNode *p;
+    cin&gt;&gt;a;
+    for(i=1;a!=-1;i++)
+    &#123;
+    p=new LNode;
+    p-&gt;data=a;
+    p-&gt;next=L-&gt;next;
+    L-&gt;next=p;
+    cin&gt;&gt;a;
+    &#125;
+&#125;
+</code></pre>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>注：初始化应当在尾插和头插法前使用，或者不使用</p>
+<pre><code class="c++">bool init(Linklist &amp;L)       //传址创建的链表
+&#123;
+    L=new LNode;            //新生成一个结点，让头指针指向头结点
+    L-&gt;next=NULL;          //为统一操作，头结点仅作为首元结点的前驱，数据域不放入数据，且指针域指向空
+    return true;           //返回值提示完成初始化
+&#125;</code></pre>
+<h2 id="取值"><a href="#取值" class="headerlink" title="取值"></a>取值</h2><p>单链表的取值需要顺序遍历，耗时较长，故而不适合频繁获取特定位置的值</p>
+<pre><code class="c++">bool getelem(Linklist &amp;L,int i,elemtype &amp;e)
+//传址数据所在的表，并且传值需要取值的元素序号i，将得到的值传给e
+&#123;
+    int j;
+    LNode *p=L-&gt;next;               //令p指向首元结点
+    for(j=1;j&lt;i&amp;&amp;p!=NULL;j++)       //j作为计数器，确定遍历到的位置，当p指针指向空或j==i时结束循环
+    &#123;
+        p=p-&gt;next;                  //让p指向p的下一个结点，实现p后移
+    &#125;                               //结束循环时，j==i，p指向的结点为第i-1个结点
+     if(p==NULL) return false;       //如果p指针指向空，则返回取值失败
+    e=p-&gt;next-&gt;data;                //否则，将p指向结点的下一个结点的数据域赋给e
+    return true;                   //返回取值完成
+&#125;</code></pre>
+<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>单链表的查找同顺序表一样，需要遍历整个表，比较每个数据域和待查找值，若相同则返回其序号，若始终不相同则返回查找失败</p>
+<pre><code class="c++">bool find(Linklist &amp;L,LNode *&amp;p,elemtype a)
+//传址需要查找的表，查找成功时用于指向查找结果的指针p，同时传值需要查找的数据a
+&#123;
+    int j;
+    p=L-&gt;next;
+    for(j=1;p-&gt;next!=NULL;j++)      //j作为计数器，确定遍历到的位置，当p指针指向为空时结束循环
+    &#123;
+        if(p-&gt;data==a) break;       //查找到与数据a相同的数据域，提前退出循环
+        p=p-&gt;next;                  //p指针继续后移，继续遍历整个链表
+    &#125;
+    if(p-&gt;next==NULL&amp;&amp;p-&gt;data!=a)   return false;  
+    //如果p指针已经指向尾结点，且尾结点数据域域不等于a，则查找失败
+    //p指针直接能够返回需要查找的节点，不需要另外设置返回
+    return true;                   //返回查找成功
+&#125;</code></pre>
+<h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><p>插入时，需要先让新结点连接需要插入位置前驱的后一个结点，再让前驱的next指针指向新结点，否则会直接丢失后面数据的地址</p>
+<pre><code class="c++">bool insert(Linklist &amp;L,int i，elem e)
+//传址链表，需要插入的位置i，需要插入的元素值e
+&#123;
+    int j;
+    Lnode *p=L-&gt;next;                //使p指针指向首元结点
+    Lnode *s=new Lnode;              //新建一个结点，并用s指针指向它
+    s-&gt;data=e;                       //将新建结点的数据域赋为e
+    for(j=0;j&lt;i-1&amp;&amp;p!=NULL;j++)      
+    //当j移动到需要插入位置的前驱时或者链表结束时结束循环
+    &#123;
+        p=p-&gt;next;                   //让p指向下一个结点
+    &#125;
+    if(p==NULL) return false;        //如果p指向不合法位置则返回插入失败
+    s-&gt;next=p-&gt;next;                 //否则让s的next指针指向p的下一个结点
+    p-&gt;next=s;                       //并让p的next指针指向s
+    return true;                     //返回成功插入
+&#125;</code></pre>
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><pre><code class="c++">bool del(Linklist &amp;L,int i)
+&#123;
+    int j;
+    Lnode *p=L-&gt;next;                //使p指向首元结点
+    for(j=0;j&lt;i-1&amp;&amp;p!=NULL)           
+    //当j移动到需要删除位置的前驱或链表结束时结束循环
+    &#123;
+        p=p-&gt;next;                  //让p指向p的下一个结点
+    &#125;
+    if(p=NULL) return false;        //p指向不合法位置时，返回删除失败
+    p-&gt;next=p-&gt;next-&gt;next;          //让p的next指针等于p下一个结点的next
+    return true;                    //返回删除成功
+&#125;</code></pre>
+<h2 id="实际题目"><a href="#实际题目" class="headerlink" title="实际题目"></a>实际题目</h2><h3 id="R7-3-单链表的创建及遍历-20-分"><a href="#R7-3-单链表的创建及遍历-20-分" class="headerlink" title="R7-3 单链表的创建及遍历 (20 分)"></a>R7-3 单链表的创建及遍历 (20 分)</h3><p>读入n值及n个整数，建立单链表并遍历输出。</p>
+<p>输入格式:<br>读入n及n个整数。</p>
+<p>输出格式:<br>输出n个整数，以空格分隔（最后一个数的后面没有空格）。</p>
+<p>输入样例:<br>在这里给出一组输入。例如：</p>
+<pre><code>2
+10 5</code></pre>
+<p>输出样例:<br>在这里给出相应的输出。例如：</p>
+<pre><code>10 5</code></pre>
+<p><strong>解法：</strong></p>
+<pre><code class="c++">#include&lt;iostream&gt;
+using namespace std;
+
+typedef struct Lnode
+&#123;
+    int data;
+    struct Lnode *next;
+&#125;*Linklist;
+
+void create(Linklist &amp;L,int n)
+&#123;
+    L=new Lnode;
+    L-&gt;next=NULL;
+    if(n&gt;0) 
+    &#123;
+        Lnode *E=L;
+        int i,a;
+        struct Lnode *p;
+        cin&gt;&gt;a;
+        for(i=1;i&lt;=n;i++)
+        &#123;
+        p=new Lnode;
+        p-&gt;data=a;
+        E-&gt;next=p;
+        p-&gt;next=NULL;
+        E=p;
+        cin&gt;&gt;a;
+        &#125;
+    &#125;
+&#125;
+
+int putout(Linklist &amp;L)
+&#123;
+    int i;
+        struct Lnode *p=L;
+        if(L-&gt;next==NULL) return 0;
+    for(i=0;p-&gt;next-&gt;next!=NULL;i++)
+    &#123;
+        cout&lt;&lt;p-&gt;next-&gt;data&lt;&lt;&quot; &quot;;
+        p=p-&gt;next;
+    &#125;
+    cout&lt;&lt;p-&gt;next-&gt;data;
+    return 0;
+&#125;
+
+int main()
+&#123;
+    Linklist list;
+    int n;
+    cin&gt;&gt;n;
+    create(list,n);
+    putout(list);
+    return 0;
+&#125;</code></pre>
+<h3 id="R7-1-两个有序链表序列的合并-20-分"><a href="#R7-1-两个有序链表序列的合并-20-分" class="headerlink" title="R7-1 两个有序链表序列的合并 (20 分)"></a>R7-1 两个有序链表序列的合并 (20 分)</h3><p>已知两个非降序链表序列S1与S2，设计函数构造出S1与S2合并后的新的非降序链表S3。</p>
+<p>输入格式:<br>输入分两行，分别在每行给出由若干个正整数构成的非降序序列，用−1表示序列的结尾（−1不属于这个序列）。数字用空格间隔。</p>
+<p>输出格式:<br>在一行中输出合并后新的非降序链表，数字间用空格分开，结尾不能有多余空格；若新链表为空，输出NULL。</p>
+<p>输入样例:</p>
+<pre><code>1 3 5 -1
+2 4 6 8 10 -1</code></pre>
+<p>输出样例:</p>
+<pre><code>1 2 3 4 5 6 8 10</code></pre>
+<p><strong>解法：</strong></p>
+<pre><code class="c++">#include&lt;iostream&gt;
+using namespace std;
+
+typedef struct Lnode
+&#123;
+    int data;
+    struct Lnode* next;
+&#125;*Linklist;
+
+bool init(Linklist &amp;L)
+&#123;
+    L=new Lnode;
+    L-&gt;next=NULL;
+    return true;
+&#125;
+
+
+void create(Linklist &amp;L)
+&#123;
+    L=new Lnode;
+    L-&gt;next=NULL;
+        Lnode *E=L;
+        int i,a;
+        struct Lnode *p;
+        cin&gt;&gt;a;
+        for(i=1;a!=-1;i++)
+        &#123;
+        p=new Lnode;
+        p-&gt;data=a;
+        E-&gt;next=p;
+        p-&gt;next=NULL;
+        E=p;
+        cin&gt;&gt;a;
+        &#125;
+&#125;
+
+
+bool addit(Linklist &amp;l1,Linklist &amp;l2,Linklist &amp;l3)
+&#123;
+    struct Lnode *p1=l1-&gt;next,*p2=l2-&gt;next, *p3;
+    l3=l1;
+    p3=l3;
+    while(p1&amp;&amp;p2)
+    &#123;
+            if(p1-&gt;data&lt;=p2-&gt;data)
+            &#123;
+                p3-&gt;next=p1;
+                p3=p1;
+                p1=p1-&gt;next;
+            &#125;
+            else &#123;
+                p3-&gt;next=p2;
+                p3=p2;
+                p2=p2-&gt;next;
+            &#125;
+    &#125;
+    p3-&gt;next=p1?p1:p2;
+    return true;
+&#125;
+
+int putout(Linklist &amp;L)
+&#123;
+    int i;
+        struct Lnode *p=L;
+                if(L-&gt;next==NULL) &#123;
+        cout&lt;&lt;&quot;NULL&quot;; return 0;&#125;
+    for(i=0;p-&gt;next-&gt;next!=NULL;i++)
+    &#123;
+        cout&lt;&lt;p-&gt;next-&gt;data&lt;&lt;&quot; &quot;;
+        p=p-&gt;next;
+    &#125;
+    cout&lt;&lt;p-&gt;next-&gt;data;
+    return 0;
+&#125;
+
+int main()
+&#123;
+    Linklist L1,L2,L3;
+    create(L1);
+    create(L2);
+    init(L3);
+    addit(L1,L2,L3);
+    putout(L3);
+    return 0;
+&#125;</code></pre>
+<h3 id="R7-2-两个有序链表序列的交集-20-分"><a href="#R7-2-两个有序链表序列的交集-20-分" class="headerlink" title="R7-2 两个有序链表序列的交集 (20 分)"></a>R7-2 两个有序链表序列的交集 (20 分)</h3><p>已知两个非降序链表序列S1与S2，设计函数构造出S1与S2的交集新链表S3。</p>
+<p>输入格式:<br>输入分两行，分别在每行给出由若干个正整数构成的非降序序列，用−1表示序列的结尾（−1不属于这个序列）。数字用空格间隔。</p>
+<p>输出格式:<br>在一行中输出两个输入序列的交集序列，数字间用空格分开，结尾不能有多余空格；若新链表为空，输出NULL。</p>
+<p>输入样例:</p>
+<pre><code>1 2 5 -1
+2 4 5 8 10 -1</code></pre>
+<p>输出样例:</p>
+<pre><code>2 5</code></pre>
+<p><strong>解法：</strong></p>
+<pre><code class="c++">#include&lt;iostream&gt;
+using namespace std;
+
+typedef struct Lnode
+&#123;
+    int data;
+    struct Lnode* next;
+&#125;*Linklist;
+
+bool init(Linklist &amp;L)
+&#123;
+    L=new Lnode;
+    L-&gt;next=NULL;
+    return true;
+&#125;
+
+
+void create(Linklist &amp;L)
+&#123;
+    L=new Lnode;
+    L-&gt;next=NULL;
+        Lnode *E=L;
+        int i,a;
+        struct Lnode *p;
+        cin&gt;&gt;a;
+        for(i=1;a!=-1;i++)
+        &#123;
+        p=new Lnode;
+        p-&gt;data=a;
+        E-&gt;next=p;
+        p-&gt;next=NULL;
+        E=p;
+        cin&gt;&gt;a;
+        &#125;
+&#125;
+
+bool find(Linklist &amp;L,int a)
+&#123;
+    int j;
+    struct Lnode *p;
+    p=L-&gt;next;
+    for(j=1;p-&gt;next!=NULL;j++)      
+    &#123;
+        if(p-&gt;data==a) break;       
+        p=p-&gt;next;                 
+    &#125;
+    if(p-&gt;next==NULL&amp;&amp;p-&gt;data!=a)   return false;              
+    return true;  
+&#125;
+
+bool cutit(Linklist &amp;l1,Linklist &amp;l2,Linklist &amp;l3)
+&#123;
+    struct Lnode *p1=l1-&gt;next,*p2=l2-&gt;next,*p3=l3;
+    while(p1&amp;&amp;p2)
+    &#123;
+        if(p1-&gt;data&lt;p2-&gt;data)
+        &#123;
+            p1=p1-&gt;next;
+        &#125;
+        else
+        if(p1-&gt;data==p2-&gt;data)
+        &#123;
+            p3-&gt;next=p1;
+            p3=p3-&gt;next;
+            p1=p1-&gt;next;
+            p2=p2-&gt;next;
+
+        &#125;
+        else
+        if(p1-&gt;data&gt;p2-&gt;data)
+        &#123;
+            p2=p2-&gt;next;
+        &#125;
+    &#125;
+    if(p3-&gt;next!=NULL) p3-&gt;next=NULL;
+    return true;
+&#125;
+
+int putout(Linklist &amp;L)
+&#123;
+    int i;
+        struct Lnode *p=L;
+        if(L-&gt;next==NULL) &#123;
+        cout&lt;&lt;&quot;NULL&quot;; return 0;&#125;
+    for(i=0;p-&gt;next-&gt;next!=NULL;i++)
+    &#123;
+        cout&lt;&lt;p-&gt;next-&gt;data&lt;&lt;&quot; &quot;;
+        p=p-&gt;next;
+    &#125;
+    cout&lt;&lt;p-&gt;next-&gt;data;
+    return 0;
+&#125;
+
+int main()
+&#123;
+    Linklist L1,L2,L3;
+    create(L1);
+    create(L2);
+    init(L3);
+    cutit(L1,L2,L3);
+    putout(L3);
+    return 0;
+&#125;</code></pre>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构-3</title>
+    <url>/2021/04/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-3/</url>
+    <content><![CDATA[<h1 id="顺序栈"><a href="#顺序栈" class="headerlink" title="顺序栈"></a>顺序栈</h1><p>【Elemtype为数据类型】</p>
+<p>顺序栈本身是操作受限制的顺序表，只能在栈顶做插入删除，称入栈出栈，因为操作受限，算法相较普通顺序表简单。</p>
+<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><pre><code class="c++">typedef struct 
+&#123;
+    Elemtype *base;                    //定义栈底指针
+    Elemtype *top;                    //定义栈顶指针
+    int maxsize;                    //定义最大栈的最大容量
+&#125;SQstack;</code></pre>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><pre><code class="c++">bool initstack(SQstack &amp;sq)            //传址需要初始化的表
+&#123;
+    sq.base=new Elemtype[MAXSIZE];
+    //分配大小为MAXSIZE的空间，并返回首地址给表的栈底指针
+    if(!sq.base) return false;      //若分配失败则返回
+    sq.top=sq.base;                    //栈顶指针等于栈底指针，表示空栈
+    sq.maxsize=MAXSIZE;                //记录栈的最大容量为MAXSIZE
+    return true;                    //返回创建成功
+&#125;</code></pre>
+<h2 id="入栈（从栈顶插入）"><a href="#入栈（从栈顶插入）" class="headerlink" title="入栈（从栈顶插入）"></a>入栈（从栈顶插入）</h2><pre><code class="c++">bool Push(SQstack &amp;sq,Elemtype e)        //传址需要操作的栈，传值需要入栈的值
+&#123;
+    if(sq.top-sq.base&gt;=sq.maxsize) return false;
+    //若栈顶指针与栈底指针的差为最大空间（即栈满），返回入栈失败
+    *sq.top=e;
+    //栈顶指针总是指在栈顶元素的下一个位置，故而直接赋值
+    sq.top++;                            //栈顶指针后移
+    return true;                        //返回入栈成功
+&#125;</code></pre>
+<h2 id="出栈（从栈顶删除）"><a href="#出栈（从栈顶删除）" class="headerlink" title="出栈（从栈顶删除）"></a>出栈（从栈顶删除）</h2><pre><code class="c++">bool Pop(SQstack &amp;sq,Elemtype &amp;e)            //传址需要操作的表和出栈的元素
+&#123;
+    if(sq.top==sq.base) return false;
+    //若栈顶指针与栈底指针相同（即栈空），则返回失败
+    sq.top--;
+    //栈顶指针总是指在栈顶元素的下一个位置，故而栈顶指针后移
+    e=*sq.top;                                //将出栈的元素传给e
+    return true;
+&#125;</code></pre>
+<h2 id="取栈顶（取值）"><a href="#取栈顶（取值）" class="headerlink" title="取栈顶（取值）"></a>取栈顶（取值）</h2><pre><code class="c++">Elemtype gettop(SQstack &amp;sq)
+//传址需要操作的表，返回栈顶元素，该操作只取栈顶，不修改栈顶指针
+&#123;
+    if(sq.top!=sq.base)            //若该栈非空
+    &#123;
+    return *(sq.top-1);            //取栈顶指针的前一个位置，即栈顶元素向外传递
+    &#125;
+&#125;</code></pre>
+<h1 id="链式栈"><a href="#链式栈" class="headerlink" title="链式栈"></a>链式栈</h1><p>【Elemtype为数据类型】</p>
+<p>在无法估计栈数据量时，通常采用链式栈，而且因为栈的主要操作是插入和删除，所以用链表的头部作栈顶更加方便。</p>
+<h2 id="创建-1"><a href="#创建-1" class="headerlink" title="创建"></a>创建</h2><pre><code class="c++">typedef struct Lnode
+&#123;
+    Elemtype data;            //定义链表结点的数据域
+    struct Lnode *next;        //定义指向下一节点的指针域
+&#125;*Linkstack;</code></pre>
+<h2 id="初始化-1"><a href="#初始化-1" class="headerlink" title="初始化"></a>初始化</h2><pre><code class="c++">bool initstack(Linkstack &amp;ls)
+&#123;
+    ls=NULL;
+    //由于栈不需要对栈顶以外的元素操作，故而不需要设置头结点来使表头操作与表中表尾一致
+    return true;            //返回初始化成功
+&#125;</code></pre>
+<h2 id="入栈（从栈顶插入）-1"><a href="#入栈（从栈顶插入）-1" class="headerlink" title="入栈（从栈顶插入）"></a>入栈（从栈顶插入）</h2><pre><code class="c++">bool Push(Linkstack &amp;ls,Elemtype e)        //传址需要操作的表，传值需要插入的元素
+&#123;
+    Lnode *p;
+    p=new Lnode;                //重新分配一个结点空间，首地址赋给p
+    p-&gt;data=e;                    //新结点的数据域为e
+    p-&gt;next=ls;                    //新结点的指针域指向头指针ls，即将新结点作头插
+    ls=p;                        //头指针前移
+    return true;                //返回入栈成功
+&#125;</code></pre>
+<h2 id="出栈（从栈顶删除）-1"><a href="#出栈（从栈顶删除）-1" class="headerlink" title="出栈（从栈顶删除）"></a>出栈（从栈顶删除）</h2><pre><code class="c++">bool Pop(Linkstack &amp;ls，Elemtype &amp;e)   //传址需要操作的表和出栈的元素
+&#123;
+    if(ls==NULL) return false;        //栈空则返回删除失败
+    e=ls-&gt;data;                        //e接收出栈元素
+    Lnode *p=ls;                    //定义一个p指针指向原栈顶元素
+    ls=ls-&gt;next;                    //让头指针后移
+    delete p;                        //删除p指向的结点
+    return true;                    //返回删除完成
+&#125;</code></pre>
+<h2 id="取栈顶（取值）-1"><a href="#取栈顶（取值）-1" class="headerlink" title="取栈顶（取值）"></a>取栈顶（取值）</h2><pre><code class="c++">Elemtype gettop(Linkstack &amp;ls)    //传址需要操作的表
+&#123;
+    if(ls!=NULL)                //栈非空
+    return ls-&gt;data;            //返回栈顶元素的值，栈顶指针不变
+&#125;</code></pre>
+<h1 id="实际题目"><a href="#实际题目" class="headerlink" title="实际题目"></a>实际题目</h1><h2 id="R7-1-堆栈操作合法性-20-分"><a href="#R7-1-堆栈操作合法性-20-分" class="headerlink" title="R7-1 堆栈操作合法性 (20 分)"></a>R7-1 堆栈操作合法性 (20 分)</h2><p>假设以S和X分别表示入栈和出栈操作。如果根据一个仅由S和X构成的序列，对一个空堆栈进行操作，相应操作均可行（如没有出现删除时栈空）且最后状态也是栈空，则称该序列是合法的堆栈操作序列。请编写程序，输入S和X序列，判断该序列是否合法。</p>
+<p>输入格式:<br>输入第一行给出两个正整数N和M，其中N是待测序列的个数，M（≤50）是堆栈的最大容量。随后N行，每行中给出一个仅由S和X构成的序列。序列保证不为空，且长度不超过100。</p>
+<p>输出格式:<br>对每个序列，在一行中输出YES如果该序列是合法的堆栈操作序列，或NO如果不是。</p>
+<p>输入样例：</p>
+<pre><code>4 10
+SSSXXSXXSX
+SSSXXSXXS
+SSSSSSSSSSXSSXXXXXXXXXXX
+SSSXXSXXX</code></pre>
+<p>输出样例：</p>
+<pre><code class="：">YES
+NO
+NO
+NO</code></pre>
+<p><strong>解法：</strong></p>
+<pre><code class="c++">#include&lt;iostream&gt;
+#include&lt;string&gt;
+using namespace std;
+
+typedef struct
+&#123;
+    char *top;
+    char *base;
+    int size;
+&#125;SQstack;
+
+bool init(SQstack &amp;sq,int m)
+&#123;
+    sq.base=new char[m];
+    if(!sq.base) return false;
+    sq.top=sq.base;
+    sq.size=m;
+    return true;
+&#125;
+
+bool pop(SQstack &amp;sq)
+&#123;
+    if(sq.top==sq.base) return false;
+    sq.top--;
+    return true;
+&#125;
+
+bool push(SQstack &amp;sq,char e)
+&#123;
+    if(sq.top-sq.base==sq.size) return false;
+    *sq.top=e;
+    sq.top++;
+    return true;
+&#125;
+
+int main()
+&#123;
+    int n,m,i,j=0;
+    bool flag=true;
+    cin&gt;&gt;n&gt;&gt;m;
+    string str;
+    SQstack L;
+    for(i=0;i&lt;n;i++)
+    &#123;
+        init(L,m);
+        cin&gt;&gt;str;
+        flag=true;
+        for(j=0;str[j]!=&#39;\0&#39;;j++)
+        &#123;
+            if(str[j]==&#39;S&#39;) 
+            &#123;
+                flag=push(L,str[j]);
+            &#125;
+            if(str[j]==&#39;X&#39;) 
+            &#123;
+                flag=pop(L);
+            &#125;
+        &#125;
+    if(L.base==L.top&amp;&amp;flag==true) cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;
+    else cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;
+    &#125;
+    return 0;
+&#125;</code></pre>
+<h2 id="R7-2-回文判断-20-分"><a href="#R7-2-回文判断-20-分" class="headerlink" title="R7-2 回文判断 (20 分)"></a>R7-2 回文判断 (20 分)</h2><p>回文是指正读反读均相同的字符序列，如“abba”和“abdba”均是回文，但“good”不是回文。编写一个程序，使用栈判定给定的字符序列是否为回文。</p>
+<p>输入格式:<br>输入待判断的字符序列，按回车键结束，字符序列长度&lt;20。</p>
+<p>输出格式:<br>若字符序列是回文，输出“YES”；否则，输出“NO”。</p>
+<p>输入样例:</p>
+<pre><code>abdba</code></pre>
+<p>输出样例:</p>
+<pre><code>YES</code></pre>
+<p><strong>解法：</strong></p>
+<pre><code class="c++">#include&lt;iostream&gt;
+#include&lt;string&gt;
+using namespace std;
+
+typedef struct 
+&#123;
+    char *top;
+    char *base;
+    int size;
+&#125;SQstack;
+
+bool init(SQstack &amp;sq)
+&#123;
+    sq.base=new char[20];
+    if(!sq.base) return false;
+    sq.top=sq.base;
+    sq.size=20;
+    return true;
+&#125;
+
+bool push(SQstack &amp;sq,char a)
+&#123;
+    if(sq.top-sq.base==sq.size) return false;
+    *sq.top=a;
+    sq.top++;
+
+    return true;
+&#125;
+
+bool pop(SQstack &amp;sq)
+&#123;
+    if(sq.top==sq.base) return false;
+    sq.top--;
+
+    return true;
+&#125;
+
+bool gettop(SQstack &amp;sq,int &amp;a)
+&#123;
+    if(sq.base==sq.top) return false;
+    a=*(sq.top-1);
+    return true;
+&#125;
+
+int main()
+&#123;
+    SQstack L;
+    init(L);
+    string str;
+    int i,n=0,a;
+    bool flag=true;
+    cin&gt;&gt;str;
+    n=str.size();
+    if(n%2==0)
+    &#123;
+
+        for(i=0;i&lt;n;i++)
+        &#123;
+            if(i&lt;n/2) push(L,str[i]);
+            else 
+            &#123;
+
+                gettop(L,a);
+
+                if(str[i]==a) pop(L);
+                else 
+                &#123;
+                    flag=false;
+                    break;
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+    else
+    &#123;
+
+        for(i=0;i&lt;n;i++)
+        &#123;
+            if(i==(n-1)/2);
+            else 
+            &#123;
+                if(i&lt;(n-1)/2) push(L,str[i]);
+                else 
+                &#123;
+                    gettop(L,a);
+
+                    if(str[i]==a) pop(L);
+                    else 
+                    &#123;
+
+                        flag=false;
+                        break;
+                    &#125;
+               &#125;
+        &#125;
+    &#125;
+    &#125;
+            if(flag==true) cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;
+        else cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;
+&#125;</code></pre>
+<h2 id="R7-3-括号匹配-20-分"><a href="#R7-3-括号匹配-20-分" class="headerlink" title="R7-3 括号匹配 (20 分)"></a>R7-3 括号匹配 (20 分)</h2><p>检查一段C语言代码的小括号( )、 中括号 [ ] 和大括号{ } 是否匹配。</p>
+<p>输入格式:<br>在一行中输入一段C语言代码，长度不超过1000个字符（行末以换行符结束）。</p>
+<p>输出格式:<br>第一行输出左括号的数量和右括号的数量，中间以一个空格间隔。<br>若括号是匹配的，在第二行打印YES，否则打印NO。</p>
+<p>输入样例1:</p>
+<pre><code>for(int i=0; i&lt;v; i++)&#123; visited[i] = 0; for(int j=0; j&lt;v; j++) scanf(&quot;%d&quot;,&amp;(g-&gt;Adj[i][j])); &#125;</code></pre>
+<p>输出样例1:</p>
+<pre><code>8 8
+YES</code></pre>
+<p>输入样例2:</p>
+<pre><code>for(int i=0; i&lt;v; i++) a(i]=0;</code></pre>
+<p>输出样例2:</p>
+<pre><code>2 2
+NO</code></pre>
+<p><strong>解法：</strong></p>
+<pre><code class="c++">#include&lt;iostream&gt;
+#include&lt;string&gt;
+using namespace std;
+
+typedef struct
+&#123;
+    char *top;
+    char *base;
+    int size;
+&#125;SQstack;
+
+bool init(SQstack &amp;sq)
+&#123;
+    sq.base=new char[500];
+    if(!sq.base) return false;
+    sq.top=sq.base;
+    sq.size=500;
+    return true;
+&#125;
+
+bool push(SQstack &amp;sq,char a)
+&#123;
+    if(sq.top-sq.base==sq.size) return false;
+    *sq.top=a;
+    sq.top++;
+    return true;
+&#125;
+
+bool pop(SQstack &amp;sq)
+&#123;
+    if(sq.top==sq.base) return true;
+    sq.top--;
+    return true;
+&#125;
+
+bool gettop(SQstack &amp;sq,char &amp;a)
+&#123;
+    if(sq.top==sq.base) return false;
+    a=*(sq.top-1);
+    return true;
+&#125;
+
+int main()
+&#123;
+    SQstack L;
+    init(L);
+    char a=&#39;1&#39;;
+    bool flag=true;
+    int i,left=0,right=0,k=0;
+    char str[500];
+    for(i=0;i&lt;500;i++)
+    &#123;
+        cin&gt;&gt;str[i];
+        k++;
+    &#125;
+    for(i=0;i&lt;k;i++)
+    &#123;
+        if(str[i]==&#39;(&#39;||str[i]==&#39;[&#39;||str[i]==&#39;&#123;&#39;)
+        &#123;
+            left++;
+            push(L,str[i]);
+        &#125;
+        else
+        &#123;
+        if(str[i]==&#39;)&#39;||str[i]==&#39;]&#39;||str[i]==&#39;&#125;&#39;)
+        &#123;
+            right++;
+            gettop(L,a);
+            if((str[i]==&#39;)&#39;&amp;&amp;a==&#39;(&#39;)||(str[i]==&#39;]&#39;&amp;&amp;a==&#39;[&#39;)||(str[i]==&#39;&#125;&#39;&amp;&amp;a==&#39;&#123;&#39;))
+            &#123;
+                pop(L);
+            &#125;
+            else flag=false;
+        &#125;
+        &#125;
+    &#125;
+    if(L.top!=L.base) flag=false;
+    if(left==0&amp;&amp;right==0) flag=true;
+    cout&lt;&lt;left&lt;&lt;&quot; &quot;&lt;&lt;right&lt;&lt;endl;
+    if(flag) cout&lt;&lt;&quot;YES&quot;;
+    else cout&lt;&lt;&quot;NO&quot;;
+    return 0;
+&#125;</code></pre>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构-4</title>
+    <url>/2021/04/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-4/</url>
+    <content><![CDATA[<h1 id="顺序队列"><a href="#顺序队列" class="headerlink" title="顺序队列"></a>顺序队列</h1><p>队列是先进先出的线性结构，也是只能从队头删除，从队尾插入的线性表，为了使空间利用更加充分，从而避免假溢出，通常采用循环队列</p>
+<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><pre><code>typedef struct 
+&#123;
+    Elemtype *base;                //储存空间的基址指针
+    int front;                    //定义一个头指针
+    int rear;                    //定义一个尾指针
+&#125;SQqueue;</code></pre>
+<p><strong>注：此处front和rear指针仅仅设为了int类型，而并非真正的指针类型，所表述的是队头队尾元素所在的位置下标</strong></p>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><pre><code>bool initqueue(SQqueue &amp;sq)
+&#123;
+    sq.base=new Elemtype[MAXSIZE];            //为队列分配空间
+    if(!sq.base) return false;                //没能分配成功，返回失败
+    sq.front=sq.rear=0;                        //头尾指针置为零，队列为空
+    return true;
+&#125;</code></pre>
+<h2 id="求队列长度"><a href="#求队列长度" class="headerlink" title="求队列长度"></a>求队列长度</h2><pre><code>int queuelength(SQqueue &amp;sq)
+&#123;
+    return (sq.rear-sq.front+MAXSIZE)%MAXSIZE;
+&#125;</code></pre>
+<p>注：在没有特殊注明的情况下，所说队列都为循环队列，front指向队头元素，rear指向队尾元素的后一个元素，为区分队空与队满，此处少用一个元素空间，即队列空间大小为m-1个元素时队满，故而当队列满足“rear=front“时队空，当队列满足”(rear+1)%MAXSIZE=front“时队满。</p>
+<h2 id="入队（从队尾插入）"><a href="#入队（从队尾插入）" class="headerlink" title="入队（从队尾插入）"></a>入队（从队尾插入）</h2><pre><code>bool enterqueue(SQqueue &amp;sq,Elemtype e)          //传址需要操作的表，传值入队元素
+&#123;
+    if((sq.rear+1)%MAXSIZE==sq.front) return false;    //判断队满时返回失败
+    sq.base[sq.rear]=e;                     //让队尾元素的后一个元素等于e
+    sq.rear=(sq.rear+1)%MAXSIZE;         //队尾指针后移
+    return true；                        //返回成功入队
+&#125;</code></pre>
+<h2 id="出队（从队头删除）"><a href="#出队（从队头删除）" class="headerlink" title="出队（从队头删除）"></a>出队（从队头删除）</h2><pre><code>bool deletequeue(SQqueue &amp;sq,Elemtype &amp;e)
+&#123;
+    if(sq.front==sq.rear) return false;        //若队空，则返回出队失败
+    e=sq.base[sq.front];                    //用e获得出队的队头元素
+    sq.front=(sq.front+1)%MAXSIZE;            //队头指针后移
+    return true;                            //返回成功出队
+&#125;</code></pre>
+<h2 id="取队头元素"><a href="#取队头元素" class="headerlink" title="取队头元素"></a>取队头元素</h2><pre><code>Elemtype gethead(SQqueue &amp;sq)
+//仅返回表的队头元素，不修改头指针
+&#123;
+    if(sq.front!=sq.rear)             //判断队列非空
+    return     sq.base[sq.front];        //返回队头元素
+&#125;</code></pre>
+<h1 id="实际题目"><a href="#实际题目" class="headerlink" title="实际题目"></a>实际题目</h1><h2 id="R7-4-队列操作-20-分"><a href="#R7-4-队列操作-20-分" class="headerlink" title="R7-4 队列操作 (20 分)"></a>R7-4 队列操作 (20 分)</h2><p>请实现一个MyQueue类，实现出队，入队，求队列长度.</p>
+<p>实现入队函数 void push(int x); 实现出队函数 int pop(); 实现求队列长度函数 int size();</p>
+<p>输入格式:<br>每个输入包含1个测试用例。每个测试用例第一行给出一个正整数 n (n &lt;= 10^6) ，接下去n行每行一个数字，表示一种操作： 1 x ： 表示从队尾插入x，0&lt;=x&lt;=2^31-1。 2 ： 表示队首元素出队。 3 ： 表示求队列长度。</p>
+<p>输出格式:<br>对于操作2,若队列为空，则输出 “Invalid”,否则请输出队首元素。 对于操作3，请输出队列长度。 每个输出项最后换行。</p>
+<p>输入样例:</p>
+<pre><code>5
+3
+2
+1 100
+3
+2</code></pre>
+<p>输出样例:</p>
+<pre><code>0
+Invalid
+1
+100</code></pre>
+<p><strong>解法：</strong></p>
+<pre><code class="c++">#include&lt;iostream&gt;
+using namespace std;
+
+typedef struct
+&#123;
+    int *base;
+    int front;
+    int rear;
+&#125;SQueue;
+
+bool init(SQueue &amp;sq)
+&#123;
+    sq.base=new int[50];
+    if(!sq.base) return false;
+    sq.front=0;
+    sq.rear=0;
+    return true;
+&#125;
+
+int length(SQueue &amp;sq)
+&#123;
+    return (sq.rear-sq.front+50)%50;
+&#125;
+
+bool enter(SQueue &amp;sq,int a)
+&#123;
+    if((sq.rear+1)%50==sq.front) return false;
+    sq.base[sq.rear]=a;
+    sq.rear=(sq.rear+1)%50;
+    return true;
+&#125;
+
+bool out(SQueue &amp;sq,int &amp;a)
+&#123;
+    if(sq.front==sq.rear) return false;
+    a=sq.base[sq.front];
+    sq.front=(sq.front+1)%50;
+    return true;
+&#125;
+
+int main()
+&#123;
+    SQueue L;
+    init(L);
+    int n,i,j,k;
+    cin&gt;&gt;n;
+    for(i=0;i&lt;n;i++)
+    &#123;
+        cin&gt;&gt;j;
+        switch(j)
+        &#123;
+            case 1:
+                cin&gt;&gt;k;
+                enter(L,k);
+                break;
+            case 2:
+                if(out(L,k)) cout&lt;&lt;k&lt;&lt;endl;
+                else cout&lt;&lt;&quot;Invalid&quot;&lt;&lt;endl;
+                break;
+            case 3:
+                cout&lt;&lt;length(L)&lt;&lt;endl;
+                break;
+        &#125;
+    &#125;
+    return 0;
+&#125;
+</code></pre>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构-5</title>
+    <url>/2021/04/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-5/</url>
+    <content><![CDATA[<h1 id="串类型"><a href="#串类型" class="headerlink" title="串类型"></a>串类型</h1><h2 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h2><p>串的存储结构可以使用顺序和链式结构，顺序结构中又分为定长和堆式存储结构，但由于链式不如顺序结构灵活，操作简单，故而此处只写入顺序结构</p>
+<h3 id="顺序-定长存储"><a href="#顺序-定长存储" class="headerlink" title="顺序-定长存储"></a>顺序-定长存储</h3><pre><code class="c++">typedef struct&#123;
+    char ch[maxsize+1];        //定义字符数组，串的最大长度为maxsize，多申请防止溢出的存储空间
+    int length;                //串的当前长度
+&#125;Sstring;</code></pre>
+<h3 id="顺序-堆式存储"><a href="#顺序-堆式存储" class="headerlink" title="顺序-堆式存储"></a>顺序-堆式存储</h3><pre><code class="c++">typedef struct&#123;
+    char *ch;                //如果是非空串，则按串长分配存储区，否则ch指向NULL;
+    int length;                //串的当前长度
+&#125;</code></pre>
+<h2 id="模式匹配算法"><a href="#模式匹配算法" class="headerlink" title="模式匹配算法"></a>模式匹配算法</h2><p>串的模式匹配用于在主串中寻找子串，如果匹配成功，则确定相匹配的子串中第一个字符在主串s中出现的位置</p>
+<h3 id="BF算法"><a href="#BF算法" class="headerlink" title="BF算法"></a>BF算法</h3><pre><code class="c++">int Index_BF(Sstring s,Sstring t,int pos)
+    //传址需要比较的主串s，子串t，以及从主串序号为pos处开始查找
+&#123;
+    int i,j;
+    for(i=pos,j=1;i&lt;=s.length&amp;&amp;j&lt;=t.length;i++,j++)
+        //初始化i=pos,j=1，当两个串都没有到串尾时循环，i，j依次后移
+    &#123;
+        if(s.ch[i]==t.ch[i])    //当主串s中i位置的字符和子串t中j位置的字符相同时
+        &#123;
+            continue;        //继续下一次循环，即只执行for语句的i++，j++
+        &#125;
+        else
+        &#123;
+            i=i-j+1;        //否则，i回到开始匹配的位置（执行for语句的i++后移到下一个位置
+            j=0;            //j被重置为0（然后执行for语句的j++后变为j=1）
+        &#125;
+    &#125;
+    if(j&gt;t.length) return i-t.length;
+    //当j的位置超出了t的长度，则说明完全匹配，返回首字符开始与主串匹配的位置
+    else return 0;
+    //否则返回0，表示没有匹配成功
+&#125;</code></pre>
+<h3 id="KMP算法"><a href="#KMP算法" class="headerlink" title="KMP算法"></a>KMP算法</h3><pre><code class="c++">int Index_KMP(Sstring s,Sstring t,int pos)
+    //传址需要比较的主串s，子串t，以及从主串序号为pos处开始查找
+&#123;
+    int i,j;
+    for(i=pos,j=1;i&lt;=s.length&amp;&amp;j&lt;=t.length;i++,j++)
+        //初始化i=pos,j=1，当两个串都没有到串尾时循环，i，j依次后移
+    &#123;
+        if(j==0||s.ch[i]==t.ch[i])    //当主串s中i位置的字符和子串t中j位置的字符相同时
+        &#123;
+            continue;        //继续下一次循环，即只执行for语句的i++，j++
+        &#125;
+        else
+        &#123;
+            j=next[j];        //KMP相比BF算法节省时间的原因
+        &#125;
+    &#125;
+    if(j&gt;t.length) return i-t.length;
+    //当j的位置超出了t的长度，则说明完全匹配，返回首字符开始与主串匹配的位置
+    else return 0;
+    //否则返回0，表示没有匹配成功
+&#125;
+
+void get_next(Sstring t,int next[])
+    //求子串t的next函数值并且存进数组next
+&#123;
+    int j,i=1,next[1]=0;
+    //定义i，j，以及next数组的第一个值
+    for(j=0;i&lt;t.length;)                //i不超过子串t长度时循环
+    &#123;
+        if(j==0||t.ch[i]==t.ch[j])        //如果j为0或是前后两个字符相同时
+        &#123;
+            i++;
+            j++;
+            if(t.ch[i]!=t.ch[j])        //如果前后两个字符不相同
+                next[i]=j;                //令下次比较从j开始
+            else next[i]=next[j];        
+        &#125;
+        else j=next[j];
+    &#125;
+&#125;</code></pre>
+<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="二维数组的顺序存储"><a href="#二维数组的顺序存储" class="headerlink" title="二维数组的顺序存储"></a>二维数组的顺序存储</h2><p>已知一维数组中a【i】的存储位置在a+i处，二维数组因主序不同分为两种存储结构（常用行序）</p>
+<p>设每个数据元素占L个存储单元，则二维数组A[0…m-1,0…n-1]（下标从0开始，共有m行n列）中任一元素a【i】【j】的存储位置如下：</p>
+<p><strong>行为主序的存储结构</strong>：</p>
+<p>$$<br>LOC(i , j) = LOC(0 , 0) + (n * i + j) L<br>$$<br><strong>列为主序的存储结构：</strong><br>$$<br>LOC(i , j) = LOC(0 , 0) + (m * j + i) L<br>$$<br>其中，LOC(i,j)是a【i】【j】的存储位置</p>
+<p>LOC（0，0）是a【0】【0】的存储位置，即二维数组A的起始存储位置、也称为基地址或基址</p>
+<p><strong>故而总结可知：</strong><br>$$<br>LOC(i , j) = 基址 + (副序长度 * 主序标号 + 另一标号) * 数据所占存储单元<br>$$</p>
+<h2 id="特殊矩阵的压缩存储"><a href="#特殊矩阵的压缩存储" class="headerlink" title="特殊矩阵的压缩存储"></a>特殊矩阵的压缩存储</h2><h3 id="对称矩阵"><a href="#对称矩阵" class="headerlink" title="对称矩阵"></a>对称矩阵</h3><p>特点：在n*n的矩阵a中，1&lt;= i，j &lt;= n<br>存储方法：只存储下（或者上）三角（包括主对角线）的数据元素。共占用n(n+1)/2个元素空间。</p>
+<p><img src="/2021/04/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-5/1.png" alt="1"></p>
+<p>上下三角中的元素均为：n(n+1) / 2<br>可以以行序为主序将元素存放在一个一维数组a[n(n+1) / 2]中，a[k]的位置可如下公式确定<br>$$<br>k=主序序号（主序序号-1）/2+副序序号-1，主序&gt;=副序<br>$$<br>注：上式的k从0开始计算</p>
+<h3 id="三角矩阵"><a href="#三角矩阵" class="headerlink" title="三角矩阵"></a>三角矩阵</h3><p><img src="/2021/04/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-5/2.png" alt="2"></p>
+<h3 id="对角矩阵"><a href="#对角矩阵" class="headerlink" title="对角矩阵"></a>对角矩阵</h3><p><img src="/2021/04/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-5/3-1.png" alt="3-1"></p>
+<h3 id><a href="#" class="headerlink" title></a><img src="/2021/04/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-5/3-2.png" alt="3-2"></h3><h3 id="稀疏矩阵"><a href="#稀疏矩阵" class="headerlink" title="稀疏矩阵"></a>稀疏矩阵</h3><p><img src="/2021/04/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-5/4.png" alt="4"></p>
+<h1 id="广义表"><a href="#广义表" class="headerlink" title="广义表"></a>广义表</h1><p>一般记作LS（a1，a2，……，an），其中LS为广义表的名称，n为广义表的长度，其中的元素可以是单个数据（原子）也可以是广义表（子表），一般小写为原子，大写为子表</p>
+<p><strong>广义表示例：</strong></p>
+<ul>
+<li>A=（）——空表，长度为0</li>
+<li>B=（e）——只有一个原子，为e，长度为1</li>
+<li>C=（a，（b，c，d））——有一个原子a和一个子表（b，c，d），共两个元素，长度为2</li>
+<li>D=（A，B，C）——有三个子表，即三个元素，长度为3</li>
+<li>E=（a，E）——一个递归的表，长度为2</li>
+</ul>
+<p>注：广义表A=（（））和广义表B=（）是不相同的，A为有一个空子表，长度为1的广义表，而B是一个空表，长度为0</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网页设计-1</title>
+    <url>/2021/03/19/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1-1/</url>
+    <content><![CDATA[<h1 id="结构标签"><a href="#结构标签" class="headerlink" title="结构标签"></a>结构标签</h1><pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;             //编码方式为utf-8
+        &lt;title&gt;第一个HTML&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;
+            这是我的第一个html文件
+        &lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>以上为基本应该存在的结构框架，效果图如下：</p>
+<p><img src="/2021/03/19/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1-1/2.png" alt="2"></p>
+<h1 id="文字段落标签"><a href="#文字段落标签" class="headerlink" title="文字段落标签"></a>文字段落标签</h1><h2 id="标题与段落标签"><a href="#标题与段落标签" class="headerlink" title="标题与段落标签"></a>标题与段落标签</h2><h3 id="标题标签"><a href="#标题标签" class="headerlink" title="标题标签"></a>标题标签</h3><pre><code class="html">&lt;h1&gt; &lt;h2&gt; &lt;h3&gt; &lt;h4&gt; &lt;h5&gt; &lt;h6&gt; //从左到右重要性递减
+    &lt;hn align=&quot;对齐方式&quot;&gt;标题内容&lt;/hn&gt;</code></pre>
+<h3 id="段落标签"><a href="#段落标签" class="headerlink" title="段落标签"></a>段落标签</h3><pre><code class="html">&lt;p align=&quot;对齐方式&quot;&gt;段落文本&lt;/p&gt;</code></pre>
+<h3 id="水平分割线标签"><a href="#水平分割线标签" class="headerlink" title="水平分割线标签"></a>水平分割线标签</h3><pre><code class="html">&lt;hr 属性=&quot;属性值&quot;/&gt;
+//size设置粗细，align对齐方式，width设置宽度，color设置颜色，noshade设置3d阴影</code></pre>
+<h3 id="换行缩进标签"><a href="#换行缩进标签" class="headerlink" title="换行缩进标签"></a>换行缩进标签</h3><pre><code class="html">&lt;br/&gt;                        //强制换行
+&lt;blockquote&gt;&lt;/blockquote&gt;   //缩进</code></pre>
+<h2 id="文本的格式化标签"><a href="#文本的格式化标签" class="headerlink" title="文本的格式化标签"></a>文本的格式化标签</h2><pre><code class="html">&lt;b&gt;&lt;/b&gt;                        //粗体
+&lt;strong&gt;&lt;/strong&gt;            //强调，一般为粗体
+&lt;i&gt;&lt;/i&gt;                        //斜体
+&lt;em&gt;&lt;/em&gt;                    //强调，一般为斜体
+&lt;del&gt;&lt;/del&gt;                    //删除线
+&lt;ins&gt;&lt;/ins&gt;                    //加下划线
+&lt;sup&gt;&lt;/sup&gt;                    //上标
+&lt;sub&gt;&lt;/sub&gt;                    //下标</code></pre>
+<h2 id="特殊字符标签"><a href="#特殊字符标签" class="headerlink" title="特殊字符标签"></a>特殊字符标签</h2><table>
+<thead>
+<tr>
+<th>特殊字符</th>
+<th>字符代码</th>
+<th>特殊字符</th>
+<th>字符代码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>空格</td>
+<td>&amp;nbsp；</td>
+<td>“</td>
+<td>&amp;quot；</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>&amp;lt；</td>
+<td>©</td>
+<td>&amp;copy；</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>&amp;gt；</td>
+<td>®</td>
+<td>&amp;reg；</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>&amp;amp；</td>
+<td>×</td>
+<td>&amp;times；</td>
+</tr>
+</tbody></table>
+<h1 id="图像与超链接标签"><a href="#图像与超链接标签" class="headerlink" title="图像与超链接标签"></a>图像与超链接标签</h1><h2 id="图像标签"><a href="#图像标签" class="headerlink" title="图像标签"></a>图像标签</h2><pre><code class="html">&lt;img src=&quot;图像URL&quot;/&gt;</code></pre>
+<h2 id="超链接标签"><a href="#超链接标签" class="headerlink" title="超链接标签"></a>超链接标签</h2><h3 id="创建超链接"><a href="#创建超链接" class="headerlink" title="创建超链接"></a>创建超链接</h3><pre><code class="html">&lt;a href=&quot;资源地址&quot; target=&quot;窗口名称&quot; title=&quot;链接提示&quot;&gt;链接对象&lt;/a&gt;</code></pre>
+<h3 id="绝对路径和相对路径"><a href="#绝对路径和相对路径" class="headerlink" title="绝对路径和相对路径"></a>绝对路径和相对路径</h3><ol>
+<li>绝对路径：网络主页上所存在的，或是文件在硬盘上的真实路径。</li>
+<li>相对路径：以当前文件为起点，进行相对文件的查找。</li>
+</ol>
+<pre><code class="html">./          //指当前文件所在目录下（可省略）
+../         //指当前文件所在目录的上一目录下</code></pre>
+<h3 id="锚点链接"><a href="#锚点链接" class="headerlink" title="锚点链接"></a>锚点链接</h3><p>锚点定义：</p>
+<pre><code class="html">&lt;a name=&quot;锚点名称&quot;&gt;文字&lt;/a&gt;
+//或将name改做id</code></pre>
+<p>跳转锚点：</p>
+<pre><code class="html">&lt;a href=&quot;锚点名称&quot;&gt;链接的文字&lt;/a&gt;</code></pre>
+<h3 id="影像地图"><a href="#影像地图" class="headerlink" title="影像地图"></a>影像地图</h3><pre><code class="html">&lt;img src=&quot;图像地址&quot; usemap=&quot;#影像地图名称&quot;&gt;   //使用影像地图
+
+&lt;map name=&quot;影像地图名称&quot;&gt;                      //定义影像地图
+    &lt;area shape=&quot;热区形状&quot; coords=&quot;热区坐标&quot; href=&quot;链接地址&quot;&gt;
+    &lt;!--此处可以添加多个area--&gt;
+&lt;/map&gt;</code></pre>
+<p><strong>shape与coords的附加说明：</strong></p>
+<ul>
+<li>shape=”circle“，coords=”x,y,z“（x,y定义圆心位置，z为半径)</li>
+<li>shape=“polygon”，coords=“x1,y1,x2,y2……”（每个顶点的坐标都要写入）</li>
+<li>shape=“rectangle”，coords=“x1,y1,x2,y2”（一个顶点的坐标和其对角顶点坐标）</li>
+</ul>
+<h1 id="表格与列表标签"><a href="#表格与列表标签" class="headerlink" title="表格与列表标签"></a>表格与列表标签</h1><h2 id="表格标签"><a href="#表格标签" class="headerlink" title="表格标签"></a>表格标签</h2><h3 id="表格的定义范例"><a href="#表格的定义范例" class="headerlink" title="表格的定义范例"></a><strong>表格的定义范例</strong></h3><pre><code class="html">&lt;table&gt;
+    &lt;tr&gt;                                //表格的第一个横行
+        &lt;th&gt;此处表头字体自动加粗&lt;/th&gt;         //具体到行内的一个单元格
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;                                //表格的第二个横行
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+<pre><code class="html">&lt;caption&gt;定义表格的标题&lt;/caption&gt;
+&lt;thead&gt;定义表格的表头&lt;/thead&gt;
+&lt;tbody&gt;对表格中的主体内容进行分组&lt;/tbody&gt;
+&lt;tfoot&gt;对表格中的页脚内容进行分组&lt;/tfoot&gt;
+// 后三个标签应该结合使用</code></pre>
+<h3 id="表格标签”table”的属性："><a href="#表格标签”table”的属性：" class="headerlink" title="表格标签”table”的属性："></a><strong>表格标签”table”的属性：</strong></h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>width/height</td>
+<td>表格的宽度（高度），值可以是数值或百分比，数值表示像素点数，百分比是占浏览器宽度（高度）的比例</td>
+</tr>
+<tr>
+<td>align</td>
+<td>表格相对周围元素的对齐方式</td>
+</tr>
+<tr>
+<td>background</td>
+<td>表格的背景图片</td>
+</tr>
+<tr>
+<td>bgcolor</td>
+<td>表格的背景颜色，一般后期通过样式控制，不建议使用</td>
+</tr>
+<tr>
+<td>border</td>
+<td>表格边框宽度（像素为单位）</td>
+</tr>
+<tr>
+<td>bordercolor</td>
+<td>表格边框的颜色</td>
+</tr>
+<tr>
+<td>cellspacing</td>
+<td>单元格之间的间距</td>
+</tr>
+<tr>
+<td>cellpadding</td>
+<td>单元格内容与边界之间空白距离的大小</td>
+</tr>
+</tbody></table>
+<h3 id="表格设置border时，可以设置显示隐藏边框"><a href="#表格设置border时，可以设置显示隐藏边框" class="headerlink" title="表格设置border时，可以设置显示隐藏边框"></a><strong>表格设置border时，可以设置显示隐藏边框</strong></h3><table>
+<thead>
+<tr>
+<th>frame</th>
+<th>描述</th>
+<th>frame</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>box</td>
+<td>显示所有边框</td>
+<td>alove</td>
+<td>只显示上边框</td>
+</tr>
+<tr>
+<td>void</td>
+<td>不显示边框</td>
+<td>below</td>
+<td>只显示下边框</td>
+</tr>
+<tr>
+<td>hsides</td>
+<td>只显示上下边框</td>
+<td>lhs</td>
+<td>只显示左边框</td>
+</tr>
+<tr>
+<td>vsides</td>
+<td>只显示左右边框</td>
+<td>rhs</td>
+<td>只显示右边框</td>
+</tr>
+</tbody></table>
+<h3 id="单元格td的设置"><a href="#单元格td的设置" class="headerlink" title="单元格td的设置"></a><strong>单元格td的设置</strong></h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>width/height</td>
+<td>单元格的宽和高，接受绝对值和相对值</td>
+<td>align</td>
+<td>单元格内容的水平对齐方式（left、right、center等）</td>
+</tr>
+<tr>
+<td>colspan</td>
+<td>规定单元格横跨列数（纵向合并单元格）</td>
+<td>valign</td>
+<td>单元格内容的垂直对齐方式（top、middle、bottom等）</td>
+</tr>
+<tr>
+<td>rowspan</td>
+<td>规定单元格横跨行数（横向合并单元格）</td>
+<td>bgcolor</td>
+<td>单元格的背景色</td>
+</tr>
+</tbody></table>
+<h2 id="列表标签"><a href="#列表标签" class="headerlink" title="列表标签"></a>列表标签</h2><ul>
+<li><h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><pre><code class="html">&lt;ul type=编号类型&gt;
+    &lt;li&gt;第一项&lt;/li&gt;
+    &lt;li&gt;第二项&lt;/li&gt;
+    &lt;li&gt;第三项&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<p><strong>type决定列表图标类型：</strong></p>
+<ul>
+<li><p>disc为实心圆（默认）</p>
+</li>
+<li><p>circle为空心圆</p>
+</li>
+<li><p>square为方块</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><pre><code class="html">&lt;ol type=&quot;编号类型&quot; start=value&gt;
+    &lt;li&gt;第一项&lt;/li&gt;
+    &lt;li&gt;第二项&lt;/li&gt;
+    &lt;li&gt;第三项&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+<p><strong>type决定列表序号样式：</strong></p>
+<ul>
+<li><strong>type=1：</strong>1,2,3,4,5……</li>
+<li><strong>type=A：</strong>A,B,C,D,E……</li>
+<li><strong>type=a：</strong>a,b,c,d,e……</li>
+<li><strong>type=I：</strong>I,II,III,IV,V……</li>
+<li><strong>type=i：</strong>i,ii,iii,iv,v……</li>
+</ul>
+<p><strong>reversed属性为true时，可以实现倒序排列，start指定第一项的序号</strong></p>
+</li>
+</ul>
+<ul>
+<li><h3 id="定义列表"><a href="#定义列表" class="headerlink" title="定义列表"></a>定义列表</h3></li>
+</ul>
+<pre><code class="html">&lt;dl&gt;
+    &lt;dt&gt;第一项&lt;/dt&gt;&lt;dd&gt;注释一&lt;/dd&gt;
+    &lt;dt&gt;第二项&lt;/dt&gt;&lt;dd&gt;注释二&lt;/dd&gt;
+    &lt;dt&gt;第三项&lt;/dt&gt;&lt;dd&gt;注释三&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+<ul>
+<li><h3 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h3></li>
+</ul>
+<pre><code class="html">&lt;ul type=&quot;circle&quot;&gt;
+    &lt;li&gt;北京&lt;/li&gt;
+    &lt;li&gt;上海
+        &lt;ol start=&quot;6&quot; type=&quot;1&quot; reversed=&quot;true&quot;&gt;
+        &lt;li&gt;浦东新区&lt;/li&gt;
+        &lt;li&gt;徐汇区&lt;/li&gt;
+        &lt;li&gt;长宁区&lt;/li&gt;
+        &lt;li&gt;普陀区&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/li&gt;
+    &lt;li&gt;广州&lt;/li&gt;
+    &lt;li&gt;深圳&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<p>以上代码为无序列表嵌套有序列表，效果图如下</p>
+<p><img src="/2021/03/19/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1-1/1.png" alt="1"></p>
+<h1 id="页面布局与float浮动"><a href="#页面布局与float浮动" class="headerlink" title="页面布局与float浮动"></a>页面布局与float浮动</h1><ul>
+<li><h2 id="页面布局方式"><a href="#页面布局方式" class="headerlink" title="页面布局方式"></a>页面布局方式</h2><p><strong>主要包括文档流和浮动层，通常以文档流为默认</strong></p>
+<p>文档流：从上到下，从左到右排布，遇到块级元素换行</p>
+<p>浮动层：给元素的float属性赋值后元素将紧贴父元素的左右边框，从上到下，从左到右，遇块换行排布，能够实现板块的拼接</p>
+<img src="/2021/03/19/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1-1/3.png" alt="3" style="zoom:50%;">
+
+<p>前者为文档流，后者为div2向右浮动</p>
+<img src="/2021/03/19/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1-1/4.png" alt="4" style="zoom:50%;">
+</li>
+<li><h2 id="float浮动的特点"><a href="#float浮动的特点" class="headerlink" title="float浮动的特点"></a>float浮动的特点</h2><ol>
+<li><strong>让页面中的元素可以水平排列</strong></li>
+<li><strong>浮动元素会完全脱离文档流，不再占据文档流中的位置</strong></li>
+<li><strong>设置浮动后，元素会向父元素的左侧或右侧移动</strong></li>
+<li><strong>浮动元素默认不会从父元素中移除</strong></li>
+<li><strong>浮动元素向左或向右移动时，不会超过前面的其他浮动元素</strong></li>
+<li><strong>如果浮动元素的上面是一个没有浮动的块级元素，则浮动元素无法上浮</strong></li>
+<li><strong>浮动元素不会超过上一个浮动的兄弟元素，最多保持等高</strong></li>
+</ol>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>网页设计</tag>
       </tags>
   </entry>
   <entry>
@@ -831,389 +2325,6 @@ hexo new page</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>网页设计-1</title>
-    <url>/2021/03/19/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1-1/</url>
-    <content><![CDATA[<h1 id="结构标签"><a href="#结构标签" class="headerlink" title="结构标签"></a>结构标签</h1><pre><code class="html">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-    &lt;head&gt;
-        &lt;meta charset=&quot;utf-8&quot;&gt;             //编码方式为utf-8
-        &lt;title&gt;第一个HTML&lt;/title&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-        &lt;p&gt;
-            这是我的第一个html文件
-        &lt;/p&gt;
-    &lt;/body&gt;
-&lt;/html&gt;</code></pre>
-<p>以上为基本应该存在的结构框架，效果图如下：</p>
-<p><img src="/2021/03/19/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1-1/2.png" alt="2"></p>
-<h1 id="文字段落标签"><a href="#文字段落标签" class="headerlink" title="文字段落标签"></a>文字段落标签</h1><h2 id="标题与段落标签"><a href="#标题与段落标签" class="headerlink" title="标题与段落标签"></a>标题与段落标签</h2><h3 id="标题标签"><a href="#标题标签" class="headerlink" title="标题标签"></a>标题标签</h3><pre><code class="html">&lt;h1&gt; &lt;h2&gt; &lt;h3&gt; &lt;h4&gt; &lt;h5&gt; &lt;h6&gt; //从左到右重要性递减
-    &lt;hn align=&quot;对齐方式&quot;&gt;标题内容&lt;/hn&gt;</code></pre>
-<h3 id="段落标签"><a href="#段落标签" class="headerlink" title="段落标签"></a>段落标签</h3><pre><code class="html">&lt;p align=&quot;对齐方式&quot;&gt;段落文本&lt;/p&gt;</code></pre>
-<h3 id="水平分割线标签"><a href="#水平分割线标签" class="headerlink" title="水平分割线标签"></a>水平分割线标签</h3><pre><code class="html">&lt;hr 属性=&quot;属性值&quot;/&gt;
-//size设置粗细，align对齐方式，width设置宽度，color设置颜色，noshade设置3d阴影</code></pre>
-<h3 id="换行缩进标签"><a href="#换行缩进标签" class="headerlink" title="换行缩进标签"></a>换行缩进标签</h3><pre><code class="html">&lt;br/&gt;                        //强制换行
-&lt;blockquote&gt;&lt;/blockquote&gt;   //缩进</code></pre>
-<h2 id="文本的格式化标签"><a href="#文本的格式化标签" class="headerlink" title="文本的格式化标签"></a>文本的格式化标签</h2><pre><code class="html">&lt;b&gt;&lt;/b&gt;                        //粗体
-&lt;strong&gt;&lt;/strong&gt;            //强调，一般为粗体
-&lt;i&gt;&lt;/i&gt;                        //斜体
-&lt;em&gt;&lt;/em&gt;                    //强调，一般为斜体
-&lt;del&gt;&lt;/del&gt;                    //删除线
-&lt;ins&gt;&lt;/ins&gt;                    //加下划线
-&lt;sup&gt;&lt;/sup&gt;                    //上标
-&lt;sub&gt;&lt;/sub&gt;                    //下标</code></pre>
-<h2 id="特殊字符标签"><a href="#特殊字符标签" class="headerlink" title="特殊字符标签"></a>特殊字符标签</h2><table>
-<thead>
-<tr>
-<th>特殊字符</th>
-<th>字符代码</th>
-<th>特殊字符</th>
-<th>字符代码</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>空格</td>
-<td>&amp;nbsp；</td>
-<td>“</td>
-<td>&amp;quot；</td>
-</tr>
-<tr>
-<td>&lt;</td>
-<td>&amp;lt；</td>
-<td>©</td>
-<td>&amp;copy；</td>
-</tr>
-<tr>
-<td>&gt;</td>
-<td>&amp;gt；</td>
-<td>®</td>
-<td>&amp;reg；</td>
-</tr>
-<tr>
-<td>&amp;</td>
-<td>&amp;amp；</td>
-<td>×</td>
-<td>&amp;times；</td>
-</tr>
-</tbody></table>
-<h1 id="图像与超链接标签"><a href="#图像与超链接标签" class="headerlink" title="图像与超链接标签"></a>图像与超链接标签</h1><h2 id="图像标签"><a href="#图像标签" class="headerlink" title="图像标签"></a>图像标签</h2><pre><code class="html">&lt;img src=&quot;图像URL&quot;/&gt;</code></pre>
-<h2 id="超链接标签"><a href="#超链接标签" class="headerlink" title="超链接标签"></a>超链接标签</h2><h3 id="创建超链接"><a href="#创建超链接" class="headerlink" title="创建超链接"></a>创建超链接</h3><pre><code class="html">&lt;a href=&quot;资源地址&quot; target=&quot;窗口名称&quot; title=&quot;链接提示&quot;&gt;链接对象&lt;/a&gt;</code></pre>
-<h3 id="绝对路径和相对路径"><a href="#绝对路径和相对路径" class="headerlink" title="绝对路径和相对路径"></a>绝对路径和相对路径</h3><ol>
-<li>绝对路径：网络主页上所存在的，或是文件在硬盘上的真实路径。</li>
-<li>相对路径：以当前文件为起点，进行相对文件的查找。</li>
-</ol>
-<pre><code class="html">./          //指当前文件所在目录下（可省略）
-../         //指当前文件所在目录的上一目录下</code></pre>
-<h3 id="锚点链接"><a href="#锚点链接" class="headerlink" title="锚点链接"></a>锚点链接</h3><p>锚点定义：</p>
-<pre><code class="html">&lt;a name=&quot;锚点名称&quot;&gt;文字&lt;/a&gt;
-//或将name改做id</code></pre>
-<p>跳转锚点：</p>
-<pre><code class="html">&lt;a href=&quot;锚点名称&quot;&gt;链接的文字&lt;/a&gt;</code></pre>
-<h3 id="影像地图"><a href="#影像地图" class="headerlink" title="影像地图"></a>影像地图</h3><pre><code class="html">&lt;img src=&quot;图像地址&quot; usemap=&quot;#影像地图名称&quot;&gt;   //使用影像地图
-
-&lt;map name=&quot;影像地图名称&quot;&gt;                      //定义影像地图
-    &lt;area shape=&quot;热区形状&quot; coords=&quot;热区坐标&quot; href=&quot;链接地址&quot;&gt;
-    &lt;!--此处可以添加多个area--&gt;
-&lt;/map&gt;</code></pre>
-<p><strong>shape与coords的附加说明：</strong></p>
-<ul>
-<li>shape=”circle“，coords=”x,y,z“（x,y定义圆心位置，z为半径)</li>
-<li>shape=“polygon”，coords=“x1,y1,x2,y2……”（每个顶点的坐标都要写入）</li>
-<li>shape=“rectangle”，coords=“x1,y1,x2,y2”（一个顶点的坐标和其对角顶点坐标）</li>
-</ul>
-<h1 id="表格与列表标签"><a href="#表格与列表标签" class="headerlink" title="表格与列表标签"></a>表格与列表标签</h1><h2 id="表格标签"><a href="#表格标签" class="headerlink" title="表格标签"></a>表格标签</h2><h3 id="表格的定义范例"><a href="#表格的定义范例" class="headerlink" title="表格的定义范例"></a><strong>表格的定义范例</strong></h3><pre><code class="html">&lt;table&gt;
-    &lt;tr&gt;                                //表格的第一个横行
-        &lt;th&gt;此处表头字体自动加粗&lt;/th&gt;         //具体到行内的一个单元格
-        &lt;td&gt;&lt;/td&gt;
-        &lt;td&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;                                //表格的第二个横行
-        &lt;td&gt;&lt;/td&gt;
-        &lt;td&gt;&lt;/td&gt;
-        &lt;td&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-&lt;/table&gt;</code></pre>
-<pre><code class="html">&lt;caption&gt;定义表格的标题&lt;/caption&gt;
-&lt;thead&gt;定义表格的表头&lt;/thead&gt;
-&lt;tbody&gt;对表格中的主体内容进行分组&lt;/tbody&gt;
-&lt;tfoot&gt;对表格中的页脚内容进行分组&lt;/tfoot&gt;
-// 后三个标签应该结合使用</code></pre>
-<h3 id="表格标签”table”的属性："><a href="#表格标签”table”的属性：" class="headerlink" title="表格标签”table”的属性："></a><strong>表格标签”table”的属性：</strong></h3><table>
-<thead>
-<tr>
-<th>属性</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>width/height</td>
-<td>表格的宽度（高度），值可以是数值或百分比，数值表示像素点数，百分比是占浏览器宽度（高度）的比例</td>
-</tr>
-<tr>
-<td>align</td>
-<td>表格相对周围元素的对齐方式</td>
-</tr>
-<tr>
-<td>background</td>
-<td>表格的背景图片</td>
-</tr>
-<tr>
-<td>bgcolor</td>
-<td>表格的背景颜色，一般后期通过样式控制，不建议使用</td>
-</tr>
-<tr>
-<td>border</td>
-<td>表格边框宽度（像素为单位）</td>
-</tr>
-<tr>
-<td>bordercolor</td>
-<td>表格边框的颜色</td>
-</tr>
-<tr>
-<td>cellspacing</td>
-<td>单元格之间的间距</td>
-</tr>
-<tr>
-<td>cellpadding</td>
-<td>单元格内容与边界之间空白距离的大小</td>
-</tr>
-</tbody></table>
-<h3 id="表格设置border时，可以设置显示隐藏边框"><a href="#表格设置border时，可以设置显示隐藏边框" class="headerlink" title="表格设置border时，可以设置显示隐藏边框"></a><strong>表格设置border时，可以设置显示隐藏边框</strong></h3><table>
-<thead>
-<tr>
-<th>frame</th>
-<th>描述</th>
-<th>frame</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>box</td>
-<td>显示所有边框</td>
-<td>alove</td>
-<td>只显示上边框</td>
-</tr>
-<tr>
-<td>void</td>
-<td>不显示边框</td>
-<td>below</td>
-<td>只显示下边框</td>
-</tr>
-<tr>
-<td>hsides</td>
-<td>只显示上下边框</td>
-<td>lhs</td>
-<td>只显示左边框</td>
-</tr>
-<tr>
-<td>vsides</td>
-<td>只显示左右边框</td>
-<td>rhs</td>
-<td>只显示右边框</td>
-</tr>
-</tbody></table>
-<h3 id="单元格td的设置"><a href="#单元格td的设置" class="headerlink" title="单元格td的设置"></a><strong>单元格td的设置</strong></h3><table>
-<thead>
-<tr>
-<th>属性</th>
-<th>描述</th>
-<th>属性</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>width/height</td>
-<td>单元格的宽和高，接受绝对值和相对值</td>
-<td>align</td>
-<td>单元格内容的水平对齐方式（left、right、center等）</td>
-</tr>
-<tr>
-<td>colspan</td>
-<td>规定单元格横跨列数（纵向合并单元格）</td>
-<td>valign</td>
-<td>单元格内容的垂直对齐方式（top、middle、bottom等）</td>
-</tr>
-<tr>
-<td>rowspan</td>
-<td>规定单元格横跨行数（横向合并单元格）</td>
-<td>bgcolor</td>
-<td>单元格的背景色</td>
-</tr>
-</tbody></table>
-<h2 id="列表标签"><a href="#列表标签" class="headerlink" title="列表标签"></a>列表标签</h2><ul>
-<li><h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><pre><code class="html">&lt;ul type=编号类型&gt;
-    &lt;li&gt;第一项&lt;/li&gt;
-    &lt;li&gt;第二项&lt;/li&gt;
-    &lt;li&gt;第三项&lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-<p><strong>type决定列表图标类型：</strong></p>
-<ul>
-<li><p>disc为实心圆（默认）</p>
-</li>
-<li><p>circle为空心圆</p>
-</li>
-<li><p>square为方块</p>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><pre><code class="html">&lt;ol type=&quot;编号类型&quot; start=value&gt;
-    &lt;li&gt;第一项&lt;/li&gt;
-    &lt;li&gt;第二项&lt;/li&gt;
-    &lt;li&gt;第三项&lt;/li&gt;
-&lt;/ol&gt;</code></pre>
-<p><strong>type决定列表序号样式：</strong></p>
-<ul>
-<li><strong>type=1：</strong>1,2,3,4,5……</li>
-<li><strong>type=A：</strong>A,B,C,D,E……</li>
-<li><strong>type=a：</strong>a,b,c,d,e……</li>
-<li><strong>type=I：</strong>I,II,III,IV,V……</li>
-<li><strong>type=i：</strong>i,ii,iii,iv,v……</li>
-</ul>
-<p><strong>reversed属性为true时，可以实现倒序排列，start指定第一项的序号</strong></p>
-</li>
-</ul>
-<ul>
-<li><h3 id="定义列表"><a href="#定义列表" class="headerlink" title="定义列表"></a>定义列表</h3></li>
-</ul>
-<pre><code class="html">&lt;dl&gt;
-    &lt;dt&gt;第一项&lt;/dt&gt;&lt;dd&gt;注释一&lt;/dd&gt;
-    &lt;dt&gt;第二项&lt;/dt&gt;&lt;dd&gt;注释二&lt;/dd&gt;
-    &lt;dt&gt;第三项&lt;/dt&gt;&lt;dd&gt;注释三&lt;/dd&gt;
-&lt;/dl&gt;</code></pre>
-<ul>
-<li><h3 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h3></li>
-</ul>
-<pre><code class="html">&lt;ul type=&quot;circle&quot;&gt;
-    &lt;li&gt;北京&lt;/li&gt;
-    &lt;li&gt;上海
-        &lt;ol start=&quot;6&quot; type=&quot;1&quot; reversed=&quot;true&quot;&gt;
-        &lt;li&gt;浦东新区&lt;/li&gt;
-        &lt;li&gt;徐汇区&lt;/li&gt;
-        &lt;li&gt;长宁区&lt;/li&gt;
-        &lt;li&gt;普陀区&lt;/li&gt;
-        &lt;/ol&gt;
-    &lt;/li&gt;
-    &lt;li&gt;广州&lt;/li&gt;
-    &lt;li&gt;深圳&lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-<p>以上代码为无序列表嵌套有序列表，效果图如下</p>
-<p><img src="/2021/03/19/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1-1/1.png" alt="1"></p>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>网页设计</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数据结构-5</title>
-    <url>/2021/04/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-5/</url>
-    <content><![CDATA[<h1 id="串类型"><a href="#串类型" class="headerlink" title="串类型"></a>串类型</h1><h2 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h2><p>串的存储结构可以使用顺序和链式结构，顺序结构中又分为定长和堆式存储结构，但由于链式不如顺序结构灵活，操作简单，故而此处只写入顺序结构</p>
-<h3 id="顺序-定长存储"><a href="#顺序-定长存储" class="headerlink" title="顺序-定长存储"></a>顺序-定长存储</h3><pre><code class="c++">typedef struct&#123;
-    char ch[maxsize+1];        //定义字符数组，串的最大长度为maxsize，多申请防止溢出的存储空间
-    int length;                //串的当前长度
-&#125;Sstring;</code></pre>
-<h3 id="顺序-堆式存储"><a href="#顺序-堆式存储" class="headerlink" title="顺序-堆式存储"></a>顺序-堆式存储</h3><pre><code class="c++">typedef struct&#123;
-    char *ch;                //如果是非空串，则按串长分配存储区，否则ch指向NULL;
-    int length;                //串的当前长度
-&#125;</code></pre>
-<h2 id="模式匹配算法"><a href="#模式匹配算法" class="headerlink" title="模式匹配算法"></a>模式匹配算法</h2><p>串的模式匹配用于在主串中寻找子串，如果匹配成功，则确定相匹配的子串中第一个字符在主串s中出现的位置</p>
-<h3 id="BF算法"><a href="#BF算法" class="headerlink" title="BF算法"></a>BF算法</h3><pre><code class="c++">int Index_BF(Sstring s,Sstring t,int pos)
-    //传址需要比较的主串s，子串t，以及从主串序号为pos处开始查找
-&#123;
-    int i,j;
-    for(i=pos,j=1;i&lt;=s.length&amp;&amp;j&lt;=t.length;i++,j++)
-        //初始化i=pos,j=1，当两个串都没有到串尾时循环，i，j依次后移
-    &#123;
-        if(s.ch[i]==t.ch[i])    //当主串s中i位置的字符和子串t中j位置的字符相同时
-        &#123;
-            continue;        //继续下一次循环，即只执行for语句的i++，j++
-        &#125;
-        else
-        &#123;
-            i=i-j+1;        //否则，i回到开始匹配的位置（执行for语句的i++后移到下一个位置
-            j=0;            //j被重置为0（然后执行for语句的j++后变为j=1）
-        &#125;
-    &#125;
-    if(j&gt;t.length) return i-t.length;
-    //当j的位置超出了t的长度，则说明完全匹配，返回首字符开始与主串匹配的位置
-    else return 0;
-    //否则返回0，表示没有匹配成功
-&#125;</code></pre>
-<h3 id="KMP算法"><a href="#KMP算法" class="headerlink" title="KMP算法"></a>KMP算法</h3><pre><code class="c++">int Index_KMP(Sstring s,Sstring t,int pos)
-    //传址需要比较的主串s，子串t，以及从主串序号为pos处开始查找
-&#123;
-    int i,j;
-    for(i=pos,j=1;i&lt;=s.length&amp;&amp;j&lt;=t.length;i++,j++)
-        //初始化i=pos,j=1，当两个串都没有到串尾时循环，i，j依次后移
-    &#123;
-        if(j==0||s.ch[i]==t.ch[i])    //当主串s中i位置的字符和子串t中j位置的字符相同时
-        &#123;
-            continue;        //继续下一次循环，即只执行for语句的i++，j++
-        &#125;
-        else
-        &#123;
-            j=next[j];        //KMP相比BF算法节省时间的原因
-        &#125;
-    &#125;
-    if(j&gt;t.length) return i-t.length;
-    //当j的位置超出了t的长度，则说明完全匹配，返回首字符开始与主串匹配的位置
-    else return 0;
-    //否则返回0，表示没有匹配成功
-&#125;
-
-void get_next(Sstring t,int next[])
-    //求子串t的next函数值并且存进数组next
-&#123;
-    int j,i=1,next[1]=0;
-    //定义i，j，以及next数组的第一个值
-    for(j=0;i&lt;t.length;)                //i不超过子串t长度时循环
-    &#123;
-        if(j==0||t.ch[i]==t.ch[j])        //如果j为0或是前后两个字符相同时
-        &#123;
-            i++;
-            j++;
-            if(t.ch[i]!=t.ch[j])        //如果前后两个字符不相同
-                next[i]=j;                //令下次比较从j开始
-            else next[i]=next[j];        
-        &#125;
-        else j=next[j];
-    &#125;
-&#125;</code></pre>
-<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="二维数组的顺序存储"><a href="#二维数组的顺序存储" class="headerlink" title="二维数组的顺序存储"></a>二维数组的顺序存储</h2><p>已知一维数组中a【i】的存储位置在a+i处，二维数组因主序不同分为两种存储结构（常用行序）</p>
-<p>设每个数据元素占L个存储单元，则二维数组A[0…m-1,0…n-1]（下标从0开始，共有m行n列）中任一元素a【i】【j】的存储位置如下：</p>
-<p><strong>行为主序的存储结构</strong>：</p>
-<p>$$<br>LOC(i , j) = LOC(0 , 0) + (n * i + j) L<br>$$<br><strong>列为主序的存储结构：</strong><br>$$<br>LOC(i , j) = LOC(0 , 0) + (m * j + i) L<br>$$<br>其中，LOC(i,j)是a【i】【j】的存储位置</p>
-<p>LOC（0，0）是a【0】【0】的存储位置，即二维数组A的起始存储位置、也称为基地址或基址</p>
-<p><strong>故而总结可知：</strong><br>$$<br>LOC(i , j) = 基址 + (副序长度 * 主序标号 + 另一标号) * 数据所占存储单元<br>$$</p>
-<h2 id="特殊矩阵的压缩存储"><a href="#特殊矩阵的压缩存储" class="headerlink" title="特殊矩阵的压缩存储"></a>特殊矩阵的压缩存储</h2><h3 id="对称矩阵"><a href="#对称矩阵" class="headerlink" title="对称矩阵"></a>对称矩阵</h3><p>特点：在n*n的矩阵a中，1&lt;= i，j &lt;= n<br>存储方法：只存储下（或者上）三角（包括主对角线）的数据元素。共占用n(n+1)/2个元素空间。</p>
-<p><img src="/2021/04/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-5/1.png" alt="1"></p>
-<p>上下三角中的元素均为：n(n+1) / 2<br>可以以行序为主序将元素存放在一个一维数组a[n(n+1) / 2]中，a[k]的位置可如下公式确定<br>$$<br>k=主序序号（主序序号-1）/2+副序序号-1，主序&gt;=副序<br>$$<br>注：上式的k从0开始计算</p>
-<h3 id="三角矩阵"><a href="#三角矩阵" class="headerlink" title="三角矩阵"></a>三角矩阵</h3><p><img src="/2021/04/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-5/2.png" alt="2"></p>
-<h3 id="对角矩阵"><a href="#对角矩阵" class="headerlink" title="对角矩阵"></a>对角矩阵</h3><p><img src="/2021/04/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-5/3-1.png" alt="3-1"></p>
-<h3 id><a href="#" class="headerlink" title></a><img src="/2021/04/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-5/3-2.png" alt="3-2"></h3><h3 id="稀疏矩阵"><a href="#稀疏矩阵" class="headerlink" title="稀疏矩阵"></a>稀疏矩阵</h3><p><img src="/2021/04/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-5/4.png" alt="4"></p>
-<h1 id="广义表"><a href="#广义表" class="headerlink" title="广义表"></a>广义表</h1><p>一般记作LS（a1，a2，……，an），其中LS为广义表的名称，n为广义表的长度，其中的元素可以是单个数据（原子）也可以是广义表（子表），一般小写为原子，大写为子表</p>
-<p><strong>广义表示例：</strong></p>
-<ul>
-<li>A=（）——空表，长度为0</li>
-<li>B=（e）——只有一个原子，为e，长度为1</li>
-<li>C=（a，（b，c，d））——有一个原子a和一个子表（b，c，d），共两个元素，长度为2</li>
-<li>D=（A，B，C）——有三个子表，即三个元素，长度为3</li>
-<li>E=（a，E）——一个递归的表，长度为2</li>
-</ul>
-<p>注：广义表A=（（））和广义表B=（）是不相同的，A为有一个空子表，长度为1的广义表，而B是一个空表，长度为0</p>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>数据结构学习</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>虚幻引擎-4</title>
     <url>/2021/04/15/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-4/</url>
     <content><![CDATA[<h1 id="AI智能"><a href="#AI智能" class="headerlink" title="AI智能"></a>AI智能</h1><h2 id="寻路导航创建"><a href="#寻路导航创建" class="headerlink" title="寻路导航创建"></a>寻路导航创建</h2><h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><p>在主面板左上角的“放置actor”面板中找到“导航网格体边界体积”，放入场景中</p>
@@ -1296,905 +2407,6 @@ void get_next(Sstring t,int next[])
       </categories>
       <tags>
         <tag>虚幻引擎学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数据结构-4</title>
-    <url>/2021/04/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-4/</url>
-    <content><![CDATA[<h1 id="顺序队列"><a href="#顺序队列" class="headerlink" title="顺序队列"></a>顺序队列</h1><p>队列是先进先出的线性结构，也是只能从队头删除，从队尾插入的线性表，为了使空间利用更加充分，从而避免假溢出，通常采用循环队列</p>
-<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><pre><code>typedef struct 
-&#123;
-    Elemtype *base;                //储存空间的基址指针
-    int front;                    //定义一个头指针
-    int rear;                    //定义一个尾指针
-&#125;SQqueue;</code></pre>
-<p><strong>注：此处front和rear指针仅仅设为了int类型，而并非真正的指针类型，所表述的是队头队尾元素所在的位置下标</strong></p>
-<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><pre><code>bool initqueue(SQqueue &amp;sq)
-&#123;
-    sq.base=new Elemtype[MAXSIZE];            //为队列分配空间
-    if(!sq.base) return false;                //没能分配成功，返回失败
-    sq.front=sq.rear=0;                        //头尾指针置为零，队列为空
-    return true;
-&#125;</code></pre>
-<h2 id="求队列长度"><a href="#求队列长度" class="headerlink" title="求队列长度"></a>求队列长度</h2><pre><code>int queuelength(SQqueue &amp;sq)
-&#123;
-    return (sq.rear-sq.front+MAXSIZE)%MAXSIZE;
-&#125;</code></pre>
-<p>注：在没有特殊注明的情况下，所说队列都为循环队列，front指向队头元素，rear指向队尾元素的后一个元素，为区分队空与队满，此处少用一个元素空间，即队列空间大小为m-1个元素时队满，故而当队列满足“rear=front“时队空，当队列满足”(rear+1)%MAXSIZE=front“时队满。</p>
-<h2 id="入队（从队尾插入）"><a href="#入队（从队尾插入）" class="headerlink" title="入队（从队尾插入）"></a>入队（从队尾插入）</h2><pre><code>bool enterqueue(SQqueue &amp;sq,Elemtype e)          //传址需要操作的表，传值入队元素
-&#123;
-    if((sq.rear+1)%MAXSIZE==sq.front) return false;    //判断队满时返回失败
-    sq.base[sq.rear]=e;                     //让队尾元素的后一个元素等于e
-    sq.rear=(sq.rear+1)%MAXSIZE;         //队尾指针后移
-    return true；                        //返回成功入队
-&#125;</code></pre>
-<h2 id="出队（从队头删除）"><a href="#出队（从队头删除）" class="headerlink" title="出队（从队头删除）"></a>出队（从队头删除）</h2><pre><code>bool deletequeue(SQqueue &amp;sq,Elemtype &amp;e)
-&#123;
-    if(sq.front==sq.rear) return false;        //若队空，则返回出队失败
-    e=sq.base[sq.front];                    //用e获得出队的队头元素
-    sq.front=(sq.front+1)%MAXSIZE;            //队头指针后移
-    return true;                            //返回成功出队
-&#125;</code></pre>
-<h2 id="取队头元素"><a href="#取队头元素" class="headerlink" title="取队头元素"></a>取队头元素</h2><pre><code>Elemtype gethead(SQqueue &amp;sq)
-//仅返回表的队头元素，不修改头指针
-&#123;
-    if(sq.front!=sq.rear)             //判断队列非空
-    return     sq.base[sq.front];        //返回队头元素
-&#125;</code></pre>
-<h1 id="实际题目"><a href="#实际题目" class="headerlink" title="实际题目"></a>实际题目</h1><h2 id="R7-4-队列操作-20-分"><a href="#R7-4-队列操作-20-分" class="headerlink" title="R7-4 队列操作 (20 分)"></a>R7-4 队列操作 (20 分)</h2><p>请实现一个MyQueue类，实现出队，入队，求队列长度.</p>
-<p>实现入队函数 void push(int x); 实现出队函数 int pop(); 实现求队列长度函数 int size();</p>
-<p>输入格式:<br>每个输入包含1个测试用例。每个测试用例第一行给出一个正整数 n (n &lt;= 10^6) ，接下去n行每行一个数字，表示一种操作： 1 x ： 表示从队尾插入x，0&lt;=x&lt;=2^31-1。 2 ： 表示队首元素出队。 3 ： 表示求队列长度。</p>
-<p>输出格式:<br>对于操作2,若队列为空，则输出 “Invalid”,否则请输出队首元素。 对于操作3，请输出队列长度。 每个输出项最后换行。</p>
-<p>输入样例:</p>
-<pre><code>5
-3
-2
-1 100
-3
-2</code></pre>
-<p>输出样例:</p>
-<pre><code>0
-Invalid
-1
-100</code></pre>
-<p><strong>解法：</strong></p>
-<pre><code class="c++">#include&lt;iostream&gt;
-using namespace std;
-
-typedef struct
-&#123;
-    int *base;
-    int front;
-    int rear;
-&#125;SQueue;
-
-bool init(SQueue &amp;sq)
-&#123;
-    sq.base=new int[50];
-    if(!sq.base) return false;
-    sq.front=0;
-    sq.rear=0;
-    return true;
-&#125;
-
-int length(SQueue &amp;sq)
-&#123;
-    return (sq.rear-sq.front+50)%50;
-&#125;
-
-bool enter(SQueue &amp;sq,int a)
-&#123;
-    if((sq.rear+1)%50==sq.front) return false;
-    sq.base[sq.rear]=a;
-    sq.rear=(sq.rear+1)%50;
-    return true;
-&#125;
-
-bool out(SQueue &amp;sq,int &amp;a)
-&#123;
-    if(sq.front==sq.rear) return false;
-    a=sq.base[sq.front];
-    sq.front=(sq.front+1)%50;
-    return true;
-&#125;
-
-int main()
-&#123;
-    SQueue L;
-    init(L);
-    int n,i,j,k;
-    cin&gt;&gt;n;
-    for(i=0;i&lt;n;i++)
-    &#123;
-        cin&gt;&gt;j;
-        switch(j)
-        &#123;
-            case 1:
-                cin&gt;&gt;k;
-                enter(L,k);
-                break;
-            case 2:
-                if(out(L,k)) cout&lt;&lt;k&lt;&lt;endl;
-                else cout&lt;&lt;&quot;Invalid&quot;&lt;&lt;endl;
-                break;
-            case 3:
-                cout&lt;&lt;length(L)&lt;&lt;endl;
-                break;
-        &#125;
-    &#125;
-    return 0;
-&#125;
-</code></pre>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>数据结构学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数据结构-3</title>
-    <url>/2021/04/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-3/</url>
-    <content><![CDATA[<h1 id="顺序栈"><a href="#顺序栈" class="headerlink" title="顺序栈"></a>顺序栈</h1><p>【Elemtype为数据类型】</p>
-<p>顺序栈本身是操作受限制的顺序表，只能在栈顶做插入删除，称入栈出栈，因为操作受限，算法相较普通顺序表简单。</p>
-<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><pre><code class="c++">typedef struct 
-&#123;
-    Elemtype *base;                    //定义栈底指针
-    Elemtype *top;                    //定义栈顶指针
-    int maxsize;                    //定义最大栈的最大容量
-&#125;SQstack;</code></pre>
-<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><pre><code class="c++">bool initstack(SQstack &amp;sq)            //传址需要初始化的表
-&#123;
-    sq.base=new Elemtype[MAXSIZE];
-    //分配大小为MAXSIZE的空间，并返回首地址给表的栈底指针
-    if(!sq.base) return false;      //若分配失败则返回
-    sq.top=sq.base;                    //栈顶指针等于栈底指针，表示空栈
-    sq.maxsize=MAXSIZE;                //记录栈的最大容量为MAXSIZE
-    return true;                    //返回创建成功
-&#125;</code></pre>
-<h2 id="入栈（从栈顶插入）"><a href="#入栈（从栈顶插入）" class="headerlink" title="入栈（从栈顶插入）"></a>入栈（从栈顶插入）</h2><pre><code class="c++">bool Push(SQstack &amp;sq,Elemtype e)        //传址需要操作的栈，传值需要入栈的值
-&#123;
-    if(sq.top-sq.base&gt;=sq.maxsize) return false;
-    //若栈顶指针与栈底指针的差为最大空间（即栈满），返回入栈失败
-    *sq.top=e;
-    //栈顶指针总是指在栈顶元素的下一个位置，故而直接赋值
-    sq.top++;                            //栈顶指针后移
-    return true;                        //返回入栈成功
-&#125;</code></pre>
-<h2 id="出栈（从栈顶删除）"><a href="#出栈（从栈顶删除）" class="headerlink" title="出栈（从栈顶删除）"></a>出栈（从栈顶删除）</h2><pre><code class="c++">bool Pop(SQstack &amp;sq,Elemtype &amp;e)            //传址需要操作的表和出栈的元素
-&#123;
-    if(sq.top==sq.base) return false;
-    //若栈顶指针与栈底指针相同（即栈空），则返回失败
-    sq.top--;
-    //栈顶指针总是指在栈顶元素的下一个位置，故而栈顶指针后移
-    e=*sq.top;                                //将出栈的元素传给e
-    return true;
-&#125;</code></pre>
-<h2 id="取栈顶（取值）"><a href="#取栈顶（取值）" class="headerlink" title="取栈顶（取值）"></a>取栈顶（取值）</h2><pre><code class="c++">Elemtype gettop(SQstack &amp;sq)
-//传址需要操作的表，返回栈顶元素，该操作只取栈顶，不修改栈顶指针
-&#123;
-    if(sq.top!=sq.base)            //若该栈非空
-    &#123;
-    return *(sq.top-1);            //取栈顶指针的前一个位置，即栈顶元素向外传递
-    &#125;
-&#125;</code></pre>
-<h1 id="链式栈"><a href="#链式栈" class="headerlink" title="链式栈"></a>链式栈</h1><p>【Elemtype为数据类型】</p>
-<p>在无法估计栈数据量时，通常采用链式栈，而且因为栈的主要操作是插入和删除，所以用链表的头部作栈顶更加方便。</p>
-<h2 id="创建-1"><a href="#创建-1" class="headerlink" title="创建"></a>创建</h2><pre><code class="c++">typedef struct Lnode
-&#123;
-    Elemtype data;            //定义链表结点的数据域
-    struct Lnode *next;        //定义指向下一节点的指针域
-&#125;*Linkstack;</code></pre>
-<h2 id="初始化-1"><a href="#初始化-1" class="headerlink" title="初始化"></a>初始化</h2><pre><code class="c++">bool initstack(Linkstack &amp;ls)
-&#123;
-    ls=NULL;
-    //由于栈不需要对栈顶以外的元素操作，故而不需要设置头结点来使表头操作与表中表尾一致
-    return true;            //返回初始化成功
-&#125;</code></pre>
-<h2 id="入栈（从栈顶插入）-1"><a href="#入栈（从栈顶插入）-1" class="headerlink" title="入栈（从栈顶插入）"></a>入栈（从栈顶插入）</h2><pre><code class="c++">bool Push(Linkstack &amp;ls,Elemtype e)        //传址需要操作的表，传值需要插入的元素
-&#123;
-    Lnode *p;
-    p=new Lnode;                //重新分配一个结点空间，首地址赋给p
-    p-&gt;data=e;                    //新结点的数据域为e
-    p-&gt;next=ls;                    //新结点的指针域指向头指针ls，即将新结点作头插
-    ls=p;                        //头指针前移
-    return true;                //返回入栈成功
-&#125;</code></pre>
-<h2 id="出栈（从栈顶删除）-1"><a href="#出栈（从栈顶删除）-1" class="headerlink" title="出栈（从栈顶删除）"></a>出栈（从栈顶删除）</h2><pre><code class="c++">bool Pop(Linkstack &amp;ls，Elemtype &amp;e)   //传址需要操作的表和出栈的元素
-&#123;
-    if(ls==NULL) return false;        //栈空则返回删除失败
-    e=ls-&gt;data;                        //e接收出栈元素
-    Lnode *p=ls;                    //定义一个p指针指向原栈顶元素
-    ls=ls-&gt;next;                    //让头指针后移
-    delete p;                        //删除p指向的结点
-    return true;                    //返回删除完成
-&#125;</code></pre>
-<h2 id="取栈顶（取值）-1"><a href="#取栈顶（取值）-1" class="headerlink" title="取栈顶（取值）"></a>取栈顶（取值）</h2><pre><code class="c++">Elemtype gettop(Linkstack &amp;ls)    //传址需要操作的表
-&#123;
-    if(ls!=NULL)                //栈非空
-    return ls-&gt;data;            //返回栈顶元素的值，栈顶指针不变
-&#125;</code></pre>
-<h1 id="实际题目"><a href="#实际题目" class="headerlink" title="实际题目"></a>实际题目</h1><h2 id="R7-1-堆栈操作合法性-20-分"><a href="#R7-1-堆栈操作合法性-20-分" class="headerlink" title="R7-1 堆栈操作合法性 (20 分)"></a>R7-1 堆栈操作合法性 (20 分)</h2><p>假设以S和X分别表示入栈和出栈操作。如果根据一个仅由S和X构成的序列，对一个空堆栈进行操作，相应操作均可行（如没有出现删除时栈空）且最后状态也是栈空，则称该序列是合法的堆栈操作序列。请编写程序，输入S和X序列，判断该序列是否合法。</p>
-<p>输入格式:<br>输入第一行给出两个正整数N和M，其中N是待测序列的个数，M（≤50）是堆栈的最大容量。随后N行，每行中给出一个仅由S和X构成的序列。序列保证不为空，且长度不超过100。</p>
-<p>输出格式:<br>对每个序列，在一行中输出YES如果该序列是合法的堆栈操作序列，或NO如果不是。</p>
-<p>输入样例：</p>
-<pre><code>4 10
-SSSXXSXXSX
-SSSXXSXXS
-SSSSSSSSSSXSSXXXXXXXXXXX
-SSSXXSXXX</code></pre>
-<p>输出样例：</p>
-<pre><code class="：">YES
-NO
-NO
-NO</code></pre>
-<p><strong>解法：</strong></p>
-<pre><code class="c++">#include&lt;iostream&gt;
-#include&lt;string&gt;
-using namespace std;
-
-typedef struct
-&#123;
-    char *top;
-    char *base;
-    int size;
-&#125;SQstack;
-
-bool init(SQstack &amp;sq,int m)
-&#123;
-    sq.base=new char[m];
-    if(!sq.base) return false;
-    sq.top=sq.base;
-    sq.size=m;
-    return true;
-&#125;
-
-bool pop(SQstack &amp;sq)
-&#123;
-    if(sq.top==sq.base) return false;
-    sq.top--;
-    return true;
-&#125;
-
-bool push(SQstack &amp;sq,char e)
-&#123;
-    if(sq.top-sq.base==sq.size) return false;
-    *sq.top=e;
-    sq.top++;
-    return true;
-&#125;
-
-int main()
-&#123;
-    int n,m,i,j=0;
-    bool flag=true;
-    cin&gt;&gt;n&gt;&gt;m;
-    string str;
-    SQstack L;
-    for(i=0;i&lt;n;i++)
-    &#123;
-        init(L,m);
-        cin&gt;&gt;str;
-        flag=true;
-        for(j=0;str[j]!=&#39;\0&#39;;j++)
-        &#123;
-            if(str[j]==&#39;S&#39;) 
-            &#123;
-                flag=push(L,str[j]);
-            &#125;
-            if(str[j]==&#39;X&#39;) 
-            &#123;
-                flag=pop(L);
-            &#125;
-        &#125;
-    if(L.base==L.top&amp;&amp;flag==true) cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;
-    else cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;
-    &#125;
-    return 0;
-&#125;</code></pre>
-<h2 id="R7-2-回文判断-20-分"><a href="#R7-2-回文判断-20-分" class="headerlink" title="R7-2 回文判断 (20 分)"></a>R7-2 回文判断 (20 分)</h2><p>回文是指正读反读均相同的字符序列，如“abba”和“abdba”均是回文，但“good”不是回文。编写一个程序，使用栈判定给定的字符序列是否为回文。</p>
-<p>输入格式:<br>输入待判断的字符序列，按回车键结束，字符序列长度&lt;20。</p>
-<p>输出格式:<br>若字符序列是回文，输出“YES”；否则，输出“NO”。</p>
-<p>输入样例:</p>
-<pre><code>abdba</code></pre>
-<p>输出样例:</p>
-<pre><code>YES</code></pre>
-<p><strong>解法：</strong></p>
-<pre><code class="c++">#include&lt;iostream&gt;
-#include&lt;string&gt;
-using namespace std;
-
-typedef struct 
-&#123;
-    char *top;
-    char *base;
-    int size;
-&#125;SQstack;
-
-bool init(SQstack &amp;sq)
-&#123;
-    sq.base=new char[20];
-    if(!sq.base) return false;
-    sq.top=sq.base;
-    sq.size=20;
-    return true;
-&#125;
-
-bool push(SQstack &amp;sq,char a)
-&#123;
-    if(sq.top-sq.base==sq.size) return false;
-    *sq.top=a;
-    sq.top++;
-
-    return true;
-&#125;
-
-bool pop(SQstack &amp;sq)
-&#123;
-    if(sq.top==sq.base) return false;
-    sq.top--;
-
-    return true;
-&#125;
-
-bool gettop(SQstack &amp;sq,int &amp;a)
-&#123;
-    if(sq.base==sq.top) return false;
-    a=*(sq.top-1);
-    return true;
-&#125;
-
-int main()
-&#123;
-    SQstack L;
-    init(L);
-    string str;
-    int i,n=0,a;
-    bool flag=true;
-    cin&gt;&gt;str;
-    n=str.size();
-    if(n%2==0)
-    &#123;
-
-        for(i=0;i&lt;n;i++)
-        &#123;
-            if(i&lt;n/2) push(L,str[i]);
-            else 
-            &#123;
-
-                gettop(L,a);
-
-                if(str[i]==a) pop(L);
-                else 
-                &#123;
-                    flag=false;
-                    break;
-                &#125;
-            &#125;
-        &#125;
-    &#125;
-    else
-    &#123;
-
-        for(i=0;i&lt;n;i++)
-        &#123;
-            if(i==(n-1)/2);
-            else 
-            &#123;
-                if(i&lt;(n-1)/2) push(L,str[i]);
-                else 
-                &#123;
-                    gettop(L,a);
-
-                    if(str[i]==a) pop(L);
-                    else 
-                    &#123;
-
-                        flag=false;
-                        break;
-                    &#125;
-               &#125;
-        &#125;
-    &#125;
-    &#125;
-            if(flag==true) cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;
-        else cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;
-&#125;</code></pre>
-<h2 id="R7-3-括号匹配-20-分"><a href="#R7-3-括号匹配-20-分" class="headerlink" title="R7-3 括号匹配 (20 分)"></a>R7-3 括号匹配 (20 分)</h2><p>检查一段C语言代码的小括号( )、 中括号 [ ] 和大括号{ } 是否匹配。</p>
-<p>输入格式:<br>在一行中输入一段C语言代码，长度不超过1000个字符（行末以换行符结束）。</p>
-<p>输出格式:<br>第一行输出左括号的数量和右括号的数量，中间以一个空格间隔。<br>若括号是匹配的，在第二行打印YES，否则打印NO。</p>
-<p>输入样例1:</p>
-<pre><code>for(int i=0; i&lt;v; i++)&#123; visited[i] = 0; for(int j=0; j&lt;v; j++) scanf(&quot;%d&quot;,&amp;(g-&gt;Adj[i][j])); &#125;</code></pre>
-<p>输出样例1:</p>
-<pre><code>8 8
-YES</code></pre>
-<p>输入样例2:</p>
-<pre><code>for(int i=0; i&lt;v; i++) a(i]=0;</code></pre>
-<p>输出样例2:</p>
-<pre><code>2 2
-NO</code></pre>
-<p><strong>解法：</strong></p>
-<pre><code class="c++">#include&lt;iostream&gt;
-#include&lt;string&gt;
-using namespace std;
-
-typedef struct
-&#123;
-    char *top;
-    char *base;
-    int size;
-&#125;SQstack;
-
-bool init(SQstack &amp;sq)
-&#123;
-    sq.base=new char[500];
-    if(!sq.base) return false;
-    sq.top=sq.base;
-    sq.size=500;
-    return true;
-&#125;
-
-bool push(SQstack &amp;sq,char a)
-&#123;
-    if(sq.top-sq.base==sq.size) return false;
-    *sq.top=a;
-    sq.top++;
-    return true;
-&#125;
-
-bool pop(SQstack &amp;sq)
-&#123;
-    if(sq.top==sq.base) return true;
-    sq.top--;
-    return true;
-&#125;
-
-bool gettop(SQstack &amp;sq,char &amp;a)
-&#123;
-    if(sq.top==sq.base) return false;
-    a=*(sq.top-1);
-    return true;
-&#125;
-
-int main()
-&#123;
-    SQstack L;
-    init(L);
-    char a=&#39;1&#39;;
-    bool flag=true;
-    int i,left=0,right=0,k=0;
-    char str[500];
-    for(i=0;i&lt;500;i++)
-    &#123;
-        cin&gt;&gt;str[i];
-        k++;
-    &#125;
-    for(i=0;i&lt;k;i++)
-    &#123;
-        if(str[i]==&#39;(&#39;||str[i]==&#39;[&#39;||str[i]==&#39;&#123;&#39;)
-        &#123;
-            left++;
-            push(L,str[i]);
-        &#125;
-        else
-        &#123;
-        if(str[i]==&#39;)&#39;||str[i]==&#39;]&#39;||str[i]==&#39;&#125;&#39;)
-        &#123;
-            right++;
-            gettop(L,a);
-            if((str[i]==&#39;)&#39;&amp;&amp;a==&#39;(&#39;)||(str[i]==&#39;]&#39;&amp;&amp;a==&#39;[&#39;)||(str[i]==&#39;&#125;&#39;&amp;&amp;a==&#39;&#123;&#39;))
-            &#123;
-                pop(L);
-            &#125;
-            else flag=false;
-        &#125;
-        &#125;
-    &#125;
-    if(L.top!=L.base) flag=false;
-    if(left==0&amp;&amp;right==0) flag=true;
-    cout&lt;&lt;left&lt;&lt;&quot; &quot;&lt;&lt;right&lt;&lt;endl;
-    if(flag) cout&lt;&lt;&quot;YES&quot;;
-    else cout&lt;&lt;&quot;NO&quot;;
-    return 0;
-&#125;</code></pre>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>数据结构学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数据结构-2</title>
-    <url>/2021/03/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-2/</url>
-    <content><![CDATA[<h1 id="线性表-单链表"><a href="#线性表-单链表" class="headerlink" title="线性表-单链表"></a>线性表-单链表</h1><p>【Elemtype为数据类型】</p>
-<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><h3 id="链表结点结构体创建"><a href="#链表结点结构体创建" class="headerlink" title="链表结点结构体创建"></a>链表结点结构体创建</h3><pre><code>typedef struct LNode        //创建结点类型
-&#123;
-    elemtype data;         //结点中包含数据域
-    struct LNode *next;    //结点中包含指向下一个结点的指针
-&#125;*Linklist                 //将该类型定义为一个链表（常使用指针方式价）</code></pre>
-<h3 id="尾插法创建"><a href="#尾插法创建" class="headerlink" title="尾插法创建"></a>尾插法创建</h3><pre><code class="c++">void create(Linklist &amp;L,int n)
-//传址需要创建的表L，以及初始表长n
-&#123;
-    L=new Lnode;        //为L新分配一个地址
-    L-&gt;next=NULL;        //将L的next设为空（前两步为初始化）
-    Lnode *E=L;            //令新指针指向L指向的头结点
-    int i,a;
-    Lnode *p;            //定义另一个指向结点的指针p
-    for(i=1;i&lt;=n;i++)    
-    &#123;
-     cin&gt;&gt;a;            //输入数据a
-     p=new Lnode;        //令p指向新建结点
-     p-&gt;data=a;            //将新建结点的数据域赋值为a
-     E-&gt;next=p;            //令E的next指向p指向的结点
-     p-&gt;next=NULL;        //p的next指向空
-     E=p;                //指针E后移，指向p指向的结点
-    &#125;
-&#125;
-</code></pre>
-<h3 id="头插法创建"><a href="#头插法创建" class="headerlink" title="头插法创建"></a>头插法创建</h3><pre><code>void create(Linklist &amp;L，int n)
-//传址需要创建的表L，以及初始表长n
-&#123;
-    L=new LNode;
-    L-&gt;next=NULL;
-    int i,a;
-    struct LNode *p;
-    cin&gt;&gt;a;
-    for(i=1;a!=-1;i++)
-    &#123;
-    p=new LNode;
-    p-&gt;data=a;
-    p-&gt;next=L-&gt;next;
-    L-&gt;next=p;
-    cin&gt;&gt;a;
-    &#125;
-&#125;
-</code></pre>
-<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>注：初始化应当在尾插和头插法前使用，或者不使用</p>
-<pre><code class="c++">bool init(Linklist &amp;L)       //传址创建的链表
-&#123;
-    L=new LNode;            //新生成一个结点，让头指针指向头结点
-    L-&gt;next=NULL;          //为统一操作，头结点仅作为首元结点的前驱，数据域不放入数据，且指针域指向空
-    return true;           //返回值提示完成初始化
-&#125;</code></pre>
-<h2 id="取值"><a href="#取值" class="headerlink" title="取值"></a>取值</h2><p>单链表的取值需要顺序遍历，耗时较长，故而不适合频繁获取特定位置的值</p>
-<pre><code class="c++">bool getelem(Linklist &amp;L,int i,elemtype &amp;e)
-//传址数据所在的表，并且传值需要取值的元素序号i，将得到的值传给e
-&#123;
-    int j;
-    LNode *p=L-&gt;next;               //令p指向首元结点
-    for(j=1;j&lt;i&amp;&amp;p!=NULL;j++)       //j作为计数器，确定遍历到的位置，当p指针指向空或j==i时结束循环
-    &#123;
-        p=p-&gt;next;                  //让p指向p的下一个结点，实现p后移
-    &#125;                               //结束循环时，j==i，p指向的结点为第i-1个结点
-     if(p==NULL) return false;       //如果p指针指向空，则返回取值失败
-    e=p-&gt;next-&gt;data;                //否则，将p指向结点的下一个结点的数据域赋给e
-    return true;                   //返回取值完成
-&#125;</code></pre>
-<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>单链表的查找同顺序表一样，需要遍历整个表，比较每个数据域和待查找值，若相同则返回其序号，若始终不相同则返回查找失败</p>
-<pre><code class="c++">bool find(Linklist &amp;L,LNode *&amp;p,elemtype a)
-//传址需要查找的表，查找成功时用于指向查找结果的指针p，同时传值需要查找的数据a
-&#123;
-    int j;
-    p=L-&gt;next;
-    for(j=1;p-&gt;next!=NULL;j++)      //j作为计数器，确定遍历到的位置，当p指针指向为空时结束循环
-    &#123;
-        if(p-&gt;data==a) break;       //查找到与数据a相同的数据域，提前退出循环
-        p=p-&gt;next;                  //p指针继续后移，继续遍历整个链表
-    &#125;
-    if(p-&gt;next==NULL&amp;&amp;p-&gt;data!=a)   return false;  
-    //如果p指针已经指向尾结点，且尾结点数据域域不等于a，则查找失败
-    //p指针直接能够返回需要查找的节点，不需要另外设置返回
-    return true;                   //返回查找成功
-&#125;</code></pre>
-<h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><p>插入时，需要先让新结点连接需要插入位置前驱的后一个结点，再让前驱的next指针指向新结点，否则会直接丢失后面数据的地址</p>
-<pre><code class="c++">bool insert(Linklist &amp;L,int i，elem e)
-//传址链表，需要插入的位置i，需要插入的元素值e
-&#123;
-    int j;
-    Lnode *p=L-&gt;next;                //使p指针指向首元结点
-    Lnode *s=new Lnode;              //新建一个结点，并用s指针指向它
-    s-&gt;data=e;                       //将新建结点的数据域赋为e
-    for(j=0;j&lt;i-1&amp;&amp;p!=NULL;j++)      
-    //当j移动到需要插入位置的前驱时或者链表结束时结束循环
-    &#123;
-        p=p-&gt;next;                   //让p指向下一个结点
-    &#125;
-    if(p==NULL) return false;        //如果p指向不合法位置则返回插入失败
-    s-&gt;next=p-&gt;next;                 //否则让s的next指针指向p的下一个结点
-    p-&gt;next=s;                       //并让p的next指针指向s
-    return true;                     //返回成功插入
-&#125;</code></pre>
-<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><pre><code class="c++">bool del(Linklist &amp;L,int i)
-&#123;
-    int j;
-    Lnode *p=L-&gt;next;                //使p指向首元结点
-    for(j=0;j&lt;i-1&amp;&amp;p!=NULL)           
-    //当j移动到需要删除位置的前驱或链表结束时结束循环
-    &#123;
-        p=p-&gt;next;                  //让p指向p的下一个结点
-    &#125;
-    if(p=NULL) return false;        //p指向不合法位置时，返回删除失败
-    p-&gt;next=p-&gt;next-&gt;next;          //让p的next指针等于p下一个结点的next
-    return true;                    //返回删除成功
-&#125;</code></pre>
-<h2 id="实际题目"><a href="#实际题目" class="headerlink" title="实际题目"></a>实际题目</h2><h3 id="R7-3-单链表的创建及遍历-20-分"><a href="#R7-3-单链表的创建及遍历-20-分" class="headerlink" title="R7-3 单链表的创建及遍历 (20 分)"></a>R7-3 单链表的创建及遍历 (20 分)</h3><p>读入n值及n个整数，建立单链表并遍历输出。</p>
-<p>输入格式:<br>读入n及n个整数。</p>
-<p>输出格式:<br>输出n个整数，以空格分隔（最后一个数的后面没有空格）。</p>
-<p>输入样例:<br>在这里给出一组输入。例如：</p>
-<pre><code>2
-10 5</code></pre>
-<p>输出样例:<br>在这里给出相应的输出。例如：</p>
-<pre><code>10 5</code></pre>
-<p><strong>解法：</strong></p>
-<pre><code class="c++">#include&lt;iostream&gt;
-using namespace std;
-
-typedef struct Lnode
-&#123;
-    int data;
-    struct Lnode *next;
-&#125;*Linklist;
-
-void create(Linklist &amp;L,int n)
-&#123;
-    L=new Lnode;
-    L-&gt;next=NULL;
-    if(n&gt;0) 
-    &#123;
-        Lnode *E=L;
-        int i,a;
-        struct Lnode *p;
-        cin&gt;&gt;a;
-        for(i=1;i&lt;=n;i++)
-        &#123;
-        p=new Lnode;
-        p-&gt;data=a;
-        E-&gt;next=p;
-        p-&gt;next=NULL;
-        E=p;
-        cin&gt;&gt;a;
-        &#125;
-    &#125;
-&#125;
-
-int putout(Linklist &amp;L)
-&#123;
-    int i;
-        struct Lnode *p=L;
-        if(L-&gt;next==NULL) return 0;
-    for(i=0;p-&gt;next-&gt;next!=NULL;i++)
-    &#123;
-        cout&lt;&lt;p-&gt;next-&gt;data&lt;&lt;&quot; &quot;;
-        p=p-&gt;next;
-    &#125;
-    cout&lt;&lt;p-&gt;next-&gt;data;
-    return 0;
-&#125;
-
-int main()
-&#123;
-    Linklist list;
-    int n;
-    cin&gt;&gt;n;
-    create(list,n);
-    putout(list);
-    return 0;
-&#125;</code></pre>
-<h3 id="R7-1-两个有序链表序列的合并-20-分"><a href="#R7-1-两个有序链表序列的合并-20-分" class="headerlink" title="R7-1 两个有序链表序列的合并 (20 分)"></a>R7-1 两个有序链表序列的合并 (20 分)</h3><p>已知两个非降序链表序列S1与S2，设计函数构造出S1与S2合并后的新的非降序链表S3。</p>
-<p>输入格式:<br>输入分两行，分别在每行给出由若干个正整数构成的非降序序列，用−1表示序列的结尾（−1不属于这个序列）。数字用空格间隔。</p>
-<p>输出格式:<br>在一行中输出合并后新的非降序链表，数字间用空格分开，结尾不能有多余空格；若新链表为空，输出NULL。</p>
-<p>输入样例:</p>
-<pre><code>1 3 5 -1
-2 4 6 8 10 -1</code></pre>
-<p>输出样例:</p>
-<pre><code>1 2 3 4 5 6 8 10</code></pre>
-<p><strong>解法：</strong></p>
-<pre><code class="c++">#include&lt;iostream&gt;
-using namespace std;
-
-typedef struct Lnode
-&#123;
-    int data;
-    struct Lnode* next;
-&#125;*Linklist;
-
-bool init(Linklist &amp;L)
-&#123;
-    L=new Lnode;
-    L-&gt;next=NULL;
-    return true;
-&#125;
-
-
-void create(Linklist &amp;L)
-&#123;
-    L=new Lnode;
-    L-&gt;next=NULL;
-        Lnode *E=L;
-        int i,a;
-        struct Lnode *p;
-        cin&gt;&gt;a;
-        for(i=1;a!=-1;i++)
-        &#123;
-        p=new Lnode;
-        p-&gt;data=a;
-        E-&gt;next=p;
-        p-&gt;next=NULL;
-        E=p;
-        cin&gt;&gt;a;
-        &#125;
-&#125;
-
-
-bool addit(Linklist &amp;l1,Linklist &amp;l2,Linklist &amp;l3)
-&#123;
-    struct Lnode *p1=l1-&gt;next,*p2=l2-&gt;next, *p3;
-    l3=l1;
-    p3=l3;
-    while(p1&amp;&amp;p2)
-    &#123;
-            if(p1-&gt;data&lt;=p2-&gt;data)
-            &#123;
-                p3-&gt;next=p1;
-                p3=p1;
-                p1=p1-&gt;next;
-            &#125;
-            else &#123;
-                p3-&gt;next=p2;
-                p3=p2;
-                p2=p2-&gt;next;
-            &#125;
-    &#125;
-    p3-&gt;next=p1?p1:p2;
-    return true;
-&#125;
-
-int putout(Linklist &amp;L)
-&#123;
-    int i;
-        struct Lnode *p=L;
-                if(L-&gt;next==NULL) &#123;
-        cout&lt;&lt;&quot;NULL&quot;; return 0;&#125;
-    for(i=0;p-&gt;next-&gt;next!=NULL;i++)
-    &#123;
-        cout&lt;&lt;p-&gt;next-&gt;data&lt;&lt;&quot; &quot;;
-        p=p-&gt;next;
-    &#125;
-    cout&lt;&lt;p-&gt;next-&gt;data;
-    return 0;
-&#125;
-
-int main()
-&#123;
-    Linklist L1,L2,L3;
-    create(L1);
-    create(L2);
-    init(L3);
-    addit(L1,L2,L3);
-    putout(L3);
-    return 0;
-&#125;</code></pre>
-<h3 id="R7-2-两个有序链表序列的交集-20-分"><a href="#R7-2-两个有序链表序列的交集-20-分" class="headerlink" title="R7-2 两个有序链表序列的交集 (20 分)"></a>R7-2 两个有序链表序列的交集 (20 分)</h3><p>已知两个非降序链表序列S1与S2，设计函数构造出S1与S2的交集新链表S3。</p>
-<p>输入格式:<br>输入分两行，分别在每行给出由若干个正整数构成的非降序序列，用−1表示序列的结尾（−1不属于这个序列）。数字用空格间隔。</p>
-<p>输出格式:<br>在一行中输出两个输入序列的交集序列，数字间用空格分开，结尾不能有多余空格；若新链表为空，输出NULL。</p>
-<p>输入样例:</p>
-<pre><code>1 2 5 -1
-2 4 5 8 10 -1</code></pre>
-<p>输出样例:</p>
-<pre><code>2 5</code></pre>
-<p><strong>解法：</strong></p>
-<pre><code class="c++">#include&lt;iostream&gt;
-using namespace std;
-
-typedef struct Lnode
-&#123;
-    int data;
-    struct Lnode* next;
-&#125;*Linklist;
-
-bool init(Linklist &amp;L)
-&#123;
-    L=new Lnode;
-    L-&gt;next=NULL;
-    return true;
-&#125;
-
-
-void create(Linklist &amp;L)
-&#123;
-    L=new Lnode;
-    L-&gt;next=NULL;
-        Lnode *E=L;
-        int i,a;
-        struct Lnode *p;
-        cin&gt;&gt;a;
-        for(i=1;a!=-1;i++)
-        &#123;
-        p=new Lnode;
-        p-&gt;data=a;
-        E-&gt;next=p;
-        p-&gt;next=NULL;
-        E=p;
-        cin&gt;&gt;a;
-        &#125;
-&#125;
-
-bool find(Linklist &amp;L,int a)
-&#123;
-    int j;
-    struct Lnode *p;
-    p=L-&gt;next;
-    for(j=1;p-&gt;next!=NULL;j++)      
-    &#123;
-        if(p-&gt;data==a) break;       
-        p=p-&gt;next;                 
-    &#125;
-    if(p-&gt;next==NULL&amp;&amp;p-&gt;data!=a)   return false;              
-    return true;  
-&#125;
-
-bool cutit(Linklist &amp;l1,Linklist &amp;l2,Linklist &amp;l3)
-&#123;
-    struct Lnode *p1=l1-&gt;next,*p2=l2-&gt;next,*p3=l3;
-    while(p1&amp;&amp;p2)
-    &#123;
-        if(p1-&gt;data&lt;p2-&gt;data)
-        &#123;
-            p1=p1-&gt;next;
-        &#125;
-        else
-        if(p1-&gt;data==p2-&gt;data)
-        &#123;
-            p3-&gt;next=p1;
-            p3=p3-&gt;next;
-            p1=p1-&gt;next;
-            p2=p2-&gt;next;
-
-        &#125;
-        else
-        if(p1-&gt;data&gt;p2-&gt;data)
-        &#123;
-            p2=p2-&gt;next;
-        &#125;
-    &#125;
-    if(p3-&gt;next!=NULL) p3-&gt;next=NULL;
-    return true;
-&#125;
-
-int putout(Linklist &amp;L)
-&#123;
-    int i;
-        struct Lnode *p=L;
-        if(L-&gt;next==NULL) &#123;
-        cout&lt;&lt;&quot;NULL&quot;; return 0;&#125;
-    for(i=0;p-&gt;next-&gt;next!=NULL;i++)
-    &#123;
-        cout&lt;&lt;p-&gt;next-&gt;data&lt;&lt;&quot; &quot;;
-        p=p-&gt;next;
-    &#125;
-    cout&lt;&lt;p-&gt;next-&gt;data;
-    return 0;
-&#125;
-
-int main()
-&#123;
-    Linklist L1,L2,L3;
-    create(L1);
-    create(L2);
-    init(L3);
-    cutit(L1,L2,L3);
-    putout(L3);
-    return 0;
-&#125;</code></pre>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>数据结构学习</tag>
       </tags>
   </entry>
   <entry>
@@ -5310,198 +5522,6 @@ int (*p)(int i, int j);//指向函数的指针p</code></pre>
       </categories>
       <tags>
         <tag>c++学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数据结构-1</title>
-    <url>/2021/03/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-1/</url>
-    <content><![CDATA[<h1 id="线性表-顺序表"><a href="#线性表-顺序表" class="headerlink" title="线性表-顺序表"></a>线性表-顺序表</h1><p>【Elemtype为数据类型】</p>
-<h2 id="创建（初始化）"><a href="#创建（初始化）" class="headerlink" title="创建（初始化）"></a>创建（初始化）</h2><p>以数组的形式创建顺序表</p>
-<pre><code>typedef struct      //理解为将定义的结构体改称为&#123;&#125;后的名字，如SQlist
-&#123;
-    Elemtype *elem； //定义顺序表具有首元素地址
-    int length;     //定义顺序表具有表长这一属性
-&#125;SQlist;</code></pre>
-<p>初始化设置顺序表的最大存储空间，以及初始化其表长为0</p>
-<pre><code>bool initList(SQlist &amp;sq)     //将需要初始化的表传址
-&#123;
-    sq.elem=new maxsize;        //为顺序表分配maxsize的空间作为最大上限
-    if(!sq.elem) return false;      //如果空间分配失败，直接返回提示错误
-    sq.length=0;                    //如果分配空间成功，则继续初始化表长为0
-    return true;                    //返回参数提示顺序表初始化成功
-&#125;</code></pre>
-<h2 id="取值"><a href="#取值" class="headerlink" title="取值"></a>取值</h2><p>顺序表能够随机存取，故而方便存取指定位置的值，即可以随机存取</p>
-<pre><code>bool getelem(SQlist &amp;sq,int i，elemtype &amp;a)  
-//将需要初始化的表传址，并且传值需要获取的是第i个值，返回的值传给a
-&#123;
-    if(i&lt;1||i&gt;sq.length) return false;    //如果i为非法位置，返回提示错误
-    a=sq.elem[i];                 //否则返回第i个元素给a
-    return true;                  //返回提示执行正常
-&#125;</code></pre>
-<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>顺序表的查找就是顺序比较表内元素和待查找元素，相同查找成功，始终不同查找失败</p>
-<pre><code>int find(SQlist &amp;sq,elemtype a)
-//传址需要查找的表，并传值需要查找的数值a,返回查找到的序号为int类型
-&#123;
-    int i;
-    for(i=0;i&lt;sq.length;i++)
-    &#123;
-    if(sq.elem[i]==a) return i;
-    //如果查找到了，返回该值在表中的序号，此处为数组下标，若返回第几个元素序号，则需要i+1
-    &#125;
-    return -1;            //查找失败，返回负数
-&#125;</code></pre>
-<h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><p>顺序表为紧邻的线性表，故而插入时需要向后移动较多元素，并且需要从最后一个元素开始向后移动，以免数据被覆盖</p>
-<pre><code>bool insert(SQlist &amp;sq,elemtype a,int i)
-//将元素a的值插入表中第i个位置，传址需要做插入的表，以及传值a，i
-&#123;
-    int j;
-    if(i&lt;1||i&gt;sq.length+1) return false;//如果i值不合法，则不作插入
-    if(sq.length==maxsize) return false;//如果表长已经达到最大，则判断表满，不作插入
-    for(j=sq.length-1;j&gt;=i-1;j--)
-    //让j为最后一个元素的角标，循环递减，并且当j等于插入位置i的前驱时，停止循环
-    &#123;
-        sq.elem[j+1]=sq.elem[j];        //给j+1角标的空间赋值当前j角标的值，实现后移
-    &#125;
-    sq.elem[i-1]=a;                     //赋值第i个位置，即角标为i-1的空间为a
-    sq.length++;                        //表长增加
-    return true;                        //返回插入成功
-&#125;</code></pre>
-<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><p>顺序表的删除是将待删除位置后面的全部往前覆盖，向前移动较多元素，并且需要从待删除位置的后一个开始移动，以免覆盖数据</p>
-<pre><code>bool delete(SQlist &amp;sq,int i)
-//传址需要删除元素的顺序表，并且传值需要删除的元素位置
-&#123;
-    int j;
-    if(i&lt;1||i&gt;sq.length) return false;   //如果i值不合法，则不作插入
-    for(j=i;j&lt;=sq.length-1;j++)
-    //将i位置之后的所有元素都向前移，并且循环在将最后一个元素移动到表长减一后的位置停止
-    &#123;
-        sq.elem[j-1]=sq.elem[j];        //被删位置后的元素全部前移
-    &#125;
-    sq.length--;                        //表长减少
-    return true;
-&#125;</code></pre>
-<h2 id="实际题目"><a href="#实际题目" class="headerlink" title="实际题目"></a>实际题目</h2><h3 id="R7-1-顺序表的建立及遍历-20-分"><a href="#R7-1-顺序表的建立及遍历-20-分" class="headerlink" title="R7-1 顺序表的建立及遍历 (20 分)"></a>R7-1 顺序表的建立及遍历 (20 分)</h3><p>读入n值及n个整数，建立顺序表并遍历输出。</p>
-<p>输入格式:<br>读入n及n个整数</p>
-<p>输出格式:<br>输出n个整数，以空格分隔（最后一个数的后面没有空格）。</p>
-<p>输入样例:<br>在这里给出一组输入。例如：</p>
-<pre><code>4
--3 10 20 78</code></pre>
-<p>输出样例:<br>在这里给出相应的输出。例如：</p>
-<pre><code>-3 10 20 78</code></pre>
-<p><strong>解法：</strong></p>
-<pre><code class="c++">#include&lt;iostream&gt;
-using namespace std;
-
-typedef struct
-&#123;
-    int *a;
-    int length;
-&#125;List;
-
-int create(List &amp;sq)
-&#123;
-    sq.a= new int[100];
-    if(!sq.a) return 0;
-    sq.length=0;
-    return 1;
-&#125;
-
-
-int output(List &amp;sq)
-&#123;
-    int j;
-    cout&lt;&lt;sq.a[0];
-    for(j=1;j&lt;sq.length;j++)
-    &#123;
-        cout&lt;&lt;&quot; &quot;&lt;&lt;sq.a[j];
-    &#125;
-&#125;
-
-int main()
-&#123;
-    List sqlist;
-    int i,n;
-    cin&gt;&gt;n;
-    create(sqlist);
-    for(i=0;i&lt;n;i++)
-    &#123;
-        cin&gt;&gt;sqlist.a[i];
-        sqlist.length++;
-    &#125;
-    if(sqlist.length!=0) 
-        output(sqlist);
-    return 0;
-&#125;</code></pre>
-<h3 id="R7-2-jmu-ds-顺序表区间元素删除-20-分"><a href="#R7-2-jmu-ds-顺序表区间元素删除-20-分" class="headerlink" title="R7-2 jmu-ds-顺序表区间元素删除 (20 分)"></a>R7-2 jmu-ds-顺序表区间元素删除 (20 分)</h3><p>若一个线性表L采用顺序存储结构存储，其中所有的元素为整数。设计一个算法，删除元素值在[x,y]之间的所有元素，要求算法的时间复杂度为O(n)，空间复杂度为O(1)。</p>
-<p>输入格式:<br>三行数据，第一行是顺序表的元素个数，第二行是顺序表的元素，第三行是x和y。</p>
-<p>输出格式:<br>删除元素值在[x,y]之间的所有元素后的顺序表。</p>
-<p>输入样例:</p>
-<pre><code>10
-5 1 9 10 67 12 8 33 6 2
-3 10</code></pre>
-<p>输出样例:</p>
-<pre><code>1 67 12 33 2</code></pre>
-<p><strong>解法：</strong></p>
-<pre><code class="c++">#include&lt;iostream&gt;
-using namespace std;
-
-typedef struct
-&#123;
-    int *a;
-    int length;
-&#125;sqlist;
-
-bool create(sqlist &amp;sq)
-&#123;
-    sq.a= new int[100];
-    if(!sq.a) return false;
-    sq.length=0;
-    return true;
-&#125;
-
-bool del(sqlist &amp;sq,int x,int y)
-&#123;
-    int j,i;
-    for(j=0;j&lt;sq.length;j++)
-    &#123;
-        if(sq.a[j]&gt;=x&amp;&amp;sq.a[j]&lt;=y)
-        &#123;
-            for(i=j;i&lt;sq.length;i++)
-            &#123;
-                sq.a[i]=sq.a[i+1];
-            &#125;
-            sq.length--;
-            j--;
-        &#125;
-    &#125;
-&#125;
-
-int main()
-&#123;
-    sqlist List;
-    int n,i,x,y;
-    cin&gt;&gt;n;
-    create(List);
-    for(i=0;i&lt;n;i++)
-    &#123;
-        cin&gt;&gt;List.a[i];
-        List.length++;
-    &#125;
-    cin&gt;&gt;x&gt;&gt;y;
-    del(List,x,y);
-    cout&lt;&lt;List.a[0];
-    for(i=1;i&lt;List.length;i++)
-    &#123;
-        cout&lt;&lt;&quot; &quot;&lt;&lt;List.a[i];
-    &#125;
-    return 0;
-&#125;</code></pre>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>数据结构学习</tag>
       </tags>
   </entry>
   <entry>
