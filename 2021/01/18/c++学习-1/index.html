@@ -17,7 +17,7 @@
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
   translate: undefined,
   noticeOutdate: undefined,
-  highlight: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
   copy: {
     success: '复制成功',
     error: '复制错误',
@@ -140,7 +140,7 @@
         }
       }
     })(window)</script><meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="Zweiwings" type="application/atom+xml">
-</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/head.jpg" onerror="onerror=null;src='/img/cover2.jpg'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/c++cover.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Zweiwings</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">c++学习-1</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-01-18T06:11:37.000Z" title="发表于 2021-01-18 14:11:37">2021-01-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-14T11:34:26.883Z" title="更新于 2021-04-14 19:34:26">2021-04-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="c++学习-1"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2021/01/18/c++%E5%AD%A6%E4%B9%A0-1/#post-comment"><span class="gitalk-comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="c-基础（同c比较）"><a href="#c-基础（同c比较）" class="headerlink" title="c++基础（同c比较）"></a>c++基础（同c比较）</h1><table>
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/head.jpg" onerror="onerror=null;src='/img/cover2.jpg'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/c++cover.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Zweiwings</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">c++学习-1</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-01-18T06:11:37.000Z" title="发表于 2021-01-18 14:11:37">2021-01-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-14T11:34:26.883Z" title="更新于 2021-04-14 19:34:26">2021-04-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="c++学习-1"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2021/01/18/c++%E5%AD%A6%E4%B9%A0-1/#post-comment"><span class="gitalk-comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="c-基础（同c比较）"><a href="#c-基础（同c比较）" class="headerlink" title="c++基础（同c比较）"></a>c++基础（同c比较）</h1><table>
 <thead>
 <tr>
 <th></th>
@@ -642,11 +642,11 @@
 <p>p是一个指针，它指向一个函数，该函数有2个整形参数，返回类型为int。</p>
 <p>p首先和*结合，表明p是一个指针。然后再与（）结合，表明它指向的是一个函数。</p>
 <p>指向函数的指针也称为函数指针。</p>
-<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a><strong>注意：</strong></h3><pre><code>int *f(int i, int j);//返回值是指针的函数f
+<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a><strong>注意：</strong></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int *f(int i, int j);&#x2F;&#x2F;返回值是指针的函数f</span><br><span class="line"></span><br><span class="line">int (*p)(int i, int j);&#x2F;&#x2F;指向函数的指针p</span><br></pre></td></tr></table></figure>
 
-int (*p)(int i, int j);//指向函数的指针p</code></pre>
+
 <h1 id="结构体："><a href="#结构体：" class="headerlink" title="结构体："></a>结构体：</h1><h2 id="1-基本概念："><a href="#1-基本概念：" class="headerlink" title="1.基本概念："></a>1.基本概念：</h2><p>结构体属于用户自定义的数据类型，允许用户存储不同的数据类型</p>
-<h2 id="2-结构体定义和使用："><a href="#2-结构体定义和使用：" class="headerlink" title="2.结构体定义和使用："></a>2.结构体定义和使用：</h2><pre><code>struct 结构体名称 &#123; 结构体成员列表 &#125;；</code></pre>
+<h2 id="2-结构体定义和使用："><a href="#2-结构体定义和使用：" class="headerlink" title="2.结构体定义和使用："></a>2.结构体定义和使用：</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">struct 结构体名称 &#123; 结构体成员列表 &#125;；</span><br></pre></td></tr></table></figure>
 <p>通过结构体创建变量的方式如下三种：**(创建变量时，struct 关键字可以省略)**</p>
 <ul>
 <li><p><strong>struct 结构体名 变量名</strong></p>
@@ -657,22 +657,15 @@ int (*p)(int i, int j);//指向函数的指针p</code></pre>
 </li>
 </ul>
 <h2 id="3-结构体数组"><a href="#3-结构体数组" class="headerlink" title="3.结构体数组"></a>3.结构体数组</h2><h3 id="作用："><a href="#作用：" class="headerlink" title="作用："></a>作用：</h3><p>将自定义的结构体放入数组中，方便自定义结构体的维护</p>
-<h3 id="形如："><a href="#形如：" class="headerlink" title="形如："></a>形如：</h3><pre><code>struct 结构体名 数组名[元素个数] =&#123;&#123;&#125;，&#123;&#125;，&#123;&#125;......&#125;；</code></pre>
-<h3 id="结构体数组遍历："><a href="#结构体数组遍历：" class="headerlink" title="结构体数组遍历："></a>结构体数组遍历：</h3><pre><code>for (int i = 0;i &lt; 3;i++)//遍历每个结构体
-&#123;
-    cout&lt;&lt;结构体名 数组名[i].成员&lt;&lt;endl;//即输出所有结构体的某一成员
-&#125;</code></pre>
+<h3 id="形如："><a href="#形如：" class="headerlink" title="形如："></a>形如：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">struct 结构体名 数组名[元素个数] &#x3D;&#123;&#123;&#125;，&#123;&#125;，&#123;&#125;......&#125;；</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="结构体数组遍历："><a href="#结构体数组遍历：" class="headerlink" title="结构体数组遍历："></a>结构体数组遍历：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">for (int i &#x3D; 0;i &lt; 3;i++)&#x2F;&#x2F;遍历每个结构体</span><br><span class="line">&#123;</span><br><span class="line">	cout&lt;&lt;结构体名 数组名[i].成员&lt;&lt;endl;&#x2F;&#x2F;即输出所有结构体的某一成员</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
 <h2 id="4-结构体指针："><a href="#4-结构体指针：" class="headerlink" title="4.结构体指针："></a>4.结构体指针：</h2><p>作用：通过指针访问结构体中成员</p>
 <p><strong>使用操作符-&gt;可以通过结构体指针访问结构体属性</strong></p>
-<pre><code>在学习C++的过程中我们经常会用到.和::和:和-&gt;，在此整理一下这些常用符号的区别。 
-
-  1、A.B则A为对象或者结构体(s1.age=18;)；
-
-  2、A-&gt;B则A为指针，-&gt;是成员提取，A-&gt;B是提取A中的成员B，A只能是指向类、结构、联合的指针；
-
-  3*、::是作用域运算符，A::B表示作用域A中的名称B，A可以是名字空间、类、结构；
-
-  4*、:一般用来表示继承；</code></pre>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在学习C++的过程中我们经常会用到.和::和:和-&gt;，在此整理一下这些常用符号的区别。 </span><br><span class="line"></span><br><span class="line">  1、A.B则A为对象或者结构体(s1.age&#x3D;18;)；</span><br><span class="line"></span><br><span class="line">  2、A-&gt;B则A为指针，-&gt;是成员提取，A-&gt;B是提取A中的成员B，A只能是指向类、结构、联合的指针；</span><br><span class="line"></span><br><span class="line">  3*、::是作用域运算符，A::B表示作用域A中的名称B，A可以是名字空间、类、结构；</span><br><span class="line"></span><br><span class="line">  4*、:一般用来表示继承；</span><br></pre></td></tr></table></figure>
 <p>*<em>注意：定义指针时，指针的类型应该与被指向的结构体变量相符，即用“struct 结构体名 * 指针名”*</em></p>
 <h2 id="5-结构体嵌套结构体"><a href="#5-结构体嵌套结构体" class="headerlink" title="5.结构体嵌套结构体"></a>5.结构体嵌套结构体</h2><p>作用：在一个结构体内嵌套另一个结构体，即将结构体的成员设置为结构体（参考嵌套if）</p>
 <p><strong>注意：在定义外层结构体前，需要先定义内层结构体</strong></p>
@@ -680,7 +673,9 @@ int (*p)(int i, int j);//指向函数的指针p</code></pre>
 <p><strong>两种传递方式：值传递、地址传递</strong>（同基本数据类型相同）</p>
 <h2 id="7-结构体中const使用场景"><a href="#7-结构体中const使用场景" class="headerlink" title="7.结构体中const使用场景"></a>7.结构体中const使用场景</h2><p>作用：用const来防止误操作，一旦有修改的操作就会报错</p>
 <h1 id="引用："><a href="#引用：" class="headerlink" title="引用："></a>引用：</h1><h2 id="1-用处："><a href="#1-用处：" class="headerlink" title="1.用处："></a><strong>1.用处：</strong></h2><p>给一个变量起别名，通过多个变量名修改变量值</p>
-<h2 id="2-形如："><a href="#2-形如：" class="headerlink" title="2.形如："></a><strong>2.形如：</strong></h2><pre><code>数据类型 &amp;别名 = 原名</code></pre>
+<h2 id="2-形如："><a href="#2-形如：" class="headerlink" title="2.形如："></a><strong>2.形如：</strong></h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">数据类型 &amp;别名 &#x3D; 原名</span><br></pre></td></tr></table></figure>
+
+
 <h2 id="3-注意事项：引用必须初始化，且在初始化后不可以改变"><a href="#3-注意事项：引用必须初始化，且在初始化后不可以改变" class="headerlink" title="3.注意事项：引用必须初始化，且在初始化后不可以改变"></a>3.注意事项：引用必须初始化，且在初始化后不可以改变</h2><h2 id="4-引用做函数参数"><a href="#4-引用做函数参数" class="headerlink" title="4.引用做函数参数"></a>4.引用做函数参数</h2><p><strong>作用：</strong>函数传参时，可以利用引用的技术让形参修饰实参</p>
 <p><strong>优点：</strong>可以简化指针修改实参</p>
 <h2 id="5-引用做函数返回值"><a href="#5-引用做函数返回值" class="headerlink" title="5.引用做函数返回值"></a>5.引用做函数返回值</h2><p><strong>用法：</strong>函数调用可以作为左值</p>
@@ -690,13 +685,13 @@ int (*p)(int i, int j);//指向函数的指针p</code></pre>
 <h2 id="6-引用的本质："><a href="#6-引用的本质：" class="headerlink" title="6.引用的本质："></a>6.引用的本质：</h2><p><strong>引用在c++内部的实现，实际上是一个指针常量</strong></p>
 <h2 id="7-常量引用"><a href="#7-常量引用" class="headerlink" title="7.常量引用"></a>7.常量引用</h2><p><strong>作用：常量引用主要用来修饰形参，防止误操作，在函数形参列表中加const修饰形参，防止形参改变实参</strong></p>
 <h1 id="函数提高："><a href="#函数提高：" class="headerlink" title="函数提高："></a>函数提高：</h1><h2 id="1-函数默认参数"><a href="#1-函数默认参数" class="headerlink" title="1.函数默认参数"></a>1.函数默认参数</h2><p><strong>语法：</strong></p>
-<pre><code>返回值类型 函数名 （参数=默认值）&#123;函数体&#125;</code></pre>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">返回值类型 函数名 （参数&#x3D;默认值）&#123;函数体&#125;</span><br></pre></td></tr></table></figure>
 <p>注意事项：</p>
 <p>1.如果某个位置已经有了默认参数，那么之后都必须有默认值</p>
 <p>2.如果函数声明中有默认参数，函数实现中不能有默认参数（重定义）</p>
 <h2 id="2-函数占位参数"><a href="#2-函数占位参数" class="headerlink" title="2.函数占位参数"></a>2.函数占位参数</h2><p>c++中函数的形参列表可以有占位参数，用来做占位，调用函数时，必须填补该位置</p>
 <p>语法：</p>
-<pre><code>返回值类型 函数名 （数据类型无形参名）&#123;函数体&#125;</code></pre>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">返回值类型 函数名 （数据类型无形参名）&#123;函数体&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>注意：占位参数也可以有默认参数</strong></p>
 <h2 id="3-函数重载"><a href="#3-函数重载" class="headerlink" title="3.函数重载"></a>3.函数重载</h2><p>作用：函数名可以相同，提高复用性</p>
 <h3 id="1-函数重载满足条件："><a href="#1-函数重载满足条件：" class="headerlink" title="1.函数重载满足条件："></a><strong>1.函数重载满足条件：</strong></h3><ul>

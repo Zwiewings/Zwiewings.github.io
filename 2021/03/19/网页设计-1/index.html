@@ -17,7 +17,7 @@
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
   translate: undefined,
   noticeOutdate: undefined,
-  highlight: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
   copy: {
     success: '复制成功',
     error: '复制错误',
@@ -140,35 +140,18 @@
         }
       }
     })(window)</script><meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="Zweiwings" type="application/atom+xml">
-</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/head.jpg" onerror="onerror=null;src='/img/cover2.jpg'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BD%91%E9%A1%B5%E5%9F%BA%E7%A1%80cover-1.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Zweiwings</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">网页设计-1</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-03-19T03:02:30.000Z" title="发表于 2021-03-19 11:02:30">2021-03-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-05-07T11:47:06.666Z" title="更新于 2021-05-07 19:47:06">2021-05-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="网页设计-1"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2021/03/19/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1-1/#post-comment"><span class="gitalk-comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="结构标签"><a href="#结构标签" class="headerlink" title="结构标签"></a>结构标签</h1><pre><code class="html">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-    &lt;head&gt;
-        &lt;meta charset=&quot;utf-8&quot;&gt;             //编码方式为utf-8
-        &lt;title&gt;第一个HTML&lt;/title&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-        &lt;p&gt;
-            这是我的第一个html文件
-        &lt;/p&gt;
-    &lt;/body&gt;
-&lt;/html&gt;</code></pre>
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/head.jpg" onerror="onerror=null;src='/img/cover2.jpg'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BD%91%E9%A1%B5%E5%9F%BA%E7%A1%80cover-1.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Zweiwings</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">网页设计-1</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-03-19T03:02:30.000Z" title="发表于 2021-03-19 11:02:30">2021-03-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-05-07T11:47:06.666Z" title="更新于 2021-05-07 19:47:06">2021-05-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="网页设计-1"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2021/03/19/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1-1/#post-comment"><span class="gitalk-comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="结构标签"><a href="#结构标签" class="headerlink" title="结构标签"></a>结构标签</h1><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span>             //编码方式为utf-8</span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>第一个HTML<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">            这是我的第一个html文件</span><br><span class="line">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>以上为基本应该存在的结构框架，效果图如下：</p>
 <p><img src="/2021/03/19/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1-1/2.png" alt="2"></p>
-<h1 id="文字段落标签"><a href="#文字段落标签" class="headerlink" title="文字段落标签"></a>文字段落标签</h1><h2 id="标题与段落标签"><a href="#标题与段落标签" class="headerlink" title="标题与段落标签"></a>标题与段落标签</h2><h3 id="标题标签"><a href="#标题标签" class="headerlink" title="标题标签"></a>标题标签</h3><pre><code class="html">&lt;h1&gt; &lt;h2&gt; &lt;h3&gt; &lt;h4&gt; &lt;h5&gt; &lt;h6&gt; //从左到右重要性递减
-    &lt;hn align=&quot;对齐方式&quot;&gt;标题内容&lt;/hn&gt;</code></pre>
-<h3 id="段落标签"><a href="#段落标签" class="headerlink" title="段落标签"></a>段落标签</h3><pre><code class="html">&lt;p align=&quot;对齐方式&quot;&gt;段落文本&lt;/p&gt;</code></pre>
-<h3 id="水平分割线标签"><a href="#水平分割线标签" class="headerlink" title="水平分割线标签"></a>水平分割线标签</h3><pre><code class="html">&lt;hr 属性=&quot;属性值&quot;/&gt;
-//size设置粗细，align对齐方式，width设置宽度，color设置颜色，noshade设置3d阴影</code></pre>
-<h3 id="换行缩进标签"><a href="#换行缩进标签" class="headerlink" title="换行缩进标签"></a>换行缩进标签</h3><pre><code class="html">&lt;br/&gt;                        //强制换行
-&lt;blockquote&gt;&lt;/blockquote&gt;   //缩进</code></pre>
-<h2 id="文本的格式化标签"><a href="#文本的格式化标签" class="headerlink" title="文本的格式化标签"></a>文本的格式化标签</h2><pre><code class="html">&lt;b&gt;&lt;/b&gt;                        //粗体
-&lt;strong&gt;&lt;/strong&gt;            //强调，一般为粗体
-&lt;i&gt;&lt;/i&gt;                        //斜体
-&lt;em&gt;&lt;/em&gt;                    //强调，一般为斜体
-&lt;del&gt;&lt;/del&gt;                    //删除线
-&lt;ins&gt;&lt;/ins&gt;                    //加下划线
-&lt;sup&gt;&lt;/sup&gt;                    //上标
-&lt;sub&gt;&lt;/sub&gt;                    //下标</code></pre>
+<h1 id="文字段落标签"><a href="#文字段落标签" class="headerlink" title="文字段落标签"></a>文字段落标签</h1><h2 id="标题与段落标签"><a href="#标题与段落标签" class="headerlink" title="标题与段落标签"></a>标题与段落标签</h2><h3 id="标题标签"><a href="#标题标签" class="headerlink" title="标题标签"></a>标题标签</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span> <span class="tag">&lt;<span class="name">h2</span>&gt;</span> <span class="tag">&lt;<span class="name">h3</span>&gt;</span> <span class="tag">&lt;<span class="name">h4</span>&gt;</span> <span class="tag">&lt;<span class="name">h5</span>&gt;</span> <span class="tag">&lt;<span class="name">h6</span>&gt;</span> //从左到右重要性递减</span><br><span class="line">    <span class="tag">&lt;<span class="name">hn</span> <span class="attr">align</span>=<span class="string">&quot;对齐方式&quot;</span>&gt;</span>标题内容<span class="tag">&lt;/<span class="name">hn</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="段落标签"><a href="#段落标签" class="headerlink" title="段落标签"></a>段落标签</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">align</span>=<span class="string">&quot;对齐方式&quot;</span>&gt;</span>段落文本<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="水平分割线标签"><a href="#水平分割线标签" class="headerlink" title="水平分割线标签"></a>水平分割线标签</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">hr</span> 属性=<span class="string">&quot;属性值&quot;</span>/&gt;</span></span><br><span class="line">//size设置粗细，align对齐方式，width设置宽度，color设置颜色，noshade设置3d阴影</span><br></pre></td></tr></table></figure>
+<h3 id="换行缩进标签"><a href="#换行缩进标签" class="headerlink" title="换行缩进标签"></a>换行缩进标签</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span>						//强制换行</span><br><span class="line"><span class="tag">&lt;<span class="name">blockquote</span>&gt;</span><span class="tag">&lt;/<span class="name">blockquote</span>&gt;</span>   //缩进</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="文本的格式化标签"><a href="#文本的格式化标签" class="headerlink" title="文本的格式化标签"></a>文本的格式化标签</h2><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">b</span>&gt;</span>						//粗体</span><br><span class="line"><span class="tag">&lt;<span class="name">strong</span>&gt;</span><span class="tag">&lt;/<span class="name">strong</span>&gt;</span>			//强调，一般为粗体</span><br><span class="line"><span class="tag">&lt;<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>						//斜体</span><br><span class="line"><span class="tag">&lt;<span class="name">em</span>&gt;</span><span class="tag">&lt;/<span class="name">em</span>&gt;</span>					//强调，一般为斜体</span><br><span class="line"><span class="tag">&lt;<span class="name">del</span>&gt;</span><span class="tag">&lt;/<span class="name">del</span>&gt;</span>					//删除线</span><br><span class="line"><span class="tag">&lt;<span class="name">ins</span>&gt;</span><span class="tag">&lt;/<span class="name">ins</span>&gt;</span>					//加下划线</span><br><span class="line"><span class="tag">&lt;<span class="name">sup</span>&gt;</span><span class="tag">&lt;/<span class="name">sup</span>&gt;</span>					//上标</span><br><span class="line"><span class="tag">&lt;<span class="name">sub</span>&gt;</span><span class="tag">&lt;/<span class="name">sub</span>&gt;</span>					//下标</span><br></pre></td></tr></table></figure>
+
+
 <h2 id="特殊字符标签"><a href="#特殊字符标签" class="headerlink" title="特殊字符标签"></a>特殊字符标签</h2><table>
 <thead>
 <tr>
@@ -203,48 +186,30 @@
 <td>&amp;times；</td>
 </tr>
 </tbody></table>
-<h1 id="图像与超链接标签"><a href="#图像与超链接标签" class="headerlink" title="图像与超链接标签"></a>图像与超链接标签</h1><h2 id="图像标签"><a href="#图像标签" class="headerlink" title="图像标签"></a>图像标签</h2><pre><code class="html">&lt;img src=&quot;图像URL&quot;/&gt;</code></pre>
-<h2 id="超链接标签"><a href="#超链接标签" class="headerlink" title="超链接标签"></a>超链接标签</h2><h3 id="创建超链接"><a href="#创建超链接" class="headerlink" title="创建超链接"></a>创建超链接</h3><pre><code class="html">&lt;a href=&quot;资源地址&quot; target=&quot;窗口名称&quot; title=&quot;链接提示&quot;&gt;链接对象&lt;/a&gt;</code></pre>
+<h1 id="图像与超链接标签"><a href="#图像与超链接标签" class="headerlink" title="图像与超链接标签"></a>图像与超链接标签</h1><h2 id="图像标签"><a href="#图像标签" class="headerlink" title="图像标签"></a>图像标签</h2><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;图像URL&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="超链接标签"><a href="#超链接标签" class="headerlink" title="超链接标签"></a>超链接标签</h2><h3 id="创建超链接"><a href="#创建超链接" class="headerlink" title="创建超链接"></a>创建超链接</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;资源地址&quot;</span> <span class="attr">target</span>=<span class="string">&quot;窗口名称&quot;</span> <span class="attr">title</span>=<span class="string">&quot;链接提示&quot;</span>&gt;</span>链接对象<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h3 id="绝对路径和相对路径"><a href="#绝对路径和相对路径" class="headerlink" title="绝对路径和相对路径"></a>绝对路径和相对路径</h3><ol>
 <li>绝对路径：网络主页上所存在的，或是文件在硬盘上的真实路径。</li>
 <li>相对路径：以当前文件为起点，进行相对文件的查找。</li>
 </ol>
-<pre><code class="html">./          //指当前文件所在目录下（可省略）
-../         //指当前文件所在目录的上一目录下</code></pre>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">./          //指当前文件所在目录下（可省略）</span><br><span class="line">../         //指当前文件所在目录的上一目录下</span><br></pre></td></tr></table></figure>
 <h3 id="锚点链接"><a href="#锚点链接" class="headerlink" title="锚点链接"></a>锚点链接</h3><p>锚点定义：</p>
-<pre><code class="html">&lt;a name=&quot;锚点名称&quot;&gt;文字&lt;/a&gt;
-//或将name改做id</code></pre>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">name</span>=<span class="string">&quot;锚点名称&quot;</span>&gt;</span>文字<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">//或将name改做id</span><br></pre></td></tr></table></figure>
 <p>跳转锚点：</p>
-<pre><code class="html">&lt;a href=&quot;锚点名称&quot;&gt;链接的文字&lt;/a&gt;</code></pre>
-<h3 id="影像地图"><a href="#影像地图" class="headerlink" title="影像地图"></a>影像地图</h3><pre><code class="html">&lt;img src=&quot;图像地址&quot; usemap=&quot;#影像地图名称&quot;&gt;   //使用影像地图
-
-&lt;map name=&quot;影像地图名称&quot;&gt;                      //定义影像地图
-    &lt;area shape=&quot;热区形状&quot; coords=&quot;热区坐标&quot; href=&quot;链接地址&quot;&gt;
-    &lt;!--此处可以添加多个area--&gt;
-&lt;/map&gt;</code></pre>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;锚点名称&quot;</span>&gt;</span>链接的文字<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="影像地图"><a href="#影像地图" class="headerlink" title="影像地图"></a>影像地图</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;图像地址&quot;</span> <span class="attr">usemap</span>=<span class="string">&quot;#影像地图名称&quot;</span>&gt;</span>   //使用影像地图</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">map</span> <span class="attr">name</span>=<span class="string">&quot;影像地图名称&quot;</span>&gt;</span>					  //定义影像地图</span><br><span class="line">	<span class="tag">&lt;<span class="name">area</span> <span class="attr">shape</span>=<span class="string">&quot;热区形状&quot;</span> <span class="attr">coords</span>=<span class="string">&quot;热区坐标&quot;</span> <span class="attr">href</span>=<span class="string">&quot;链接地址&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--此处可以添加多个area--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">map</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p><strong>shape与coords的附加说明：</strong></p>
 <ul>
 <li>shape=”circle“，coords=”x,y,z“（x,y定义圆心位置，z为半径)</li>
 <li>shape=“polygon”，coords=“x1,y1,x2,y2……”（每个顶点的坐标都要写入）</li>
 <li>shape=“rectangle”，coords=“x1,y1,x2,y2”（一个顶点的坐标和其对角顶点坐标）</li>
 </ul>
-<h1 id="表格与列表标签"><a href="#表格与列表标签" class="headerlink" title="表格与列表标签"></a>表格与列表标签</h1><h2 id="表格标签"><a href="#表格标签" class="headerlink" title="表格标签"></a>表格标签</h2><h3 id="表格的定义范例"><a href="#表格的定义范例" class="headerlink" title="表格的定义范例"></a><strong>表格的定义范例</strong></h3><pre><code class="html">&lt;table&gt;
-    &lt;tr&gt;                                //表格的第一个横行
-        &lt;th&gt;此处表头字体自动加粗&lt;/th&gt;         //具体到行内的一个单元格
-        &lt;td&gt;&lt;/td&gt;
-        &lt;td&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;                                //表格的第二个横行
-        &lt;td&gt;&lt;/td&gt;
-        &lt;td&gt;&lt;/td&gt;
-        &lt;td&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-&lt;/table&gt;</code></pre>
-<pre><code class="html">&lt;caption&gt;定义表格的标题&lt;/caption&gt;
-&lt;thead&gt;定义表格的表头&lt;/thead&gt;
-&lt;tbody&gt;对表格中的主体内容进行分组&lt;/tbody&gt;
-&lt;tfoot&gt;对表格中的页脚内容进行分组&lt;/tfoot&gt;
-// 后三个标签应该结合使用</code></pre>
+<h1 id="表格与列表标签"><a href="#表格与列表标签" class="headerlink" title="表格与列表标签"></a>表格与列表标签</h1><h2 id="表格标签"><a href="#表格标签" class="headerlink" title="表格标签"></a>表格标签</h2><h3 id="表格的定义范例"><a href="#表格的定义范例" class="headerlink" title="表格的定义范例"></a><strong>表格的定义范例</strong></h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span>								//表格的第一个横行</span><br><span class="line">    	<span class="tag">&lt;<span class="name">th</span>&gt;</span>此处表头字体自动加粗<span class="tag">&lt;/<span class="name">th</span>&gt;</span>		 //具体到行内的一个单元格</span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span>								//表格的第二个横行</span><br><span class="line">    	<span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">caption</span>&gt;</span>定义表格的标题<span class="tag">&lt;/<span class="name">caption</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">thead</span>&gt;</span>定义表格的表头<span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">tbody</span>&gt;</span>对表格中的主体内容进行分组<span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">tfoot</span>&gt;</span>对表格中的页脚内容进行分组<span class="tag">&lt;/<span class="name">tfoot</span>&gt;</span></span><br><span class="line">// 后三个标签应该结合使用</span><br></pre></td></tr></table></figure>
+
+
 <h3 id="表格标签”table”的属性："><a href="#表格标签”table”的属性：" class="headerlink" title="表格标签”table”的属性："></a><strong>表格标签”table”的属性：</strong></h3><table>
 <thead>
 <tr>
@@ -348,11 +313,7 @@
 </tr>
 </tbody></table>
 <h2 id="列表标签"><a href="#列表标签" class="headerlink" title="列表标签"></a>列表标签</h2><ul>
-<li><h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><pre><code class="html">&lt;ul type=编号类型&gt;
-    &lt;li&gt;第一项&lt;/li&gt;
-    &lt;li&gt;第二项&lt;/li&gt;
-    &lt;li&gt;第三项&lt;/li&gt;
-&lt;/ul&gt;</code></pre>
+<li><h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">type</span>=<span class="string">编号类型</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>第一项<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>第二项<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>第三项<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p><strong>type决定列表图标类型：</strong></p>
 <ul>
 <li><p>disc为实心圆（默认）</p>
@@ -365,11 +326,7 @@
 </li>
 </ul>
 <ul>
-<li><h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><pre><code class="html">&lt;ol type=&quot;编号类型&quot; start=value&gt;
-    &lt;li&gt;第一项&lt;/li&gt;
-    &lt;li&gt;第二项&lt;/li&gt;
-    &lt;li&gt;第三项&lt;/li&gt;
-&lt;/ol&gt;</code></pre>
+<li><h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ol</span> <span class="attr">type</span>=<span class="string">&quot;编号类型&quot;</span> <span class="attr">start</span>=<span class="string">value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>第一项<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>第二项<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>第三项<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p><strong>type决定列表序号样式：</strong></p>
 <ul>
 <li><strong>type=1：</strong>1,2,3,4,5……</li>
@@ -384,27 +341,13 @@
 <ul>
 <li><h3 id="定义列表"><a href="#定义列表" class="headerlink" title="定义列表"></a>定义列表</h3></li>
 </ul>
-<pre><code class="html">&lt;dl&gt;
-    &lt;dt&gt;第一项&lt;/dt&gt;&lt;dd&gt;注释一&lt;/dd&gt;
-    &lt;dt&gt;第二项&lt;/dt&gt;&lt;dd&gt;注释二&lt;/dd&gt;
-    &lt;dt&gt;第三项&lt;/dt&gt;&lt;dd&gt;注释三&lt;/dd&gt;
-&lt;/dl&gt;</code></pre>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dl</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dt</span>&gt;</span>第一项<span class="tag">&lt;/<span class="name">dt</span>&gt;</span><span class="tag">&lt;<span class="name">dd</span>&gt;</span>注释一<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dt</span>&gt;</span>第二项<span class="tag">&lt;/<span class="name">dt</span>&gt;</span><span class="tag">&lt;<span class="name">dd</span>&gt;</span>注释二<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dt</span>&gt;</span>第三项<span class="tag">&lt;/<span class="name">dt</span>&gt;</span><span class="tag">&lt;<span class="name">dd</span>&gt;</span>注释三<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dl</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
 <ul>
 <li><h3 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h3></li>
 </ul>
-<pre><code class="html">&lt;ul type=&quot;circle&quot;&gt;
-    &lt;li&gt;北京&lt;/li&gt;
-    &lt;li&gt;上海
-        &lt;ol start=&quot;6&quot; type=&quot;1&quot; reversed=&quot;true&quot;&gt;
-        &lt;li&gt;浦东新区&lt;/li&gt;
-        &lt;li&gt;徐汇区&lt;/li&gt;
-        &lt;li&gt;长宁区&lt;/li&gt;
-        &lt;li&gt;普陀区&lt;/li&gt;
-        &lt;/ol&gt;
-    &lt;/li&gt;
-    &lt;li&gt;广州&lt;/li&gt;
-    &lt;li&gt;深圳&lt;/li&gt;
-&lt;/ul&gt;</code></pre>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">type</span>=<span class="string">&quot;circle&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>北京<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>上海</span><br><span class="line">        <span class="tag">&lt;<span class="name">ol</span> <span class="attr">start</span>=<span class="string">&quot;6&quot;</span> <span class="attr">type</span>=<span class="string">&quot;1&quot;</span> <span class="attr">reversed</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>浦东新区<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>徐汇区<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>长宁区<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>普陀区<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>广州<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>深圳<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>以上代码为无序列表嵌套有序列表，效果图如下</p>
 <p><img src="/2021/03/19/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1-1/1.png" alt="1"></p>
 <h1 id="页面布局与float浮动"><a href="#页面布局与float浮动" class="headerlink" title="页面布局与float浮动"></a>页面布局与float浮动</h1><ul>

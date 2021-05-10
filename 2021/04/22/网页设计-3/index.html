@@ -17,7 +17,7 @@
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
   translate: undefined,
   noticeOutdate: undefined,
-  highlight: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
   copy: {
     success: '复制成功',
     error: '复制错误',
@@ -140,20 +140,12 @@
         }
       }
     })(window)</script><meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="Zweiwings" type="application/atom+xml">
-</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/head.jpg" onerror="onerror=null;src='/img/cover2.jpg'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BD%91%E9%A1%B5%E5%9F%BA%E7%A1%80cover-2.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Zweiwings</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">网页设计-3</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-04-22T07:00:56.000Z" title="发表于 2021-04-22 15:00:56">2021-04-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-05-07T11:48:27.079Z" title="更新于 2021-05-07 19:48:27">2021-05-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="网页设计-3"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2021/04/22/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1-3/#post-comment"><span class="gitalk-comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="CSS操作"><a href="#CSS操作" class="headerlink" title="CSS操作"></a>CSS操作</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="css格式定义"><a href="#css格式定义" class="headerlink" title="css格式定义"></a>css格式定义</h3><p>css样式设置由选择器和声明部分组成，示例如下</p>
-<pre><code>选择器类型&#123;
-    属性1:值1;
-    属性2:值2;
-    …………
-&#125;</code></pre>
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/head.jpg" onerror="onerror=null;src='/img/cover2.jpg'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BD%91%E9%A1%B5%E5%9F%BA%E7%A1%80cover-2.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Zweiwings</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">网页设计-3</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-04-22T07:00:56.000Z" title="发表于 2021-04-22 15:00:56">2021-04-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-05-07T11:48:27.079Z" title="更新于 2021-05-07 19:48:27">2021-05-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="网页设计-3"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2021/04/22/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1-3/#post-comment"><span class="gitalk-comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="CSS操作"><a href="#CSS操作" class="headerlink" title="CSS操作"></a>CSS操作</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="css格式定义"><a href="#css格式定义" class="headerlink" title="css格式定义"></a>css格式定义</h3><p>css样式设置由选择器和声明部分组成，示例如下</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">选择器类型&#123;</span><br><span class="line">	属性1:值1;</span><br><span class="line">	属性2:值2;</span><br><span class="line">	…………</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>一般来说，作为分隔每个属性的标志，最末尾的属性后的分号可以省略，但规范上是不省略的</p>
 <h3 id="css样式调用"><a href="#css样式调用" class="headerlink" title="css样式调用"></a>css样式调用</h3><p>分为：行内样式表，内部样式表，链入外部样式表</p>
 <p>以下为链入外部样式表的两种方法：</p>
-<pre><code class="html">方法1：&lt;link href=&quot;相对地址&quot; type=&quot;text/css&quot; rel=&quot;stylesheeet&quot;/&gt;
-
-方法2：&lt;style type=&quot;text/css&quot;&gt;
-        @import url(&quot;相对地址&quot;);
-      &lt;/style&gt;</code></pre>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">方法1：<span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">&quot;相对地址&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheeet&quot;</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">方法2：<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span></span><br><span class="line"><span class="css">		<span class="keyword">@import</span> url(<span class="string">&quot;相对地址&quot;</span>);</span></span><br><span class="line">	  <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>注：也可以在当前网页内以css的方式写入本网页的样式（如行内样式表和内部样式表），但是该样式仅作用于该网页，而且夹杂于内容中，故不推荐使用</p>
 <h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><h3 id="标签选择器：p、hn等标签"><a href="#标签选择器：p、hn等标签" class="headerlink" title="标签选择器：p、hn等标签"></a>标签选择器：p、hn等标签</h3><p>代表该标签的共性，用css修改时，将会作用于当前网页所有该标签</p>
 <p>调用方式：直接使用定义的标签</p>
@@ -174,14 +166,19 @@
 <p>使用方式：不需要调用，在css文件链接时直接附加</p>
 <h3 id="群组选择器-并集选择器：“-”"><a href="#群组选择器-并集选择器：“-”" class="headerlink" title="群组选择器/并集选择器：“,”"></a>群组选择器/并集选择器：“,”</h3><p>表达“或”的含义，部分样式相同或完全相同时使用</p>
 <p>使用方式：</p>
-<pre><code>标签名1,标签名2,……&#123;属性表&#125;</code></pre>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">标签名1,标签名2,……&#123;属性表&#125;</span><br></pre></td></tr></table></figure>
+
+
 <h3 id="标签指定式选择器-交集选择器"><a href="#标签指定式选择器-交集选择器" class="headerlink" title="标签指定式选择器/交集选择器"></a>标签指定式选择器/交集选择器</h3><p>表达“和”的含义，同时使用标签选择器和类选择器或者同时使用标签选择器和id选择器</p>
 <p>使用方式：</p>
-<pre><code>标签名.类名&#123;属性表&#125;
-标签名#id&#123;属性表&#125;</code></pre>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">标签名.类名&#123;属性表&#125;</span><br><span class="line">标签名#id&#123;属性表&#125;</span><br></pre></td></tr></table></figure>
+
+
 <h3 id="包含选择器-后代选择器"><a href="#包含选择器-后代选择器" class="headerlink" title="包含选择器/后代选择器"></a>包含选择器/后代选择器</h3><p>选择元素或元素组的后代，也称后代选择器，把外层标签写在前面，内层标签写在后面，中间用空格分隔</p>
 <p>使用方式：（两个选择器中间必须有空格）</p>
-<pre><code>选择器1 选择器2&#123;属性表&#125;</code></pre>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">选择器1 选择器2&#123;属性表&#125;</span><br></pre></td></tr></table></figure>
+
+
 <h3 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h3><p>为拥有指定属性的html元素设置样式，不局限于class和id属性，下表以attribute代替属性选择器名</p>
 <table>
 <thead>
@@ -220,20 +217,9 @@
 </tr>
 </tbody></table>
 <p>使用方法：</p>
-<pre><code class="css">标签名[属性选择器名]&#123;属性表&#125;
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">标签名[属性选择器名]&#123;属性表&#125;</span><br><span class="line"></span><br><span class="line">例如：</span><br><span class="line">选择器为<span class="selector-attr">[attribute]</span>类型时：</span><br><span class="line"><span class="selector-tag">p</span><span class="selector-attr">[here]</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="attribute">background-color</span>:red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">选择器为<span class="selector-attr">[attribute=value]</span>类型时：</span><br><span class="line"><span class="selector-tag">p</span><span class="selector-attr">[here=red]</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="attribute">background-color</span>:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-例如：
-选择器为[attribute]类型时：
-p[here]
-&#123;
-    background-color:red;
-&#125;
 
-选择器为[attribute=value]类型时：
-p[here=red]
-&#123;
-    background-color:red;
-&#125;</code></pre>
 <h3 id="关系选择器"><a href="#关系选择器" class="headerlink" title="关系选择器"></a>关系选择器</h3><p>主要包括子元素选择器，相邻兄弟选择器，普通兄弟选择器</p>
 <table>
 <thead>
@@ -256,30 +242,9 @@ p[here=red]
 </tr>
 </tbody></table>
 <p>使用方法：</p>
-<pre><code class="css">子元素选择器：
-标签名&gt;子元素标签名&#123;属性表&#125;
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">子元素选择器：</span><br><span class="line">标签名&gt;子元素标签名&#123;属性表&#125;</span><br><span class="line"></span><br><span class="line">如：</span><br><span class="line"><span class="selector-tag">div</span>&gt;<span class="selector-tag">a</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>:red;</span><br><span class="line">&#125;</span><br><span class="line">实现效果为<span class="selector-tag">div</span>标签内，直接子元素的<span class="selector-tag">a</span>标签都为红色</span><br><span class="line"></span><br><span class="line">兄弟相邻选择器：</span><br><span class="line">标签名+子元素标签名&#123;属性表&#125;</span><br><span class="line"></span><br><span class="line">如：</span><br><span class="line"><span class="selector-tag">div</span>+<span class="selector-tag">a</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>:red;</span><br><span class="line">&#125;</span><br><span class="line">实现效果为<span class="selector-tag">div</span>标签同级的紧挨的下一个<span class="selector-tag">a</span>标签为红色</span><br><span class="line"></span><br><span class="line">普通兄弟选择器：</span><br><span class="line">标签名~子元素标签名&#123;属性表&#125;</span><br><span class="line"><span class="selector-tag">div</span>~<span class="selector-tag">a</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>:red;</span><br><span class="line">&#125;</span><br><span class="line">实现效果为<span class="selector-tag">div</span>标签后的所有同级的<span class="selector-tag">a</span>标签都是红色</span><br></pre></td></tr></table></figure>
 
-如：
-div&gt;a&#123;
-    color:red;
-&#125;
-实现效果为div标签内，直接子元素的a标签都为红色
 
-兄弟相邻选择器：
-标签名+子元素标签名&#123;属性表&#125;
-
-如：
-div+a&#123;
-    color:red;
-&#125;
-实现效果为div标签同级的紧挨的下一个a标签为红色
-
-普通兄弟选择器：
-标签名~子元素标签名&#123;属性表&#125;
-div~a&#123;
-    color:red;
-&#125;
-实现效果为div标签后的所有同级的a标签都是红色</code></pre>
 <h3 id="伪类选择器"><a href="#伪类选择器" class="headerlink" title="伪类选择器"></a>伪类选择器</h3><h4 id="超链接伪类选择器"><a href="#超链接伪类选择器" class="headerlink" title="超链接伪类选择器"></a>超链接伪类选择器</h4><table>
 <thead>
 <tr>
@@ -311,8 +276,9 @@ div~a&#123;
 <li><strong><em>a:active必须被置于a:hover之后才有效</em></strong></li>
 </ul>
 <p>使用方法：（以a:link和h1为例）</p>
-<pre><code class="css">a:link&#123;属性表&#125;       &lt;!--超链接伪类选择器--&gt;
-h1:hover&#123;属性表&#125;      &lt;!--普通非链接元素伪类选择器--&gt;</code></pre>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">a:link&#123;属性表&#125;       &lt;!--超链接伪类选择器--&gt;</span><br><span class="line">h1:hover&#123;属性表&#125;	  &lt;!--普通非链接元素伪类选择器--&gt;</span><br></pre></td></tr></table></figure>
+
+
 <h4 id="结构伪类选择器"><a href="#结构伪类选择器" class="headerlink" title="结构伪类选择器"></a>结构伪类选择器</h4><table>
 <thead>
 <tr>
@@ -393,17 +359,15 @@ h1:hover&#123;属性表&#125;      &lt;!--普通非链接元素伪类选择器--
 <h3 id="伪元素选择器"><a href="#伪元素选择器" class="headerlink" title="伪元素选择器"></a>伪元素选择器</h3><p>伪元素选择器是针对css中已经定义的伪元素使用的选择器，css中主要使用的伪元素为“:before”伪元素选择器和”:after”伪元素选择器</p>
 <h4 id="before伪元素选择器"><a href="#before伪元素选择器" class="headerlink" title=":before伪元素选择器"></a>:before伪元素选择器</h4><p>用于在被选元素的内容前面插入内容，必须配合“content”属性来指定要插入的具体内容</p>
 <p>使用方法：</p>
-<pre><code class="css">element:before&#123;
-    content:文字/url();
-&#125;</code></pre>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">element</span><span class="selector-pseudo">:before</span>&#123;</span><br><span class="line">	<span class="attribute">content</span>:文字/<span class="built_in">url</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>element表示元素，“{}”中的content属性用来指定要插入的具体内容，既可以为文本也可以为图片</p>
 <h4 id="after伪元素选择器"><a href="#after伪元素选择器" class="headerlink" title=":after伪元素选择器"></a>:after伪元素选择器</h4><p>用于在被选元素内容的后面插入内容，必须配合“content”属性来指定要插入的具体内容</p>
 <p>使用方法：</p>
-<pre><code class="css">element:after&#123;
-    content:文字/url();
-&#125;</code></pre>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">element</span><span class="selector-pseudo">:after</span>&#123;</span><br><span class="line">	<span class="attribute">content</span>:文字/<span class="built_in">url</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
 <h2 id="继承性"><a href="#继承性" class="headerlink" title="继承性"></a>继承性</h2><p>如果子元素定义的样式没有和父元素冲突，那么将继承父元素的样式，可以再加以修改，并不会影响父元素</p>
-<pre><code class="html">&lt;strong&gt;&lt;em&gt;123456&lt;/em&gt;&lt;/strong&gt;</code></pre>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">strong</span>&gt;</span><span class="tag">&lt;<span class="name">em</span>&gt;</span>123456<span class="tag">&lt;/<span class="name">em</span>&gt;</span><span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>如上，strong标签为em标签的父元素，em标签为strong标签的子元素</p>
 <p><strong><em>注：</em></strong></p>
 <ul>
@@ -416,10 +380,7 @@ h1:hover&#123;属性表&#125;      &lt;!--普通非链接元素伪类选择器--
 <li>优先级相同时，在冲突部分，后定义的选择器内容将覆盖前面的选择器</li>
 </ul>
 <h3 id="优先级修改"><a href="#优先级修改" class="headerlink" title="优先级修改"></a>优先级修改</h3><p>在使用时，可以用!important关键字将某个选择器的优先级提到最高，但一般还是建议统筹设计</p>
-<pre><code class="css">p&#123;
-    color:blue !important;
-    font-style:italic;
-&#125;</code></pre>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">p</span>&#123;</span><br><span class="line">	<span class="attribute">color</span>:blue <span class="meta">!important</span>;</span><br><span class="line">	<span class="attribute">font-style</span>:italic;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>如上，p标签中的颜色被设定成了最高优先级，如果p标签的字体颜色样式与其他选择器冲突，则优先运用p标签中定义的“blue”</p>
 <h3 id="权值计算"><a href="#权值计算" class="headerlink" title="权值计算"></a>权值计算</h3><p>如果用具体的权值描述样式的优先级，优先级从低到高如下排列：</p>
 <ol>

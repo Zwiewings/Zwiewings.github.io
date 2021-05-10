@@ -17,7 +17,7 @@
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
   translate: undefined,
   noticeOutdate: undefined,
-  highlight: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
   copy: {
     success: '复制成功',
     error: '复制错误',
@@ -140,7 +140,7 @@
         }
       }
     })(window)</script><meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="Zweiwings" type="application/atom+xml">
-</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/head.jpg" onerror="onerror=null;src='/img/cover2.jpg'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/Linux-cover.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Zweiwings</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Linux学习-1</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-01-26T01:38:45.000Z" title="发表于 2021-01-26 09:38:45">2021-01-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-20T12:33:50.856Z" title="更新于 2021-04-20 20:33:50">2021-04-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Linux学习-1"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2021/01/26/Linux%E5%AD%A6%E4%B9%A0-1/#post-comment"><span class="gitalk-comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>Linux 是一套免费使用和自由传播的类 Unix 操作系统，是一个基于 POSIX 和 UNIX 的多用户、多任务、支持多线程和多 CPU 的操作系统。</p>
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/head.jpg" onerror="onerror=null;src='/img/cover2.jpg'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/Linux-cover.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Zweiwings</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Linux学习-1</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-01-26T01:38:45.000Z" title="发表于 2021-01-26 09:38:45">2021-01-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-20T12:33:50.856Z" title="更新于 2021-04-20 20:33:50">2021-04-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>15分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Linux学习-1"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2021/01/26/Linux%E5%AD%A6%E4%B9%A0-1/#post-comment"><span class="gitalk-comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>Linux 是一套免费使用和自由传播的类 Unix 操作系统，是一个基于 POSIX 和 UNIX 的多用户、多任务、支持多线程和多 CPU 的操作系统。</p>
 <p>Linux 能运行主要的 UNIX 工具软件、应用程序和网络协议。它支持 32 位和 64 位硬件。Linux 继承了 Unix 以网络为核心的设计思想，是一个性能稳定的多用户网络操作系统。</p>
 <h1 id="Linux-应用领域"><a href="#Linux-应用领域" class="headerlink" title="Linux 应用领域"></a>Linux 应用领域</h1><p>今天各种场合都有使用各种 Linux 发行版，从嵌入式设备到超级计算机，并且在服务器领域确定了地位，通常服务器使用 LAMP（Linux + Apache + MySQL + PHP）或 LNMP（Linux + Nginx+ MySQL + PHP）组合。</p>
 <h1 id="Linux-和-Windows的区别"><a href="#Linux-和-Windows的区别" class="headerlink" title="Linux 和 Windows的区别"></a>Linux 和 Windows的区别</h1><p>目前国内 Linux 更多的是应用于服务器上，而桌面操作系统更多使用的是 Windows。主要区别如下</p>
@@ -212,7 +212,8 @@
 </ul>
 <h2 id="系统初始化"><a href="#系统初始化" class="headerlink" title="系统初始化"></a>系统初始化</h2><p>在init的配置文件中有这么一行： si::sysinit:/etc/rc.d/rc.sysinit　它调用执行了/etc/rc.d/rc.sysinit，而rc.sysinit是一个bash shell的脚本，它主要是完成一些系统初始化的工作，rc.sysinit是每一个运行级别都要首先运行的重要脚本。</p>
 <p>它主要完成的工作有：激活交换分区，检查磁盘，加载硬件模块以及其它一些需要优先执行任务。</p>
-<pre><code>l5:5:wait:/etc/rc.d/rc 5</code></pre>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">l5:5:wait:&#x2F;etc&#x2F;rc.d&#x2F;rc 5</span><br></pre></td></tr></table></figure>
+
 <p>这一行表示以5为参数运行/etc/rc.d/rc，/etc/rc.d/rc是一个Shell脚本，它接受5作为参数，去执行/etc/rc.d/rc5.d/目录下的所有的rc启动脚本，/etc/rc.d/rc5.d/目录中的这些启动脚本实际上都是一些连接文件，而不是真正的rc启动脚本，真正的rc启动脚本实际上都是放在/etc/rc.d/init.d/目录下。</p>
 <p>而这些rc启动脚本有着类似的用法，它们一般能接受start、stop、restart、status等参数。</p>
 <p>/etc/rc.d/rc5.d/中的rc启动脚本通常是K或S开头的连接文件，对于以 S 开头的启动脚本，将以start参数来运行。</p>
@@ -221,12 +222,7 @@
 <p>至于在每个运行级中将运行哪些守护进程，用户可以通过chkconfig或setup中的”System Services”来自行设定。</p>
 <h2 id="建立终端"><a href="#建立终端" class="headerlink" title="建立终端"></a>建立终端</h2><p>rc执行完毕后，返回init。这时基本系统环境已经设置好了，各种守护进程也已经启动了。</p>
 <p>init接下来会打开6个终端，以便用户登录系统。在inittab中的以下6行就是定义了6个终端：</p>
-<pre><code>1:2345:respawn:/sbin/mingetty tty1
-2:2345:respawn:/sbin/mingetty tty2
-3:2345:respawn:/sbin/mingetty tty3
-4:2345:respawn:/sbin/mingetty tty4
-5:2345:respawn:/sbin/mingetty tty5
-6:2345:respawn:/sbin/mingetty tty6</code></pre>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1:2345:respawn:&#x2F;sbin&#x2F;mingetty tty1</span><br><span class="line">2:2345:respawn:&#x2F;sbin&#x2F;mingetty tty2</span><br><span class="line">3:2345:respawn:&#x2F;sbin&#x2F;mingetty tty3</span><br><span class="line">4:2345:respawn:&#x2F;sbin&#x2F;mingetty tty4</span><br><span class="line">5:2345:respawn:&#x2F;sbin&#x2F;mingetty tty5</span><br><span class="line">6:2345:respawn:&#x2F;sbin&#x2F;mingetty tty6</span><br></pre></td></tr></table></figure>
 <p>从上面可以看出在2、3、4、5的运行级别中都将以respawn方式运行mingetty程序，mingetty程序能打开终端、设置模式。</p>
 <p>同时它会显示一个文本登录界面，这个界面就是我们经常看到的登录界面，在这个登录界面中会提示用户输入用户名，而用户输入的用户将作为参数传给login程序来验证用户的身份。</p>
 <h1 id="用户登录系统"><a href="#用户登录系统" class="headerlink" title="用户登录系统"></a>用户登录系统</h1><p>一般来说，用户的登录方式有三种：</p>
@@ -250,61 +246,34 @@
 <h1 id="Linux-关机"><a href="#Linux-关机" class="headerlink" title="Linux 关机"></a>Linux 关机</h1><p>在linux领域内<strong>大多用在服务器上，很少遇到关机的操作</strong>。毕竟服务器上跑一个服务是永无止境的，除非特殊情况下，不得已才会关机。</p>
 <p>正确的关机流程为：sync &gt; shutdown &gt; reboot &gt; halt</p>
 <p>关机指令为：shutdown ，你可以man shutdown 来看一下帮助文档。</p>
-<pre><code>sync 将数据由内存同步到硬盘中。
-
-shutdown 关机指令，你可以man shutdown 来看一下帮助文档。例如你可以运行如下命令关机：
-
-shutdown –h 10 ‘This server will shutdown after 10 mins’ 这个命令告诉大家，计算机将在10分钟后关机，并且会显示在登陆用户的当前屏幕中。
-
-shutdown –h now 立马关机
-
-shutdown –h 20:25 系统会在今天20:25关机
-
-shutdown –h +10 十分钟后关机
-
-shutdown –r now 系统立马重启
-
-shutdown –r +10 系统十分钟后重启
-
-reboot 就是重启，等同于 shutdown –r now
-
-halt 关闭系统，等同于shutdown –h now 和 poweroff</code></pre>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sync 将数据由内存同步到硬盘中。</span><br><span class="line"></span><br><span class="line">shutdown 关机指令，你可以man shutdown 来看一下帮助文档。例如你可以运行如下命令关机：</span><br><span class="line"></span><br><span class="line">shutdown –h 10 ‘This server will shutdown after 10 mins’ 这个命令告诉大家，计算机将在10分钟后关机，并且会显示在登陆用户的当前屏幕中。</span><br><span class="line"></span><br><span class="line">shutdown –h now 立马关机</span><br><span class="line"></span><br><span class="line">shutdown –h 20:25 系统会在今天20:25关机</span><br><span class="line"></span><br><span class="line">shutdown –h +10 十分钟后关机</span><br><span class="line"></span><br><span class="line">shutdown –r now 系统立马重启</span><br><span class="line"></span><br><span class="line">shutdown –r +10 系统十分钟后重启</span><br><span class="line"></span><br><span class="line">reboot 就是重启，等同于 shutdown –r now</span><br><span class="line"></span><br><span class="line">halt 关闭系统，等同于shutdown –h now 和 poweroff</span><br></pre></td></tr></table></figure>
 <p>最后总结一下，不管是重启系统还是关闭系统，首先要运行 <strong>sync</strong> 命令，把内存中的数据写到磁盘中。</p>
 <p>关机的命令有 <strong>shutdown –h now halt poweroff</strong> 和 <strong>init 0</strong> , 重启系统的命令有 <strong>shutdown –r now reboot init 6</strong>。</p>
 <h2 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h2><p><strong>[Tab] 有『命令补全』与『文件补齐』的功能</strong></p>
-<pre><code>[Tab]      ## 接在一串指令的第一个字的后面，则为『命令补全』
-[Tab]      ## 接在一串指令的第二个字以后时，则为『文件补齐』</code></pre>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[Tab]      ## 接在一串指令的第一个字的后面，则为『命令补全』</span><br><span class="line">[Tab]      ## 接在一串指令的第二个字以后时，则为『文件补齐』</span><br></pre></td></tr></table></figure>
 <p>若安装 bash-completion 软件，则在某些指令后面使用 [tab] 按键时，可以进行『选项/参数的补齐』功能！</p>
 <p><strong>[Ctrl]+ C 如果在Linux 底下输入了错误的指令或参数，想让当前的程序『停掉』的话，可以输入：</strong></p>
-<pre><code>[Ctrl] + c </code></pre>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[Ctrl] + c </span><br></pre></td></tr></table></figure>
 <p><strong>[Ctrl]-d 『键盘输入结束(End Of File, EOF 或 End Of Input)』的意思</strong></p>
 <p>另外，他也可以用来取代 exit 的输入。</p>
 <p>例如你想要直接离开文字接口，可以直接按下：</p>
-<pre><code>[Ctrl] + d   ## 相当于输入 exit</code></pre>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[Ctrl] + d   ## 相当于输入 exit</span><br></pre></td></tr></table></figure>
 <p><strong>[shift]+{[PageUP]|[Page Down]}</strong></p>
-<pre><code>[Shift]+[Page Up]    ## 往前翻页 
-
-[Shift]+[Page Down] ## 往后翻页</code></pre>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[Shift]+[Page Up]    ## 往前翻页 </span><br><span class="line"></span><br><span class="line">[Shift]+[Page Down] ## 往后翻页</span><br></pre></td></tr></table></figure>
 <p>shutdown 会给系统计划一个时间关机。它可以被用于停止、关机、重启机器。shutdown 会给系统计划一个时间关机。它可以被用于停止、关机、重启机器。</p>
-<pre><code># shutdown -p now  ### 关闭机器
-# shutdown -H now  ### 停止机器      
-# shutdown -r 09:35 ### 在 09:35am 重启机器</code></pre>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># shutdown -p now  ### 关闭机器</span><br><span class="line"># shutdown -H now  ### 停止机器      </span><br><span class="line"># shutdown -r 09:35 ### 在 09:35am 重启机器</span><br></pre></td></tr></table></figure>
 <p>要取消即将进行的关机，只要输入下面的命令：</p>
-<pre><code># shutdown -c</code></pre>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># shutdown -c</span><br></pre></td></tr></table></figure>
 <p>halt 命令通知硬件来停止所有的 CPU 功能，但是仍然保持通电。你可以用它使系统处于低层维护状态。注意在有些情况会它会完全关闭系统。</p>
-<pre><code># halt             ### 停止机器
-# halt -p          ### 关闭机器、关闭电源
-# halt --reboot    ### 重启机器</code></pre>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># halt             ### 停止机器</span><br><span class="line"># halt -p          ### 关闭机器、关闭电源</span><br><span class="line"># halt --reboot    ### 重启机器</span><br></pre></td></tr></table></figure>
 <p>poweroff 会发送一个 ACPI 信号来通知系统关机。</p>
-<pre><code># poweroff           ### 关闭机器、关闭电源
-# poweroff --halt    ### 停止机器
-# poweroff --reboot  ### 重启机器</code></pre>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># poweroff           ### 关闭机器、关闭电源</span><br><span class="line"># poweroff --halt    ### 停止机器</span><br><span class="line"># poweroff --reboot  ### 重启机器</span><br></pre></td></tr></table></figure>
 <p>reboot 命令 reboot 通知系统重启。</p>
-<pre><code># reboot           ### 重启机器
-# reboot --halt    ### 停止机器
-# reboot -p        ### 关闭机器</code></pre>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># reboot           ### 重启机器</span><br><span class="line"># reboot --halt    ### 停止机器</span><br><span class="line"># reboot -p        ### 关闭机器</span><br></pre></td></tr></table></figure>
+
+
 <h1 id="Linux-系统目录结构"><a href="#Linux-系统目录结构" class="headerlink" title="Linux 系统目录结构"></a>Linux 系统目录结构</h1><p>登录系统后，在当前命令窗口下输入命令：</p>
-<pre><code> ls / </code></pre>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ls &#x2F; </span><br></pre></td></tr></table></figure>
 <p>可显示当前层的目录。</p>
 <p><img src="/2021/01/26/Linux%E5%AD%A6%E4%B9%A0-1/pic-1.png" alt="树状目录结构图"></p>
 <p>在 Linux 或 Unix 操作系统中，所有的文件和目录都被组织成以一个根节点开始的倒置的树状结构。</p>
@@ -338,7 +307,7 @@ halt 关闭系统，等同于shutdown –h now 和 poweroff</code></pre>
 <h2 id="7-扩展用的："><a href="#7-扩展用的：" class="headerlink" title="7.扩展用的："></a><strong>7.扩展用的：</strong></h2><p><strong>/opt</strong>：默认是空的，我们安装额外软件可以放在这个里面。</p>
 <p><strong>/srv</strong>：存放服务启动后需要提取的数据<strong>（不用服务器就是空）</strong></p>
 <h2 id="8-其他："><a href="#8-其他：" class="headerlink" title="8.其他："></a>8.其他：</h2><p><strong>/proc</strong>：<br>proc 是 Processes(进程) 的缩写，/proc 是一种伪文件系统（也即虚拟文件系统），存储的是当前内核运行状态的一系列特殊文件，这个目录是一个虚拟的目录，它是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息。<br>这个目录的内容不在硬盘上而是在内存里，我们也可以直接修改里面的某些文件，比如可以通过下面的命令来屏蔽主机的ping命令，使别人无法ping你的机器：</p>
-<pre><code>echo 1 &gt; /proc/sys/net/ipv4/icmp_echo_ignore_all</code></pre>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo 1 &gt; &#x2F;proc&#x2F;sys&#x2F;net&#x2F;ipv4&#x2F;icmp_echo_ignore_all</span><br></pre></td></tr></table></figure>
 <p><strong>/selinux：</strong><br> 这个目录是 Redhat/CentOS 所特有的目录，Selinux 是一个安全机制，类似于 windows 的防火墙，但是这套机制比较复杂，这个目录就是存放selinux相关的文件的。</p>
 <h4 id="在-Linux-系统中，有几个目录是比较重要的，平时需要注意不要误删除或者随意更改内部文件。"><a href="#在-Linux-系统中，有几个目录是比较重要的，平时需要注意不要误删除或者随意更改内部文件。" class="headerlink" title="在 Linux 系统中，有几个目录是比较重要的，平时需要注意不要误删除或者随意更改内部文件。"></a>在 Linux 系统中，有几个目录是比较重要的，平时需要注意不要误删除或者随意更改内部文件。</h4><p><strong>/etc</strong>： 上边也提到了，这个是系统中的配置文件，如果你更改了该目录下的某个文件可能会导致系统不能启动。</p>
 <p><strong>/bin, /sbin, /usr/bin, /usr/sbin</strong>: 这是系统预设的执行文件的放置目录，比如 ls 就是在 /bin/ls 目录下的。</p>

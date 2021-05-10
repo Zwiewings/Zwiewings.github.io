@@ -12,7 +12,7 @@
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
   translate: undefined,
   noticeOutdate: undefined,
-  highlight: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
   copy: {
     success: '复制成功',
     error: '复制错误',
@@ -52,7 +52,7 @@
   isHome: true,
   isHighlightShrink: true,
   isToc: false,
-  postUpdate: '2021-05-10 21:56:33'
+  postUpdate: '2021-05-10 22:19:59'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -163,10 +163,7 @@ str.sub ...</div></div></div><div class="recent-post-item"><div class="post_cove
 4.封装（1）意义：
 将属性和行为作为一个整体，表现生活中的事物
 在设计类的时候，属性和行为写在一起
-class 类名&#123; 访问权限: 属性 / 行为 &#125;;
-//属性使用变量表示
-//行为一般用函数表示
-在类的概念下，具体的一个物体 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/01/18/c++%E5%AD%A6%E4%B9%A0-1/" title="c++学习-1">     <img class="post_bg" src="https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/c++cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="c++学习-1"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/01/18/c++%E5%AD%A6%E4%B9%A0-1/" title="c++学习-1">c++学习-1</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-01-18T06:11:37.000Z" title="发表于 2021-01-18 14:11:37">2021-01-18</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-14T11:34:26.883Z" title="更新于 2021-04-14 19:34:26">2021-04-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/c-%E5%AD%A6%E4%B9%A0/">c++学习</a></span></div><div class="content">c++基础（同c比较）
+class 类名&#123; 访问权限: 属性 &#x2F; 行为 &#125;;&#x2F;&#x2F;属性使用变量表示&#x2F;&#x2F;行 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/01/18/c++%E5%AD%A6%E4%B9%A0-1/" title="c++学习-1">     <img class="post_bg" src="https://zwiewings.github.io/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/c++cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="c++学习-1"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/01/18/c++%E5%AD%A6%E4%B9%A0-1/" title="c++学习-1">c++学习-1</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-01-18T06:11:37.000Z" title="发表于 2021-01-18 14:11:37">2021-01-18</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-14T11:34:26.883Z" title="更新于 2021-04-14 19:34:26">2021-04-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/c-%E5%AD%A6%E4%B9%A0/">c++学习</a></span></div><div class="content">c++基础（同c比较）
 
 
 
