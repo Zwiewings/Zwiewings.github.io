@@ -228,13 +228,6 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/c-%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2021-05-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://example.com/tags/Linux%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2021-05-11</lastmod>
     <changefreq>daily</changefreq>
@@ -242,7 +235,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/hexo%E4%BD%BF%E7%94%A8/</loc>
+    <loc>http://example.com/tags/c-%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2021-05-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -250,6 +243,13 @@
   
   <url>
     <loc>http://example.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
+    <lastmod>2021-05-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/hexo%E4%BD%BF%E7%94%A8/</loc>
     <lastmod>2021-05-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
