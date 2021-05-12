@@ -1,5 +1,5 @@
 #content-inner{--light_bg_color:hsla(0,0%,100%,0.8);--dark_bg_color:rgba(18,18,18,0.8);--light_page_color:hsla(0,0%,100%,0.8);--dark_page_color:rgba(18,18,18,0.8)}body{cursor:url(https://cdn.jsdelivr.net/npm/kang-static/Hexo/img/default.cur),default}a,button,img{cursor:url(https://cdn.jsdelivr.net/npm/kang-static/Hexo/img/pointer.cur),default}video{width:100%}audio{outline:none}
-#web_bg{background-image: url("https://ae01.alicdn.com/kf/H18a4b998752a4ae68b8e85d432a5aef0l.png"), linear-gradient(60deg, rgba(143, 133, 118, 0.5) 5%, rgba(255, 255, 255, 0.3)), url("../img/Title1.jpg");}
+#web_bg{background-image: url("../img/Title1.jpg");}
 ::-webkit-scrollbar{width:8px;height:8px}
 ::-webkit-scrollbar-track{background-color:rgba(255, 226, 158, 0.2);border-radius:2em}
 ::-webkit-scrollbar-thumb{background-color:#ffaa00;background-image:-webkit-linear-gradient(45deg,hsla(0,0%,100%,.4) 25%,transparent 0,transparent 50%,hsla(0,0%,100%,.4) 0,hsla(0,0%,100%,.4) 75%,transparent 0,transparent);border-radius:2em}
@@ -36,3 +36,9 @@ a {
 .layout_post .post-copyright .post-copyright-info a {
     text-decoration: none;
 }
+
+#footer{color:#000-;border-top-right-radius:20px;border-top-left-radius:20px;-webkit-backdrop-filter:saturate(100%) blur(5px);backdrop-filter:saturate(100%) blur(5px)}#footer,#footer:before{background:hsla(0,0%,100%,.15)}
+
+#footer #footer-wrap,#footer #footer-wrap a{color:#333}
+
+#footer #footer-wrap,#footer #footer-wrap a{color:#FFFFFF}
