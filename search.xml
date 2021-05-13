@@ -6,9 +6,9 @@
     <content><![CDATA[<h1 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>css中的盒模型相当于礼物的外包装盒，封装周围的HTML元素，包括外边距（margin），边框（border），内边距（padding）和实际内容（content），常用的div元素就是一种区块容器标记，可以将网页分隔为不同的部分，以实现网页的规划和布局。</p>
 <p>纵深结构来说，盒模型自下而上为：外边距、背景颜色、背景图像、内边距、内容、边框</p>
 <p><img src="/2021/05/13/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1-4/1.PNG" alt="1"></p>
-<div class="tip key font5 fas fa-key"><p>css代码中的宽和高（width和height）指的是如下部分：</p><p>盒子的总宽度=width+左右内边框之和+左右边框宽度之和+左右外边距之和</p><p>盒子的总高度=height+上下内边距之和+上下边框宽度之和+上下外边框之和</p></div>
+<div class="tip important font5 fas fa-bell"><p>css代码中的宽和高（width和height）指的是如下部分：</p><p>盒子的总宽度=width+左右内边框之和+左右边框宽度之和+左右外边距之和</p><p>盒子的总高度=height+上下内边距之和+上下边框宽度之和+上下外边框之和</p></div>
 
-
+<br>
 
 <h2 id="边框（border）"><a href="#边框（border）" class="headerlink" title="边框（border）"></a>边框（border）</h2><p>边框主要包括边框宽度、边框样式、边框颜色、此外还有border的综合属性，在CSS3中添加了圆角边距，图片边距属性。</p>
 <ul>
