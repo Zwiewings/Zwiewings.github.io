@@ -3,7 +3,102 @@
   <entry>
     <title>c++拓展-4:序列式容器STL array</title>
     <url>/2021/05/14/c++%E5%AD%A6%E4%B9%A0-7/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h1 id="array-lt-T-N-gt-（数组容器）"><a href="#array-lt-T-N-gt-（数组容器）" class="headerlink" title="array&lt;T,N&gt;（数组容器）"></a>array&lt;T,N&gt;（数组容器）</h1><h2 id="简要说明及其定义"><a href="#简要说明及其定义" class="headerlink" title="简要说明及其定义"></a>简要说明及其定义</h2><p>在c++的普通数组上新增了一些成员函数和全局函数的容器，使用时需要调用对应的&lt; array &gt;头文件，示意如下图：</p>
+<p><img src="/2021/05/14/c++%E5%AD%A6%E4%B9%A0-7/1.png" alt="1"></p>
+<p>在array&lt;T,N&gt;类模板中，T用于指明数据类型，N表示数据个数，一旦建立则长度固定不变，即不能增加和删除，只能改变某个元素的值，故N也必须是常量，不可以用变量表示</p>
+<p>如下语句为创建一个具有5个char类型元素的array容器，其名为value，{}负责初始化（没有初始化可省略），未被初始化的值将默认设为0</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">array</span>&lt;<span class="keyword">char</span>,5&gt; values&#123;<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>&#125;;</span><br></pre></td></tr></table></figure>
+<div class="tip warning"><p>
+
+</p><p>由于array的类模板位于命名空间std，所以当默认空间为std时，前面表示作用域的std::可以省略</p>
+<p></p></div>
+
+<br>
+
+<h2 id="容器提供的成员函数"><a href="#容器提供的成员函数" class="headerlink" title="容器提供的成员函数"></a>容器提供的成员函数</h2><p>头文件&lt; array &gt;中不仅封装了array容器的定义，也提供了可供使用的成员函数，调用成员函数的时候可以直接通过类的方式调用，即：array容器的名称.成员函数（）</p>
+<table>
+<thead>
+<tr>
+<th>成员函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>begin()</td>
+<td>返回指向容器中第一个元素的随机访问迭代器。</td>
+</tr>
+<tr>
+<td>end()</td>
+<td>返回指向容器最后一个元素之后一个位置的随机访问迭代器，通常和 begin() 结合使用。</td>
+</tr>
+<tr>
+<td>rbegin()</td>
+<td>返回指向最后一个元素的随机访问迭代器。</td>
+</tr>
+<tr>
+<td>rend()</td>
+<td>返回指向第一个元素之前一个位置的随机访问迭代器。</td>
+</tr>
+<tr>
+<td>cbegin()</td>
+<td>和 begin() 功能相同，只不过在其基础上增加了 const 属性，不能用于修改元素。</td>
+</tr>
+<tr>
+<td>cend()</td>
+<td>和 end() 功能相同，只不过在其基础上，增加了 const 属性，不能用于修改元素。</td>
+</tr>
+<tr>
+<td>crbegin()</td>
+<td>和 rbegin() 功能相同，只不过在其基础上，增加了 const 属性，不能用于修改元素。</td>
+</tr>
+<tr>
+<td>crend()</td>
+<td>和 rend() 功能相同，只不过在其基础上，增加了 const 属性，不能用于修改元素。</td>
+</tr>
+<tr>
+<td>size()</td>
+<td>返回容器中当前元素的数量，其值始终等于初始化 array 类的第二个模板参数 N。</td>
+</tr>
+<tr>
+<td>max_size()</td>
+<td>返回容器可容纳元素的最大数量，其值始终等于初始化 array 类的第二个模板参数 N。</td>
+</tr>
+<tr>
+<td>empty()</td>
+<td>判断容器是否为空，和通过 size()==0 的判断条件功能相同，但其效率可能更快。</td>
+</tr>
+<tr>
+<td>at(n)</td>
+<td>返回容器中 n 位置处元素的引用，该函数自动检查 n 是否在有效的范围内，如果不是则抛出 out_of_range 异常。</td>
+</tr>
+<tr>
+<td>front()</td>
+<td>返回容器中第一个元素的直接引用，该函数不适用于空的 array 容器。</td>
+</tr>
+<tr>
+<td>back()</td>
+<td>返回容器中最后一个元素的直接应用，该函数同样不适用于空的 array 容器。</td>
+</tr>
+<tr>
+<td>data()</td>
+<td>返回一个指向容器首个元素的指针。利用该指针，可实现复制容器中所有元素等类似功能。</td>
+</tr>
+<tr>
+<td>fill(val)</td>
+<td>将 val 这个值赋值给容器中的每个元素。</td>
+</tr>
+<tr>
+<td>array1.swap(array2)</td>
+<td>交换 array1 和 array2 容器中的所有元素，但前提是它们具有相同的长度和类型。</td>
+</tr>
+</tbody></table>
+<div class="tip warning"><p>
+
+</p><p>注：此外，c++11标准库中添加了begin（）和end（），可以作用于容器，也可以作用于普通数组。当作用对象是容器时，和容器对应的操作一样；而当作用对象是普通数组时，begin（）将用于返回指向数组第一个元素的指针，end（）返回指向数组最后一个元素的指针。</p>
+<p>另外，get（）全局函数也被array头文件重载，该重载函数的功能是访问容器中指定元素并返回该元素的引用</p>
+<p></p></div>
+
+]]></content>
       <categories>
         <category>学习</category>
         <category>C++</category>
@@ -87,6 +182,16 @@
 <td>包括4 种关联式容器，分别是 unordered_set 哈希集合、unordered_multiset 哈希多重集合、unordered_map 哈希映射以及 unordered_multimap 哈希多重映射。容器中的元素是未排序的，位置由哈希函数决定。【c++11的编译器下才能使用，VS支持，gcc/g++编译器是不支持的】</td>
 </tr>
 </tbody></table>
+<h3 id="序列容器"><a href="#序列容器" class="headerlink" title="序列容器"></a>序列容器</h3><p>以线性排列来存储数据，且不进行排序的容器，有如下几种：</p>
+<ul>
+<li>array&lt;T,N&gt;（数组容器）：表示可以存储 N 个 T 类型的元素，是 C++ 本身提供的一种容器。此类容器一旦建立，其长度就是固定不变的，这意味着不能增加或删除元素，只能改变某个元素的值；</li>
+<li>vector&lt; T &gt;（向量容器）：用来存放 T 类型的元素，是一个长度可变的序列容器，即在存储空间不足时，会自动申请更多的内存。使用此容器，在尾部增加或删除元素的效率最高（时间复杂度为 O(1) 常数阶），在其它位置插入或删除元素效率较差（时间复杂度为 O(n) 线性阶，其中 n 为容器中元素的个数）；</li>
+<li>deque&lt; T &gt;（双端队列容器）：和 vector 非常相似，区别在于使用该容器不仅尾部插入和删除元素高效，在头部插入或删除元素也同样高效，时间复杂度都是 O(1) 常数阶，但是在容器中某一位置处插入或删除元素，时间复杂度为 O(n) 线性阶；</li>
+<li>list&lt; T &gt;（链表容器）：是一个长度可变的、由 T 类型元素组成的序列，它以双向链表的形式组织元素，在这个序列的任何地方都可以高效地增加或删除元素（时间复杂度都为常数阶 O(1)），但访问容器中任意元素的速度要比前三种容器慢，这是因为 list&lt; T &gt; 必须从第一个元素或最后一个元素开始访问，需要沿着链表移动，直到到达想要的元素。</li>
+<li>forward_list&lt; T &gt;（正向链表容器）：和 list 容器非常类似，只不过它以单链表的形式组织元素，它内部的元素只能从第一个元素开始访问，是一类比链表容器快、更节省内存的容器。</li>
+</ul>
+<div class="tip warning"><p>注：虽然stack< T >和queue< T >本质上也是序列容器，但都是在deque的基础上改造的，更习惯称为容器适配器</p><p></p></div>
+
 <br>
 
 <h2 id="STL迭代器"><a href="#STL迭代器" class="headerlink" title="STL迭代器"></a>STL迭代器</h2><p>迭代器和c++的指针非常相似，可以是任何需要的类型，通过迭代器可以指向容器中的某个元素，也可以执行读写操作。</p>
