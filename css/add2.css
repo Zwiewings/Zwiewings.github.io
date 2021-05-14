@@ -1,4 +1,4 @@
-#content-inner{--light_bg_color:hsla(0,0%,100%,0.9);--dark_bg_color:rgba(18,18,18,0.9);--light_page_color:hsla(0,0%,100%,0.9);--dark_page_color:rgba(18,18,18,0.9)}body{cursor:url(https://cdn.jsdelivr.net/npm/kang-static/Hexo/img/default.cur),default}a,button,img{cursor:url(https://cdn.jsdelivr.net/npm/kang-static/Hexo/img/pointer.cur),default}video{width:100%}audio{outline:none}
+#content-inner{--light_bg_color:hsla(0,0%,100%,0.95);--dark_bg_color:rgba(18,18,18,0.95);--light_page_color:hsla(0,0%,100%,0.95);--dark_page_color:rgba(18,18,18,0.95)}body{cursor:url(https://cdn.jsdelivr.net/npm/kang-static/Hexo/img/default.cur),default}a,button,img{cursor:url(https://cdn.jsdelivr.net/npm/kang-static/Hexo/img/pointer.cur),default}video{width:100%}audio{outline:none}
 #web_bg{background-image: url("../img/Title1.jpg");}
 ::-webkit-scrollbar{width:8px;height:8px}
 ::-webkit-scrollbar-track{background-color:rgba(255, 226, 158, 0.2);border-radius:2em}
