@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>c++拓展-4:序列式容器STL array</title>
+    <url>/2021/05/14/c++%E5%AD%A6%E4%B9%A0-7/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>学习</category>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>STL库</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>c++拓展-3：STL库基础</title>
     <url>/2021/05/13/c++%E5%AD%A6%E4%B9%A0-6/</url>
     <content><![CDATA[<h1 id="STL库基本组成"><a href="#STL库基本组成" class="headerlink" title="STL库基本组成"></a>STL库基本组成</h1><table>
