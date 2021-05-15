@@ -110,25 +110,84 @@
 
 
 
-<h3 id="begin（）-end（）和cbegin（）-cend（）"><a href="#begin（）-end（）和cbegin（）-cend（）" class="headerlink" title="begin（）/end（）和cbegin（）/cend（）"></a>begin（）/end（）和cbegin（）/cend（）</h3><p>begin()和end()返回迭代器对象，分别指向“首元素”和“尾元素+1”的位置，在实际使用中，可以利用其完成初始化容器和遍历容器中元素</p>
+<h3 id="begin（）-end（）和cbegin（）-cend（）"><a href="#begin（）-end（）和cbegin（）-cend（）" class="headerlink" title="begin（）/end（）和cbegin（）/cend（）"></a>begin（）/end（）和cbegin（）/cend（）</h3><p>begin()和end()返回正向迭代器对象，分别指向“首元素”和“尾元素+1”的位置，在实际使用中，可以利用其完成初始化容器和遍历容器中元素</p>
 <p>由于c++11的全局中begin（）和end（）函数也能够从容器中获取迭代器，且当操作对象是array时，能够与封装的函数通用，故而以下两者是等价的：</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> first = values.begin();	<span class="comment">//用封装的函数begin（）定义</span></span><br><span class="line"><span class="keyword">auto</span> first = <span class="built_in">std</span>::begin(values);	<span class="comment">//用全局函数begin（）定义</span></span><br></pre></td></tr></table></figure>
 <p>cbegin（）/cend（）返回的是const类型的正向迭代器，可以用于遍历容器中元素，可以访问元素，但无法修改所存储的元素，这一点和c++中被const关键字控制的数据和函数都无法进行元素修改</p>
+<h3 id="rbegin（）-rend（）和crbegin（）-crend（）"><a href="#rbegin（）-rend（）和crbegin（）-crend（）" class="headerlink" title="rbegin（）/rend（）和crbegin（）/crend（）"></a>rbegin（）/rend（）和crbegin（）/crend（）</h3><p>rbegin（）/rend（）可以分别返回指向最后一个元素和指向第一个元素前一个位置的随机访问迭代器，又称反向迭代器，用于逆序的方式处理元素。</p>
 <div class="tip warning"><p>
-注：由于STL标准库不是只有array容器，当迭代器指向容器中一个特定元素时，迭代器不会保留任何关于容器本身的信息，所以我们无法从迭代器中判断，迭代器到底指向array容器还是vector容器
 
-</p><p>（即：只知道一个数据的类型和存储它的地址，无法判断这一整组数据中是否含有其他类型的数据）</p>
+</p><p>注：在使用反向迭代器进行++和–运算的时候，++指的是迭代器向左移动一位，–指的是迭代器向右移动一位，即和正向时相比，两个运算符的功能也互换了</p>
+<p></p></div>
+
+<p>而crbegin（）和crend（）和上述的唯一差别也在于返回的迭代器为const类型，不能用于修改容器中的元素，除此之外，使用上和上述完全相同</p>
+<h2 id="访问array容器"><a href="#访问array容器" class="headerlink" title="访问array容器"></a>访问array容器</h2><h3 id="单个元素"><a href="#单个元素" class="headerlink" title="单个元素"></a>单个元素</h3><p>首先，可以通过**容器名[]**的方式直接访问和使用容器中的元素，和普通数组访问元素的方式相同，例如：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">values[<span class="number">4</span>] = values[<span class="number">3</span>] + <span class="number">2</span>*values[<span class="number">1</span>];</span><br></pre></td></tr></table></figure>
+<p>此行代码中，第 5 个元素的值被赋值为右边表达式的值。需要注意的是，使用如上这样方式，由于没有做任何边界检查，所以即便使用越界的索引值去访问或存储元素，也不会被检测到。</p>
+<p>为了能够有效地避免越界访问的情况，可以使用 array 容器提供的 at() 成员函数，例如 :</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">values.at (<span class="number">4</span>) = values.at(<span class="number">3</span>) + <span class="number">2</span>*values.at(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<p>这行代码和前一行语句相比，当发生越界时，程序会抛出out_of_range异常，所以除非确定没有越界，否则at（）比直接引用会更加安全</p>
+<p>当然，如果每次访问元素都去检查是否越界的话，无疑会产生很多性能开销，当不可能越界时，还是避免为好</p>
+<p>array 容器还提供了 get&lt; n &gt; 模板函数，它是一个辅助函数，能够获取到容器的第 n 个元素，但是其中n只能是一个常量表达式，不可以是循环变量</p>
+<p>array的成员函数中还有着data（）函数，该函数返回一个指向元素的指针，可以使用【*（a+i）】的方式访问容器中各个元素的值</p>
+<h3 id="多个元素"><a href="#多个元素" class="headerlink" title="多个元素"></a>多个元素</h3><p>可以利用size（）函数【返回值为size_t】作为循环条件访问：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">double</span> total = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">size_t</span> i = <span class="number">0</span> ; i &lt; values.size() ; ++i)</span><br><span class="line">&#123;</span><br><span class="line">    total += values[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此外，对于任何可以使用迭代器的容器都可以使用基于范围的循环：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">double</span> total = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span>&amp;&amp; value : values)</span><br><span class="line">    total += value;</span><br></pre></td></tr></table></figure>
+<div class="tip warning"><p>
+
+</p><p>注：for(auto &amp;c:s)是在c11标准下可以执行的特殊格式的for循环语句，区别在于引用类型可以改变原来的值，可以对容器中的内容进行赋值，即可通过对c赋值来做到容器s的填充，在不加“&amp;”引用符号时，可以利用c遍历并获得s容器中的每个值，但c无法改变s容器中的元素</p>
+<p></p></div>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><div class="tabs" id="test2"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#test2-1">定义方式</button></li><li class="tab"><button type="button" data-href="#test2-2">迭代器函数</button></li><li class="tab"><button type="button" data-href="#test2-3">访问元素</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="test2-1"><p>array&lt;数据类型，数据个数（常数）&gt; 数组名{可省略的初始化列表}；</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="test2-2"><ul>
+<li><p>begin（）/end（）：返回“开头/结尾+1”处的元素的正向迭代器</p>
+</li>
+<li><p>前加r：返回“开头-1/结尾”的反向迭代器——rbegin（）/rend（）</p>
+</li>
+<li><p>前加c：返回const类型的元素迭代器——cbegin()/cend(),crbegin()/crend()</p>
+</li>
+</ul><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="test2-3"><p>对于单个元素：</p>
+<ul>
+<li>用容器名[i]的方式——直接访问，性能最高</li>
+<li>使用at()函数——可避免越界</li>
+<li>使用get&lt; n &gt;对固定位置的元素访问——n只能使用常量</li>
+<li>使用data()函数获得指向第一个元素的指针——用*（a+i）读取第i个元素</li>
+</ul>
+<p>对于多个元素：</p>
+<ul>
+<li>使用size（）函数作为条件循环获取</li>
+<li>使用for（auto &amp;c:s）这一特殊格式的for循环完成遍历赋值，只读时不加“&amp;”引用符</li>
+</ul><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
+
+
+
+<h2 id="代码实例"><a href="#代码实例" class="headerlink" title="代码实例"></a>代码实例</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;	//需要引入 array 头文件</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;array&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">array</span>&lt;<span class="keyword">int</span>, 4&gt; values&#123;&#125;;	<span class="comment">//初始化 values 容器为 &#123;0,1,2,3&#125;</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; values.size(); i++) &#123;</span><br><span class="line">        values.at(i) = i;	<span class="comment">//使用 get() 重载函数输出指定位置元素</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; get&lt;<span class="number">3</span>&gt;(values) &lt;&lt; <span class="built_in">endl</span>;	<span class="comment">//如果容器不为空，则输出容器中所有的元素</span></span><br><span class="line">    <span class="keyword">if</span> (!values.empty()) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> val = values.begin(); val &lt; values.end(); val++) &#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; *val &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果为：</p>
+<div class="snote paperclip light"><p>
+
+</p><p>3<br>0 1 2 3</p>
 <p></p></div>
 
 
 
 
-<p>以下为代码实例：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;	//需要引入 array 头文件</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;array&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">array</span>&lt;<span class="keyword">int</span>, 4&gt; values&#123;&#125;;	<span class="comment">//初始化 values 容器为 &#123;0,1,2,3&#125;</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; values.size(); i++) &#123;</span><br><span class="line">        values.at(i) = i;	<span class="comment">//使用 get() 重载函数输出指定位置元素</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; get&lt;<span class="number">3</span>&gt;(values) &lt;&lt; <span class="built_in">endl</span>;	<span class="comment">//如果容器不为空，则输出容器中所有的元素</span></span><br><span class="line">    <span class="keyword">if</span> (!values.empty()) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> val = values.begin(); val &lt; values.end(); val++) &#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; *val &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iomanip&gt; </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;array&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">array</span>&lt;<span class="keyword">int</span>, 5&gt; values1;</span><br><span class="line">    <span class="built_in">array</span>&lt;<span class="keyword">int</span>, 5&gt; values2;</span><br><span class="line">    <span class="comment">//初始化 values1 为 &#123;0,1,2,3,4&#125;</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; values1.size(); ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        values1.at(i) = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;values1[0] is : &quot;</span> &lt;&lt; values1[<span class="number">0</span>] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;values1[1] is : &quot;</span> &lt;&lt; values1.at(<span class="number">1</span>) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;values1[2] is : &quot;</span> &lt;&lt; get&lt;<span class="number">2</span>&gt;(values1) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="comment">//初始化 values2 为&#123;10，11，12，13，14&#125;</span></span><br><span class="line">    <span class="keyword">int</span> initvalue = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; value : values2)</span><br><span class="line">    &#123;</span><br><span class="line">        value = initvalue;</span><br><span class="line">        initvalue++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt;  <span class="string">&quot;Values1 is : &quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> i = values1.begin(); i &lt; values1.end(); i++) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; *i &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span> &lt;&lt; <span class="string">&quot;Values2 is : &quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> i = values2.begin(); i &lt; values2.end(); i++) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; *i &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>输出结果为：</p>
 <div class="snote paperclip light"><p>
 
-</p><p>3<br>0 1 2 3</p>
+
+</p><p>values1[0] is : 0<br>values1[1] is : 1<br>values1[2] is : 2<br>Values1 is : 0 1 2 3 4<br>Values2 is : 10 11 12 13 14</p>
+<p></p></div>
+
+<br>
+
+<br>
+
+
+<div class="tip warning"><p>
+
+</p><p>题外话：由于STL标准库不是只有array容器，当迭代器指向容器中一个特定元素时，迭代器不会保留任何关于容器本身的信息，所以我们无法从迭代器中判断，迭代器到底指向array容器还是vector容器</p>
+<p>（即：只知道一个数据的类型和存储它的地址，无法判断这一整组数据中是否含有其他类型的数据）</p>
 <p></p></div>]]></content>
       <categories>
         <category>专业课程</category>
