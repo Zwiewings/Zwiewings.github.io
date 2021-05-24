@@ -1,6 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>虚幻引擎-5</title>
+    <url>/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/</url>
+    <content><![CDATA[<h1 id="虚幻文件夹结构"><a href="#虚幻文件夹结构" class="headerlink" title="虚幻文件夹结构"></a>虚幻文件夹结构</h1><h2 id="本地工程文件夹"><a href="#本地工程文件夹" class="headerlink" title="本地工程文件夹"></a>本地工程文件夹</h2><p>惯例为【Config】、【Content】、【DerivedDataCache】、【Intermediate】、【Saved】、【Script】六个文件夹，和一个后缀名为.uproject的文件（该文件为工程本体，在引擎中打开工程使用该文件）</p>
+<h3 id="【Config】"><a href="#【Config】" class="headerlink" title="【Config】"></a>【Config】</h3><h3 id="【Content】"><a href="#【Content】" class="headerlink" title="【Content】"></a>【Content】</h3><h3 id="【DerivedDataCache】"><a href="#【DerivedDataCache】" class="headerlink" title="【DerivedDataCache】"></a>【DerivedDataCache】</h3><h3 id="【Intermediate】"><a href="#【Intermediate】" class="headerlink" title="【Intermediate】"></a>【Intermediate】</h3><h3 id="【Saved】"><a href="#【Saved】" class="headerlink" title="【Saved】"></a>【Saved】</h3><h3 id="【Script】"><a href="#【Script】" class="headerlink" title="【Script】"></a>【Script】</h3><h2 id="导入素材文件夹"><a href="#导入素材文件夹" class="headerlink" title="导入素材文件夹"></a>导入素材文件夹</h2><p>惯例为【Animations】、【Materials】、【Meshes】、【Map（Scenes）】、【Textures】五个文件夹，有时也有会将【Materials】、【Textures】、【Meshes】放在一个【character】文件夹下的构成</p>
+<h3 id="【Animations】"><a href="#【Animations】" class="headerlink" title="【Animations】"></a>【Animations】</h3><p>【Animations】为该素材包内包括的动画序列，根据固定的骨骼执行，执行动画的网格体可以替换预览并实际替换使用</p>
+<h3 id="【Materials】"><a href="#【Materials】" class="headerlink" title="【Materials】"></a>【Materials】</h3><p>【Materials】为该素材包内所用到的所有材质，一般通过【材质】蓝图修改或直接使用</p>
+<h3 id="【Meshes】"><a href="#【Meshes】" class="headerlink" title="【Meshes】"></a>【Meshes】</h3><p>【Meshes】为该素材包内用到的所有骨架模型（骨骼网格体）、物理模型（物理资产）、骨骼，骨架模型是没有碰撞体积的，而物理模型能够表现受力（例如场景中运行时会受重力，和玩家角色重叠时会发生移动）</p>
+<h3 id="【Map（scenes）】"><a href="#【Map（scenes）】" class="headerlink" title="【Map（scenes）】"></a>【Map（scenes）】</h3><p>【Map（Scenes）】为该素材包的场景地图，一般会有一个Overview场景，用于预览所有模型，动画，地形等该素材包的素材</p>
+<h3 id="【Textures】"><a href="#【Textures】" class="headerlink" title="【Textures】"></a>【Textures】</h3><p>【Textures】为该素材包的所有贴图，包括材质贴图，法线贴图，场景贴花等，通常在【材质】蓝图中找到需要更改的属性，再对应的更改贴图以达到更改材质的效果</p>
+<h1 id="Android端配置"><a href="#Android端配置" class="headerlink" title="Android端配置"></a>Android端配置</h1><p>Android端使用的虚幻引擎版本为4.22.3,下载时需要勾选以下内容</p>
+<p><img src="/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/1.png" alt="1"></p>
+<p><img src="/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/2.png" alt="2"></p>
+<p>具体使用时，创建工程需要选中“移动设备/平板电脑”一项</p>
+<h2 id="项目设置修改"><a href="#项目设置修改" class="headerlink" title="项目设置修改"></a>项目设置修改</h2><p>为了顺利打包成apk格式，需要工程的项目设置提前修改，具体修改项如下：</p>
+<br>
+
+<h3 id="Android项"><a href="#Android项" class="headerlink" title="Android项"></a>Android项</h3><p><img src="/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/3-1.png" alt="3-1"></p>
+<p><img src="/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/3-2.png" alt="3-2"></p>
+<p><img src="/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/3-3.png" alt="3-3"></p>
+<p>其中修改project为工程名时，不需要保留括号，必须为英文，且不能有特殊符号</p>
+<br>
+
+<p><img src="/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/3-4.png" alt="3-4"></p>
+<p>此处填入手机上app显示的名字，可以为中文</p>
+<br>
+
+<p><img src="/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/3-5.png" alt="3-5"></p>
+<p>此处勾选，引擎打包后生成出来为单独的一个apk格式文件</p>
+<br>
+
+<p>icons项为图标，悬停可以显示图片大小，此处不作说明</p>
+<br>
+
+<p><img src="/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/3-6.png" alt="3-6"></p>
+<p>app默认开始时有淡入淡出显示logo的界面，不需要的话，可以取消勾选</p>
+<br>
+
+<h3 id="Android-SDK项"><a href="#Android-SDK项" class="headerlink" title="Android SDK项"></a>Android SDK项</h3><p><img src="/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/3-7.png" alt="3-7"></p>
+<p>此处是Android应用需要的编译环境配置，路径应为全英文路径，以免报错</p>
+<p><img src="/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/3-8.png" alt="3-8"></p>
+<br>
+
+<p><img src="/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/3-9.png" alt="3-9"></p>
+<h3 id="Rendering项"><a href="#Rendering项" class="headerlink" title="Rendering项"></a>Rendering项</h3><p><img src="/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/3-10.png" alt="3-10"></p>
+<p>以下配置是给一个简单手机应用的配置，所以均为最低画质</p>
+<p><img src="/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/3-11.png" alt="3-11"></p>
+<p><img src="/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/3-12.png" alt="3-12"></p>
+<p><img src="/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/3-13.png" alt="3-13"></p>
+<p><img src="/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/3-14.png" alt="3-14"></p>
+<p><img src="/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/3-15.png" alt="3-15"></p>
+<p><img src="/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/3-16.png" alt="3-16"></p>
+<p><img src="/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/3-17.png" alt="3-17"></p>
+<h3 id="Packaging项"><a href="#Packaging项" class="headerlink" title="Packaging项"></a>Packaging项</h3><p><img src="/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/4-1.png" alt="4-1"></p>
+<p><img src="/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/4-2.png" alt="4-2"></p>
+<p>其中，以下路径为打包项目的输出位置：</p>
+<p><img src="/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/4-4.png" alt="4-4"></p>
+<p><br><br></p>
+<p><img src="/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/4-3.png" alt="4-3"></p>
+<br>
+
+<p>以下修改需要展开隐藏项</p>
+<p><img src="/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/4-5.png" alt="4-5"></p>
+<h2 id="编译打包"><a href="#编译打包" class="headerlink" title="编译打包"></a>编译打包</h2><p>完成以上配置后，即可运行完成编译，进行打包</p>
+<p><img src="/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/4-6.png" alt="4-6"></p>
+]]></content>
+      <categories>
+        <category>课外拓展</category>
+        <category>虚幻引擎</category>
+      </categories>
+      <tags>
+        <tag>虚幻引擎</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>c++拓展-7:关联式容器STL pair</title>
+    <url>/2021/05/21/c++%E5%AD%A6%E4%B9%A0-11/</url>
+    <content><![CDATA[<h1 id="pair类模板"><a href="#pair类模板" class="headerlink" title="pair类模板"></a>pair类模板</h1><p>关联式容器存储的是”键值对“形式的数据，如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;&quot;a&quot;,&quot;121&quot;&gt;</span><br><span class="line">&lt;&quot;b&quot;,&quot;144&quot;&gt;</span><br><span class="line">&lt;&quot;c&quot;,&quot;156&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>以上每行都表示一个键值对，其中第一个元素作为键，第二个元素作为值，由于键值对不是普通数据类型，c++STL标准库提供了pair类模板，用于将两个普通元素a和b，创建成一个新元素&lt;a,b&gt;</p>
+<p>pair类模板定义在&lt; utility &gt;头文件中，所以在使用该类模板之前，需要引入该头文件，且pair类模板提供了共五种构造函数，如下：</p>
+<ul>
+<li>默认构造函数，即创建空的 pair 对象：pair();</li>
+<li>直接使用 2 个元素初始化成 pair 对象：pair (const first_type&amp; a, const second_type&amp; b);</li>
+<li>拷贝（复制）构造函数，即借助另一个 pair 对象，创建新的 pair 对象：template&lt;class U, class V&gt; pair (const pair&lt;U,V&gt;&amp; pr);</li>
+<li>移动构造函数：template&lt;class U, class V&gt; pair (pair&lt;U,V&gt;&amp;&amp; pr);</li>
+<li>使用右值引用参数，创建 pair 对象：template&lt;class U, class V&gt; pair (U&amp;&amp; a, V&amp;&amp; b);</li>
+</ul>
+]]></content>
+      <categories>
+        <category>专业课程</category>
+        <category>C++</category>
+        <category>拓展</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>STL库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>虚幻引擎-溶解特效</title>
+    <url>/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-%E6%BA%B6%E8%A7%A3%E7%89%B9%E6%95%88/</url>
+    <content><![CDATA[<h1 id="溶解特效制作"><a href="#溶解特效制作" class="headerlink" title="溶解特效制作"></a>溶解特效制作</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>本文中可以学到4个之前暂时跳过的全新知识点</p>
+<ul>
+<li>材质参数集资产<img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-%E6%BA%B6%E8%A7%A3%E7%89%B9%E6%95%88/1.png" alt="1"></li>
+<li>材质中的”已遮罩”混合模式<img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-%E6%BA%B6%E8%A7%A3%E7%89%B9%E6%95%88/2.png" alt="2"></li>
+<li>材质中的if节点以及过场动画中的”材质参数轨道”<img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-%E6%BA%B6%E8%A7%A3%E7%89%B9%E6%95%88/3.png" alt="3"> </li>
+</ul>
+<p>总之都是干货啦，开始吧~</p>
+<h2 id="具体操作"><a href="#具体操作" class="headerlink" title="具体操作"></a>具体操作</h2><p>首先，先准备好溶解特效的蒙版贴图</p>
+<div class="snote download yellow"><a href="https://docs.unrealengine.com/Images/AnimatingObjects/Sequencer/HowTo/TracksMaterialParameter/T_Dissolve.png">点此获取样例蒙版贴图</a></div>
+
+
+
+<p>将贴图导入后，新建一个材质参数集资产并起名为”溶解参数集”</p>
+<p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-%E6%BA%B6%E8%A7%A3%E7%89%B9%E6%95%88/4.png" alt="4"></p>
+<p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-%E6%BA%B6%E8%A7%A3%E7%89%B9%E6%95%88/5.png" alt="5"></p>
+<p>打开参数集，添加一个标量参数，起名为“Alpha”，意为不透明度，1为正常，0为完全溶解消失。<img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-%E6%BA%B6%E8%A7%A3%E7%89%B9%E6%95%88/6.png" alt="6"></p>
+<div class="tip warning"><p>
+
+</p><p>材质参数集的作用就是可以在游戏运行时改变材质中的一些数值，可以产生材质的动态变化。</p>
+<p></p></div>
+
+<p>随后打开要被做成溶解特效的材质，以金币材质为例,</p>
+<img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-%E6%BA%B6%E8%A7%A3%E7%89%B9%E6%95%88/7.png" alt="7" style="zoom:50%;">
+
+<p>看上去相当复杂，但不用管，只需稍加改造即可。</p>
+<p>首先去细节面板，将混合模式改为“已遮罩”</p>
+<p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-%E6%BA%B6%E8%A7%A3%E7%89%B9%E6%95%88/8.png" alt="8"></p>
+<table>
+<thead>
+<tr>
+<th align="center">混合模式</th>
+<th align="center">用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">不透明</td>
+<td align="center">普通不透明的材质</td>
+</tr>
+<tr>
+<td align="center">已遮罩</td>
+<td align="center">相当于材质只覆盖了表面的一层，可以修改局部的不透明度</td>
+</tr>
+<tr>
+<td align="center">半透明</td>
+<td align="center">常用于玻璃水面等材质，可以有折射特效，但只能对整体进行不透明度的修改</td>
+</tr>
+</tbody></table>
+<p>然后将“溶解参数集”拖入，参数名选择Alpha</p>
+<p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-%E6%BA%B6%E8%A7%A3%E7%89%B9%E6%95%88/10.png" alt="10"></p>
+<p>将贴图拖入，并建一个if节点，按如下摆放并与“不透明蒙版”相连</p>
+<p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-%E6%BA%B6%E8%A7%A3%E7%89%B9%E6%95%88/9.png" alt="9"></p>
+<div class="tip warning"><p>
+
+</p><p>解释：贴图是一张黑白图，黑白图的RGB为同一个数，而不透明蒙版中输入0为全透明，1为完全不透明，因此可在运行时调整Alpha（从0到1），使贴图蒙版中红色（因是黑白图，所以取哪个都是一样，因为要浮点与浮点才能比较，所以只能取其中一个值，而不能取RGB，因为RGB是向量Vector类型的变量）大于等于那个值的部分显示（蒙版输入1）小于那个值的部分消失（蒙版输入0）。TexCoord之前有提过，按T加左键，用于缩放贴图的密度，UV数字越大密度越高，案例中将U和V都设置成了4。</p>
+<p></p></div>
+
+
+
+<p>if节点的作用：</p>
+<table>
+<thead>
+<tr>
+<th align="center">输入</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">A</td>
+<td align="center">输入一个浮点值</td>
+</tr>
+<tr>
+<td align="center">B</td>
+<td align="center">输入一个浮点值</td>
+</tr>
+<tr>
+<td align="center">A&gt;B</td>
+<td align="center">A&gt;B时输出的内容（不一定只能是浮点，可为任意类型）</td>
+</tr>
+<tr>
+<td align="center">A==B</td>
+<td align="center">A=B时输出的内容（不一定只能是浮点，可为任意类型）</td>
+</tr>
+<tr>
+<td align="center">A&lt;B</td>
+<td align="center">A&lt;B时输出的内容（不一定只能是浮点，可为任意类型）</td>
+</tr>
+</tbody></table>
+<p>到此就建立完毕了，所有套用了这个材质或者所有以这个材质为父类建立的材质实例的物体都会应用溶解的效果</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="过场动画中的使用"><a href="#过场动画中的使用" class="headerlink" title="过场动画中的使用"></a>过场动画中的使用</h3><p>建立一个过场动画，添加一条材质参数集轨道，选择之前建立的“溶解参数集”</p>
+<p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-%E6%BA%B6%E8%A7%A3%E7%89%B9%E6%95%88/11.png" alt="11"></p>
+<p>随后添加一个Alpha轨道</p>
+<p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-%E6%BA%B6%E8%A7%A3%E7%89%B9%E6%95%88/12.png" alt="12"></p>
+<p>添加一些关键帧（如图分别为0，1，0）</p>
+<p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-%E6%BA%B6%E8%A7%A3%E7%89%B9%E6%95%88/13.png" alt="13"></p>
+<p>拖动时间轴可以看到物体溶解然后复原</p>
+<p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-%E6%BA%B6%E8%A7%A3%E7%89%B9%E6%95%88/14.png" alt="14"></p>
+<h3 id="蓝图中的使用"><a href="#蓝图中的使用" class="headerlink" title="蓝图中的使用"></a>蓝图中的使用</h3><p>在蓝图中调用这个节点“设置标量参数值”，Collection输入创建的参数集，Parameter Name输入要改变的参数，Parameter Value输入值</p>
+<p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-%E6%BA%B6%E8%A7%A3%E7%89%B9%E6%95%88/15.png" alt="15"></p>
+]]></content>
+      <categories>
+        <category>课外拓展</category>
+        <category>虚幻引擎</category>
+      </categories>
+      <tags>
+        <tag>虚幻引擎</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>c++拓展-3：STL库基础</title>
     <url>/2021/05/13/c++%E5%AD%A6%E4%B9%A0-6/</url>
     <content><![CDATA[<h1 id="STL库基本组成"><a href="#STL库基本组成" class="headerlink" title="STL库基本组成"></a>STL库基本组成</h1><table>
@@ -226,130 +435,6 @@
 
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;v.size(); ++i)</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; v[i];</span><br></pre></td></tr></table></figure>
 ]]></content>
-      <categories>
-        <category>专业课程</category>
-        <category>C++</category>
-        <category>拓展</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-        <tag>STL库</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>虚幻引擎-溶解特效</title>
-    <url>/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-%E6%BA%B6%E8%A7%A3%E7%89%B9%E6%95%88/</url>
-    <content><![CDATA[<h1 id="溶解特效制作"><a href="#溶解特效制作" class="headerlink" title="溶解特效制作"></a>溶解特效制作</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>本文中可以学到4个之前暂时跳过的全新知识点</p>
-<ul>
-<li>材质参数集资产<img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-%E6%BA%B6%E8%A7%A3%E7%89%B9%E6%95%88/1.png" alt="1"></li>
-<li>材质中的”已遮罩”混合模式<img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-%E6%BA%B6%E8%A7%A3%E7%89%B9%E6%95%88/2.png" alt="2"></li>
-<li>材质中的if节点以及过场动画中的”材质参数轨道”<img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-%E6%BA%B6%E8%A7%A3%E7%89%B9%E6%95%88/3.png" alt="3"> </li>
-</ul>
-<p>总之都是干货啦，开始吧~</p>
-<h2 id="具体操作"><a href="#具体操作" class="headerlink" title="具体操作"></a>具体操作</h2><p>首先，先准备好溶解特效的蒙版贴图</p>
-<div class="snote download yellow"><a href="https://docs.unrealengine.com/Images/AnimatingObjects/Sequencer/HowTo/TracksMaterialParameter/T_Dissolve.png">点此获取样例蒙版贴图</a></div>
-
-
-
-<p>将贴图导入后，新建一个材质参数集资产并起名为”溶解参数集”</p>
-<p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-%E6%BA%B6%E8%A7%A3%E7%89%B9%E6%95%88/4.png" alt="4"></p>
-<p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-%E6%BA%B6%E8%A7%A3%E7%89%B9%E6%95%88/5.png" alt="5"></p>
-<p>打开参数集，添加一个标量参数，起名为“Alpha”，意为不透明度，1为正常，0为完全溶解消失。<img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-%E6%BA%B6%E8%A7%A3%E7%89%B9%E6%95%88/6.png" alt="6"></p>
-<div class="tip warning"><p>
-
-</p><p>材质参数集的作用就是可以在游戏运行时改变材质中的一些数值，可以产生材质的动态变化。</p>
-<p></p></div>
-
-<p>随后打开要被做成溶解特效的材质，以金币材质为例,</p>
-<img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-%E6%BA%B6%E8%A7%A3%E7%89%B9%E6%95%88/7.png" alt="7" style="zoom:50%;">
-
-<p>看上去相当复杂，但不用管，只需稍加改造即可。</p>
-<p>首先去细节面板，将混合模式改为“已遮罩”</p>
-<p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-%E6%BA%B6%E8%A7%A3%E7%89%B9%E6%95%88/8.png" alt="8"></p>
-<table>
-<thead>
-<tr>
-<th align="center">混合模式</th>
-<th align="center">用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">不透明</td>
-<td align="center">普通不透明的材质</td>
-</tr>
-<tr>
-<td align="center">已遮罩</td>
-<td align="center">相当于材质只覆盖了表面的一层，可以修改局部的不透明度</td>
-</tr>
-<tr>
-<td align="center">半透明</td>
-<td align="center">常用于玻璃水面等材质，可以有折射特效，但只能对整体进行不透明度的修改</td>
-</tr>
-</tbody></table>
-<p>然后将“溶解参数集”拖入，参数名选择Alpha</p>
-<p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-%E6%BA%B6%E8%A7%A3%E7%89%B9%E6%95%88/10.png" alt="10"></p>
-<p>将贴图拖入，并建一个if节点，按如下摆放并与“不透明蒙版”相连</p>
-<p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-%E6%BA%B6%E8%A7%A3%E7%89%B9%E6%95%88/9.png" alt="9"></p>
-<div class="tip warning"><p>
-
-</p><p>解释：贴图是一张黑白图，黑白图的RGB为同一个数，而不透明蒙版中输入0为全透明，1为完全不透明，因此可在运行时调整Alpha（从0到1），使贴图蒙版中红色（因是黑白图，所以取哪个都是一样，因为要浮点与浮点才能比较，所以只能取其中一个值，而不能取RGB，因为RGB是向量Vector类型的变量）大于等于那个值的部分显示（蒙版输入1）小于那个值的部分消失（蒙版输入0）。TexCoord之前有提过，按T加左键，用于缩放贴图的密度，UV数字越大密度越高，案例中将U和V都设置成了4。</p>
-<p></p></div>
-
-
-
-<p>if节点的作用：</p>
-<table>
-<thead>
-<tr>
-<th align="center">输入</th>
-<th align="center">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">A</td>
-<td align="center">输入一个浮点值</td>
-</tr>
-<tr>
-<td align="center">B</td>
-<td align="center">输入一个浮点值</td>
-</tr>
-<tr>
-<td align="center">A&gt;B</td>
-<td align="center">A&gt;B时输出的内容（不一定只能是浮点，可为任意类型）</td>
-</tr>
-<tr>
-<td align="center">A==B</td>
-<td align="center">A=B时输出的内容（不一定只能是浮点，可为任意类型）</td>
-</tr>
-<tr>
-<td align="center">A&lt;B</td>
-<td align="center">A&lt;B时输出的内容（不一定只能是浮点，可为任意类型）</td>
-</tr>
-</tbody></table>
-<p>到此就建立完毕了，所有套用了这个材质或者所有以这个材质为父类建立的材质实例的物体都会应用溶解的效果</p>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="过场动画中的使用"><a href="#过场动画中的使用" class="headerlink" title="过场动画中的使用"></a>过场动画中的使用</h3><p>建立一个过场动画，添加一条材质参数集轨道，选择之前建立的“溶解参数集”</p>
-<p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-%E6%BA%B6%E8%A7%A3%E7%89%B9%E6%95%88/11.png" alt="11"></p>
-<p>随后添加一个Alpha轨道</p>
-<p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-%E6%BA%B6%E8%A7%A3%E7%89%B9%E6%95%88/12.png" alt="12"></p>
-<p>添加一些关键帧（如图分别为0，1，0）</p>
-<p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-%E6%BA%B6%E8%A7%A3%E7%89%B9%E6%95%88/13.png" alt="13"></p>
-<p>拖动时间轴可以看到物体溶解然后复原</p>
-<p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-%E6%BA%B6%E8%A7%A3%E7%89%B9%E6%95%88/14.png" alt="14"></p>
-<h3 id="蓝图中的使用"><a href="#蓝图中的使用" class="headerlink" title="蓝图中的使用"></a>蓝图中的使用</h3><p>在蓝图中调用这个节点“设置标量参数值”，Collection输入创建的参数集，Parameter Name输入要改变的参数，Parameter Value输入值</p>
-<p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-%E6%BA%B6%E8%A7%A3%E7%89%B9%E6%95%88/15.png" alt="15"></p>
-]]></content>
-      <categories>
-        <category>课外拓展</category>
-        <category>虚幻引擎</category>
-      </categories>
-      <tags>
-        <tag>虚幻引擎</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>c++拓展-7:关联式容器STL pair</title>
-    <url>/2021/05/21/c++%E5%AD%A6%E4%B9%A0-11/</url>
-    <content><![CDATA[]]></content>
       <categories>
         <category>专业课程</category>
         <category>C++</category>
@@ -1767,25 +1852,6 @@ values 容器首个元素的地址：0164DBE8
 <p><img src="/2021/04/17/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-6/2.png" alt="2"></p>
 </li>
 </ol>
-]]></content>
-      <categories>
-        <category>课外拓展</category>
-        <category>虚幻引擎</category>
-      </categories>
-      <tags>
-        <tag>虚幻引擎</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>虚幻引擎-5</title>
-    <url>/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/</url>
-    <content><![CDATA[<h1 id="虚幻文件夹结构"><a href="#虚幻文件夹结构" class="headerlink" title="虚幻文件夹结构"></a>虚幻文件夹结构</h1><h2 id="本地工程文件夹"><a href="#本地工程文件夹" class="headerlink" title="本地工程文件夹"></a>本地工程文件夹</h2><p>惯例为【Config】、【Content】、【DerivedDataCache】、【Intermediate】、【Saved】、【Script】六个文件夹，和一个后缀名为.uproject的文件（该文件为工程本体，在引擎中打开工程使用该文件）</p>
-<h3 id="【Config】"><a href="#【Config】" class="headerlink" title="【Config】"></a>【Config】</h3><h3 id="【Content】"><a href="#【Content】" class="headerlink" title="【Content】"></a>【Content】</h3><h3 id="【DerivedDataCache】"><a href="#【DerivedDataCache】" class="headerlink" title="【DerivedDataCache】"></a>【DerivedDataCache】</h3><h3 id="【Intermediate】"><a href="#【Intermediate】" class="headerlink" title="【Intermediate】"></a>【Intermediate】</h3><h3 id="【Saved】"><a href="#【Saved】" class="headerlink" title="【Saved】"></a>【Saved】</h3><h3 id="【Script】"><a href="#【Script】" class="headerlink" title="【Script】"></a>【Script】</h3><h2 id="导入素材文件夹"><a href="#导入素材文件夹" class="headerlink" title="导入素材文件夹"></a>导入素材文件夹</h2><p>惯例为【Animations】、【Materials】、【Meshes】、【Map（Scenes）】、【Textures】五个文件夹，有时也有会将【Materials】、【Textures】、【Meshes】放在一个【character】文件夹下的构成</p>
-<h3 id="【Animations】"><a href="#【Animations】" class="headerlink" title="【Animations】"></a>【Animations】</h3><p>【Animations】为该素材包内包括的动画序列，根据固定的骨骼执行，执行动画的网格体可以替换预览并实际替换使用</p>
-<h3 id="【Materials】"><a href="#【Materials】" class="headerlink" title="【Materials】"></a>【Materials】</h3><p>【Materials】为该素材包内所用到的所有材质，一般通过【材质】蓝图修改或直接使用</p>
-<h3 id="【Meshes】"><a href="#【Meshes】" class="headerlink" title="【Meshes】"></a>【Meshes】</h3><p>【Meshes】为该素材包内用到的所有骨架模型（骨骼网格体）、物理模型（物理资产）、骨骼，骨架模型是没有碰撞体积的，而物理模型能够表现受力（例如场景中运行时会受重力，和玩家角色重叠时会发生移动）</p>
-<h3 id="【Map（scenes）】"><a href="#【Map（scenes）】" class="headerlink" title="【Map（scenes）】"></a>【Map（scenes）】</h3><p>【Map（Scenes）】为该素材包的场景地图，一般会有一个Overview场景，用于预览所有模型，动画，地形等该素材包的素材</p>
-<h3 id="【Textures】"><a href="#【Textures】" class="headerlink" title="【Textures】"></a>【Textures】</h3><p>【Textures】为该素材包的所有贴图，包括材质贴图，法线贴图，场景贴花等，通常在【材质】蓝图中找到需要更改的属性，再对应的更改贴图以达到更改材质的效果</p>
 ]]></content>
       <categories>
         <category>课外拓展</category>
