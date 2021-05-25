@@ -1,6 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>c++拓展-7:关联式容器STL pair</title>
+    <url>/2021/05/21/c++%E5%AD%A6%E4%B9%A0-11/</url>
+    <content><![CDATA[<h1 id="pair类模板"><a href="#pair类模板" class="headerlink" title="pair类模板"></a>pair类模板</h1><h2 id="键值对数据类型"><a href="#键值对数据类型" class="headerlink" title="键值对数据类型"></a>键值对数据类型</h2><p>关联式容器存储的是”键值对“形式的数据，如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;&quot;a&quot;,&quot;121&quot;&gt;</span><br><span class="line">&lt;&quot;b&quot;,&quot;144&quot;&gt;</span><br><span class="line">&lt;&quot;c&quot;,&quot;156&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>以上每行都表示一个键值对，其中第一个元素作为键，第二个元素作为值，由于键值对不是普通数据类型，c++STL标准库提供了pair类模板，用于将两个普通元素a和b，创建成一个新元素&lt;a,b&gt;</p>
+<h2 id="pair对象构造"><a href="#pair对象构造" class="headerlink" title="pair对象构造"></a>pair对象构造</h2><p>pair类模板定义在&lt; utility &gt;头文件中，所以在使用该类模板之前，需要引入该头文件，且pair类模板提供了共五种构造函数，如下：</p>
+<ul>
+<li>默认构造函数，即创建空的 pair 对象：pair();</li>
+<li>直接使用 2 个元素初始化成 pair 对象：pair (const first_type&amp; a, const second_type&amp; b);</li>
+<li>拷贝（复制）构造函数，即借助另一个 pair 对象，创建新的 pair 对象：template&lt;class U, class V&gt; pair (const pair&lt;U,V&gt;&amp; pr);</li>
+<li>移动构造函数：template&lt;class U, class V&gt; pair (pair&lt;U,V&gt;&amp;&amp; pr);</li>
+<li>使用右值引用参数，创建 pair 对象：template&lt;class U, class V&gt; pair (U&amp;&amp; a, V&amp;&amp; b);</li>
+</ul>
+<h3 id="关于右值引用"><a href="#关于右值引用" class="headerlink" title="关于右值引用"></a>关于右值引用</h3><p>注：对于右值引用，能出现在赋值号左边的表达式称为“左值”，不能出现在赋值号左边的表达式为“右值”，一般来说，左值可以取地址，右值不可以。非const变量都是左值，函数调用的返回值若不是引用，则该函数调用就是右值，在不专门指出时，引用基本都是引用变量的，即左值引用。c++11中新增了一种右值引用，可以引用无名的临时变量，使用符号为“&amp;&amp;”</p>
+<p>引入右值引用的主要目的是提高程序运行的效率。有些对象是无名临时变量，但在复制时却需要进行深复制，往往非常耗时。合理使用右值引用可以避免没有必要的深复制操作</p>
+<h2 id="赋值和比较"><a href="#赋值和比较" class="headerlink" title="赋值和比较"></a>赋值和比较</h2><p>pair对象是允许手动赋值的，可用.first和.second分别访问pair对象的键和值，同样，也可以使用make_pair()函数，向其中传入两个参数代表对象的键和值</p>
+<p>&lt; utility &gt;头文件中，除了提供创建pair对象的方法之外，还为pair对象重载了以下6种运算符：&lt;、&lt;=、&gt;、&gt;=、==、!=，其运算规则是先比较键的大小，如果键的大小相等，再比较值的大小，且对于比较的两个pair对象，其对应的键和值的类型应该相同，否则编译器将找不到合适的重载运算符</p>
+<p>除此之外，当键和值的类型都相同时，可以使用swap()成员函数交换两个pair对象的的键值对，同其他容器中的swap()效果相同</p>
+<h2 id="代码实例"><a href="#代码实例" class="headerlink" title="代码实例"></a>代码实例</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;utility&gt;      // pair</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;       // string</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 调用构造函数 1，也就是默认构造函数</span></span><br><span class="line">    <span class="built_in">pair</span> &lt;<span class="built_in">string</span>, <span class="keyword">double</span>&gt; pair1;</span><br><span class="line">    <span class="comment">// 调用第 2 种构造函数</span></span><br><span class="line">    <span class="built_in">pair</span> &lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; pair2(<span class="string">&quot;1&quot;</span>,<span class="string">&quot;9&quot;</span>);  </span><br><span class="line">    <span class="comment">// 调用拷贝构造函数</span></span><br><span class="line">    <span class="built_in">pair</span> &lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; pair3(pair2);</span><br><span class="line">    <span class="comment">//调用移动构造函数</span></span><br><span class="line">    <span class="built_in">pair</span> &lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; pair4(<span class="built_in">make_pair</span>(<span class="string">&quot;2&quot;</span>, <span class="string">&quot;8&quot;</span>));</span><br><span class="line">    <span class="comment">// 调用第 5 种构造函数</span></span><br><span class="line">    <span class="built_in">pair</span> &lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; pair5(<span class="built_in">string</span>(<span class="string">&quot;3&quot;</span>), <span class="built_in">string</span>(<span class="string">&quot;7&quot;</span>));  </span><br><span class="line">   </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;pair1: &quot;</span> &lt;&lt; pair1.first &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; pair1.second &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;pair2: &quot;</span>&lt;&lt; pair2.first &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; pair2.second &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;pair3: &quot;</span> &lt;&lt; pair3.first &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; pair3.second &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;pair4: &quot;</span> &lt;&lt; pair4.first &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; pair4.second &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;pair5: &quot;</span> &lt;&lt; pair5.first &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; pair5.second &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果为：</p>
+<div class="snote paperclip light"><p>
+pair1: 0
+pair2: 1 9
+pair3: 1 9
+pair4: 2 8
+pair5: 3 7
+
+</p></div>
+
+<br>
+
+<br>
+
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;utility&gt;      // pair</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;       // string</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">pair</span> &lt;<span class="built_in">string</span>, <span class="keyword">int</span>&gt; pair1(<span class="string">&quot;1&quot;</span>, <span class="number">20</span>);</span><br><span class="line">    <span class="built_in">pair</span> &lt;<span class="built_in">string</span>, <span class="keyword">int</span>&gt; pair2(<span class="string">&quot;2&quot;</span>, <span class="number">20</span>);</span><br><span class="line">    <span class="built_in">pair</span> &lt;<span class="built_in">string</span>, <span class="keyword">int</span>&gt; pair3(<span class="string">&quot;2&quot;</span>, <span class="number">30</span>);</span><br><span class="line">    <span class="comment">//pair1和pair2的key不同，value相同</span></span><br><span class="line">    <span class="keyword">if</span> (pair1 != pair2) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;pair != pair2&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//pair2和pair3的key相同，value不同</span></span><br><span class="line">    <span class="keyword">if</span> (pair2 != pair3) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;pair2 != pair3&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果为：</p>
+<div class="snote paperclip light"><p>
+pair != pair2
+pair2 != pair3
+
+</p></div>
+<br>
+<br>
+
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;utility&gt;      // pair</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;       // string</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">pair</span> &lt;<span class="built_in">string</span>, <span class="keyword">int</span>&gt; pair1(<span class="string">&quot;pair&quot;</span>, <span class="number">10</span>);                   </span><br><span class="line">    <span class="built_in">pair</span> &lt;<span class="built_in">string</span>, <span class="keyword">int</span>&gt; pair2(<span class="string">&quot;pair2&quot;</span>, <span class="number">20</span>);</span><br><span class="line">    <span class="comment">//交换 pair1 和 pair2 的键值对</span></span><br><span class="line">    pair1.swap(pair2);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;pair1: &quot;</span> &lt;&lt; pair1.first &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; pair1.second &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;pair2: &quot;</span> &lt;&lt; pair2.first &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; pair2.second &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果为：</p>
+<div class="snote paperclip light"><p>
+pair1: pair2 20
+pair2: pair 10
+
+</p></div>
+
+]]></content>
+      <categories>
+        <category>专业课程</category>
+        <category>C++</category>
+        <category>拓展</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>STL库</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>虚幻引擎-5</title>
     <url>/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/</url>
     <content><![CDATA[<h1 id="虚幻文件夹结构"><a href="#虚幻文件夹结构" class="headerlink" title="虚幻文件夹结构"></a>虚幻文件夹结构</h1><h2 id="本地工程文件夹"><a href="#本地工程文件夹" class="headerlink" title="本地工程文件夹"></a>本地工程文件夹</h2><p>惯例为【Config】、【Content】、【DerivedDataCache】、【Intermediate】、【Saved】、【Script】六个文件夹，和一个后缀名为.uproject的文件（该文件为工程本体，在引擎中打开工程使用该文件）</p>
@@ -10,6 +73,7 @@
 <h3 id="【Meshes】"><a href="#【Meshes】" class="headerlink" title="【Meshes】"></a>【Meshes】</h3><p>【Meshes】为该素材包内用到的所有骨架模型（骨骼网格体）、物理模型（物理资产）、骨骼，骨架模型是没有碰撞体积的，而物理模型能够表现受力（例如场景中运行时会受重力，和玩家角色重叠时会发生移动）</p>
 <h3 id="【Map（scenes）】"><a href="#【Map（scenes）】" class="headerlink" title="【Map（scenes）】"></a>【Map（scenes）】</h3><p>【Map（Scenes）】为该素材包的场景地图，一般会有一个Overview场景，用于预览所有模型，动画，地形等该素材包的素材</p>
 <h3 id="【Textures】"><a href="#【Textures】" class="headerlink" title="【Textures】"></a>【Textures】</h3><p>【Textures】为该素材包的所有贴图，包括材质贴图，法线贴图，场景贴花等，通常在【材质】蓝图中找到需要更改的属性，再对应的更改贴图以达到更改材质的效果</p>
+<p><br><br></p>
 <h1 id="Android端配置"><a href="#Android端配置" class="headerlink" title="Android端配置"></a>Android端配置</h1><p>Android端使用的虚幻引擎版本为4.22.3,下载时需要勾选以下内容</p>
 <p><img src="/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/1.png" alt="1"></p>
 <p><img src="/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/2.png" alt="2"></p>
@@ -64,6 +128,7 @@
 <p>以下修改需要展开隐藏项</p>
 <p><img src="/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/4-5.png" alt="4-5"></p>
 <h2 id="编译打包"><a href="#编译打包" class="headerlink" title="编译打包"></a>编译打包</h2><p>完成以上配置后，即可运行完成编译，进行打包</p>
+<p>注：在尝试打包之前记得先保存默认地图，如果文件夹空置的话会报错（报错信息有“gradle\rungradle.bat :app:assembleDebug”字样）</p>
 <p><img src="/2021/04/16/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-5/4-6.png" alt="4-6"></p>
 ]]></content>
       <categories>
@@ -72,31 +137,6 @@
       </categories>
       <tags>
         <tag>虚幻引擎</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>c++拓展-7:关联式容器STL pair</title>
-    <url>/2021/05/21/c++%E5%AD%A6%E4%B9%A0-11/</url>
-    <content><![CDATA[<h1 id="pair类模板"><a href="#pair类模板" class="headerlink" title="pair类模板"></a>pair类模板</h1><p>关联式容器存储的是”键值对“形式的数据，如：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;&quot;a&quot;,&quot;121&quot;&gt;</span><br><span class="line">&lt;&quot;b&quot;,&quot;144&quot;&gt;</span><br><span class="line">&lt;&quot;c&quot;,&quot;156&quot;&gt;</span><br></pre></td></tr></table></figure>
-<p>以上每行都表示一个键值对，其中第一个元素作为键，第二个元素作为值，由于键值对不是普通数据类型，c++STL标准库提供了pair类模板，用于将两个普通元素a和b，创建成一个新元素&lt;a,b&gt;</p>
-<p>pair类模板定义在&lt; utility &gt;头文件中，所以在使用该类模板之前，需要引入该头文件，且pair类模板提供了共五种构造函数，如下：</p>
-<ul>
-<li>默认构造函数，即创建空的 pair 对象：pair();</li>
-<li>直接使用 2 个元素初始化成 pair 对象：pair (const first_type&amp; a, const second_type&amp; b);</li>
-<li>拷贝（复制）构造函数，即借助另一个 pair 对象，创建新的 pair 对象：template&lt;class U, class V&gt; pair (const pair&lt;U,V&gt;&amp; pr);</li>
-<li>移动构造函数：template&lt;class U, class V&gt; pair (pair&lt;U,V&gt;&amp;&amp; pr);</li>
-<li>使用右值引用参数，创建 pair 对象：template&lt;class U, class V&gt; pair (U&amp;&amp; a, V&amp;&amp; b);</li>
-</ul>
-]]></content>
-      <categories>
-        <category>专业课程</category>
-        <category>C++</category>
-        <category>拓展</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-        <tag>STL库</tag>
       </tags>
   </entry>
   <entry>
