@@ -1166,7 +1166,7 @@
 </tr>
 <tr>
 <td>find(key)</td>
-<td>在 map 容器中查找键为 key 的键值对，如果成功找到，则返回指向该键值对的双向迭代器；反之，则返回和 end() 方法一样的迭代器。另外，如果 map 容器用 const 限定，则该方法返回的是 const 类型的双向迭代器</td>
+<td>在 map 容器中查找键为 key 的键值对，如果成功找到，则返回指向该键值对的双向迭代器；反之，则返回最后一个元素+1位置的迭代器。另外，如果 map 容器用 const 限定，则该方法返回的是 const 类型的双向迭代器</td>
 </tr>
 <tr>
 <td>lower_bound(key)</td>
@@ -1229,6 +1229,18 @@
 <td>在当前 map 容器中，查找键为 key 的键值对的个数并返回。注意，由于 map 容器中各键值对的键的值是唯一的，因此该函数的返回值最大为 1</td>
 </tr>
 </tbody></table>
+<p>其中lower_bound(key)和upper_bound(key)更加多用于multimap容器，在map容器中很少用到</p>
+<p>equal_range(key)可以看做是lower_bound(key)和upper_bound(key)的结合，返回一个pair对象，两个元素都是迭代器类型，其中pair.first是lower_bound(key)的返回值，pair.second是upper_bound(key)的返回值，其本身表示键值对中键的值都为key的一个范围</p>
+<div class="tip warning"><p>
+
+</p><p>由于map容器中键值对的键都是唯一的，所以调用equal_range(key)函数时，其范围内也最多只有一个键值对</p>
+<p></p></div>
+
+<h3 id="获取指定键对应的值"><a href="#获取指定键对应的值" class="headerlink" title="获取指定键对应的值"></a>获取指定键对应的值</h3><p>map类模板对[]运算符进行了重载，可以借助类似数组下标的方式直接访问数组中元素，通过指定的键可以得到其对应的值</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="built_in">string</span>&gt; map1&#123;<span class="number">1</span>,<span class="string">&quot;first&quot;</span>&#125;,&#123;<span class="number">2</span>,<span class="string">&quot;second&quot;</span>&#125;,&#123;<span class="number">3</span>,<span class="string">&quot;third&quot;</span>&#125;;</span><br><span class="line"><span class="built_in">string</span> value=map1[<span class="number">2</span>];</span><br><span class="line"><span class="comment">//此时value的值等于second</span></span><br></pre></td></tr></table></figure>
+<p>当无法在已有map容器的元素中找到对应键时，会向map容器中添加一个符合要求的新键值对，其对应值默认为0</p>
+<p>map容器也提供at()成员函数，通过输入键查找对应的值，但如果查找失败不会创建新键值对，而是抛出out_of_range异常</p>
+<p>同样，使用find()函数也可以间接的实现这个功能，但返回的是一个迭代器，指向查找到的键值对，查找失败时返回最后一个键值对之后的位置</p>
 ]]></content>
       <categories>
         <category>专业课程</category>
@@ -1510,6 +1522,107 @@
       </tags>
   </entry>
   <entry>
+    <title>c++拓展-2：string头文件</title>
+    <url>/2021/03/23/c++%E5%AD%A6%E4%B9%A0-5/</url>
+    <content><![CDATA[<h1 id="头文件：string"><a href="#头文件：string" class="headerlink" title="头文件：string"></a>头文件：string</h1><h2 id="用于简化操作的常用函数"><a href="#用于简化操作的常用函数" class="headerlink" title="用于简化操作的常用函数"></a>用于简化操作的常用函数</h2><ul>
+<li><p>string变量读取单个字符用s[i]可以读出</p>
+</li>
+<li><p>输入带空格的字符串，用getline(cin,a)；(a为字符串类型变量)</p>
+</li>
+<li><p>str.=“”——清空</p>
+</li>
+<li><p>str.empty()——是否为空</p>
+</li>
+<li><p>str.size()——str长度</p>
+</li>
+<li><p>swap(s1，s2)——交换s1，s2</p>
+</li>
+<li><p>str. insert(x,“aaa”)——在下标x处插入aaa</p>
+</li>
+<li><p>str.substr(x,y)——读出下标为x开始长度为y的字符串</p>
+</li>
+<li><p>str.erase(x,y)——移除下标x长度为y的字符</p>
+</li>
+<li><p>str.find(“字符或字符串”)——找str中第一次出现的下标，找不到就是-1</p>
+</li>
+<li><p>while((i=str.find(“a”,i))!=-1) { i++; cout&lt;&lt;i&lt;&lt;endl; }  ——读出所有a字符出现的下标</p>
+<p>  (基本思路是找到一个就从那个下标+1继续找)</p>
+</li>
+<li><p>str.replace(x，y，“aa”)——用aa替换(x，y)(删掉下标x开始长度为y个，在下标为x处插入aa)</p>
+</li>
+</ul>
+<h2 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h2><p>string s——生成一个空字符串s</p>
+<p>string s(str) ——拷贝构造函数 生成str的复制品</p>
+<p>string s(str,stridx)——将字符串str内“始于位置stridx”的部分当作字符串的初值</p>
+<p>string s(str,stridx,strlen) ——将字符串str内“始于stridx且长度顶多strlen”的部分作为字符串的初值</p>
+<p>string s(cstr) ——将C字符串作为s的初值</p>
+<p>string s(chars,chars_len) ——将C字符串前chars_len个字符作为字符串s的初值。</p>
+<p> string s(num,c) ——生成一个字符串，包含num个c字符</p>
+<p> string s(beg,end) ——以区间beg;end(不包含end)内的字符作为字符串s的初值</p>
+<p>s.~string() ——销毁所有字符，释放内存</p>
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><ul>
+<li><p> =，assign()——赋以新值</p>
+</li>
+<li><p>swap()——交换两个字符串的内容</p>
+</li>
+<li><p>+=，append()，push_back()——在尾部添加字符</p>
+</li>
+<li><p>insert()——插入字符</p>
+</li>
+<li><p>erase()——删除字符</p>
+</li>
+<li><p>clear()——删除全部字符</p>
+</li>
+<li><p>replace()——替换字符</p>
+</li>
+<li><p>+——串联字符串</p>
+</li>
+<li><p>==，!=，&lt;，&lt;=，&gt;，&gt;=，compare()——比较字符串</p>
+</li>
+<li><p>size(),length()——返回字符数量</p>
+</li>
+<li><p>max_size()——返回字符的可能最大个数</p>
+</li>
+<li><p>empty()——判断字符串是否为空</p>
+</li>
+<li><p>capacity()——返回重新分配之前的字符容量</p>
+</li>
+<li><p>reserve()——保留一定量内存以容纳一定数量的字符</p>
+</li>
+<li><p> [ ], at()——存取单一字符</p>
+</li>
+<li><p>“&gt;&gt;”,getline()——从stream读取某值</p>
+</li>
+<li><p>” &lt;&lt;“ ——将谋值写入stream</p>
+</li>
+<li><p>copy()——将某值赋值为一个C_string</p>
+</li>
+<li><p>c_str()——将内容以C_string返回</p>
+</li>
+<li><p> data()——将内容以字符数组形式返回</p>
+</li>
+<li><p>substr()——返回某个子字符串</p>
+</li>
+<li><p>begin() end()——提供类似STL的迭代器支持</p>
+</li>
+<li><p> rbegin() rend()——逆向迭代器</p>
+</li>
+<li><p>get_allocator()——返回配置器</p>
+</li>
+</ul>
+<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>find()<br>rfind()<br>find_first_of()<br>find_last_of()<br>find_first_not_of()<br>find_last_not_of()</p>
+<p>这些函数返回符合搜索条件的字符区间内的第一个字符的索引，没找到目标就返回npos。所有的函数的参数说明如下：<br>第一个参数是被搜寻的对象。第二个参数（可有可无）指出string内的搜寻起点索引，第三个参数（可有可无）指出搜寻的字符个数。</p>
+]]></content>
+      <categories>
+        <category>专业课程</category>
+        <category>C++</category>
+        <category>拓展</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>c++拓展-1：algorithm头文件</title>
     <url>/2021/03/19/c++%E5%AD%A6%E4%B9%A0-4/</url>
     <content><![CDATA[<h1 id="头文件：algorithm"><a href="#头文件：algorithm" class="headerlink" title="头文件：algorithm"></a>头文件：algorithm</h1><p>algorithm意为”算法”,是C++的标准模版库（STL）中最重要的头文件之一，提供了大量基于迭代器的非成员模版函数。</p>
@@ -1645,107 +1758,6 @@
 <li>按字典序的前一个排列 prev_permutation() </li>
 </ul>
 <p>其他详细内容：<a href="https://www.lagou.com/lgeduarticle/9665.html">https://www.lagou.com/lgeduarticle/9665.html</a></p>
-]]></content>
-      <categories>
-        <category>专业课程</category>
-        <category>C++</category>
-        <category>拓展</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>c++拓展-2：string头文件</title>
-    <url>/2021/03/23/c++%E5%AD%A6%E4%B9%A0-5/</url>
-    <content><![CDATA[<h1 id="头文件：string"><a href="#头文件：string" class="headerlink" title="头文件：string"></a>头文件：string</h1><h2 id="用于简化操作的常用函数"><a href="#用于简化操作的常用函数" class="headerlink" title="用于简化操作的常用函数"></a>用于简化操作的常用函数</h2><ul>
-<li><p>string变量读取单个字符用s[i]可以读出</p>
-</li>
-<li><p>输入带空格的字符串，用getline(cin,a)；(a为字符串类型变量)</p>
-</li>
-<li><p>str.=“”——清空</p>
-</li>
-<li><p>str.empty()——是否为空</p>
-</li>
-<li><p>str.size()——str长度</p>
-</li>
-<li><p>swap(s1，s2)——交换s1，s2</p>
-</li>
-<li><p>str. insert(x,“aaa”)——在下标x处插入aaa</p>
-</li>
-<li><p>str.substr(x,y)——读出下标为x开始长度为y的字符串</p>
-</li>
-<li><p>str.erase(x,y)——移除下标x长度为y的字符</p>
-</li>
-<li><p>str.find(“字符或字符串”)——找str中第一次出现的下标，找不到就是-1</p>
-</li>
-<li><p>while((i=str.find(“a”,i))!=-1) { i++; cout&lt;&lt;i&lt;&lt;endl; }  ——读出所有a字符出现的下标</p>
-<p>  (基本思路是找到一个就从那个下标+1继续找)</p>
-</li>
-<li><p>str.replace(x，y，“aa”)——用aa替换(x，y)(删掉下标x开始长度为y个，在下标为x处插入aa)</p>
-</li>
-</ul>
-<h2 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h2><p>string s——生成一个空字符串s</p>
-<p>string s(str) ——拷贝构造函数 生成str的复制品</p>
-<p>string s(str,stridx)——将字符串str内“始于位置stridx”的部分当作字符串的初值</p>
-<p>string s(str,stridx,strlen) ——将字符串str内“始于stridx且长度顶多strlen”的部分作为字符串的初值</p>
-<p>string s(cstr) ——将C字符串作为s的初值</p>
-<p>string s(chars,chars_len) ——将C字符串前chars_len个字符作为字符串s的初值。</p>
-<p> string s(num,c) ——生成一个字符串，包含num个c字符</p>
-<p> string s(beg,end) ——以区间beg;end(不包含end)内的字符作为字符串s的初值</p>
-<p>s.~string() ——销毁所有字符，释放内存</p>
-<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><ul>
-<li><p> =，assign()——赋以新值</p>
-</li>
-<li><p>swap()——交换两个字符串的内容</p>
-</li>
-<li><p>+=，append()，push_back()——在尾部添加字符</p>
-</li>
-<li><p>insert()——插入字符</p>
-</li>
-<li><p>erase()——删除字符</p>
-</li>
-<li><p>clear()——删除全部字符</p>
-</li>
-<li><p>replace()——替换字符</p>
-</li>
-<li><p>+——串联字符串</p>
-</li>
-<li><p>==，!=，&lt;，&lt;=，&gt;，&gt;=，compare()——比较字符串</p>
-</li>
-<li><p>size(),length()——返回字符数量</p>
-</li>
-<li><p>max_size()——返回字符的可能最大个数</p>
-</li>
-<li><p>empty()——判断字符串是否为空</p>
-</li>
-<li><p>capacity()——返回重新分配之前的字符容量</p>
-</li>
-<li><p>reserve()——保留一定量内存以容纳一定数量的字符</p>
-</li>
-<li><p> [ ], at()——存取单一字符</p>
-</li>
-<li><p>“&gt;&gt;”,getline()——从stream读取某值</p>
-</li>
-<li><p>” &lt;&lt;“ ——将谋值写入stream</p>
-</li>
-<li><p>copy()——将某值赋值为一个C_string</p>
-</li>
-<li><p>c_str()——将内容以C_string返回</p>
-</li>
-<li><p> data()——将内容以字符数组形式返回</p>
-</li>
-<li><p>substr()——返回某个子字符串</p>
-</li>
-<li><p>begin() end()——提供类似STL的迭代器支持</p>
-</li>
-<li><p> rbegin() rend()——逆向迭代器</p>
-</li>
-<li><p>get_allocator()——返回配置器</p>
-</li>
-</ul>
-<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>find()<br>rfind()<br>find_first_of()<br>find_last_of()<br>find_first_not_of()<br>find_last_not_of()</p>
-<p>这些函数返回符合搜索条件的字符区间内的第一个字符的索引，没找到目标就返回npos。所有的函数的参数说明如下：<br>第一个参数是被搜寻的对象。第二个参数（可有可无）指出string内的搜寻起点索引，第三个参数（可有可无）指出搜寻的字符个数。</p>
 ]]></content>
       <categories>
         <category>专业课程</category>
@@ -2475,61 +2487,6 @@
       </tags>
   </entry>
   <entry>
-    <title>hexo基础命令行</title>
-    <url>/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/</url>
-    <content><![CDATA[<h1 id="hexo的基础命令行："><a href="#hexo的基础命令行：" class="headerlink" title="hexo的基础命令行："></a>hexo的基础命令行：</h1><h2 id="hexo-s"><a href="#hexo-s" class="headerlink" title="hexo s"></a>hexo s</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<ul>
-<li>启动本地服务器，用于预览主题。默认地址： <a href="http://localhost:4000/">http://localhost:4000/</a></li>
-<li><code>hexo s</code> 是 <code>hexo server</code> 的缩写，命令效果一致。</li>
-<li>预览的同时可以修改文章内容或主题代码，保存后刷新页面即可。</li>
-<li>对 Hexo 根目录 <code>_config.yml</code> 的修改，需要重启本地服务器后才能预览效果。</li>
-<li>预览草稿文章 <code>hexo s --drafts</code></li>
-</ul>
-<h2 id="hexo-new"><a href="#hexo-new" class="headerlink" title="hexo new"></a>hexo new</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> <span class="string">&quot;title&quot;</span></span><br><span class="line">hexo <span class="keyword">new</span>  draft <span class="string">&quot;草稿文章&quot;</span></span><br><span class="line">hexo <span class="keyword">new</span> page</span><br></pre></td></tr></table></figure>
-<ul>
-<li>新建一个title.md博客文章</li>
-<li>draft 为草稿文档，不会展现在博客上，可用<code>hexo publish &quot;草稿文章&quot;</code> 发布成正式文章</li>
-<li><code>hexo new page</code> 创建一个文件夹</li>
-</ul>
-<h2 id="hexo-d"><a href="#hexo-d" class="headerlink" title="hexo d"></a>hexo d</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<ul>
-<li>自动生成网站静态文件，并部署到设定的仓库。</li>
-<li><code>hexo d</code> 是 <code>hexo deploy</code> 的缩写，命令效果一致。</li>
-</ul>
-<h2 id="hexo-clean"><a href="#hexo-clean" class="headerlink" title="hexo clean"></a>hexo clean</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
-<ul>
-<li>清除缓存文件 db.json 和已生成的静态文件 public 。</li>
-<li>网站显示异常时可以执行这条命令试试</li>
-</ul>
-<h2 id="hexo-g"><a href="#hexo-g" class="headerlink" title="hexo g"></a>hexo g</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
-<p>生成网站静态文件到默认设置的 public 文件夹。</p>
-<ul>
-<li>便于查看网站生成的静态文件或者手动部署网站；</li>
-<li>如果使用自动部署，不需要先执行该命令；</li>
-<li><code>hexo g</code> 是 <code>hexo generate</code> 的缩写，命令效果一致。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
-<p>部署发布，命令可用&amp;&amp;连接</p>
-<p>原创封面</p>
-<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/c++cover.jpg" alt="c++cover"></p>
-<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/Linux-cover.jpg" alt="Linux-cover"></p>
-<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BD%91%E9%A1%B5%E5%9F%BA%E7%A1%80cover-1.jpg" alt="网页基础cover"></p>
-<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BD%91%E9%A1%B5%E5%9F%BA%E7%A1%80cover-2.jpg" alt="网页基础cover-2"><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E6%9C%AA%E5%88%86%E7%B1%BBcover.jpg" alt="未分类cover"></p>
-<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BA%BF%E6%80%A7%E8%A1%A8cover.jpg" alt="线性表cover"></p>
-<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BA%BF%E6%80%A7%E8%A1%A8cover-2.jpg" alt="线性表cover-2"></p>
-<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E8%99%9A%E5%B9%BBcover.jpg" alt="虚幻cover"></p>
-<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/Java-cover.jpg" alt="Java-cover"></p>
-<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E5%BD%AC%E5%BD%AC%E5%89%8D%E8%BE%88cover.jpg" alt="彬彬前辈cover"></p>
-]]></content>
-      <categories>
-        <category>其他内容</category>
-        <category>hexo使用</category>
-      </categories>
-      <tags>
-        <tag>hexo使用</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>数据结构-1</title>
     <url>/2021/03/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-1/</url>
     <content><![CDATA[<h1 id="线性表-顺序表"><a href="#线性表-顺序表" class="headerlink" title="线性表-顺序表"></a>线性表-顺序表</h1><h2 id="创建（初始化）"><a href="#创建（初始化）" class="headerlink" title="创建（初始化）"></a>创建（初始化）</h2><p>以数组的形式创建顺序表</p>
@@ -2585,6 +2542,61 @@
       </categories>
       <tags>
         <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo基础命令行</title>
+    <url>/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/</url>
+    <content><![CDATA[<h1 id="hexo的基础命令行："><a href="#hexo的基础命令行：" class="headerlink" title="hexo的基础命令行："></a>hexo的基础命令行：</h1><h2 id="hexo-s"><a href="#hexo-s" class="headerlink" title="hexo s"></a>hexo s</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<ul>
+<li>启动本地服务器，用于预览主题。默认地址： <a href="http://localhost:4000/">http://localhost:4000/</a></li>
+<li><code>hexo s</code> 是 <code>hexo server</code> 的缩写，命令效果一致。</li>
+<li>预览的同时可以修改文章内容或主题代码，保存后刷新页面即可。</li>
+<li>对 Hexo 根目录 <code>_config.yml</code> 的修改，需要重启本地服务器后才能预览效果。</li>
+<li>预览草稿文章 <code>hexo s --drafts</code></li>
+</ul>
+<h2 id="hexo-new"><a href="#hexo-new" class="headerlink" title="hexo new"></a>hexo new</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> <span class="string">&quot;title&quot;</span></span><br><span class="line">hexo <span class="keyword">new</span>  draft <span class="string">&quot;草稿文章&quot;</span></span><br><span class="line">hexo <span class="keyword">new</span> page</span><br></pre></td></tr></table></figure>
+<ul>
+<li>新建一个title.md博客文章</li>
+<li>draft 为草稿文档，不会展现在博客上，可用<code>hexo publish &quot;草稿文章&quot;</code> 发布成正式文章</li>
+<li><code>hexo new page</code> 创建一个文件夹</li>
+</ul>
+<h2 id="hexo-d"><a href="#hexo-d" class="headerlink" title="hexo d"></a>hexo d</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<ul>
+<li>自动生成网站静态文件，并部署到设定的仓库。</li>
+<li><code>hexo d</code> 是 <code>hexo deploy</code> 的缩写，命令效果一致。</li>
+</ul>
+<h2 id="hexo-clean"><a href="#hexo-clean" class="headerlink" title="hexo clean"></a>hexo clean</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
+<ul>
+<li>清除缓存文件 db.json 和已生成的静态文件 public 。</li>
+<li>网站显示异常时可以执行这条命令试试</li>
+</ul>
+<h2 id="hexo-g"><a href="#hexo-g" class="headerlink" title="hexo g"></a>hexo g</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+<p>生成网站静态文件到默认设置的 public 文件夹。</p>
+<ul>
+<li>便于查看网站生成的静态文件或者手动部署网站；</li>
+<li>如果使用自动部署，不需要先执行该命令；</li>
+<li><code>hexo g</code> 是 <code>hexo generate</code> 的缩写，命令效果一致。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+<p>部署发布，命令可用&amp;&amp;连接</p>
+<p>原创封面</p>
+<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/c++cover.jpg" alt="c++cover"></p>
+<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/Linux-cover.jpg" alt="Linux-cover"></p>
+<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BD%91%E9%A1%B5%E5%9F%BA%E7%A1%80cover-1.jpg" alt="网页基础cover"></p>
+<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BD%91%E9%A1%B5%E5%9F%BA%E7%A1%80cover-2.jpg" alt="网页基础cover-2"><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E6%9C%AA%E5%88%86%E7%B1%BBcover.jpg" alt="未分类cover"></p>
+<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BA%BF%E6%80%A7%E8%A1%A8cover.jpg" alt="线性表cover"></p>
+<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E7%BA%BF%E6%80%A7%E8%A1%A8cover-2.jpg" alt="线性表cover-2"></p>
+<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E8%99%9A%E5%B9%BBcover.jpg" alt="虚幻cover"></p>
+<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/Java-cover.jpg" alt="Java-cover"></p>
+<p><img src="/2021/01/17/hexo%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%A1%8C/%E5%BD%AC%E5%BD%AC%E5%89%8D%E8%BE%88cover.jpg" alt="彬彬前辈cover"></p>
+]]></content>
+      <categories>
+        <category>其他内容</category>
+        <category>hexo使用</category>
+      </categories>
+      <tags>
+        <tag>hexo使用</tag>
       </tags>
   </entry>
   <entry>
@@ -2657,6 +2669,47 @@
 
 <p><strong>解法：</strong></p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Lnode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Lnode</span>* <span class="title">next</span>;</span></span><br><span class="line">&#125;*Linklist;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">init</span><span class="params">(Linklist &amp;L)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    L=<span class="keyword">new</span> Lnode;</span><br><span class="line">    L-&gt;next=<span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">create</span><span class="params">(Linklist &amp;L)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    L=<span class="keyword">new</span> Lnode;</span><br><span class="line">	L-&gt;next=<span class="literal">NULL</span>;</span><br><span class="line">        Lnode *E=L;</span><br><span class="line">        <span class="keyword">int</span> i,a;</span><br><span class="line">	    <span class="class"><span class="keyword">struct</span> <span class="title">Lnode</span> *<span class="title">p</span>;</span></span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;a;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">1</span>;a!=<span class="number">-1</span>;i++)</span><br><span class="line">        &#123;</span><br><span class="line">        p=<span class="keyword">new</span> Lnode;</span><br><span class="line">        p-&gt;data=a;</span><br><span class="line">        E-&gt;next=p;</span><br><span class="line">        p-&gt;next=<span class="literal">NULL</span>;</span><br><span class="line">        E=p;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;a;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">find</span><span class="params">(Linklist &amp;L,<span class="keyword">int</span> a)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> j;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Lnode</span> *<span class="title">p</span>;</span></span><br><span class="line">    p=L-&gt;next;</span><br><span class="line">    <span class="keyword">for</span>(j=<span class="number">1</span>;p-&gt;next!=<span class="literal">NULL</span>;j++)      </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(p-&gt;data==a) <span class="keyword">break</span>;       </span><br><span class="line">        p=p-&gt;next;                 </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(p-&gt;next==<span class="literal">NULL</span>&amp;&amp;p-&gt;data!=a)   <span class="keyword">return</span> <span class="literal">false</span>;              </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cutit</span><span class="params">(Linklist &amp;l1,Linklist &amp;l2,Linklist &amp;l3)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Lnode</span> *<span class="title">p1</span>=</span>l1-&gt;next,*p2=l2-&gt;next,*p3=l3;</span><br><span class="line">    <span class="keyword">while</span>(p1&amp;&amp;p2)</span><br><span class="line">    &#123;</span><br><span class="line">    	<span class="keyword">if</span>(p1-&gt;data&lt;p2-&gt;data)</span><br><span class="line">    	&#123;</span><br><span class="line">    		p1=p1-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">if</span>(p1-&gt;data==p2-&gt;data)</span><br><span class="line">		&#123;</span><br><span class="line">			p3-&gt;next=p1;</span><br><span class="line">			p3=p3-&gt;next;</span><br><span class="line">			p1=p1-&gt;next;</span><br><span class="line">			p2=p2-&gt;next;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">if</span>(p1-&gt;data&gt;p2-&gt;data)</span><br><span class="line">		&#123;</span><br><span class="line">			p2=p2-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(p3-&gt;next!=<span class="literal">NULL</span>) p3-&gt;next=<span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">putout</span><span class="params">(Linklist &amp;L)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">Lnode</span> *<span class="title">p</span>=</span>L;</span><br><span class="line">        <span class="keyword">if</span>(L-&gt;next==<span class="literal">NULL</span>) &#123;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;NULL&quot;</span>; <span class="keyword">return</span> <span class="number">0</span>;&#125;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;p-&gt;next-&gt;next!=<span class="literal">NULL</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;p-&gt;next-&gt;data&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">        p=p-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;p-&gt;next-&gt;data;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Linklist L1,L2,L3;</span><br><span class="line">	create(L1);</span><br><span class="line">	create(L2);</span><br><span class="line">	init(L3);</span><br><span class="line">    cutit(L1,L2,L3);</span><br><span class="line">    putout(L3);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>专业课程</category>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构-4</title>
+    <url>/2021/04/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-4/</url>
+    <content><![CDATA[<h1 id="顺序队列"><a href="#顺序队列" class="headerlink" title="顺序队列"></a>顺序队列</h1><p>队列是先进先出的线性结构，也是只能从队头删除，从队尾插入的线性表，为了使空间利用更加充分，从而避免假溢出，通常采用循环队列</p>
+<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">typedef struct </span><br><span class="line">&#123;</span><br><span class="line">	Elemtype *base;				&#x2F;&#x2F;储存空间的基址指针</span><br><span class="line">	int front;					&#x2F;&#x2F;定义一个头指针</span><br><span class="line">	int rear;					&#x2F;&#x2F;定义一个尾指针</span><br><span class="line">&#125;SQqueue;</span><br></pre></td></tr></table></figure>
+<p><strong>注：此处front和rear指针仅仅设为了int类型，而并非真正的指针类型，所表述的是队头队尾元素所在的位置下标</strong></p>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bool initqueue(SQqueue &amp;sq)</span><br><span class="line">&#123;</span><br><span class="line">	sq.base&#x3D;new Elemtype[MAXSIZE];			&#x2F;&#x2F;为队列分配空间</span><br><span class="line">	if(!sq.base) return false;				&#x2F;&#x2F;没能分配成功，返回失败</span><br><span class="line">	sq.front&#x3D;sq.rear&#x3D;0;						&#x2F;&#x2F;头尾指针置为零，队列为空</span><br><span class="line">	return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="求队列长度"><a href="#求队列长度" class="headerlink" title="求队列长度"></a>求队列长度</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int queuelength(SQqueue &amp;sq)</span><br><span class="line">&#123;</span><br><span class="line">	return (sq.rear-sq.front+MAXSIZE)%MAXSIZE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：在没有特殊注明的情况下，所说队列都为循环队列，front指向队头元素，rear指向队尾元素的后一个元素，为区分队空与队满，此处少用一个元素空间，即队列空间大小为m-1个元素时队满，故而当队列满足“rear=front“时队空，当队列满足”(rear+1)%MAXSIZE=front“时队满。</p>
+<h2 id="入队（从队尾插入）"><a href="#入队（从队尾插入）" class="headerlink" title="入队（从队尾插入）"></a>入队（从队尾插入）</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bool enterqueue(SQqueue &amp;sq,Elemtype e)		  &#x2F;&#x2F;传址需要操作的表，传值入队元素</span><br><span class="line">&#123;</span><br><span class="line">	if((sq.rear+1)%MAXSIZE&#x3D;&#x3D;sq.front) return false;    &#x2F;&#x2F;判断队满时返回失败</span><br><span class="line">	sq.base[sq.rear]&#x3D;e;					 &#x2F;&#x2F;让队尾元素的后一个元素等于e</span><br><span class="line">	sq.rear&#x3D;(sq.rear+1)%MAXSIZE;		 &#x2F;&#x2F;队尾指针后移</span><br><span class="line">	return true；						&#x2F;&#x2F;返回成功入队</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="出队（从队头删除）"><a href="#出队（从队头删除）" class="headerlink" title="出队（从队头删除）"></a>出队（从队头删除）</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bool deletequeue(SQqueue &amp;sq,Elemtype &amp;e)</span><br><span class="line">&#123;</span><br><span class="line">	if(sq.front&#x3D;&#x3D;sq.rear) return false;		&#x2F;&#x2F;若队空，则返回出队失败</span><br><span class="line">	e&#x3D;sq.base[sq.front];					&#x2F;&#x2F;用e获得出队的队头元素</span><br><span class="line">	sq.front&#x3D;(sq.front+1)%MAXSIZE;			&#x2F;&#x2F;队头指针后移</span><br><span class="line">	return true;							&#x2F;&#x2F;返回成功出队</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="取队头元素"><a href="#取队头元素" class="headerlink" title="取队头元素"></a>取队头元素</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Elemtype gethead(SQqueue &amp;sq)</span><br><span class="line">&#x2F;&#x2F;仅返回表的队头元素，不修改头指针</span><br><span class="line">&#123;</span><br><span class="line">	if(sq.front!&#x3D;sq.rear) 			&#x2F;&#x2F;判断队列非空</span><br><span class="line">	return 	sq.base[sq.front];		&#x2F;&#x2F;返回队头元素</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="实际题目"><a href="#实际题目" class="headerlink" title="实际题目"></a>实际题目</h1><h2 id="R7-4-队列操作-20-分"><a href="#R7-4-队列操作-20-分" class="headerlink" title="R7-4 队列操作 (20 分)"></a>R7-4 队列操作 (20 分)</h2><p>请实现一个MyQueue类，实现出队，入队，求队列长度.</p>
+<p>实现入队函数 void push(int x); 实现出队函数 int pop(); 实现求队列长度函数 int size();</p>
+<p>输入格式:<br>每个输入包含1个测试用例。每个测试用例第一行给出一个正整数 n (n &lt;= 10^6) ，接下去n行每行一个数字，表示一种操作： 1 x ： 表示从队尾插入x，0&lt;=x&lt;=2^31-1。 2 ： 表示队首元素出队。 3 ： 表示求队列长度。</p>
+<p>输出格式:<br>对于操作2,若队列为空，则输出 “Invalid”,否则请输出队首元素。 对于操作3，请输出队列长度。 每个输出项最后换行。</p>
+<p>输入样例:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">5</span><br><span class="line">3</span><br><span class="line">2</span><br><span class="line">1 100</span><br><span class="line">3</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+<p>输出样例:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0</span><br><span class="line">Invalid</span><br><span class="line">1</span><br><span class="line">100</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>解法：</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> *base;</span><br><span class="line">    <span class="keyword">int</span> front;</span><br><span class="line">    <span class="keyword">int</span> rear;</span><br><span class="line">&#125;SQueue;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">init</span><span class="params">(SQueue &amp;sq)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    sq.base=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">50</span>];</span><br><span class="line">    <span class="keyword">if</span>(!sq.base) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    sq.front=<span class="number">0</span>;</span><br><span class="line">    sq.rear=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">length</span><span class="params">(SQueue &amp;sq)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (sq.rear-sq.front+<span class="number">50</span>)%<span class="number">50</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">enter</span><span class="params">(SQueue &amp;sq,<span class="keyword">int</span> a)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>((sq.rear+<span class="number">1</span>)%<span class="number">50</span>==sq.front) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    sq.base[sq.rear]=a;</span><br><span class="line">    sq.rear=(sq.rear+<span class="number">1</span>)%<span class="number">50</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">out</span><span class="params">(SQueue &amp;sq,<span class="keyword">int</span> &amp;a)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sq.front==sq.rear) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	a=sq.base[sq.front];</span><br><span class="line">	sq.front=(sq.front+<span class="number">1</span>)%<span class="number">50</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    SQueue L;</span><br><span class="line">    init(L);</span><br><span class="line">    <span class="keyword">int</span> n,i,j,k;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;j;</span><br><span class="line">        <span class="keyword">switch</span>(j)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                <span class="built_in">cin</span>&gt;&gt;k;</span><br><span class="line">                enter(L,k);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                <span class="keyword">if</span>(out(L,k)) <span class="built_in">cout</span>&lt;&lt;k&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">                <span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;Invalid&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">                <span class="built_in">cout</span>&lt;&lt;length(L)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>专业课程</category>
@@ -2744,47 +2797,6 @@
 
 <p><strong>解法：</strong></p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">char</span> *top;</span><br><span class="line">    <span class="keyword">char</span> *base;</span><br><span class="line">    <span class="keyword">int</span> size;</span><br><span class="line">&#125;SQstack;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">init</span><span class="params">(SQstack &amp;sq)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    sq.base=<span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">500</span>];</span><br><span class="line">    <span class="keyword">if</span>(!sq.base) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    sq.top=sq.base;</span><br><span class="line">    sq.size=<span class="number">500</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">push</span><span class="params">(SQstack &amp;sq,<span class="keyword">char</span> a)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sq.top-sq.base==sq.size) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    *sq.top=a;</span><br><span class="line">    sq.top++;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">pop</span><span class="params">(SQstack &amp;sq)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sq.top==sq.base) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    sq.top--;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">gettop</span><span class="params">(SQstack &amp;sq,<span class="keyword">char</span> &amp;a)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sq.top==sq.base) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    a=*(sq.top<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    SQstack L;</span><br><span class="line">    init(L);</span><br><span class="line">    <span class="keyword">char</span> a=<span class="string">&#x27;1&#x27;</span>;</span><br><span class="line">    <span class="keyword">bool</span> flag=<span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">int</span> i,left=<span class="number">0</span>,right=<span class="number">0</span>,k=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">char</span> str[<span class="number">500</span>];</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">500</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;str[i];</span><br><span class="line">        k++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;k;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(str[i]==<span class="string">&#x27;(&#x27;</span>||str[i]==<span class="string">&#x27;[&#x27;</span>||str[i]==<span class="string">&#x27;&#123;&#x27;</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            left++;</span><br><span class="line">            push(L,str[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">        <span class="keyword">if</span>(str[i]==<span class="string">&#x27;)&#x27;</span>||str[i]==<span class="string">&#x27;]&#x27;</span>||str[i]==<span class="string">&#x27;&#125;&#x27;</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            right++;</span><br><span class="line">            gettop(L,a);</span><br><span class="line">            <span class="keyword">if</span>((str[i]==<span class="string">&#x27;)&#x27;</span>&amp;&amp;a==<span class="string">&#x27;(&#x27;</span>)||(str[i]==<span class="string">&#x27;]&#x27;</span>&amp;&amp;a==<span class="string">&#x27;[&#x27;</span>)||(str[i]==<span class="string">&#x27;&#125;&#x27;</span>&amp;&amp;a==<span class="string">&#x27;&#123;&#x27;</span>))</span><br><span class="line">            &#123;</span><br><span class="line">                pop(L);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> flag=<span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(L.top!=L.base) flag=<span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span>(left==<span class="number">0</span>&amp;&amp;right==<span class="number">0</span>) flag=<span class="literal">true</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;left&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;right&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">if</span>(flag) <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;YES&quot;</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;NO&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>专业课程</category>
-        <category>数据结构</category>
-      </categories>
-      <tags>
-        <tag>数据结构</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数据结构-4</title>
-    <url>/2021/04/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-4/</url>
-    <content><![CDATA[<h1 id="顺序队列"><a href="#顺序队列" class="headerlink" title="顺序队列"></a>顺序队列</h1><p>队列是先进先出的线性结构，也是只能从队头删除，从队尾插入的线性表，为了使空间利用更加充分，从而避免假溢出，通常采用循环队列</p>
-<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">typedef struct </span><br><span class="line">&#123;</span><br><span class="line">	Elemtype *base;				&#x2F;&#x2F;储存空间的基址指针</span><br><span class="line">	int front;					&#x2F;&#x2F;定义一个头指针</span><br><span class="line">	int rear;					&#x2F;&#x2F;定义一个尾指针</span><br><span class="line">&#125;SQqueue;</span><br></pre></td></tr></table></figure>
-<p><strong>注：此处front和rear指针仅仅设为了int类型，而并非真正的指针类型，所表述的是队头队尾元素所在的位置下标</strong></p>
-<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bool initqueue(SQqueue &amp;sq)</span><br><span class="line">&#123;</span><br><span class="line">	sq.base&#x3D;new Elemtype[MAXSIZE];			&#x2F;&#x2F;为队列分配空间</span><br><span class="line">	if(!sq.base) return false;				&#x2F;&#x2F;没能分配成功，返回失败</span><br><span class="line">	sq.front&#x3D;sq.rear&#x3D;0;						&#x2F;&#x2F;头尾指针置为零，队列为空</span><br><span class="line">	return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="求队列长度"><a href="#求队列长度" class="headerlink" title="求队列长度"></a>求队列长度</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int queuelength(SQqueue &amp;sq)</span><br><span class="line">&#123;</span><br><span class="line">	return (sq.rear-sq.front+MAXSIZE)%MAXSIZE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>注：在没有特殊注明的情况下，所说队列都为循环队列，front指向队头元素，rear指向队尾元素的后一个元素，为区分队空与队满，此处少用一个元素空间，即队列空间大小为m-1个元素时队满，故而当队列满足“rear=front“时队空，当队列满足”(rear+1)%MAXSIZE=front“时队满。</p>
-<h2 id="入队（从队尾插入）"><a href="#入队（从队尾插入）" class="headerlink" title="入队（从队尾插入）"></a>入队（从队尾插入）</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bool enterqueue(SQqueue &amp;sq,Elemtype e)		  &#x2F;&#x2F;传址需要操作的表，传值入队元素</span><br><span class="line">&#123;</span><br><span class="line">	if((sq.rear+1)%MAXSIZE&#x3D;&#x3D;sq.front) return false;    &#x2F;&#x2F;判断队满时返回失败</span><br><span class="line">	sq.base[sq.rear]&#x3D;e;					 &#x2F;&#x2F;让队尾元素的后一个元素等于e</span><br><span class="line">	sq.rear&#x3D;(sq.rear+1)%MAXSIZE;		 &#x2F;&#x2F;队尾指针后移</span><br><span class="line">	return true；						&#x2F;&#x2F;返回成功入队</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="出队（从队头删除）"><a href="#出队（从队头删除）" class="headerlink" title="出队（从队头删除）"></a>出队（从队头删除）</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bool deletequeue(SQqueue &amp;sq,Elemtype &amp;e)</span><br><span class="line">&#123;</span><br><span class="line">	if(sq.front&#x3D;&#x3D;sq.rear) return false;		&#x2F;&#x2F;若队空，则返回出队失败</span><br><span class="line">	e&#x3D;sq.base[sq.front];					&#x2F;&#x2F;用e获得出队的队头元素</span><br><span class="line">	sq.front&#x3D;(sq.front+1)%MAXSIZE;			&#x2F;&#x2F;队头指针后移</span><br><span class="line">	return true;							&#x2F;&#x2F;返回成功出队</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="取队头元素"><a href="#取队头元素" class="headerlink" title="取队头元素"></a>取队头元素</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Elemtype gethead(SQqueue &amp;sq)</span><br><span class="line">&#x2F;&#x2F;仅返回表的队头元素，不修改头指针</span><br><span class="line">&#123;</span><br><span class="line">	if(sq.front!&#x3D;sq.rear) 			&#x2F;&#x2F;判断队列非空</span><br><span class="line">	return 	sq.base[sq.front];		&#x2F;&#x2F;返回队头元素</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="实际题目"><a href="#实际题目" class="headerlink" title="实际题目"></a>实际题目</h1><h2 id="R7-4-队列操作-20-分"><a href="#R7-4-队列操作-20-分" class="headerlink" title="R7-4 队列操作 (20 分)"></a>R7-4 队列操作 (20 分)</h2><p>请实现一个MyQueue类，实现出队，入队，求队列长度.</p>
-<p>实现入队函数 void push(int x); 实现出队函数 int pop(); 实现求队列长度函数 int size();</p>
-<p>输入格式:<br>每个输入包含1个测试用例。每个测试用例第一行给出一个正整数 n (n &lt;= 10^6) ，接下去n行每行一个数字，表示一种操作： 1 x ： 表示从队尾插入x，0&lt;=x&lt;=2^31-1。 2 ： 表示队首元素出队。 3 ： 表示求队列长度。</p>
-<p>输出格式:<br>对于操作2,若队列为空，则输出 “Invalid”,否则请输出队首元素。 对于操作3，请输出队列长度。 每个输出项最后换行。</p>
-<p>输入样例:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">5</span><br><span class="line">3</span><br><span class="line">2</span><br><span class="line">1 100</span><br><span class="line">3</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
-<p>输出样例:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0</span><br><span class="line">Invalid</span><br><span class="line">1</span><br><span class="line">100</span><br></pre></td></tr></table></figure>
-
-
-<p><strong>解法：</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> *base;</span><br><span class="line">    <span class="keyword">int</span> front;</span><br><span class="line">    <span class="keyword">int</span> rear;</span><br><span class="line">&#125;SQueue;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">init</span><span class="params">(SQueue &amp;sq)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    sq.base=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">50</span>];</span><br><span class="line">    <span class="keyword">if</span>(!sq.base) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    sq.front=<span class="number">0</span>;</span><br><span class="line">    sq.rear=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">length</span><span class="params">(SQueue &amp;sq)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (sq.rear-sq.front+<span class="number">50</span>)%<span class="number">50</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">enter</span><span class="params">(SQueue &amp;sq,<span class="keyword">int</span> a)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>((sq.rear+<span class="number">1</span>)%<span class="number">50</span>==sq.front) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    sq.base[sq.rear]=a;</span><br><span class="line">    sq.rear=(sq.rear+<span class="number">1</span>)%<span class="number">50</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">out</span><span class="params">(SQueue &amp;sq,<span class="keyword">int</span> &amp;a)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sq.front==sq.rear) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	a=sq.base[sq.front];</span><br><span class="line">	sq.front=(sq.front+<span class="number">1</span>)%<span class="number">50</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    SQueue L;</span><br><span class="line">    init(L);</span><br><span class="line">    <span class="keyword">int</span> n,i,j,k;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;j;</span><br><span class="line">        <span class="keyword">switch</span>(j)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                <span class="built_in">cin</span>&gt;&gt;k;</span><br><span class="line">                enter(L,k);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                <span class="keyword">if</span>(out(L,k)) <span class="built_in">cout</span>&lt;&lt;k&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">                <span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;Invalid&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">                <span class="built_in">cout</span>&lt;&lt;length(L)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>专业课程</category>
@@ -3242,100 +3254,6 @@
       </tags>
   </entry>
   <entry>
-    <title>网页设计-4</title>
-    <url>/2021/05/13/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1-4/</url>
-    <content><![CDATA[<h1 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>css中的盒模型相当于礼物的外包装盒，封装周围的HTML元素，包括外边距（margin），边框（border），内边距（padding）和实际内容（content），常用的div元素就是一种区块容器标记，可以将网页分隔为不同的部分，以实现网页的规划和布局。</p>
-<p>纵深结构来说，盒模型自下而上为：外边距、背景颜色、背景图像、内边距、内容、边框</p>
-<p><img src="/2021/05/13/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1-4/1.PNG" alt="1"></p>
-<div class="tip important font5 fas fa-bell"><p>css代码中的宽和高（width和height）指的是如下部分：</p><p>盒子的总宽度=width+左右内边框之和+左右边框宽度之和+左右外边距之和</p><p>盒子的总高度=height+上下内边距之和+上下边框宽度之和+上下外边框之和</p></div>
-
-<br>
-
-<h2 id="边框（border）"><a href="#边框（border）" class="headerlink" title="边框（border）"></a>边框（border）</h2><p>边框主要包括边框宽度、边框样式、边框颜色、此外还有border的综合属性，在CSS3中添加了圆角边距，图片边距属性。</p>
-<ul>
-<li><p>边框宽度（border-width）：用于设置元素边框的宽度值</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">border-width</span>：上边距宽度<span class="selector-attr">[右边距宽度 下边距宽度 左边距宽度]</span>;</span><br><span class="line"></span><br><span class="line">其中，宽度由数字和单位组成，不可为负数，常以像素（<span class="selector-tag">px</span>）为单位，且设定1个值时全部应用，设定2~3个值时，省略的部分将使用对边的样式</span><br></pre></td></tr></table></figure></li>
-<li><p>边框样式（border-style）：用于设置样式</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">border-style</span>：上边框样式<span class="selector-attr">[右边框样式 下边框样式 左边框样式]</span>;</span><br><span class="line"></span><br><span class="line">其中，设置时必须按上右下左的顺时针顺序，当设置1个值时为4边，2个值为上下/左右，3个值为上/左右/下，也可以通过形如<span class="selector-tag">border-left-style</span>的方式分别设置</span><br></pre></td></tr></table></figure>
-<p>样式取值共9种，如下：</p>
-<table>
-<thead>
-<tr>
-<th>属性</th>
-<th>含义</th>
-<th>属性</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>none</td>
-<td>不显示边框（默认）</td>
-<td>groove</td>
-<td>边框带有立体感的沟槽</td>
-</tr>
-<tr>
-<td>dotted</td>
-<td>点线</td>
-<td>ridge</td>
-<td>边框成脊形</td>
-</tr>
-<tr>
-<td>dashed</td>
-<td>虚线</td>
-<td>inset</td>
-<td>使整个方框凹陷</td>
-</tr>
-<tr>
-<td>solid</td>
-<td>实线</td>
-<td>outset</td>
-<td>使整个方框凸起</td>
-</tr>
-<tr>
-<td>double</td>
-<td>双实线</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-</li>
-<li><p>边框颜色（border-color）：用于定义边框的颜色</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">border-color</span>:上边框颜色<span class="selector-attr">[右边框颜色 下边框颜色 左边框颜色]</span>;</span><br><span class="line"></span><br><span class="line">其中，颜色值符合定义法，有十六进制<span class="selector-id">#RRGGBB</span>和<span class="selector-tag">RGB</span>代码、<span class="selector-tag">rgb</span>(<span class="selector-tag">r</span>,<span class="selector-tag">g</span>,<span class="selector-tag">b</span>)三种，仅定义几个值的样式应用方式同上两种，可以通过形如<span class="selector-tag">border-left-color</span>的方式分别定义，（上使用<span class="selector-tag">top</span>，下使用<span class="selector-tag">bottom</span>）</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-<ul>
-<li><p>边框综合属性（border）</p>
-<p>border为复合属性，前三者的简写方式</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">border&lt;边框宽度&gt;|&lt;边框样式&gt;|&lt;颜色&gt;;</span><br><span class="line"></span><br><span class="line">在复合属性中，边框<span class="selector-tag">border</span>同时设置4条边，如只需要1条边框应用该样式，需要通过形如<span class="selector-tag">border-left</span>的方式分别设置</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-<h2 id="边距"><a href="#边距" class="headerlink" title="边距"></a>边距</h2><h3 id="内边距（padding）"><a href="#内边距（padding）" class="headerlink" title="内边距（padding）"></a>内边距（padding）</h3><p>主要用于调整内容在盒子中的值，指内容content和边框border的距离，也被称作内填充。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">padding</span>:上内边距值<span class="selector-attr">[右内边距值 下内边距值 左内边距值]</span>;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>边距值为数字和单位组成，不可为负值，常用像素（px）为单位，也可以是百分比，随父元素width变化而变化，和height无关</li>
-<li>padding遵循复制原则，也可以通过形如padding-left的方式设置样式</li>
-</ul>
-<h3 id="外边距（margin）"><a href="#外边距（margin）" class="headerlink" title="外边距（margin）"></a>外边距（margin）</h3><p>margin指元素边框和相邻元素之间的距离（盒子和盒子的距离）</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">margin</span>:上外边距值<span class="selector-attr">[右外边距值 下外边距值 左外边距值]</span>;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>margin为复合属性，同padding用法类似，但可以使用负值，使相邻元素重叠，若盒元素使用了宽度属性，设margin为auto时，可以实现盒元素居中</li>
-<li>margin也遵循复制原则，可通过形如margin-left的方式设置样式</li>
-</ul>
-]]></content>
-      <categories>
-        <category>专业课程</category>
-        <category>网页设计</category>
-        <category>css</category>
-      </categories>
-      <tags>
-        <tag>网页设计</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>网页设计-2</title>
     <url>/2021/04/13/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1-2/</url>
     <content><![CDATA[<h1 id="表单结构"><a href="#表单结构" class="headerlink" title="表单结构"></a>表单结构</h1><p>表单是收集用户的信息和反馈意见，是前端和后端数据的传递媒介</p>
@@ -3740,6 +3658,100 @@
 <li>行内样式——1000分</li>
 <li>！important——无穷大</li>
 </ol>
+]]></content>
+      <categories>
+        <category>专业课程</category>
+        <category>网页设计</category>
+        <category>css</category>
+      </categories>
+      <tags>
+        <tag>网页设计</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网页设计-4</title>
+    <url>/2021/05/13/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1-4/</url>
+    <content><![CDATA[<h1 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>css中的盒模型相当于礼物的外包装盒，封装周围的HTML元素，包括外边距（margin），边框（border），内边距（padding）和实际内容（content），常用的div元素就是一种区块容器标记，可以将网页分隔为不同的部分，以实现网页的规划和布局。</p>
+<p>纵深结构来说，盒模型自下而上为：外边距、背景颜色、背景图像、内边距、内容、边框</p>
+<p><img src="/2021/05/13/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1-4/1.PNG" alt="1"></p>
+<div class="tip important font5 fas fa-bell"><p>css代码中的宽和高（width和height）指的是如下部分：</p><p>盒子的总宽度=width+左右内边框之和+左右边框宽度之和+左右外边距之和</p><p>盒子的总高度=height+上下内边距之和+上下边框宽度之和+上下外边框之和</p></div>
+
+<br>
+
+<h2 id="边框（border）"><a href="#边框（border）" class="headerlink" title="边框（border）"></a>边框（border）</h2><p>边框主要包括边框宽度、边框样式、边框颜色、此外还有border的综合属性，在CSS3中添加了圆角边距，图片边距属性。</p>
+<ul>
+<li><p>边框宽度（border-width）：用于设置元素边框的宽度值</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">border-width</span>：上边距宽度<span class="selector-attr">[右边距宽度 下边距宽度 左边距宽度]</span>;</span><br><span class="line"></span><br><span class="line">其中，宽度由数字和单位组成，不可为负数，常以像素（<span class="selector-tag">px</span>）为单位，且设定1个值时全部应用，设定2~3个值时，省略的部分将使用对边的样式</span><br></pre></td></tr></table></figure></li>
+<li><p>边框样式（border-style）：用于设置样式</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">border-style</span>：上边框样式<span class="selector-attr">[右边框样式 下边框样式 左边框样式]</span>;</span><br><span class="line"></span><br><span class="line">其中，设置时必须按上右下左的顺时针顺序，当设置1个值时为4边，2个值为上下/左右，3个值为上/左右/下，也可以通过形如<span class="selector-tag">border-left-style</span>的方式分别设置</span><br></pre></td></tr></table></figure>
+<p>样式取值共9种，如下：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>含义</th>
+<th>属性</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>none</td>
+<td>不显示边框（默认）</td>
+<td>groove</td>
+<td>边框带有立体感的沟槽</td>
+</tr>
+<tr>
+<td>dotted</td>
+<td>点线</td>
+<td>ridge</td>
+<td>边框成脊形</td>
+</tr>
+<tr>
+<td>dashed</td>
+<td>虚线</td>
+<td>inset</td>
+<td>使整个方框凹陷</td>
+</tr>
+<tr>
+<td>solid</td>
+<td>实线</td>
+<td>outset</td>
+<td>使整个方框凸起</td>
+</tr>
+<tr>
+<td>double</td>
+<td>双实线</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><p>边框颜色（border-color）：用于定义边框的颜色</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">border-color</span>:上边框颜色<span class="selector-attr">[右边框颜色 下边框颜色 左边框颜色]</span>;</span><br><span class="line"></span><br><span class="line">其中，颜色值符合定义法，有十六进制<span class="selector-id">#RRGGBB</span>和<span class="selector-tag">RGB</span>代码、<span class="selector-tag">rgb</span>(<span class="selector-tag">r</span>,<span class="selector-tag">g</span>,<span class="selector-tag">b</span>)三种，仅定义几个值的样式应用方式同上两种，可以通过形如<span class="selector-tag">border-left-color</span>的方式分别定义，（上使用<span class="selector-tag">top</span>，下使用<span class="selector-tag">bottom</span>）</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<ul>
+<li><p>边框综合属性（border）</p>
+<p>border为复合属性，前三者的简写方式</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">border&lt;边框宽度&gt;|&lt;边框样式&gt;|&lt;颜色&gt;;</span><br><span class="line"></span><br><span class="line">在复合属性中，边框<span class="selector-tag">border</span>同时设置4条边，如只需要1条边框应用该样式，需要通过形如<span class="selector-tag">border-left</span>的方式分别设置</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h2 id="边距"><a href="#边距" class="headerlink" title="边距"></a>边距</h2><h3 id="内边距（padding）"><a href="#内边距（padding）" class="headerlink" title="内边距（padding）"></a>内边距（padding）</h3><p>主要用于调整内容在盒子中的值，指内容content和边框border的距离，也被称作内填充。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">padding</span>:上内边距值<span class="selector-attr">[右内边距值 下内边距值 左内边距值]</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>边距值为数字和单位组成，不可为负值，常用像素（px）为单位，也可以是百分比，随父元素width变化而变化，和height无关</li>
+<li>padding遵循复制原则，也可以通过形如padding-left的方式设置样式</li>
+</ul>
+<h3 id="外边距（margin）"><a href="#外边距（margin）" class="headerlink" title="外边距（margin）"></a>外边距（margin）</h3><p>margin指元素边框和相邻元素之间的距离（盒子和盒子的距离）</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">margin</span>:上外边距值<span class="selector-attr">[右外边距值 下外边距值 左外边距值]</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>margin为复合属性，同padding用法类似，但可以使用负值，使相邻元素重叠，若盒元素使用了宽度属性，设margin为auto时，可以实现盒元素居中</li>
+<li>margin也遵循复制原则，可通过形如margin-left的方式设置样式</li>
+</ul>
 ]]></content>
       <categories>
         <category>专业课程</category>
@@ -4265,6 +4277,32 @@
       </tags>
   </entry>
   <entry>
+    <title>虚幻引擎-6</title>
+    <url>/2021/04/17/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-6/</url>
+    <content><![CDATA[<h1 id="脚步声与相机晃动"><a href="#脚步声与相机晃动" class="headerlink" title="脚步声与相机晃动"></a>脚步声与相机晃动</h1><h2 id="实例说明"><a href="#实例说明" class="headerlink" title="实例说明"></a>实例说明</h2><p>实现角色在默认地板、木质地板和金属地板上的不同脚步声以及行走时的相机晃动</p>
+<h2 id="函数写入位置"><a href="#函数写入位置" class="headerlink" title="函数写入位置"></a>函数写入位置</h2><p>全局函数库、玩家角色蓝图</p>
+<h2 id="前置工作"><a href="#前置工作" class="headerlink" title="前置工作"></a>前置工作</h2><h3 id="相机晃动"><a href="#相机晃动" class="headerlink" title="相机晃动"></a>相机晃动</h3><p>创建相机晃动（下图为参考数值），需要勾上单一实例，保证每次使用只晃动一次</p>
+<p><img src="/2021/04/17/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-6/1.png" alt="1"></p>
+<h3 id="脚步声"><a href="#脚步声" class="headerlink" title="脚步声"></a>脚步声</h3><ol>
+<li><p>导入材质、脚步声</p>
+</li>
+<li><p>创建物理材质，表面类型需要在项目设置中先添加再修改，以下为项目设置界面</p>
+<p><img src="/2021/04/17/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-6/3.png" alt="3"></p>
+</li>
+<li><p>以其中一个音频为基础创建cue，并添加随机节点，实现多个同类音频随机播放（毕竟脚步声不可能每一步都是同一个声音），如图示例</p>
+<p><img src="/2021/04/17/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-6/2.png" alt="2"></p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>课外拓展</category>
+        <category>虚幻引擎</category>
+      </categories>
+      <tags>
+        <tag>虚幻引擎</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>虚幻引擎-3</title>
     <url>/2021/04/13/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-3/</url>
     <content><![CDATA[<h1 id="基础功能实现"><a href="#基础功能实现" class="headerlink" title="基础功能实现"></a>基础功能实现</h1><h2 id="人物操作功能"><a href="#人物操作功能" class="headerlink" title="人物操作功能"></a>人物操作功能</h2><h3 id="疾跑"><a href="#疾跑" class="headerlink" title="疾跑"></a>疾跑</h3><p>思路:在按下对应键（暂定shift）时，更改人物行走最大速度</p>
@@ -4410,32 +4448,6 @@
             <a href="https://pan.baidu.com/s/1D90KkjFeJfrMZAsXmpNxcw" title="Android SDK"><i class="fa fa-download"></i>Android SDK</a>
           </div>
 
-]]></content>
-      <categories>
-        <category>课外拓展</category>
-        <category>虚幻引擎</category>
-      </categories>
-      <tags>
-        <tag>虚幻引擎</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>虚幻引擎-6</title>
-    <url>/2021/04/17/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-6/</url>
-    <content><![CDATA[<h1 id="脚步声与相机晃动"><a href="#脚步声与相机晃动" class="headerlink" title="脚步声与相机晃动"></a>脚步声与相机晃动</h1><h2 id="实例说明"><a href="#实例说明" class="headerlink" title="实例说明"></a>实例说明</h2><p>实现角色在默认地板、木质地板和金属地板上的不同脚步声以及行走时的相机晃动</p>
-<h2 id="函数写入位置"><a href="#函数写入位置" class="headerlink" title="函数写入位置"></a>函数写入位置</h2><p>全局函数库、玩家角色蓝图</p>
-<h2 id="前置工作"><a href="#前置工作" class="headerlink" title="前置工作"></a>前置工作</h2><h3 id="相机晃动"><a href="#相机晃动" class="headerlink" title="相机晃动"></a>相机晃动</h3><p>创建相机晃动（下图为参考数值），需要勾上单一实例，保证每次使用只晃动一次</p>
-<p><img src="/2021/04/17/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-6/1.png" alt="1"></p>
-<h3 id="脚步声"><a href="#脚步声" class="headerlink" title="脚步声"></a>脚步声</h3><ol>
-<li><p>导入材质、脚步声</p>
-</li>
-<li><p>创建物理材质，表面类型需要在项目设置中先添加再修改，以下为项目设置界面</p>
-<p><img src="/2021/04/17/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-6/3.png" alt="3"></p>
-</li>
-<li><p>以其中一个音频为基础创建cue，并添加随机节点，实现多个同类音频随机播放（毕竟脚步声不可能每一步都是同一个声音），如图示例</p>
-<p><img src="/2021/04/17/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-6/2.png" alt="2"></p>
-</li>
-</ol>
 ]]></content>
       <categories>
         <category>课外拓展</category>
