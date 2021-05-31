@@ -263,21 +263,21 @@
 <li>lower_bound(key)——返回一个指向当前 map 容器中第一个大于或等于 key 的键值对的双向迭代器</li>
 <li>upper_bound(key) ——返回一个指向当前 map 容器中第一个大于 key 的键值对的迭代器</li>
 <li>equal_range(key)——返回键值对可以看做是&lt;lower_bound(key),upper_bound(key) &gt;</li>
-</ul><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="deque-3"><p>以[]运算符访问已知键对应的值，如果查找失败则插入为新元素，键对应的值默认为0</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="deque-4"><p>插入元素：</p>
+</ul><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="deque-3"><ul>
+<li>以[]运算符访问已知键对应的值，如果查找失败则插入为新元素，值默认为0</li>
+<li>使用at()函数访问，查找失败返回out_of_range错误</li>
+<li>使用find()函数，返回一个迭代器指向查找到的键值对，查找失败时返回最后一个键值对之后的位置</li>
+</ul><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="deque-4"><p>插入元素：</p>
 <ul>
 <li><p>不指定位置：</p>
 <p>pair&lt;iterator,bool&gt; insert(const value_type&amp;val);<br>——引用传递一个键值对</p>
+<p>template&lt; class p &gt;<br>pair&lt;iterator,bool&gt; insert(p&amp;&amp;val);<br>——以右值引用的方式传递键值对</p>
 </li>
-</ul>
-<p>  template<class p><br>  pair&lt;iterator,bool&gt; insert(p&amp;&amp;val);<br>  ——以右值引用的方式传递键值对</class></p>
-<ul>
 <li><p>指定位置</p>
 <p>iterator insert(const_interator position,const value_type&amp;val);<br>——引用传递一个键值对</p>
+<p>template&lt; class p &gt;<br>  iterator insert(const_iterator position,p&amp;&amp;val);<br>——以右值引用的方式传递键值对</p>
 </li>
-</ul>
-<p>  template<class p><br>    iterator insert(const_iterator position,p&amp;&amp;val);<br>  ——以右值引用的方式传递键值对</class></p>
-<ul>
-<li><p>插入其他map容器中指定区域的所有键值对<br>template <class inputiterator><br>  void insert (InputIterator first, InputIterator last);<br>——其中first和last都是迭代器，&lt;first,last&gt;可以表示某map容器中的指定区域</class></p>
+<li><p>插入其他map容器中指定区域的所有键值对<br>template &lt; class InputIterator &gt;<br>  void insert (InputIterator first, InputIterator last);<br>——其中first和last都是迭代器，&lt;first,last&gt;可以表示某map容器中的指定区域</p>
 </li>
 <li><p>——一次性插入多个键值对<br>void insert ({val1, val2, …});</p>
 </li>
