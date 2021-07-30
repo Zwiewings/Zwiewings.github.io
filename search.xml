@@ -1,6 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Java基础-2</title>
+    <url>/2021/07/30/Java%E5%AD%A6%E4%B9%A0-2/</url>
+    <content><![CDATA[<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="定义格式"><a href="#定义格式" class="headerlink" title="定义格式"></a>定义格式</h2><ul>
+<li>数据类型[ ] 变量名——int[ ] arr 【常用】</li>
+<li>数据类型 变量名[ ]——int arr[ ]</li>
+</ul>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>Java中数组必须先初始化才能使用，分动态初始化和静态初始化</p>
+<h3 id="动态初始化"><a href="#动态初始化" class="headerlink" title="动态初始化"></a>动态初始化</h3><p>初始化时只指定数组长度，由系统为数组分配初始值</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">数据类型[ ] 变量名 =<span class="keyword">new</span> 数据类型[数组长度];</span><br><span class="line">如：<span class="keyword">int</span>[] arr=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];</span><br></pre></td></tr></table></figure>
+<h3 id="静态初始化"><a href="#静态初始化" class="headerlink" title="静态初始化"></a>静态初始化</h3><p>初始化时指定每个数组元素的初始值，由系统决定数组长度</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">数据类型[ ] 变量名 =<span class="keyword">new</span> 数据类型[ ]&#123;数据<span class="number">1</span>,数据<span class="number">2</span>,数据<span class="number">3</span>,……&#125;;</span><br><span class="line">如：<span class="keyword">int</span>[] arr=<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line">简化写作：数据类型[ ] 变量名=&#123;数据<span class="number">1</span>,数据<span class="number">2</span>,数据<span class="number">3</span>,……&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="方法（函数）"><a href="#方法（函数）" class="headerlink" title="方法（函数）"></a>方法（函数）</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">访问权限 关键字 返回类型 方法名(参数表)&#123;方法体&#125;</span><br><span class="line">如：<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>其中public为访问权限修饰符，如下：</p>
+<table>
+<thead>
+<tr>
+<th>访问权限</th>
+<th>类</th>
+<th>包</th>
+<th>子类</th>
+<th>其他包</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public</td>
+<td>∨</td>
+<td>∨</td>
+<td>∨</td>
+<td>∨</td>
+<td>对任何人都是可用的</td>
+</tr>
+<tr>
+<td>protect</td>
+<td>∨</td>
+<td>∨</td>
+<td>∨</td>
+<td>×</td>
+<td>继承的类可以访问以及和private一样的权限</td>
+</tr>
+<tr>
+<td>default</td>
+<td>∨</td>
+<td>∨</td>
+<td>×</td>
+<td>×</td>
+<td>包访问权限，即在整个包内均可被访问</td>
+</tr>
+<tr>
+<td>private</td>
+<td>∨</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>除类型创建者和类型的内部方法之外的任何人都不能访问的元素</td>
+</tr>
+</tbody></table>
+<h2 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h2><p>方法重载指同一个类中，定义的多个方法之间的关系，需要满足下列条件：</p>
+<ul>
+<li>多个方法在同一个类中</li>
+<li>多个方法具有相同的方法名</li>
+<li>多个方法的参数不同，即参数类型不同或参数数量不同</li>
+</ul>
+<p>方法重载的特点：</p>
+<ul>
+<li>重载仅对应方法的定义，和方法调用无关</li>
+<li>重载仅针对同一个类中方法的名称和参数进行识别，和返回值无关，即返回值不同是不构成重载的</li>
+</ul>
+]]></content>
+      <categories>
+        <category>专业课程</category>
+        <category>Java</category>
+        <category>基础</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java基础-1</title>
     <url>/2021/04/16/Java%E5%AD%A6%E4%B9%A0-1/</url>
     <content><![CDATA[<h1 id="基础说明"><a href="#基础说明" class="headerlink" title="基础说明"></a>基础说明</h1><p>Java是面向对象的语言，它与c++不同的是，其程序的基本单位就是类（class），并且Java可通过Java虚拟机（JVM）实现跨平台，即在多个操作系统上运行</p>
@@ -314,7 +393,7 @@
 <li>如果为true，则表达式1的值为该语句的值</li>
 <li>如果为false，则表达式2的值为该语句的值</li>
 </ol>
-<h2 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h2><h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><ol>
+<h2 id="基础语句"><a href="#基础语句" class="headerlink" title="基础语句"></a>基础语句</h2><h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><ol>
 <li>导入scanner包：import java.util.Scanner；</li>
 <li>创建对象：Scanner 变量名1=new Scanner（System.in）；</li>
 <li>接受数据：int 变量名2=变量名1.nextInt（）；</li>
@@ -343,6 +422,9 @@
 <td>以格式化文本和参数列表输出，不换行</td>
 </tr>
 </tbody></table>
+<h3 id="random的使用"><a href="#random的使用" class="headerlink" title="random的使用"></a>random的使用</h3><p>导入包：import java.util.Random；</p>
+<p>创建对象：Random 变量名=new Random（）；</p>
+<p>获取随机数：int number=r.nextInt（范围上限）；——获得的随机数在0~上限之间，包括0，不包括上限</p>
 ]]></content>
       <categories>
         <category>专业课程</category>
