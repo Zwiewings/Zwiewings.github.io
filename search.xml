@@ -1,423 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Java基础-3</title>
-    <url>/2021/08/09/Java%E5%AD%A6%E4%B9%A0-3/</url>
-    <content><![CDATA[<h1 id="包（Package）"><a href="#包（Package）" class="headerlink" title="包（Package）"></a>包（Package）</h1><p>包是为了java程序编写时对类分类管理而创建的文件夹</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">格式：<span class="keyword">package</span> 包名;(多级包用.隔开)</span><br><span class="line">如：<span class="keyword">package</span> JavaProject.first;</span><br><span class="line">实际上是创建了JavaProject文件夹，并在文件夹下创建first文件夹</span><br></pre></td></tr></table></figure>
-<p>在编译带包的java文件时，可以手动创建包并将编译好的class文件放入包中，或者是通过命令“javac -d .文件名.java”在文件所在目录下自动创建包并完成编译，执行时需要带包执行，即“java JavaProject.first.文件名”</p>
-<h2 id="导包"><a href="#导包" class="headerlink" title="导包"></a>导包</h2><p>使用不同包下的类时，需要使用类的全路径，为了简化带包的操作，java提供了导包的功能</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">格式：<span class="keyword">import</span> 包名;</span><br><span class="line">如：<span class="keyword">import</span> java.util.Scanner;</span><br><span class="line">即导入java/util文件夹下的Scanner文件夹内所有类</span><br></pre></td></tr></table></figure>
-<h2 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h2><h3 id="权限修饰符"><a href="#权限修饰符" class="headerlink" title="权限修饰符"></a>权限修饰符</h3><table>
-<thead>
-<tr>
-<th>访问权限</th>
-<th>类</th>
-<th>包</th>
-<th>子类</th>
-<th>其他包</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public</td>
-<td>∨</td>
-<td>∨</td>
-<td>∨</td>
-<td>∨</td>
-<td>对任何人都是可用的</td>
-</tr>
-<tr>
-<td>protect</td>
-<td>∨</td>
-<td>∨</td>
-<td>∨</td>
-<td>×</td>
-<td>继承的类可以访问以及和private一样的权限</td>
-</tr>
-<tr>
-<td>default</td>
-<td>∨</td>
-<td>∨</td>
-<td>×</td>
-<td>×</td>
-<td>包访问权限，即在整个包内均可被访问</td>
-</tr>
-<tr>
-<td>private</td>
-<td>∨</td>
-<td>×</td>
-<td>×</td>
-<td>×</td>
-<td>除类型创建者和类型的内部方法之外的任何人都不能访问的元素</td>
-</tr>
-</tbody></table>
-<h3 id="状态修饰符"><a href="#状态修饰符" class="headerlink" title="状态修饰符"></a>状态修饰符</h3><h4 id="final"><a href="#final" class="headerlink" title="final"></a>final</h4><p>final（最终态）：可以修饰成员方法，成员变量，类</p>
-<ul>
-<li>修饰方法：表明该方法是最终方法，<strong>不能被重写</strong></li>
-<li>修饰变量：表明该变量时常量，<strong>不能再次被赋值</strong></li>
-<li>修饰类：表明该类时最终类，<strong>不能被继承</strong></li>
-<li>修饰局部变量：当变量是<strong>基本类型</strong>时，<strong>数据值不能改变</strong>，当变量时<strong>引用类型</strong>时，地址值不能改变，但<strong>数据值可以改变</strong></li>
-</ul>
-<h4 id="static"><a href="#static" class="headerlink" title="static"></a>static</h4><p>static（静态）：可以修饰成员方法和成员变量</p>
-<p>static修饰的特点：</p>
-<ul>
-<li>被类的所有对象共享</li>
-<li>可以通过对象名和类名调用，推荐类名调用</li>
-</ul>
-<p>static访问的特点：静态成员方法只能访问静态成员</p>
-<h1 id="集合基础"><a href="#集合基础" class="headerlink" title="集合基础"></a>集合基础</h1><p>集合类可以提供一种存储空间可变的存储模型，存储的数据容量可以发生改变，较常用的有ArrayList</p>
-<h2 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h2><p>ArrayList&lt; E&gt;：位于util包下，实现可调整大小的数组，其中&lt; E&gt;是一种特殊的数据类型，泛型，可用引用数据类型替换</p>
-<h3 id="构造方法和添加方法"><a href="#构造方法和添加方法" class="headerlink" title="构造方法和添加方法"></a>构造方法和添加方法</h3><ul>
-<li>public ArrayList()：创建一个空的集合对象</li>
-<li>public boolean add(E e)：将指定的元素追加到此集合的末尾</li>
-<li>public void add(int index,E element)：在此集合的指定位置插入指定的元素</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">创建ArrayList：</span><br><span class="line">    ArrayList&lt;数据类型&gt; 变量名=<span class="keyword">new</span> ArrayList&lt;数据类型&gt;();</span><br><span class="line">例如：ArrayList&lt;String&gt; array=<span class="keyword">new</span> ArrayList&lt;数据类型&gt;();</span><br></pre></td></tr></table></figure>
-
-<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><ul>
-<li>public boolean remove(Object o)：删除指定的元素，返回删除是否成功</li>
-<li>public E remove(int index)：删除指定索引处的元素，返回被删除的元素</li>
-<li>public E set(int index,E element)：修改指定索引处的元素，返回被修改的元素</li>
-<li>public E get(int index)：返回指定索引处的元素</li>
-<li>public int size()：返回集合中的元素的个数</li>
-</ul>
-<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><p>string类在java.lang下，所以使用不需要导入包</p>
-<p><strong>字符串的特点：</strong></p>
-<ul>
-<li>字符串不可变，值在创建后不能被更改</li>
-<li>虽然String值不可变，但是可以被共享</li>
-<li>字符串效果上相当于字符数组（char[]），但底层原理是字节数组（byte[]）【JDK8及以前是字符数组，JDK9及以后是字节数组】</li>
-</ul>
-<h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><table>
-<thead>
-<tr>
-<th>方法名</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public String（）</td>
-<td>创建一个空白字符串对象，不含有任何内容</td>
-</tr>
-<tr>
-<td>public String（char[] chs）</td>
-<td>根据字符数组的内容，创建字符串对象</td>
-</tr>
-<tr>
-<td>public String（byte[] bys）</td>
-<td>根据字节数组的内容，创建字符串对象</td>
-</tr>
-<tr>
-<td>String s=“abc”；</td>
-<td>直接赋值的方式创建字符串对象，内容就是abc</td>
-</tr>
-</tbody></table>
-<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
-<li>通过new创建的字符串对象，每一次new都会申请一个内存空间，虽然内容相同，但是地址值不同</li>
-<li>以“ ”方式给出的字符串，只要字符序列相同，无论在程序代码中出现几次，都只会创建一个String对象，并在字符串池中维护</li>
-</ul>
-<h3 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h3><p>使用==比较时：</p>
-<ul>
-<li>基本类型：比较的是数据值是否相同</li>
-<li>引用类型：比较的是地址值是否相同</li>
-</ul>
-<p>字符串本身是对象，比较内容是否相同，需要通过方法实现：<strong>equals（）</strong></p>
-<p>public boolean equals（Object anObeject）：将此字符串和指定对象进行比较，由于比较的是字符串对象，所以参数直接传递一个字符串</p>
-<h3 id="常用方法-1"><a href="#常用方法-1" class="headerlink" title="常用方法"></a>常用方法</h3><ol>
-<li>public char charAt(int index)：返回字符串指定索引处的char值</li>
-<li>public int length()：返回字符串长度</li>
-</ol>
-<h2 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a>StringBuilder</h2><p>StringBuilder是一个可变的字符串类，在拼接字符串时不会新建一个String对象，避免浪费空间</p>
-<h3 id="构造方法-1"><a href="#构造方法-1" class="headerlink" title="构造方法"></a>构造方法</h3><ul>
-<li>public StringBuilder()：创建一个空白可变字符串对象，不含有任何内容</li>
-<li>public StringBuilder(String str)：根据字符串的内容来创建可变字符串对象</li>
-</ul>
-<h3 id="常用方法-2"><a href="#常用方法-2" class="headerlink" title="常用方法"></a>常用方法</h3><ul>
-<li>public StringBuilder append（任意类型）：添加数据，并返回对象本身【可链式编程】</li>
-<li>public StringBuilder reverse()：返回相反的字符序列</li>
-</ul>
-<h3 id="和String的互相转换"><a href="#和String的互相转换" class="headerlink" title="和String的互相转换"></a>和String的互相转换</h3><ol>
-<li><strong>StringBuilder转换为String</strong>：public String toString()</li>
-<li><strong>String转换为StringBuilder</strong>：public StringBuilder(String s)</li>
-</ol>
-<h1 id="接口（Interface）"><a href="#接口（Interface）" class="headerlink" title="接口（Interface）"></a>接口（Interface）</h1><p>一种公共的规范标准，java中的接口更多体现在堆行为的抽象</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">接口的定义：</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> 接口名</span>&#123;&#125;</span><br><span class="line">类实现接口：</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 类名 <span class="keyword">implements</span> 接口名</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>特点：</strong></p>
-<ul>
-<li>接口不能实例化——但可以通过实现类对象实例化</li>
-<li>接口的实现类要么重写接口中所有抽象方法，要么还是抽象类</li>
-</ul>
-<div class="tip warning"><p>
-
-</p><p>方法的形参和返回值是接口名时，实际需要和返回的是该接口的实现类对象</p>
-<p></p></div>
-
-<h2 id="接口的成员特点"><a href="#接口的成员特点" class="headerlink" title="接口的成员特点"></a>接口的成员特点</h2><ul>
-<li><p>成员变量：</p>
-<p>只能是常量</p>
-<p>默认的修饰符为<strong>public static final</strong></p>
-</li>
-<li><p>构造方法：</p>
-<p>接口没有构造方法，因为接口主要对行为进行抽象，没有具体存在</p>
-<p><strong>一个类如果没有父类，默认继承自Object类</strong></p>
-</li>
-<li><p>成员方法：</p>
-<p>只能是抽象方法</p>
-<p>默认修饰符为<strong>public abstract</strong></p>
-</li>
-</ul>
-<h2 id="类和接口的关系"><a href="#类和接口的关系" class="headerlink" title="类和接口的关系"></a>类和接口的关系</h2><p>类和接口可以是实现关系，可以单实现，也可以多实现，还可以在继承一个类的同时实现多个接口，如：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 类名 <span class="keyword">extends</span> 父类名 <span class="title">implement</span> 接口1名,接口2名……</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-<p>接口和接口可以是继承关系，可以单继承，也可以多继承</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> 接口名 <span class="keyword">extends</span> 接口1名,接口2名……</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="抽象类和接口的区别"><a href="#抽象类和接口的区别" class="headerlink" title="抽象类和接口的区别"></a>抽象类和接口的区别</h2><ul>
-<li><p>成员区别</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>允许具有的成员</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>抽象类</td>
-<td>变量，常量，构造方法，抽象方法和非抽象方法</td>
-</tr>
-<tr>
-<td>接口</td>
-<td>常量，抽象方法</td>
-</tr>
-</tbody></table>
-</li>
-<li><p>关系区别</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>允许的关系</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>类与类</td>
-<td>继承，单继承</td>
-</tr>
-<tr>
-<td>类与接口</td>
-<td>实现，可以单实现也可以多实现</td>
-</tr>
-<tr>
-<td>接口与接口</td>
-<td>继承，单继承，多继承</td>
-</tr>
-</tbody></table>
-</li>
-<li><p>设计理念区别</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>设计理念</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>抽象类</td>
-<td>对类抽象，包括属性，行为</td>
-</tr>
-<tr>
-<td>接口</td>
-<td>对行为抽象，主要是行为</td>
-</tr>
-</tbody></table>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>专业课程</category>
-        <category>Java</category>
-        <category>基础</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java基础-2</title>
-    <url>/2021/07/30/Java%E5%AD%A6%E4%B9%A0-2/</url>
-    <content><![CDATA[<h1 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">类的定义：</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 类名</span>&#123;</span><br><span class="line">    <span class="comment">//成员变量的定义</span></span><br><span class="line">    <span class="comment">//成员方法的定义（没有static关键字）</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">例如：</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Phone</span></span>&#123;</span><br><span class="line">    <span class="comment">//成员变量的定义</span></span><br><span class="line">    String brand;</span><br><span class="line">    <span class="keyword">int</span> price;</span><br><span class="line">    <span class="comment">//成员方法的定义（没有static关键字）</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.printIn(<span class="string">&quot;打电话&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendPassage</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.printIn(<span class="string">&quot;发短信&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">创建对象：类名 对象=<span class="keyword">new</span> 类名();</span><br><span class="line">例如：Phone p=<span class="keyword">new</span> Phone();</span><br></pre></td></tr></table></figure>
-<div class="tip warning"><p>
-
-</p><p>在c++中，不重载&lt;&lt;运算符时直接输出对象会报错，但java中可以直接输出对象，得到的是对象的地址，在编译器中实际输出应该为对象的包名.类名@对象的具体地址。</p>
-<p></p></div>
-
-
-
-<h2 id="成员变量和局部变量"><a href="#成员变量和局部变量" class="headerlink" title="成员变量和局部变量"></a>成员变量和局部变量</h2><table>
-<thead>
-<tr>
-<th>区别</th>
-<th>成员变量</th>
-<th>局部变量</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>类中位置不同</td>
-<td>类中方法外</td>
-<td>方法内或声明上</td>
-</tr>
-<tr>
-<td>内存中位置不同</td>
-<td>堆内存</td>
-<td>栈内存</td>
-</tr>
-<tr>
-<td>生命周期不同</td>
-<td>随对象存在和消失</td>
-<td>随方法调用存在和消失</td>
-</tr>
-<tr>
-<td>初始化值不同</td>
-<td>有默认初始值</td>
-<td>没有默认的初始化值，必须先定义，赋值，才能够使用</td>
-</tr>
-</tbody></table>
-<h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><p>针对不想在类外直接访问的变量或方法，可以通过将public关键字替换为private（变量省略关键字时默认是public，需要在数据类型前面添加private关键字），体现类的封装。</p>
-<p><strong>封装的好处：</strong></p>
-<ul>
-<li>通过方法来控制成员变量的操作，提高代码的安全性</li>
-<li>把代码用方法进行封装，提高了代码的复用性</li>
-</ul>
-<h2 id="this关键字"><a href="#this关键字" class="headerlink" title="this关键字"></a>this关键字</h2><p>java中的this关键字和c++的this指针是同一个作用，用于解决局部变量隐藏成员变量，书写格式如下：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.变量名</span><br><span class="line">例如：<span class="keyword">this</span>.name</span><br></pre></td></tr></table></figure>
-<p>this修饰的变量用于指代成员变量：</p>
-<ul>
-<li>方法的形参如果和成员变量同名，不带this修饰的变量指的是形参而不是成员变量</li>
-<li>方法的形参没有和成员变量同名，不带this修饰的变量指的是成员变量</li>
-</ul>
-<p><strong>this代表所在类的对象引用，方法被哪个对象引用，this就代表哪个对象</strong></p>
-<h2 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 类名</span>&#123;</span><br><span class="line"><span class="comment">//构造方法写在类内</span></span><br><span class="line">	修饰符 类名（参数）&#123;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>和c++一样，当代码给出了任意构造方法后，系统将不再自动提供默认的无参构造</p>
-<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>面向对象三大特征之一，可以使子类具有父类的属性和方法，还可以在子类中重新定义，追加属性和方法</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">格式：<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 子类名 <span class="keyword">extends</span> 父类名</span>&#123;&#125;</span><br><span class="line">如：<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span></span>&#123;&#125;</span><br><span class="line">表示子类Student继承自父类Person</span><br></pre></td></tr></table></figure>
-<ul>
-<li>优点：提高代码的复用性，提高代码的维护性</li>
-<li>弊端：让类和类产生了关系，父类改变时子类不得不改变</li>
-</ul>
-<p><strong>继承中变量的访问特点：</strong></p>
-<p>在子类方法中访问一个变量：</p>
-<ol>
-<li>在子类局部范围找</li>
-<li>在子类成员范围找</li>
-<li>在父类成员范围找</li>
-<li>否则报错（不考虑父类的父类的继承）</li>
-</ol>
-<p><strong>继承中构造方法的访问特点：</strong></p>
-<p>子类中所有的构造方法默认都会访问父类中无参的构造方法，理由如下：</p>
-<ul>
-<li>子类会继承父类中的数据，可能还会使用父类的数据，所以要先初始化父类数据</li>
-<li>每一个子类构造方法的第一条语句默认都是：super（）</li>
-</ul>
-<p>如果父类中没有无参构造方法，只有带参构造方法：</p>
-<ul>
-<li>通过使用super关键字去显示的调用父类的带参构造方法</li>
-<li>在父类中自己提供一个无参构造方法（推荐）</li>
-</ul>
-<p><strong>继承中成员方法的访问特点：</strong></p>
-<p>通过子类对象访问一个方法：</p>
-<ul>
-<li>子类成员范围找</li>
-<li>父类成员范围找</li>
-<li>否则报错（不考虑父类的父类的继承）</li>
-</ul>
-<h3 id="继承的注意事项"><a href="#继承的注意事项" class="headerlink" title="继承的注意事项"></a>继承的注意事项</h3><ul>
-<li>java中类只支持单继承，不支持多继承</li>
-<li>java中类支持多层继承，但变量和成员方法不考虑父类的父类</li>
-</ul>
-<h3 id="方法重写"><a href="#方法重写" class="headerlink" title="方法重写"></a>方法重写</h3><p>子类中出现了和父类中一样的方法声明，但功能子类需要具有特有的内容时，可以重写父类中的方法，这样，即沿袭了父类的功能，又定义了子类的特有内容</p>
-<p>注意事项：</p>
-<p>私有方法是不能被重写的（类似c++父类私有函数在子类不可见）</p>
-<p>子类方法访问权限不能更低（public&gt;默认&gt;私有）</p>
-<div class="tip warning"><p>
-
-</p><p>@Override是一个方法重写的注解，可以帮助检查重写方法的方法声明的正确性</p>
-<p></p></div>
-
-<h3 id="super关键字"><a href="#super关键字" class="headerlink" title="super关键字"></a>super关键字</h3><p>super关键字的用法和this关键字的用法相似</p>
-<ul>
-<li><strong>this：</strong>代表本类对象的引用</li>
-<li><strong>super：</strong>代表父类存储空间的标识（可以理解为父类对象引用）</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>关键字</th>
-<th>访问成员变量</th>
-<th>访问构造方法</th>
-<th>访问成员方法</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>this</td>
-<td>this.成员变量，访问本类成员变量</td>
-<td>this（…），访问本类构造方法</td>
-<td>this.成员方法（…），访问本类成员方法</td>
-</tr>
-<tr>
-<td>super</td>
-<td>super.成员变量，访问父类成员变量</td>
-<td>super（…），访问父类构造方法</td>
-<td>super.成员方法，访问父类成员方法</td>
-</tr>
-</tbody></table>
-<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>多态分为具体类多态，抽象类多态，接口多态</p>
-<h3 id="多态的前提和实现"><a href="#多态的前提和实现" class="headerlink" title="多态的前提和实现"></a>多态的前提和实现</h3><ul>
-<li>有继承/实现关系</li>
-<li>有方法重写</li>
-<li>有父（类/接口）引用指向（子/实现）类对象</li>
-</ul>
-<h3 id="成员的访问特点"><a href="#成员的访问特点" class="headerlink" title="成员的访问特点"></a>成员的访问特点</h3><p>成员变量使用父类成员变量，成员方法使用子类重写的父类成员方法，如：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Animal a=<span class="keyword">new</span> Cat();</span><br></pre></td></tr></table></figure>
-<p>对于Animal类中不存在，但Cat类中存在的成员变量是无法使用的，因为创建的变量a是Animal类；但在Cat类中重写了Animal类的成员方法后，使用该成员方法时，将会调用Cat类重写之后的成员方法。</p>
-<p>两者存在区别的原因是由于成员方法有重写而成员变量没有重写，对于Animal类和Cat类继承下来的同一个方法入口构成了类似重载的关系</p>
-<h3 id="多态的好处和弊端"><a href="#多态的好处和弊端" class="headerlink" title="多态的好处和弊端"></a>多态的好处和弊端</h3><p>好处：提高了程序的扩展性——定义方法的时候，使用父类作为参数，在使用的时候，可以使用具体的子类型传参</p>
-<p>弊端：不能使用子类的特有功能</p>
-<h3 id="多态中的转型"><a href="#多态中的转型" class="headerlink" title="多态中的转型"></a>多态中的转型</h3><ol>
-<li>向上转型——Animal a=new Cat();<ul>
-<li>从子到父</li>
-<li>父类引用指向子类对象</li>
-</ul>
-</li>
-<li>向下转型——Cat c=(Cat)a;<ul>
-<li>从父到子</li>
-<li>父类引用转为子类对象</li>
-</ul>
-</li>
-</ol>
-<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><p>一个没有方法体的方法该定义为抽象方法，类中如果有抽象方法，该类必须定义为抽象类</p>
-<p>java中抽象使用abstract关键字修饰：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span>&#123;</span><br><span class="line">	<span class="comment">//含有抽象方法的类必须为抽象类</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">shout</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="comment">//抽象方法必须位于抽象类中</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="抽象类的特点"><a href="#抽象类的特点" class="headerlink" title="抽象类的特点"></a>抽象类的特点</h3><ul>
-<li>抽象类和抽象方法必须使用abstract修饰</li>
-<li>抽象类中不一定有抽象方法，但有抽象方法的一定是抽象类</li>
-<li>抽象类不能实例化，即不能创建对象，它只能通过子类对象实例化</li>
-<li>抽象类的子类要么重写抽象类中所有抽象方法，要么是抽象类</li>
-</ul>
-<h3 id="抽象类的成员特点"><a href="#抽象类的成员特点" class="headerlink" title="抽象类的成员特点"></a>抽象类的成员特点</h3><ul>
-<li>成员变量：可以是变量也可以是常量</li>
-<li>构造方法：有构造方法，但不能实例化，构造方法用于子类访问父类数据的初始化</li>
-<li>成员方法：可以有抽象方法，限定子类必须具有某些方法，也可以有非抽象方法，用于提高代码复用性</li>
-</ul>
-]]></content>
-      <categories>
-        <category>专业课程</category>
-        <category>Java</category>
-        <category>基础</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java基础-1</title>
     <url>/2021/04/16/Java%E5%AD%A6%E4%B9%A0-1/</url>
     <content><![CDATA[<h1 id="基础说明"><a href="#基础说明" class="headerlink" title="基础说明"></a>基础说明</h1><p>Java是面向对象的语言，它与c++不同的是，其程序的基本单位就是类（class），并且Java可通过Java虚拟机（JVM）实现跨平台，即在多个操作系统上运行</p>
@@ -727,7 +310,7 @@
 <li>如果为true，则表达式1的值为该语句的值</li>
 <li>如果为false，则表达式2的值为该语句的值</li>
 </ol>
-<h2 id="基础语句"><a href="#基础语句" class="headerlink" title="基础语句"></a>基础语句</h2><h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><ol>
+<h2 id="基础语句"><a href="#基础语句" class="headerlink" title="基础语句"></a>基础语句</h2><h3 id="用Scanner输入"><a href="#用Scanner输入" class="headerlink" title="用Scanner输入"></a>用Scanner输入</h3><ol>
 <li>导入scanner包：import java.util.Scanner；</li>
 <li>创建对象：Scanner 变量名1=new Scanner（System.in）；</li>
 <li>接受数据：int 变量名2=变量名1.nextInt（）；</li>
@@ -767,7 +350,17 @@
 </tbody></table>
 <p>上表中没有接收字符数据的方法，要想接受字符数据可以采用以下方法：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line">Scanner sc=<span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">System.out.println(<span class="string">&quot;请输入数据：&quot;</span>);</span><br><span class="line">String str=sc.next();</span><br><span class="line"><span class="keyword">char</span> ch=str.charAt(<span class="number">0</span>);</span><br><span class="line">System.out.println(ch);</span><br></pre></td></tr></table></figure>
+<h3 id="用System-in输入"><a href="#用System-in输入" class="headerlink" title="用System.in输入"></a>用System.in输入</h3><p>1.导包：import java.io.*；</p>
+<p>2.构造 BufferedReader类对象，它附属于标准输入流System.in：BufferedReader br = new BufferedReader(new InputStreamReader(System.in));</p>
+<p>3.添加抛出声明或用try/catch包围</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">BufferedReader br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</span><br><span class="line">String str=<span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">        str=br.readLine();</span><br><span class="line">    &#125;<span class="keyword">catch</span>(IOException e)&#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(str.equals(<span class="string">&quot;END&quot;</span>))<span class="keyword">break</span>;</span><br><span class="line">    System.out.print(str);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="tip warning"><p>
 
+<ol>
+<li>read方法：读取单个字符。 返回：作为一个整数（其范围从 0 到 65535 (0x00-0xffff)）读入的字符，如果已到达流末尾，则返回 -1 </li>
+<li>readLine方法：读取一个文本行。通过下列字符之一即可认为某行已终止：换行 (‘\n’)、回车 (‘\r’) 或回车后直接跟着换行。 返回：包含该行内容的字符串，不包含任何行终止符，如果已到达流末尾，则返回 null</li>
+</ol>
+</p></div>
 
 <h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><table>
 <thead>
@@ -861,6 +454,626 @@
 <ul>
 <li>重载仅对应方法的定义，和方法调用无关</li>
 <li>重载仅针对同一个类中方法的名称和参数进行识别，和返回值无关，即返回值不同是不构成重载的</li>
+</ul>
+]]></content>
+      <categories>
+        <category>专业课程</category>
+        <category>Java</category>
+        <category>基础</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java基础-4</title>
+    <url>/2021/08/19/Java%E5%AD%A6%E4%B9%A0-4/</url>
+    <content><![CDATA[<h1 id="API（应用程序编程接口）"><a href="#API（应用程序编程接口）" class="headerlink" title="API（应用程序编程接口）"></a>API（应用程序编程接口）</h1><p>API是一些预先定义好的接口（如函数，HTTP接口）或指软件系统不同组成部分衔接的约定。用来提供应用程序与开发人员基于某软件或硬件得以访问的一组例程，而又无需访问源码，或理解内部工作机制的细节</p>
+<p><strong>工具类的设计思想：</strong></p>
+<ul>
+<li>构造方法用private修饰（防止外界创建对象）</li>
+<li>成员用public static修饰（强制用类名访问）</li>
+</ul>
+<h2 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h2><p>Math包含执行基本数字运算的方法，成员均为静态，即可以通过类名调用,常用方法如下：</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public static int abs(int a)</td>
+<td>返回参数的绝对值</td>
+</tr>
+<tr>
+<td>public static double ceil(double a)</td>
+<td>返回大于或等于参数的最小double值，等于一个整数</td>
+</tr>
+<tr>
+<td>public static double floor(double a)</td>
+<td>返回小于或等于参数的最大double值，等于一个整数</td>
+</tr>
+<tr>
+<td>public static int round(float a)</td>
+<td>按照四舍五入返回最接近参数的int</td>
+</tr>
+<tr>
+<td>public static int max(int a,int b)</td>
+<td>返回两个int值中较大值</td>
+</tr>
+<tr>
+<td>public static int min(int a,int b)</td>
+<td>返回两个int值中较小值</td>
+</tr>
+<tr>
+<td>public static double pow(double a,double b)</td>
+<td>返回a的b次幂的值</td>
+</tr>
+<tr>
+<td>public static double random()</td>
+<td>返回值为double的正值，[0.0,1.0)</td>
+</tr>
+</tbody></table>
+<h2 id="System"><a href="#System" class="headerlink" title="System"></a>System</h2><p>System包含几个有用的类字段和方法，不能被实例化，常用方法如下：</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public static void exit(int status)</td>
+<td>终止当前运行的Java虚拟机，非零表示异常终止</td>
+</tr>
+<tr>
+<td>public static long currentTimeMillis()</td>
+<td>返回当前时间（以毫秒为单位）</td>
+</tr>
+</tbody></table>
+<p>其中currentTimeMillis()方法可通过记录开始和结束时间相减，计算程序运行时间</p>
+<h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><p>Object是类层次结构的根，每个类都可以将Object作为超类（父类），所有类都直接或者间接的继承自该类</p>
+<p>构造方法：public Object()</p>
+<p>常用方法如下：</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public String toString()</td>
+<td>用于返回一个简明扼要的字符串来描述该对象，默认为“包名+类名+@+存储地址”，推荐子类重写</td>
+</tr>
+<tr>
+<td>public boolean equals（Object obj）</td>
+<td>比较对象是否相等，默认比较地址，重写可以比较内容</td>
+</tr>
+</tbody></table>
+<p><strong>IDEA编译器中可用Alt+Insert自动生成子类的重写方法</strong></p>
+<h2 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h2><p>Arrays类包含用于操作数组的各种方法</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public static String toString(int[] a)</td>
+<td>返回指定数组的内容的字符串表示形式</td>
+</tr>
+<tr>
+<td>public static void sort(int[] a)</td>
+<td>按照数字顺序排列指定的数组</td>
+</tr>
+</tbody></table>
+<h2 id="基本类型包装类"><a href="#基本类型包装类" class="headerlink" title="基本类型包装类"></a>基本类型包装类</h2><p>将基本数据类型封装成对象的好处在于可以在对象中定义更多的功能方法操作该数据，常用的操作之一是用于基本数据类型与字符串之间的转换</p>
+<table>
+<thead>
+<tr>
+<th>基本数据类型</th>
+<th>包装类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>byte</td>
+<td>Byte</td>
+</tr>
+<tr>
+<td>short</td>
+<td>Short</td>
+</tr>
+<tr>
+<td>int</td>
+<td>Integer</td>
+</tr>
+<tr>
+<td>long</td>
+<td>Long</td>
+</tr>
+<tr>
+<td>float</td>
+<td>Float</td>
+</tr>
+<tr>
+<td>double</td>
+<td>Double</td>
+</tr>
+<tr>
+<td>char</td>
+<td>Character</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>Boolean</td>
+</tr>
+</tbody></table>
+<h3 id="自动装箱和拆箱"><a href="#自动装箱和拆箱" class="headerlink" title="自动装箱和拆箱"></a>自动装箱和拆箱</h3><ul>
+<li><p>装箱：把基本数据类型转换为对应的包装类类型</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Integer i=Integer.valueOf(<span class="number">100</span>);<span class="comment">//装箱</span></span><br><span class="line">Integer ii=<span class="number">100</span>;<span class="comment">//自动装箱，自动转换成上一行代码</span></span><br></pre></td></tr></table></figure></li>
+<li><p>拆箱：把包装类类型转换为对应的基本数据类型</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Integer i=<span class="number">100</span>;</span><br><span class="line">i=i.intValue()+<span class="number">200</span>;<span class="comment">//先拆箱，再自动装箱</span></span><br><span class="line">i+=<span class="number">200</span>;<span class="comment">//自动拆箱，自动装箱</span></span><br></pre></td></tr></table></figure>
+<p>注：在使用包装类类型的时候，如果做操作，最好先判断不为null，推荐只要是对象，在使用前就必须进行不为null的判断</p>
+</li>
+</ul>
+<h2 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h2><p>Date代表了一个特定的时间，精确到毫秒</p>
+<table>
+<thead>
+<tr>
+<th>构造方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public Date()</td>
+<td>分配一个Date对象，并初始化，以便它代表它被分配的时间，精确到毫秒</td>
+</tr>
+<tr>
+<td>public Date(long date)</td>
+<td>分配一个Date对象，并将其初始化为表示从标准基准时间起指定的毫秒数</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>专业课程</category>
+        <category>Java</category>
+        <category>基础</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java基础-3</title>
+    <url>/2021/08/09/Java%E5%AD%A6%E4%B9%A0-3/</url>
+    <content><![CDATA[<h1 id="包（Package）"><a href="#包（Package）" class="headerlink" title="包（Package）"></a>包（Package）</h1><p>包是为了java程序编写时对类分类管理而创建的文件夹</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">格式：<span class="keyword">package</span> 包名;(多级包用.隔开)</span><br><span class="line">如：<span class="keyword">package</span> JavaProject.first;</span><br><span class="line">实际上是创建了JavaProject文件夹，并在文件夹下创建first文件夹</span><br></pre></td></tr></table></figure>
+<p>在编译带包的java文件时，可以手动创建包并将编译好的class文件放入包中，或者是通过命令“javac -d .文件名.java”在文件所在目录下自动创建包并完成编译，执行时需要带包执行，即“java JavaProject.first.文件名”</p>
+<h2 id="导包"><a href="#导包" class="headerlink" title="导包"></a>导包</h2><p>使用不同包下的类时，需要使用类的全路径，为了简化带包的操作，java提供了导包的功能</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">格式：<span class="keyword">import</span> 包名;</span><br><span class="line">如：<span class="keyword">import</span> java.util.Scanner;</span><br><span class="line">即导入java/util文件夹下的Scanner文件夹内所有类</span><br></pre></td></tr></table></figure>
+<h2 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h2><h3 id="权限修饰符"><a href="#权限修饰符" class="headerlink" title="权限修饰符"></a>权限修饰符</h3><table>
+<thead>
+<tr>
+<th>访问权限</th>
+<th>类</th>
+<th>包</th>
+<th>子类</th>
+<th>其他包</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public</td>
+<td>∨</td>
+<td>∨</td>
+<td>∨</td>
+<td>∨</td>
+<td>对任何人都是可用的</td>
+</tr>
+<tr>
+<td>protect</td>
+<td>∨</td>
+<td>∨</td>
+<td>∨</td>
+<td>×</td>
+<td>继承的类可以访问以及和private一样的权限</td>
+</tr>
+<tr>
+<td>default</td>
+<td>∨</td>
+<td>∨</td>
+<td>×</td>
+<td>×</td>
+<td>包访问权限，即在整个包内均可被访问</td>
+</tr>
+<tr>
+<td>private</td>
+<td>∨</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>除类型创建者和类型的内部方法之外的任何人都不能访问的元素</td>
+</tr>
+</tbody></table>
+<h3 id="状态修饰符"><a href="#状态修饰符" class="headerlink" title="状态修饰符"></a>状态修饰符</h3><h4 id="final"><a href="#final" class="headerlink" title="final"></a>final</h4><p>final（最终态）：可以修饰成员方法，成员变量，类</p>
+<ul>
+<li>修饰方法：表明该方法是最终方法，<strong>不能被重写</strong></li>
+<li>修饰变量：表明该变量时常量，<strong>不能再次被赋值</strong></li>
+<li>修饰类：表明该类时最终类，<strong>不能被继承</strong></li>
+<li>修饰局部变量：当变量是<strong>基本类型</strong>时，<strong>数据值不能改变</strong>，当变量时<strong>引用类型</strong>时，地址值不能改变，但<strong>数据值可以改变</strong></li>
+</ul>
+<h4 id="static"><a href="#static" class="headerlink" title="static"></a>static</h4><p>static（静态）：可以修饰成员方法和成员变量</p>
+<p>static修饰的特点：</p>
+<ul>
+<li>被类的所有对象共享</li>
+<li>可以通过对象名和类名调用，推荐类名调用</li>
+</ul>
+<p>static访问的特点：静态成员方法只能访问静态成员</p>
+<h1 id="集合基础"><a href="#集合基础" class="headerlink" title="集合基础"></a>集合基础</h1><p>集合类可以提供一种存储空间可变的存储模型，存储的数据容量可以发生改变，较常用的有ArrayList</p>
+<h2 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h2><p>ArrayList&lt; E&gt;：位于util包下，实现可调整大小的数组，其中&lt; E&gt;是一种特殊的数据类型，泛型，可用引用数据类型替换</p>
+<h3 id="构造方法和添加方法"><a href="#构造方法和添加方法" class="headerlink" title="构造方法和添加方法"></a>构造方法和添加方法</h3><ul>
+<li>public ArrayList()：创建一个空的集合对象</li>
+<li>public boolean add(E e)：将指定的元素追加到此集合的末尾</li>
+<li>public void add(int index,E element)：在此集合的指定位置插入指定的元素</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">创建ArrayList：</span><br><span class="line">    ArrayList&lt;数据类型&gt; 变量名=<span class="keyword">new</span> ArrayList&lt;数据类型&gt;();</span><br><span class="line">例如：ArrayList&lt;String&gt; array=<span class="keyword">new</span> ArrayList&lt;数据类型&gt;();</span><br></pre></td></tr></table></figure>
+
+<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><ul>
+<li>public boolean remove(Object o)：删除指定的元素，返回删除是否成功</li>
+<li>public E remove(int index)：删除指定索引处的元素，返回被删除的元素</li>
+<li>public E set(int index,E element)：修改指定索引处的元素，返回被修改的元素</li>
+<li>public E get(int index)：返回指定索引处的元素</li>
+<li>public int size()：返回集合中的元素的个数</li>
+</ul>
+<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><p>string类在java.lang下，所以使用不需要导入包</p>
+<p><strong>字符串的特点：</strong></p>
+<ul>
+<li>字符串不可变，值在创建后不能被更改</li>
+<li>虽然String值不可变，但是可以被共享</li>
+<li>字符串效果上相当于字符数组（char[]），但底层原理是字节数组（byte[]）【JDK8及以前是字符数组，JDK9及以后是字节数组】</li>
+</ul>
+<h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public String（）</td>
+<td>创建一个空白字符串对象，不含有任何内容</td>
+</tr>
+<tr>
+<td>public String（char[] chs）</td>
+<td>根据字符数组的内容，创建字符串对象</td>
+</tr>
+<tr>
+<td>public String（byte[] bys）</td>
+<td>根据字节数组的内容，创建字符串对象</td>
+</tr>
+<tr>
+<td>String s=“abc”；</td>
+<td>直接赋值的方式创建字符串对象，内容就是abc</td>
+</tr>
+</tbody></table>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>通过new创建的字符串对象，每一次new都会申请一个内存空间，虽然内容相同，但是地址值不同</li>
+<li>以“ ”方式给出的字符串，只要字符序列相同，无论在程序代码中出现几次，都只会创建一个String对象，并在字符串池中维护</li>
+</ul>
+<h3 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h3><p>使用==比较时：</p>
+<ul>
+<li>基本类型：比较的是数据值是否相同</li>
+<li>引用类型：比较的是地址值是否相同</li>
+</ul>
+<p>字符串本身是对象，比较内容是否相同，需要通过方法实现：<strong>equals（）</strong></p>
+<p>public boolean equals（Object anObeject）：将此字符串和指定对象进行比较，由于比较的是字符串对象，所以参数直接传递一个字符串</p>
+<h3 id="常用方法-1"><a href="#常用方法-1" class="headerlink" title="常用方法"></a>常用方法</h3><ol>
+<li>public char charAt(int index)：返回字符串指定索引处的char值</li>
+<li>public int length()：返回字符串长度</li>
+</ol>
+<h2 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a>StringBuilder</h2><p>StringBuilder是一个可变的字符串类，在拼接字符串时不会新建一个String对象，避免浪费空间</p>
+<h3 id="构造方法-1"><a href="#构造方法-1" class="headerlink" title="构造方法"></a>构造方法</h3><ul>
+<li>public StringBuilder()：创建一个空白可变字符串对象，不含有任何内容</li>
+<li>public StringBuilder(String str)：根据字符串的内容来创建可变字符串对象</li>
+</ul>
+<h3 id="常用方法-2"><a href="#常用方法-2" class="headerlink" title="常用方法"></a>常用方法</h3><ul>
+<li>public StringBuilder append（任意类型）：添加数据，并返回对象本身【可链式编程】</li>
+<li>public StringBuilder reverse()：返回相反的字符序列</li>
+</ul>
+<h3 id="和String的互相转换"><a href="#和String的互相转换" class="headerlink" title="和String的互相转换"></a>和String的互相转换</h3><ol>
+<li><strong>StringBuilder转换为String</strong>：public String toString()</li>
+<li><strong>String转换为StringBuilder</strong>：public StringBuilder(String s)</li>
+</ol>
+<h1 id="接口（Interface）"><a href="#接口（Interface）" class="headerlink" title="接口（Interface）"></a>接口（Interface）</h1><p>一种公共的规范标准，java中的接口更多体现在堆行为的抽象</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">接口的定义：</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> 接口名</span>&#123;&#125;</span><br><span class="line">类实现接口：</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 类名 <span class="keyword">implements</span> 接口名</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>特点：</strong></p>
+<ul>
+<li>接口不能实例化——但可以通过实现类对象实例化</li>
+<li>接口的实现类要么重写接口中所有抽象方法，要么还是抽象类</li>
+</ul>
+<div class="tip warning"><p>
+
+</p><p>方法的形参和返回值是接口名时，实际需要和返回的是该接口的实现类对象</p>
+<p></p></div>
+
+<h2 id="接口的成员特点"><a href="#接口的成员特点" class="headerlink" title="接口的成员特点"></a>接口的成员特点</h2><ul>
+<li><p>成员变量：</p>
+<p>只能是常量</p>
+<p>默认的修饰符为<strong>public static final</strong></p>
+</li>
+<li><p>构造方法：</p>
+<p>接口没有构造方法，因为接口主要对行为进行抽象，没有具体存在</p>
+<p><strong>一个类如果没有父类，默认继承自Object类</strong></p>
+</li>
+<li><p>成员方法：</p>
+<p>只能是抽象方法</p>
+<p>默认修饰符为<strong>public abstract</strong></p>
+</li>
+</ul>
+<h2 id="类和接口的关系"><a href="#类和接口的关系" class="headerlink" title="类和接口的关系"></a>类和接口的关系</h2><p>类和接口可以是实现关系，可以单实现，也可以多实现，还可以在继承一个类的同时实现多个接口，如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 类名 <span class="keyword">extends</span> 父类名 <span class="title">implement</span> 接口1名,接口2名……</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>接口和接口可以是继承关系，可以单继承，也可以多继承</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> 接口名 <span class="keyword">extends</span> 接口1名,接口2名……</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="抽象类和接口的区别"><a href="#抽象类和接口的区别" class="headerlink" title="抽象类和接口的区别"></a>抽象类和接口的区别</h2><ul>
+<li><p>成员区别</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>允许具有的成员</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>抽象类</td>
+<td>变量，常量，构造方法，抽象方法和非抽象方法</td>
+</tr>
+<tr>
+<td>接口</td>
+<td>常量，抽象方法</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>关系区别</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>允许的关系</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>类与类</td>
+<td>继承，单继承</td>
+</tr>
+<tr>
+<td>类与接口</td>
+<td>实现，可以单实现也可以多实现</td>
+</tr>
+<tr>
+<td>接口与接口</td>
+<td>继承，单继承，多继承</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>设计理念区别</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>设计理念</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>抽象类</td>
+<td>对类抽象，包括属性，行为</td>
+</tr>
+<tr>
+<td>接口</td>
+<td>对行为抽象，主要是行为</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h1 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h1><p>内部类：在一个类中定义一个类，如在类A中定义一个类B，则类B是类A的内部类</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 类名</span>&#123;</span><br><span class="line">    修饰符 <span class="class"><span class="keyword">class</span> 类名</span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>访问特点：</p>
+<ul>
+<li>内部类可以直接访问外部类的成员，包括私有</li>
+<li>外部类要访问内部类的成员，必须创建内部类的对象</li>
+</ul>
+<p>按照内部类在类中定义的位置不同，可以分为两种：</p>
+<ul>
+<li>在类的成员位置：成员内部类</li>
+<li>在类的局部位置：局部内部类</li>
+</ul>
+<h2 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">非私有时可用以下格式在类外创建内部类对象：</span><br><span class="line">    外部类名.内部类名 对象名=外部类对象.内部类对象;</span><br><span class="line">例如：</span><br><span class="line">    Outer.Inner oi=<span class="keyword">new</span> Outer().<span class="function">new <span class="title">Inner</span><span class="params">()</span></span>;</span><br><span class="line">当内部类私有时，则在外部类中写入公开方法，在类内创建内部类对象：</span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Inner</span></span>&#123;</span><br><span class="line">            <span class="comment">//此处省略内部类内容</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">InnerMethod</span><span class="params">()</span></span>&#123;</span><br><span class="line">            Inner i=<span class="keyword">new</span> Inner();</span><br><span class="line">            <span class="comment">//i即为创建的内部类对象</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="局部内部类"><a href="#局部内部类" class="headerlink" title="局部内部类"></a>局部内部类</h2><p>局部内部类是在方法中定义的类，所以外界是无法直接使用，需要在方法内部创建对象并使用，该类可以直接访问外部类的成员，也可以访问方法内的局部变量</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">InnerMethod</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Inner</span></span>&#123;</span><br><span class="line">            <span class="comment">//此处省略内部类内容</span></span><br><span class="line">        &#125;</span><br><span class="line">        Inner i=<span class="keyword">new</span> Inner();</span><br><span class="line">        <span class="comment">//i即为创建的内部类对象</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如上，局部内部类Inner定义在方法InnerMethod中，使用内部类时需要直接在方法中创建内部类对象并调用内部类的方法，如果只创建内部类无法调用内部类的成员方法</p>
+<h2 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h2><p>匿名内部类的前提：存在一个类或接口，可以是具体类或抽象类</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">格式：</span><br><span class="line">    <span class="keyword">new</span> 类名或接口名()&#123;</span><br><span class="line">    重写方法;</span><br><span class="line">	&#125;;</span><br><span class="line">例如：</span><br><span class="line">    <span class="keyword">new</span> Inner()&#123;</span><br><span class="line">    	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//被重写的方法</span></span><br><span class="line">    	&#125;</span><br><span class="line">	&#125;;</span><br></pre></td></tr></table></figure>
+<p>匿名内部类本质上是一个继承了该类或实现了该接口的子类匿名对象,所以调用匿名内部类的方法时可以写作如下形式：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">InnerMethod</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        new Inner()&#123;</span></span><br><span class="line"><span class="comment">        	@Override</span></span><br><span class="line"><span class="comment">            public void show()</span></span><br><span class="line"><span class="comment">            &#123;</span></span><br><span class="line"><span class="comment">                System.out.println(&quot;匿名内部类&quot;);</span></span><br><span class="line"><span class="comment">            &#125;</span></span><br><span class="line"><span class="comment">        &#125;;</span></span><br><span class="line"><span class="comment">        以上只创建了匿名内部类，没有调用方法</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        new Inner()&#123;</span></span><br><span class="line"><span class="comment">            @Override</span></span><br><span class="line"><span class="comment">            public void show()</span></span><br><span class="line"><span class="comment">            &#123;</span></span><br><span class="line"><span class="comment">                System.out.println(&quot;匿名内部类&quot;);</span></span><br><span class="line"><span class="comment">            &#125;</span></span><br><span class="line"><span class="comment">        &#125;.show();</span></span><br><span class="line"><span class="comment">        匿名内部类本质是一个匿名对象，所以直接可以通过对象调用方法</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        Inner i=<span class="keyword">new</span> Inner()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span></span><br><span class="line"><span class="function">            </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;匿名内部类&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        i.show();</span><br><span class="line">        <span class="comment">//这个匿名的对象本身继承了该类或实现了该接口，故而可以将其赋值给其父类对象</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用匿名内部类可以简化操作，免去重新创建一个文件书写使用次数不多的类，而是将该类作为一个匿名内部类包含在同一个文件里，形如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">A a=<span class="keyword">new</span> A();		<span class="comment">//A为B的接口操作类</span></span><br><span class="line">B b=<span class="keyword">new</span> Bc();		<span class="comment">//Bc为B子类</span></span><br><span class="line">B b=<span class="keyword">new</span> Bd();		<span class="comment">//Bd为B子类</span></span><br><span class="line">B b=<span class="keyword">new</span> Be();		<span class="comment">//Be为B子类</span></span><br><span class="line">B b=<span class="keyword">new</span> Bf();		<span class="comment">//Bf为B子类</span></span><br><span class="line"><span class="comment">//此处省略多个B的子类</span></span><br><span class="line">a.method(b);		<span class="comment">//method方法的参数为B类对象</span></span><br><span class="line"><span class="comment">//以上需要创建A接口类，B类，Bc类，Bd类，Be类，Bf类……等B的子类，但这些B的子类使用次数不多，甚至是一次性时，就会造成这些子类本身没什么用，而文件数量又过多</span></span><br><span class="line"></span><br><span class="line">a.method(<span class="keyword">new</span> B()&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="comment">//此处省略对B函数的重写</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//使用匿名内部类作为参数时，也实现了子类对父类函数的重写，虽然代码量差不多，但是免去了创建无用的子类文件</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>专业课程</category>
+        <category>Java</category>
+        <category>基础</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java基础-2</title>
+    <url>/2021/07/30/Java%E5%AD%A6%E4%B9%A0-2/</url>
+    <content><![CDATA[<h1 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">类的定义：</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 类名</span>&#123;</span><br><span class="line">    <span class="comment">//成员变量的定义</span></span><br><span class="line">    <span class="comment">//成员方法的定义（没有static关键字）</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">例如：</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Phone</span></span>&#123;</span><br><span class="line">    <span class="comment">//成员变量的定义</span></span><br><span class="line">    String brand;</span><br><span class="line">    <span class="keyword">int</span> price;</span><br><span class="line">    <span class="comment">//成员方法的定义（没有static关键字）</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.printIn(<span class="string">&quot;打电话&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendPassage</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.printIn(<span class="string">&quot;发短信&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">创建对象：类名 对象=<span class="keyword">new</span> 类名();</span><br><span class="line">例如：Phone p=<span class="keyword">new</span> Phone();</span><br></pre></td></tr></table></figure>
+<div class="tip warning"><p>
+
+</p><p>在c++中，不重载&lt;&lt;运算符时直接输出对象会报错，但java中可以直接输出对象，得到的是对象的地址，在编译器中实际输出应该为对象的包名.类名@对象的具体地址。</p>
+<p></p></div>
+
+
+
+<h2 id="成员变量和局部变量"><a href="#成员变量和局部变量" class="headerlink" title="成员变量和局部变量"></a>成员变量和局部变量</h2><table>
+<thead>
+<tr>
+<th>区别</th>
+<th>成员变量</th>
+<th>局部变量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>类中位置不同</td>
+<td>类中方法外</td>
+<td>方法内或声明上</td>
+</tr>
+<tr>
+<td>内存中位置不同</td>
+<td>堆内存</td>
+<td>栈内存</td>
+</tr>
+<tr>
+<td>生命周期不同</td>
+<td>随对象存在和消失</td>
+<td>随方法调用存在和消失</td>
+</tr>
+<tr>
+<td>初始化值不同</td>
+<td>有默认初始值</td>
+<td>没有默认的初始化值，必须先定义，赋值，才能够使用</td>
+</tr>
+</tbody></table>
+<h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><p>针对不想在类外直接访问的变量或方法，可以通过将public关键字替换为private（变量省略关键字时默认是public，需要在数据类型前面添加private关键字），体现类的封装。</p>
+<p><strong>封装的好处：</strong></p>
+<ul>
+<li>通过方法来控制成员变量的操作，提高代码的安全性</li>
+<li>把代码用方法进行封装，提高了代码的复用性</li>
+</ul>
+<h2 id="this关键字"><a href="#this关键字" class="headerlink" title="this关键字"></a>this关键字</h2><p>java中的this关键字和c++的this指针是同一个作用，用于解决局部变量隐藏成员变量，书写格式如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.变量名</span><br><span class="line">例如：<span class="keyword">this</span>.name</span><br></pre></td></tr></table></figure>
+<p>this修饰的变量用于指代成员变量：</p>
+<ul>
+<li>方法的形参如果和成员变量同名，不带this修饰的变量指的是形参而不是成员变量</li>
+<li>方法的形参没有和成员变量同名，不带this修饰的变量指的是成员变量</li>
+</ul>
+<p><strong>this代表所在类的对象引用，方法被哪个对象引用，this就代表哪个对象</strong></p>
+<h2 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 类名</span>&#123;</span><br><span class="line"><span class="comment">//构造方法写在类内</span></span><br><span class="line">	修饰符 类名（参数）&#123;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>和c++一样，当代码给出了任意构造方法后，系统将不再自动提供默认的无参构造</p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>面向对象三大特征之一，可以使子类具有父类的属性和方法，还可以在子类中重新定义，追加属性和方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">格式：<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 子类名 <span class="keyword">extends</span> 父类名</span>&#123;&#125;</span><br><span class="line">如：<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span></span>&#123;&#125;</span><br><span class="line">表示子类Student继承自父类Person</span><br></pre></td></tr></table></figure>
+<ul>
+<li>优点：提高代码的复用性，提高代码的维护性</li>
+<li>弊端：让类和类产生了关系，父类改变时子类不得不改变</li>
+</ul>
+<p><strong>继承中变量的访问特点：</strong></p>
+<p>在子类方法中访问一个变量：</p>
+<ol>
+<li>在子类局部范围找</li>
+<li>在子类成员范围找</li>
+<li>在父类成员范围找</li>
+<li>否则报错（不考虑父类的父类的继承）</li>
+</ol>
+<p><strong>继承中构造方法的访问特点：</strong></p>
+<p>子类中所有的构造方法默认都会访问父类中无参的构造方法，理由如下：</p>
+<ul>
+<li>子类会继承父类中的数据，可能还会使用父类的数据，所以要先初始化父类数据</li>
+<li>每一个子类构造方法的第一条语句默认都是：super（）</li>
+</ul>
+<p>如果父类中没有无参构造方法，只有带参构造方法：</p>
+<ul>
+<li>通过使用super关键字去显示的调用父类的带参构造方法</li>
+<li>在父类中自己提供一个无参构造方法（推荐）</li>
+</ul>
+<p><strong>继承中成员方法的访问特点：</strong></p>
+<p>通过子类对象访问一个方法：</p>
+<ul>
+<li>子类成员范围找</li>
+<li>父类成员范围找</li>
+<li>否则报错（不考虑父类的父类的继承）</li>
+</ul>
+<h3 id="继承的注意事项"><a href="#继承的注意事项" class="headerlink" title="继承的注意事项"></a>继承的注意事项</h3><ul>
+<li>java中类只支持单继承，不支持多继承</li>
+<li>java中类支持多层继承，但变量和成员方法不考虑父类的父类</li>
+</ul>
+<h3 id="方法重写"><a href="#方法重写" class="headerlink" title="方法重写"></a>方法重写</h3><p>子类中出现了和父类中一样的方法声明，但功能子类需要具有特有的内容时，可以重写父类中的方法，这样，即沿袭了父类的功能，又定义了子类的特有内容</p>
+<p>注意事项：</p>
+<p>私有方法是不能被重写的（类似c++父类私有函数在子类不可见）</p>
+<p>子类方法访问权限不能更低（public&gt;默认&gt;私有）</p>
+<div class="tip warning"><p>
+
+</p><p>@Override是一个方法重写的注解，可以帮助检查重写方法的方法声明的正确性</p>
+<p></p></div>
+
+<h3 id="super关键字"><a href="#super关键字" class="headerlink" title="super关键字"></a>super关键字</h3><p>super关键字的用法和this关键字的用法相似</p>
+<ul>
+<li><strong>this：</strong>代表本类对象的引用</li>
+<li><strong>super：</strong>代表父类存储空间的标识（可以理解为父类对象引用）</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>访问成员变量</th>
+<th>访问构造方法</th>
+<th>访问成员方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>this</td>
+<td>this.成员变量，访问本类成员变量</td>
+<td>this（…），访问本类构造方法</td>
+<td>this.成员方法（…），访问本类成员方法</td>
+</tr>
+<tr>
+<td>super</td>
+<td>super.成员变量，访问父类成员变量</td>
+<td>super（…），访问父类构造方法</td>
+<td>super.成员方法，访问父类成员方法</td>
+</tr>
+</tbody></table>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>多态分为具体类多态，抽象类多态，接口多态</p>
+<h3 id="多态的前提和实现"><a href="#多态的前提和实现" class="headerlink" title="多态的前提和实现"></a>多态的前提和实现</h3><ul>
+<li>有继承/实现关系</li>
+<li>有方法重写</li>
+<li>有父（类/接口）引用指向（子/实现）类对象</li>
+</ul>
+<h3 id="成员的访问特点"><a href="#成员的访问特点" class="headerlink" title="成员的访问特点"></a>成员的访问特点</h3><p>成员变量使用父类成员变量，成员方法使用子类重写的父类成员方法，如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Animal a=<span class="keyword">new</span> Cat();</span><br></pre></td></tr></table></figure>
+<p>对于Animal类中不存在，但Cat类中存在的成员变量是无法使用的，因为创建的变量a是Animal类；但在Cat类中重写了Animal类的成员方法后，使用该成员方法时，将会调用Cat类重写之后的成员方法。</p>
+<p>两者存在区别的原因是由于成员方法有重写而成员变量没有重写，对于Animal类和Cat类继承下来的同一个方法入口构成了类似重载的关系</p>
+<h3 id="多态的好处和弊端"><a href="#多态的好处和弊端" class="headerlink" title="多态的好处和弊端"></a>多态的好处和弊端</h3><p>好处：提高了程序的扩展性——定义方法的时候，使用父类作为参数，在使用的时候，可以使用具体的子类型传参</p>
+<p>弊端：不能使用子类的特有功能</p>
+<h3 id="多态中的转型"><a href="#多态中的转型" class="headerlink" title="多态中的转型"></a>多态中的转型</h3><ol>
+<li>向上转型——Animal a=new Cat();<ul>
+<li>从子到父</li>
+<li>父类引用指向子类对象</li>
+</ul>
+</li>
+<li>向下转型——Cat c=(Cat)a;<ul>
+<li>从父到子</li>
+<li>父类引用转为子类对象</li>
+</ul>
+</li>
+</ol>
+<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><p>一个没有方法体的方法该定义为抽象方法，类中如果有抽象方法，该类必须定义为抽象类</p>
+<p>java中抽象使用abstract关键字修饰：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span>&#123;</span><br><span class="line">	<span class="comment">//含有抽象方法的类必须为抽象类</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">shout</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="comment">//抽象方法必须位于抽象类中</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="抽象类的特点"><a href="#抽象类的特点" class="headerlink" title="抽象类的特点"></a>抽象类的特点</h3><ul>
+<li>抽象类和抽象方法必须使用abstract修饰</li>
+<li>抽象类中不一定有抽象方法，但有抽象方法的一定是抽象类</li>
+<li>抽象类不能实例化，即不能创建对象，它只能通过子类对象实例化</li>
+<li>抽象类的子类要么重写抽象类中所有抽象方法，要么是抽象类</li>
+</ul>
+<h3 id="抽象类的成员特点"><a href="#抽象类的成员特点" class="headerlink" title="抽象类的成员特点"></a>抽象类的成员特点</h3><ul>
+<li>成员变量：可以是变量也可以是常量</li>
+<li>构造方法：有构造方法，但不能实例化，构造方法用于子类访问父类数据的初始化</li>
+<li>成员方法：可以有抽象方法，限定子类必须具有某些方法，也可以有非抽象方法，用于提高代码复用性</li>
 </ul>
 ]]></content>
       <categories>
