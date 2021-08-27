@@ -138,6 +138,16 @@
 <li>获取指定的注解：getAnnotation（Class），其实就是在内存中生成了一个该注解接口的子类实现对象</li>
 <li>调用注解中的抽象方法获取配置的属性值</li>
 </ol>
+<h2 id="相关使用"><a href="#相关使用" class="headerlink" title="相关使用"></a>相关使用</h2><p>判断一个方法是否被一个注解修饰：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">方法名.isAnnotationPresent(注解名.class)</span><br></pre></td></tr></table></figure>
+<p>BufferedWriter对象创建文档并写入：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">BufferedWriter bw=<span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> FileWriter(<span class="string">&quot;bug.txt&quot;</span>));</span><br><span class="line"><span class="comment">//通过BufferedWriter对象创建一个txt文档用于记录bug</span></span><br><span class="line">bw.write(method.getName()+<span class="string">&quot;方法出现异常：&quot;</span>+);	<span class="comment">//写入记录</span></span><br><span class="line">bw.newline();	<span class="comment">//新起一行</span></span><br><span class="line">bw.write(<span class="string">&quot;异常的名称：&quot;</span>+e.getCause().getClass().getSimpleName());</span><br><span class="line">bw.newline();		<span class="comment">//其中e是捕捉到的异常，通过该方法可以获得其简单类名</span></span><br><span class="line">bw.write(<span class="string">&quot;异常的原因&quot;</span>+e.getCause().getMessage());</span><br><span class="line">bw.flush();		<span class="comment">//将以上写入的内容打印到对应txt文档</span></span><br><span class="line">bw.close();		<span class="comment">//关闭缓冲区</span></span><br></pre></td></tr></table></figure>
+<p><strong>小结：</strong></p>
+<ul>
+<li>比起自定义注解，已有的注解更加常用</li>
+<li>注解是给编译器和解析程序使用的</li>
+<li>注解不是程序的一部分，可以理解为一个标签</li>
+</ul>
 ]]></content>
       <categories>
         <category>专业课程</category>
