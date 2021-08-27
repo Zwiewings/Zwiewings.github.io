@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>JavaWeb学习-2</title>
+    <url>/2021/08/27/JavaWeb%E5%AD%A6%E4%B9%A0-2/</url>
+    <content><![CDATA[<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><p>数据库的特点：</p>
+<ul>
+<li>持久化存储数据的文件系统</li>
+<li>方便存储和管理数据</li>
+<li>使用了统一的方式操作数据库——SQL</li>
+</ul>
+<h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><p>配置：（在使用管理员打开cmd的前提下）</p>
+<ul>
+<li>net start mysql：启动MySQL服务</li>
+<li>net stop mysql：关闭MySQL服务</li>
+</ul>
+<p>登录：mysql -uroot -p——回车——输入密码</p>
+<p>远程登录：mysql  -h主机IP地址 -uroot -p连接目标的密码</p>
+<p>退出：exit/quit</p>
+<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><p><strong>安装目录：</strong></p>
+<p>-bin：可执行二进制文件目录</p>
+<p>-data：用户数据目录</p>
+<p>-include：c#头文件目录</p>
+<p>-lib：运行所需要的库文件</p>
+<p>-share：mysql的一些错误信息</p>
+<p>-my.ini：mysql的配置文件</p>
+<p><strong>数据目录：（默认在C:\ProgramData\MySQL\MySQL Server 5.5\data）<img src="/2021/08/27/JavaWeb%E5%AD%A6%E4%B9%A0-2/1.png" alt="1"></strong></p>
+<p>数据目录下，数据库——文件夹，表——文件，数据——具体数据</p>
+]]></content>
+      <categories>
+        <category>专业课程</category>
+        <category>Java</category>
+        <category>JavaWeb</category>
+      </categories>
+      <tags>
+        <tag>JavaWeb</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JavaWeb基础-1</title>
     <url>/2021/08/21/JavaWeb%E5%AD%A6%E4%B9%A0-1/</url>
     <content><![CDATA[<h1 id="Junit单元测试"><a href="#Junit单元测试" class="headerlink" title="Junit单元测试"></a>Junit单元测试</h1><p>Junit使用：白盒测试</p>
