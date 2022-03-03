@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>JavaWeb基础-2</title>
+    <title>Web程序设计-1</title>
     <url>/2021/08/27/Web%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1-1/</url>
     <content><![CDATA[<h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><p>配置：（在使用管理员打开cmd的前提下）</p>
 <ul>
@@ -51,11 +51,10 @@
 ]]></content>
       <categories>
         <category>专业课程</category>
-        <category>Java</category>
-        <category>JavaWeb</category>
+        <category>Web程序设计</category>
       </categories>
       <tags>
-        <tag>JavaWeb</tag>
+        <tag>Web程序设计</tag>
       </tags>
   </entry>
   <entry>

@@ -6,7 +6,7 @@
   <link href="https://zwiewings.github.io/atom.xml" rel="self"/>
   
   <link href="https://zwiewings.github.io/"/>
-  <updated>2022-03-03T03:42:02.867Z</updated>
+  <updated>2022-03-03T07:11:38.454Z</updated>
   <id>https://zwiewings.github.io/</id>
   
   <author>
@@ -17,27 +17,25 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>JavaWeb基础-2</title>
+    <title>Web程序设计-1</title>
     <link href="https://zwiewings.github.io/2021/08/27/Web%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1-1/"/>
     <id>https://zwiewings.github.io/2021/08/27/Web%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1-1/</id>
     <published>2021-08-27T12:27:08.000Z</published>
-    <updated>2022-03-03T03:42:02.867Z</updated>
+    <updated>2022-03-03T07:11:38.454Z</updated>
     
     <content type="html"><![CDATA[<h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><p>配置：（在使用管理员打开cmd的前提下）</p><ul><li>net start mysql：启动MySQL服务</li><li>net stop mysql：关闭MySQL服务</li></ul><p>登录：mysql -uroot -p——回车——输入密码</p><p>远程登录：mysql  -h主机IP地址 -uroot -p连接目标的密码</p><p>退出：exit/quit</p><h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><p><strong>安装目录：</strong></p><p>-bin：可执行二进制文件目录</p><p>-data：用户数据目录</p><p>-include：c#头文件目录</p><p>-lib：运行所需要的库文件</p><p>-share：mysql的一些错误信息</p><p>-my.ini：mysql的配置文件</p><p>数据目录下，数据库——文件夹，表——文件，数据——具体数据</p><p><img src="/2021/08/27/Web%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1-1/1.png" alt="1"></p><h3 id="关于安装数据库时出现的一些问题："><a href="#关于安装数据库时出现的一些问题：" class="headerlink" title="关于安装数据库时出现的一些问题："></a>关于安装数据库时出现的一些问题：</h3><p>在执行mysqld命令初始化数据库时，一开始出现了输入初始化命令后换行没有任何反应，就提示输入下一个命令，也试着去装了那个缺少的dll文件，不过好像不是缺这个的问题</p><p>最初的时候觉得是已经装过MySQL5的原因，就去把MySQL5卸载了，结果还是一样。</p><p>（这个时候在文档里复制命令的时候还一不小心复制成了安装MySQL8的命令，发现居然能运行的时候还惊喜了一下，结果后来发现不对劲的时候已经有点麻烦了）</p><p>后来想到是不是新的安装路径有中文的问题，就把整个MySQL8的文件夹全部移到了D盘根目录，试着重新安装了，但还是没用。</p><p>考虑到MySQL5卸载是不是没卸干净，在网上查了一下相关的问题，最后在以前装MySQL5做的笔记里找到了MySQL5的数据目录（默认在C:\ProgramData\MySQL\MySQL Server 5\data），把整个文件夹（C:\ProgramData\MySQL）删除之后初始化命令就能够成功执行了</p><p><img src="/2021/08/27/Web%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1-1/2.png" alt="2"></p><p>等到继续安装的时候，执行命令后提示如下：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">The service already exists!</span><br><span class="line">The current server installed: (后面是我原来包含中文的那个路径)</span><br></pre></td></tr></table></figure><p>于是又去翻关于这个报错的帖子，想办法把之前这个中文路径的卸载掉，但是控制面板的程序面板是没有这个程序的（多半是因为莫名其妙的只装了一半，而且如果试图运行这个装了一半的MySQL也会报错），最后参照一个帖子（<a href="https://www.cnblogs.com/Kathrine/p/12811129.html%EF%BC%89%E7%9A%84%E8%AF%B4%E6%B3%95%EF%BC%8C%E5%88%A0%E9%99%A4%E4%BA%86%E5%87%A0%E4%B8%AA%E6%B3%A8%E5%86%8C%E8%A1%A8%EF%BC%8C%E5%88%A0%E5%AE%8C%E4%B9%8B%E5%90%8E%E6%8A%A5%E9%94%99%E7%9A%84%E7%AC%AC%E4%BA%8C%E8%A1%8C%E6%B6%88%E5%A4%B1%E4%BA%86%E3%80%82">https://www.cnblogs.com/Kathrine/p/12811129.html）的说法，删除了几个注册表，删完之后报错的第二行消失了。</a></p><p>最后在cmd执行了“sc delete MYSQL8”这一命令之后成功的卸掉了，之后也能够成功安装并运行正常的MySQL8.</p><p><img src="/2021/08/27/Web%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1-1/3.png" alt="3"></p><h1 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h1><h2 id="目录结构-1"><a href="#目录结构-1" class="headerlink" title="目录结构"></a>目录结构</h2><ul><li><p>bin：可执行文件</p></li><li><p>conf：设置，配置文件</p></li><li><p>lib：运行库</p></li><li><p>webapps：默认主目录</p><p><strong>webapps目录下的root是根项目，不需要带文件夹名即可访问</strong></p><p><strong>而root文件夹下的index.jsp或index.html为默认主页</strong></p></li></ul><p>web_inf下不允许浏览器端直接访问</p><p>简单时可以用run，当项目复杂时使用debug处理</p><p><img src="../../../../Users/Juairu/AppData/Roaming/Typora/typora-user-images/image-20220303110219810.png" alt="image-20220303110219810"></p><p>上面是war压缩文件，但每次都要打包有些麻烦</p><p>下面是文件夹（默认部署的内容）</p>]]></content>
     
     
-    <summary type="html">JavaWeb相关基础</summary>
+    <summary type="html">相关软件安装及Web开发基础</summary>
     
     
     
     <category term="专业课程" scheme="https://zwiewings.github.io/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE%E7%A8%8B/"/>
     
-    <category term="Java" scheme="https://zwiewings.github.io/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE%E7%A8%8B/Java/"/>
-    
-    <category term="JavaWeb" scheme="https://zwiewings.github.io/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE%E7%A8%8B/Java/JavaWeb/"/>
+    <category term="Web程序设计" scheme="https://zwiewings.github.io/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE%E7%A8%8B/Web%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
     
     
-    <category term="JavaWeb" scheme="https://zwiewings.github.io/tags/JavaWeb/"/>
+    <category term="Web程序设计" scheme="https://zwiewings.github.io/tags/Web%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
     
   </entry>
   
