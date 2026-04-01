@@ -6,7 +6,7 @@
   <link href="https://zwiewings.github.io/atom.xml" rel="self"/>
   
   <link href="https://zwiewings.github.io/"/>
-  <updated>2022-06-30T16:18:23.054Z</updated>
+  <updated>2026-04-01T10:20:04.565Z</updated>
   <id>https://zwiewings.github.io/</id>
   
   <author>
@@ -17,25 +17,29 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
-    <link href="https://zwiewings.github.io/2022/07/03/QuestManager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/"/>
-    <id>https://zwiewings.github.io/2022/07/03/QuestManager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/</id>
-    <published>2022-07-03T06:17:08.539Z</published>
-    <updated>2022-06-30T16:18:23.054Z</updated>
+    <title>UE4-Quest Manager插件速通</title>
+    <link href="https://zwiewings.github.io/2022/07/03/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/"/>
+    <id>https://zwiewings.github.io/2022/07/03/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/</id>
+    <published>2022-07-03T06:24:16.000Z</published>
+    <updated>2026-04-01T10:20:04.565Z</updated>
     
-    <content type="html"><![CDATA[<p>1.把所有之前做的操作全清干净，一点都不要剩，包括测试地图里的NPC之类的蓝图也全删掉，还原成完全没导入过这个包时的样子</p><p>2.重新导入这个包</p><p>3.新建一个游戏模式</p><p><img src="/2022/07/03/QuestManager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/1.png" alt="1"></p><p>4.玩家状态设置成那个包里的状态，pawn设置成封艾羽</p><p><img src="/2022/07/03/QuestManager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/2.png" alt="2"></p><p>5.将默认游戏模式设置成这个</p><p><img src="/2022/07/03/QuestManager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/3.png" alt="3"></p><p>6.复制数据库，并将新数据库里的东西全部删干净</p><p><img src="/2022/07/03/QuestManager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/4.png" alt="4"></p><p>7.新建一条条目，只起名</p><p><img src="/2022/07/03/QuestManager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/5.png" alt="5"></p><p>8.打开这个蓝图</p><p><img src="/2022/07/03/QuestManager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/6.png" alt="6"></p><p>9.将QuestList变量默认值设置成自己建的数据表，并将行命名设置成新建的那条（行命名就是自己想要第一个执行的任务）</p><p><img src="/2022/07/03/QuestManager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/7.png" alt="7"></p><p>10.新建或修改已有的NPC蓝图，设置父类为BP_QuestGiver</p><p><img src="/2022/07/03/QuestManager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/8.png" alt="8"></p><p>11.将Tatget Name设置成自己要的名字</p><p><img src="/2022/07/03/QuestManager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/9.png" alt="9"></p><p>12.同样道理再做一个2号</p><p><img src="/2022/07/03/QuestManager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/10.png" alt="10"></p><p>13.将这两个NPC拖到场景里</p><p>14.编辑任务数据库（注：Objectives里的Objective tag默认有4种任务类型，Collect，Kill，Reach，和Interaction）</p><p><img src="/2022/07/03/QuestManager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/11.png" alt="11"></p><p><img src="/2022/07/03/QuestManager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/12.png" alt="12"></p><p>15.将一个BP_QuestManager拖入场景</p><p><img src="/2022/07/03/QuestManager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/13.png" alt="13"></p><p>16.将任务面板和交互按键添加到角色蓝图</p><p><img src="/2022/07/03/QuestManager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/14.png" alt="14"></p><p>17.在人物蓝图里新增一个tag，叫QuestManager</p><p><img src="/2022/07/03/QuestManager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/15.png" alt="15"></p><p>18.针对开放世界，需要将这里的BeginPlay函数转为事件，并连上Delay 0.2秒。</p><p><img src="/2022/07/03/QuestManager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/18.png" alt="18"></p><p><img src="/2022/07/03/QuestManager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/19.png" alt="19"></p><p>19.一切完全正常</p><p><img src="/2022/07/03/QuestManager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/16.png" alt="16"></p><p>20.如果完全按照这个做的话，现在应该又是会自动存档的了，对付存档有两种方法，一是和之前一样把所有和保存相关的节点删了，还有一种，搜索EUW_RemoveSavedGame，右键运行，点一下按钮，即可删除存档</p><p><img src="/2022/07/03/QuestManager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/Quest%20Manager%E9%80%9F%E9%80%9A/17.png" alt="17"></p><p>21.详细的功能可以看机翻了的插件官方附件，但基本用处不大</p>]]></content>
+    <content type="html"><![CDATA[<p>1.把所有之前做的操作全清干净，一点都不要剩，包括测试地图里的NPC之类的蓝图也全删掉，还原成完全没导入过这个包时的样子</p><p>2.重新导入这个包</p><p>3.新建一个游戏模式</p><p><img src="/2022/07/03/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/1.png" alt="1"></p><p>4.玩家状态设置成那个包里的状态，pawn设置成主角</p><p><img src="/2022/07/03/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/2.png" alt="2"></p><p>5.将默认游戏模式设置成这个</p><p><img src="/2022/07/03/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/3.png" alt="3"></p><p>6.复制数据库，并将新数据库里的东西全部删干净</p><p><img src="/2022/07/03/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/4.png" alt="4"></p><p>7.新建一条条目，只起名</p><p><img src="/2022/07/03/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/5.png" alt="5"></p><p>8.打开这个蓝图</p><p><img src="/2022/07/03/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/6.png" alt="6"></p><p>9.将QuestList变量默认值设置成自己建的数据表，并将行命名设置成新建的那条（行命名就是自己想要第一个执行的任务）</p><p><img src="/2022/07/03/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/7.png" alt="7"></p><p>10.新建或修改已有的NPC蓝图，设置父类为BP_QuestGiver</p><p><img src="/2022/07/03/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/8.png" alt="8"></p><p>11.将Tatget Name设置成自己要的名字</p><p><img src="/2022/07/03/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/9.png" alt="9"></p><p>12.同样道理再做一个2号</p><p><img src="/2022/07/03/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/10.png" alt="10"></p><p>13.将这两个NPC拖到场景里</p><p>14.编辑任务数据库（注：Objectives里的Objective tag默认有4种任务类型，Collect，Kill，Reach，和Interaction）</p><p><img src="/2022/07/03/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/11.png" alt="11"></p><p><img src="/2022/07/03/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/12.png" alt="12"></p><p>15.将一个BP_QuestManager拖入场景</p><p><img src="/2022/07/03/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/13.png" alt="13"></p><p>16.将任务面板和交互按键添加到角色蓝图</p><p><img src="/2022/07/03/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/14.png" alt="14"></p><p>17.在人物蓝图里新增一个tag，叫QuestManager</p><p><img src="/2022/07/03/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/15.png" alt="15"></p><p>18.针对开放世界，需要将这里的BeginPlay函数转为事件，并连上Delay 0.2秒。</p><p><img src="/2022/07/03/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/18.png" alt="18"></p><p><img src="/2022/07/03/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/19.png" alt="19"></p><p>19.一切完全正常</p><p><img src="/2022/07/03/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/16.png" alt="16"></p><p>20.如果完全按照这个做的话，现在应该又是会自动存档的了，对付存档有两种方法，一是和之前一样把所有和保存相关的节点删了，还有一种，搜索EUW_RemoveSavedGame，右键运行，点一下按钮，即可删除存档</p><p><img src="/2022/07/03/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/17.png" alt="17"></p>]]></content>
     
     
-      
-      
-    <summary type="html">&lt;p&gt;1.把所有之前做的操作全清干净，一点都不要剩，包括测试地图里的NPC之类的蓝图也全删掉，还原成完全没导入过这个包时的样子&lt;/p&gt;
-&lt;p&gt;2.重新导入这个包&lt;/p&gt;
-&lt;p&gt;3.新建一个游戏模式&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/2022/07/03/QuestManager</summary>
-      
+    <summary type="html">通过溶解特效的制作学习有关材质参数集资产以及其他相关知识点</summary>
     
     
     
+    <category term="课外拓展" scheme="https://zwiewings.github.io/categories/%E8%AF%BE%E5%A4%96%E6%8B%93%E5%B1%95/"/>
+    
+    <category term="虚幻引擎" scheme="https://zwiewings.github.io/categories/%E8%AF%BE%E5%A4%96%E6%8B%93%E5%B1%95/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E/"/>
+    
+    <category term="UE4" scheme="https://zwiewings.github.io/categories/%E8%AF%BE%E5%A4%96%E6%8B%93%E5%B1%95/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E/UE4/"/>
+    
+    
+    <category term="虚幻引擎" scheme="https://zwiewings.github.io/tags/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E/"/>
+    
+    <category term="UE4" scheme="https://zwiewings.github.io/tags/UE4/"/>
     
   </entry>
   
@@ -377,33 +381,6 @@
   </entry>
   
   <entry>
-    <title>UE4-溶解特效</title>
-    <link href="https://zwiewings.github.io/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/"/>
-    <id>https://zwiewings.github.io/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/</id>
-    <published>2021-05-20T11:24:16.000Z</published>
-    <updated>2026-04-01T10:14:24.346Z</updated>
-    
-    <content type="html"><![CDATA[<p>1.把所有之前做的操作全清干净，一点都不要剩，包括测试地图里的NPC之类的蓝图也全删掉，还原成完全没导入过这个包时的样子</p><p>2.重新导入这个包</p><p>3.新建一个游戏模式</p><p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/1.png" alt="1"></p><p>4.玩家状态设置成那个包里的状态，pawn设置成主角</p><p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/2.png" alt="2"></p><p>5.将默认游戏模式设置成这个</p><p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/3.png" alt="3"></p><p>6.复制数据库，并将新数据库里的东西全部删干净</p><p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/4.png" alt="4"></p><p>7.新建一条条目，只起名</p><p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/5.png" alt="5"></p><p>8.打开这个蓝图</p><p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/6.png" alt="6"></p><p>9.将QuestList变量默认值设置成自己建的数据表，并将行命名设置成新建的那条（行命名就是自己想要第一个执行的任务）</p><p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/7.png" alt="7"></p><p>10.新建或修改已有的NPC蓝图，设置父类为BP_QuestGiver</p><p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/8.png" alt="8"></p><p>11.将Tatget Name设置成自己要的名字</p><p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/9.png" alt="9"></p><p>12.同样道理再做一个2号</p><p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/10.png" alt="10"></p><p>13.将这两个NPC拖到场景里</p><p>14.编辑任务数据库（注：Objectives里的Objective tag默认有4种任务类型，Collect，Kill，Reach，和Interaction）</p><p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/11.png" alt="11"></p><p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/12.png" alt="12"></p><p>15.将一个BP_QuestManager拖入场景</p><p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/13.png" alt="13"></p><p>16.将任务面板和交互按键添加到角色蓝图</p><p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/14.png" alt="14"></p><p>17.在人物蓝图里新增一个tag，叫QuestManager</p><p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/15.png" alt="15"></p><p>18.针对开放世界，需要将这里的BeginPlay函数转为事件，并连上Delay 0.2秒。</p><p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/18.png" alt="18"></p><p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/19.png" alt="19"></p><p>19.一切完全正常</p><p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/16.png" alt="16"></p><p>20.如果完全按照这个做的话，现在应该又是会自动存档的了，对付存档有两种方法，一是和之前一样把所有和保存相关的节点删了，还有一种，搜索EUW_RemoveSavedGame，右键运行，点一下按钮，即可删除存档</p><p><img src="/2021/05/20/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E-QuestManager%E9%80%9F%E9%80%9A/17.png" alt="17"></p>]]></content>
-    
-    
-    <summary type="html">通过溶解特效的制作学习有关材质参数集资产以及其他相关知识点</summary>
-    
-    
-    
-    <category term="课外拓展" scheme="https://zwiewings.github.io/categories/%E8%AF%BE%E5%A4%96%E6%8B%93%E5%B1%95/"/>
-    
-    <category term="虚幻引擎" scheme="https://zwiewings.github.io/categories/%E8%AF%BE%E5%A4%96%E6%8B%93%E5%B1%95/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E/"/>
-    
-    <category term="UE4" scheme="https://zwiewings.github.io/categories/%E8%AF%BE%E5%A4%96%E6%8B%93%E5%B1%95/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E/UE4/"/>
-    
-    
-    <category term="虚幻引擎" scheme="https://zwiewings.github.io/tags/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E/"/>
-    
-    <category term="UE4" scheme="https://zwiewings.github.io/tags/UE4/"/>
-    
-  </entry>
-  
-  <entry>
     <title>数据结构-7</title>
     <link href="https://zwiewings.github.io/2021/05/19/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-7/"/>
     <id>https://zwiewings.github.io/2021/05/19/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-7/</id>
@@ -531,6 +508,31 @@
     <category term="C++" scheme="https://zwiewings.github.io/tags/C/"/>
     
     <category term="STL库" scheme="https://zwiewings.github.io/tags/STL%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>网页设计-4</title>
+    <link href="https://zwiewings.github.io/2021/05/13/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1-4/"/>
+    <id>https://zwiewings.github.io/2021/05/13/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1-4/</id>
+    <published>2021-05-13T07:10:39.000Z</published>
+    <updated>2021-05-31T12:16:24.417Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>css中的盒模型相当于礼物的外包装盒，封装周围的HTML元素，包括外边距（margin），边框（border），内边距（padding）和实际内容（content），常用的div元素就是一种区块容器标记，可以将网页分隔为不同的部分，以实现网页的规划和布局。</p><p>纵深结构来说，盒模型自下而上为：外边距、背景颜色、背景图像、内边距、内容、边框</p><p><img src="/2021/05/13/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1-4/1.PNG" alt="1"></p><div class="tip important font5 fas fa-bell"><p>css代码中的宽和高（width和height）指的是如下部分：</p><p>盒子的总宽度=width+左右内边框之和+左右边框宽度之和+左右外边距之和</p><p>盒子的总高度=height+上下内边距之和+上下边框宽度之和+上下外边框之和</p></div><br><h2 id="边框（border）"><a href="#边框（border）" class="headerlink" title="边框（border）"></a>边框（border）</h2><p>边框主要包括边框宽度、边框样式、边框颜色、此外还有border的综合属性，在CSS3中添加了圆角边距，图片边距属性。</p><ul><li><p>边框宽度（border-width）：用于设置元素边框的宽度值</p><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">border-width</span>：上边距宽度<span class="selector-attr">[右边距宽度 下边距宽度 左边距宽度]</span>;</span><br><span class="line"></span><br><span class="line">其中，宽度由数字和单位组成，不可为负数，常以像素（<span class="selector-tag">px</span>）为单位，且设定1个值时全部应用，设定2~3个值时，省略的部分将使用对边的样式</span><br></pre></td></tr></table></figure></li><li><p>边框样式（border-style）：用于设置样式</p><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">border-style</span>：上边框样式<span class="selector-attr">[右边框样式 下边框样式 左边框样式]</span>;</span><br><span class="line"></span><br><span class="line">其中，设置时必须按上右下左的顺时针顺序，当设置1个值时为4边，2个值为上下/左右，3个值为上/左右/下，也可以通过形如<span class="selector-tag">border-left-style</span>的方式分别设置</span><br></pre></td></tr></table></figure><p>样式取值共9种，如下：</p><table><thead><tr><th>属性</th><th>含义</th><th>属性</th><th>含义</th></tr></thead><tbody><tr><td>none</td><td>不显示边框（默认）</td><td>groove</td><td>边框带有立体感的沟槽</td></tr><tr><td>dotted</td><td>点线</td><td>ridge</td><td>边框成脊形</td></tr><tr><td>dashed</td><td>虚线</td><td>inset</td><td>使整个方框凹陷</td></tr><tr><td>solid</td><td>实线</td><td>outset</td><td>使整个方框凸起</td></tr><tr><td>double</td><td>双实线</td><td></td><td></td></tr></tbody></table></li><li><p>边框颜色（border-color）：用于定义边框的颜色</p><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">border-color</span>:上边框颜色<span class="selector-attr">[右边框颜色 下边框颜色 左边框颜色]</span>;</span><br><span class="line"></span><br><span class="line">其中，颜色值符合定义法，有十六进制<span class="selector-id">#RRGGBB</span>和<span class="selector-tag">RGB</span>代码、<span class="selector-tag">rgb</span>(<span class="selector-tag">r</span>,<span class="selector-tag">g</span>,<span class="selector-tag">b</span>)三种，仅定义几个值的样式应用方式同上两种，可以通过形如<span class="selector-tag">border-left-color</span>的方式分别定义，（上使用<span class="selector-tag">top</span>，下使用<span class="selector-tag">bottom</span>）</span><br></pre></td></tr></table></figure></li></ul><ul><li><p>边框综合属性（border）</p><p>border为复合属性，前三者的简写方式</p><figure class="highlight css"><table><tr><td class="code"><pre><span class="line">border&lt;边框宽度&gt;|&lt;边框样式&gt;|&lt;颜色&gt;;</span><br><span class="line"></span><br><span class="line">在复合属性中，边框<span class="selector-tag">border</span>同时设置4条边，如只需要1条边框应用该样式，需要通过形如<span class="selector-tag">border-left</span>的方式分别设置</span><br></pre></td></tr></table></figure></li></ul><h2 id="边距"><a href="#边距" class="headerlink" title="边距"></a>边距</h2><h3 id="内边距（padding）"><a href="#内边距（padding）" class="headerlink" title="内边距（padding）"></a>内边距（padding）</h3><p>主要用于调整内容在盒子中的值，指内容content和边框border的距离，也被称作内填充。</p><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">padding</span>:上内边距值<span class="selector-attr">[右内边距值 下内边距值 左内边距值]</span>;</span><br></pre></td></tr></table></figure><ul><li>边距值为数字和单位组成，不可为负值，常用像素（px）为单位，也可以是百分比，随父元素width变化而变化，和height无关</li><li>padding遵循复制原则，也可以通过形如padding-left的方式设置样式</li></ul><h3 id="外边距（margin）"><a href="#外边距（margin）" class="headerlink" title="外边距（margin）"></a>外边距（margin）</h3><p>margin指元素边框和相邻元素之间的距离（盒子和盒子的距离）</p><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">margin</span>:上外边距值<span class="selector-attr">[右外边距值 下外边距值 左外边距值]</span>;</span><br></pre></td></tr></table></figure><ul><li>margin为复合属性，同padding用法类似，但可以使用负值，使相邻元素重叠，若盒元素使用了宽度属性，设margin为auto时，可以实现盒元素居中</li><li>margin也遵循复制原则，可通过形如margin-left的方式设置样式</li></ul>]]></content>
+    
+    
+    <summary type="html">关于CSS盒模型的运用</summary>
+    
+    
+    
+    <category term="专业课程" scheme="https://zwiewings.github.io/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE%E7%A8%8B/"/>
+    
+    <category term="网页设计" scheme="https://zwiewings.github.io/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE%E7%A8%8B/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1/"/>
+    
+    <category term="css" scheme="https://zwiewings.github.io/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE%E7%A8%8B/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1/css/"/>
+    
+    
+    <category term="网页设计" scheme="https://zwiewings.github.io/tags/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1/"/>
     
   </entry>
   
